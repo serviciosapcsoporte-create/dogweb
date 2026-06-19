@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DogWeb — Páginas web que rastrean clientes</title>
+<meta name="description" content="Diseñamos páginas web que no son simples adornos; son el pilar de caza de su negocio. Atrae compradores directo a tu WhatsApp.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Rajdhani:wght@600;700&display=swap');
+
+  :root {
+    --negro: #050508;
+    --azul: #1a6dff;
+    --azul-oscuro: #0d3d99;
+    --azul-glow: rgba(26,109,255,0.15);
+    --rojo: #e8001c;
+    --blanco: #f0f4ff;
+    --gris: #8a9ab8;
+    --gris-oscuro: #12151e;
+    --borde: rgba(26,109,255,0.2);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display: flex; align-items:center; justify-content:space-between;
+    padding: 0 2rem;
+    height: 70px;
+    background: rgba(5,5,8,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--borde);
+  }
+  .nav-logo img { height: 44px; display:block; }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { color: var(--gris); text-decoration:none; font-size:.85rem; font-weight:500; letter-spacing:.5px; transition: color .2s; }
+  .nav-links a:hover { color: var(--azul); }
+  .nav-cta {
+    background: var(--azul); color: #fff; padding: 9px 22px;
+    border-radius: 6px; text-decoration:none; font-size:.85rem; font-weight:600;
+    letter-spacing:.3px; transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--azul-oscuro); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align: center;
+    padding: 100px 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; bottom:0;
+    background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(26,109,255,0.12) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .grid-bg {
+    position:absolute; inset:0; pointer-events:none; opacity:.07;
+    background-image:
+      linear-gradient(var(--azul) 1px, transparent 1px),
+      linear-gradient(90deg, var(--azul) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-logo {
+    width: 180px; margin-bottom: 1.5rem; position:relative; z-index:1;
+    filter: drop-shadow(0 0 24px rgba(26,109,255,0.4));
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .hero-eyebrow {
+    font-size: .75rem; font-weight:600; letter-spacing: 2px;
+    color: var(--azul); text-transform:uppercase; margin-bottom:.75rem;
+    position:relative; z-index:1;
+  }
+  .hero h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 700; line-height: 1.05;
+    position:relative; z-index:1;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 .accent { color: var(--azul); }
+  .hero h1 .red { color: var(--rojo); }
+  .hero-sub {
+    font-size: clamp(.95rem, 2vw, 1.1rem);
+    color: var(--gris); max-width: 600px;
+    line-height: 1.75; margin-bottom: 2.25rem;
+    position:relative; z-index:1;
+  }
+  .hero-sub strong { color: var(--blanco); font-weight:500; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; position:relative; z-index:1; }
+  .btn-primary {
+    background: var(--azul); color:#fff;
+    padding:14px 32px; border-radius:7px;
+    text-decoration:none; font-weight:600; font-size:.95rem;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: all .2s; border:none; cursor:pointer;
+  }
+  .btn-primary:hover { background: var(--azul-oscuro); transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent; color: var(--blanco);
+    padding:13px 32px; border-radius:7px;
+    text-decoration:none; font-weight:500; font-size:.95rem;
+    border: 1px solid var(--borde);
+    display:inline-flex; align-items:center; gap:8px;
+    transition: all .2s;
+  }
+  .btn-secondary:hover { border-color: var(--azul); color: var(--azul); }
+
+  .hero-stats {
+    display:flex; gap:3rem; margin-top: 3.5rem; flex-wrap:wrap; justify-content:center;
+    position:relative; z-index:1;
+  }
+  .stat { text-align:center; }
+  .stat-n { font-family:'Rajdhani',sans-serif; font-size:2rem; font-weight:700; color:var(--azul); }
+  .stat-l { font-size:.75rem; color:var(--gris); letter-spacing:.5px; text-transform:uppercase; margin-top:2px; }
+
+  /* SECTIONS */
+  section { padding: 5rem 1.5rem; }
+  .container { max-width: 1000px; margin:0 auto; }
+  .section-tag {
+    display:inline-block; font-size:.7rem; font-weight:600; letter-spacing:2px;
+    text-transform:uppercase; color:var(--azul); margin-bottom:.75rem;
+    border: 1px solid var(--borde); padding:4px 14px; border-radius:20px;
+  }
+  .section-title {
+    font-family:'Rajdhani',sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight:700; line-height:1.1; margin-bottom:.75rem;
+  }
+  .section-sub { color:var(--gris); font-size:.95rem; line-height:1.7; max-width:560px; }
+
+  /* WHY */
+  .why-grid {
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:1px; margin-top:3rem;
+    border:1px solid var(--borde); border-radius:12px; overflow:hidden;
+  }
+  .why-card {
+    background: var(--gris-oscuro); padding:1.75rem;
+    transition: background .2s;
+  }
+  .why-card:hover { background: rgba(26,109,255,0.06); }
+  .why-icon {
+    width:42px; height:42px; border-radius:8px;
+    background: var(--azul-glow); border:1px solid var(--borde);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem; margin-bottom:1rem;
+  }
+  .why-card h3 { font-size:.95rem; font-weight:600; margin-bottom:.4rem; }
+  .why-card p { font-size:.82rem; color:var(--gris); line-height:1.6; }
+
+  /* PRICING */
+  .pricing-grid {
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap:1.25rem; margin-top:3rem;
+  }
+  .plan {
+    background: var(--gris-oscuro);
+    border:1px solid var(--borde);
+    border-radius:12px; padding:2rem;
+    position:relative; transition: border-color .2s, transform .2s;
+  }
+  .plan:hover { border-color: var(--azul); transform: translateY(-4px); }
+  .plan.featured {
+    border-color: var(--azul);
+    background: linear-gradient(145deg, rgba(26,109,255,0.08) 0%, var(--gris-oscuro) 60%);
+  }
+  .plan-badge {
+    position:absolute; top:-12px; left:1.5rem;
+    background:var(--azul); color:#fff;
+    font-size:.7rem; font-weight:700; letter-spacing:.8px;
+    text-transform:uppercase; padding:4px 14px; border-radius:20px;
+  }
+  .plan-name { font-size:.75rem; font-weight:600; color:var(--azul); letter-spacing:1px; text-transform:uppercase; margin-bottom:.5rem; }
+  .plan h3 { font-family:'Rajdhani',sans-serif; font-size:1.3rem; font-weight:700; margin-bottom:.35rem; }
+  .plan-desc { font-size:.8rem; color:var(--gris); line-height:1.5; margin-bottom:1.25rem; }
+  .plan-price {
+    font-family:'Rajdhani',sans-serif; font-size:2.4rem; font-weight:700;
+    color:var(--blanco); line-height:1; margin-bottom:.3rem;
+  }
+  .plan-price span { font-size:1rem; color:var(--gris); font-family:'Inter',sans-serif; font-weight:400; }
+  .plan-note { font-size:.72rem; color:var(--gris); margin-bottom:1.5rem; }
+  .plan-features { list-style:none; margin-bottom:1.75rem; }
+  .plan-features li {
+    font-size:.82rem; color:var(--gris); padding:6px 0;
+    border-bottom:1px solid rgba(26,109,255,0.08);
+    display:flex; align-items:flex-start; gap:8px; line-height:1.4;
+  }
+  .plan-features li:last-child { border-bottom:none; }
+  .check { color:var(--azul); font-size:1rem; flex-shrink:0; margin-top:1px; }
+  .plan-btn {
+    display:block; text-align:center;
+    background:transparent; color:var(--azul);
+    border:1px solid var(--azul); border-radius:7px;
+    padding:11px; font-weight:600; font-size:.85rem;
+    text-decoration:none; transition: all .2s;
+  }
+  .plan-btn:hover, .plan.featured .plan-btn {
+    background:var(--azul); color:#fff;
+  }
+  .plan.featured .plan-btn:hover { background: var(--azul-oscuro); }
+
+  /* PROCESO */
+  .process { background: var(--gris-oscuro); }
+  .steps { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:0; margin-top:3rem; position:relative; }
+  .step { padding:1.5rem; position:relative; }
+  .step::after {
+    content:'→'; position:absolute; right:-8px; top:1.5rem;
+    color:var(--azul); font-size:1.2rem;
+  }
+  .step:last-child::after { display:none; }
+  .step-num {
+    font-family:'Rajdhani',sans-serif; font-size:3rem; font-weight:700;
+    color:rgba(26,109,255,0.15); line-height:1; margin-bottom:.5rem;
+  }
+  .step h3 { font-size:.9rem; font-weight:600; margin-bottom:.3rem; }
+  .step p { font-size:.78rem; color:var(--gris); line-height:1.5; }
+
+  /* OTROS SERVICIOS */
+  .otros-banner {
+    background: linear-gradient(135deg, rgba(26,109,255,0.08) 0%, rgba(232,0,28,0.05) 100%);
+    border:1px solid var(--borde); border-radius:12px;
+    padding:2rem 2.5rem; margin-top:3rem;
+    display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;
+  }
+  .otros-banner h3 { font-family:'Rajdhani',sans-serif; font-size:1.4rem; font-weight:700; margin-bottom:.25rem; }
+  .otros-banner p { font-size:.85rem; color:var(--gris); }
+  .otros-banner a {
+    background:transparent; color:var(--blanco);
+    border:1px solid rgba(255,255,255,.2); border-radius:7px;
+    padding:10px 22px; text-decoration:none; font-size:.85rem; font-weight:500;
+    white-space:nowrap; transition: border-color .2s, color .2s;
+  }
+  .otros-banner a:hover { border-color:var(--azul); color:var(--azul); }
+
+  /* CTA FINAL */
+  .cta-section { text-align:center; }
+  .cta-section .section-sub { margin:0 auto 2rem; }
+  .wa-btn {
+    display:inline-flex; align-items:center; gap:10px;
+    background:#25D366; color:#fff;
+    padding:16px 36px; border-radius:8px;
+    text-decoration:none; font-weight:700; font-size:1rem;
+    transition: all .2s;
+  }
+  .wa-btn:hover { background:#1da851; transform:translateY(-2px); }
+  .wa-icon { font-size:1.3rem; }
+
+  /* FOOTER */
+  footer {
+    border-top:1px solid var(--borde); padding:2rem 1.5rem;
+    text-align:center; font-size:.78rem; color:var(--gris);
+  }
+  footer strong { color:var(--blanco); }
+
+  /* WHATSAPP FLOTANTE */
+  .wa-float {
+    position:fixed; bottom:1.75rem; right:1.75rem; z-index:200;
+    background:#25D366; color:#fff;
+    width:56px; height:56px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; text-decoration:none;
+    box-shadow:0 4px 20px rgba(37,211,102,0.4);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .wa-float:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(37,211,102,0.5); }
+
+  /* MOBILE */
+  @media(max-width:680px){
+    nav { padding:0 1rem; }
+    .nav-links { display:none; }
+    .hero-logo { width:140px; }
+    .steps { grid-template-columns:1fr; }
+    .step::after { content:'↓'; right:auto; left:1.5rem; top:auto; bottom:-10px; }
+    .otros-banner { flex-direction:column; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo.png" alt="DogWeb">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#por-que">¿Por qué nosotros?</a></li>
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/573000000000?text=Hola%20DogWeb,%20quiero%20una%20p%C3%A1gina%20web" class="nav-cta" target="_blank">Hablar ahora</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="grid-bg"></div>
+  <img src="logo.png" alt="DogWeb" class="hero-logo">
+  <p class="hero-eyebrow">Páginas web que trabajan mientras usted duerme</p>
+  <h1>Tenemos el <span class="accent">olfato</span><br>para <span class="red">cazar</span> sus clientes</h1>
+  <p class="hero-sub">
+    Nos llamamos DogWeb porque rastreamos clientes en el mercado como un sabueso.
+    Diseñamos páginas que <strong>toman su inventario, lo organizan</strong> y atraen
+    compradores mayoristas <strong>directo a su WhatsApp</strong>.
+  </p>
+  <div class="hero-btns">
+    <a href="#planes" class="btn-primary">Ver planes y precios</a>
+    <a href="https://wa.me/573000000000" class="btn-secondary" target="_blank">💬 Hablar con Alejandro</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">72h</div><div class="stat-l">entrega máxima</div></div>
+    <div class="stat"><div class="stat-n">3</div><div class="stat-l">planes disponibles</div></div>
+    <div class="stat"><div class="stat-n">24h</div><div class="stat-l">modalidad urgente</div></div>
+  </div>
+</section>
+
+<!-- POR QUÉ -->
+<section id="por-que">
+  <div class="container">
+    <span class="section-tag">¿Por qué DogWeb?</span>
+    <h2 class="section-title">No hacemos páginas.<br>Hacemos herramientas de venta.</h2>
+    <p class="section-sub">Su página no es un adorno. Es el pilar de caza de su negocio. Cada elemento está diseñado para convertir visitas en pedidos.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h3>Orientada a ventas</h3>
+        <p>Botones de WhatsApp directos, formularios que funcionan, llamadas a la acción claras.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📱</div>
+        <h3>Perfecta en celular</h3>
+        <p>El 80% de sus clientes la verán desde el teléfono. Garantizamos que se vea impecable.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>Entrega rápida</h3>
+        <p>En 24 a 72 horas su negocio ya está en internet. No semanas, no reuniones eternas.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔐</div>
+        <h3>Archivos seguros</h3>
+        <p>Catálogos, listas de precios y PDFs disponibles para sus clientes, con acceso controlado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section id="planes">
+  <div class="container">
+    <span class="section-tag">Planes</span>
+    <h2 class="section-title">Un solo pago. Su página, para siempre.</h2>
+    <p class="section-sub">Sin mensualidades ocultas. Usted paga una vez y la página es completamente suya.</p>
+    <div class="pricing-grid">
+
+      <div class="plan">
+        <div class="plan-name">Básico</div>
+        <h3>Web Presencial</h3>
+        <p class="plan-desc">Para negocios que necesitan presencia digital rápida y profesional.</p>
+        <div class="plan-price">$800.000 <span>COP</span></div>
+        <p class="plan-note">Un solo pago · Sin mensualidades</p>
+        <ul class="plan-features">
+          <li><span class="check">✦</span>Landing page hasta 3 secciones</li>
+          <li><span class="check">✦</span>Inicio, servicios y contacto</li>
+          <li><span class="check">✦</span>Optimización móvil completa</li>
+          <li><span class="check">✦</span>Botones de WhatsApp directos</li>
+          <li><span class="check">✦</span>Carga de hasta 5 PDFs estáticos</li>
+          <li><span class="check">✦</span>Entrega en 72 horas</li>
+        </ul>
+        <a href="https://wa.me/573000000000?text=Quiero%20el%20plan%20básico%20de%20DogWeb" class="plan-btn" target="_blank">Quiero este plan</a>
+      </div>
+
+      <div class="plan featured">
+        <div class="plan-badge">Más solicitado</div>
+        <div class="plan-name">Corporativo</div>
+        <h3>Web Dinámica</h3>
+        <p class="plan-desc">Para negocios que necesitan gestionar archivos y escalar su presencia.</p>
+        <div class="plan-price">$1.600.000 <span>COP</span></div>
+        <p class="plan-note">Un solo pago · Sin mensualidades</p>
+        <ul class="plan-features">
+          <li><span class="check">✦</span>Web en Hostinger con Elementor</li>
+          <li><span class="check">✦</span>Hasta 6 secciones personalizadas</li>
+          <li><span class="check">✦</span>Módulo de carga y descarga de archivos</li>
+          <li><span class="check">✦</span>Los usuarios suben sus PDFs directamente</li>
+          <li><span class="check">✦</span>Estructura modular y escalable</li>
+          <li><span class="check">✦</span>Entrega en 5 días hábiles</li>
+        </ul>
+        <a href="https://wa.me/573000000000?text=Quiero%20el%20plan%20corporativo%20de%20DogWeb" class="plan-btn" target="_blank">Quiero este plan</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-name">Premium</div>
+        <h3>Web Avanzada</h3>
+        <p class="plan-desc">Para negocios que quieren automatización, seguridad y posicionamiento.</p>
+        <div class="plan-price">$3.000.000 <span>COP</span></div>
+        <p class="plan-note">Un solo pago · Sin mensualidades</p>
+        <ul class="plan-features">
+          <li><span class="check">✦</span>Todo lo del plan Corporativo</li>
+          <li><span class="check">✦</span>Formularios de cotización automáticos</li>
+          <li><span class="check">✦</span>Base de datos de clientes integrada</li>
+          <li><span class="check">✦</span>Filtros de seguridad antivirus en archivos</li>
+          <li><span class="check">✦</span>Optimización SEO técnica</li>
+          <li><span class="check">✦</span>Entrega en 10 días hábiles</li>
+        </ul>
+        <a href="https://wa.me/573000000000?text=Quiero%20el%20plan%20premium%20de%20DogWeb" class="plan-btn" target="_blank">Quiero este plan</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="process" id="proceso">
+  <div class="container">
+    <span class="section-tag">¿Cómo funciona?</span>
+    <h2 class="section-title">Del primer mensaje a su página en vivo.</h2>
+    <p class="section-sub">Proceso claro, sin tecnicismos y con comunicación directa en cada paso.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Cuéntenos su negocio</h3>
+        <p>Nos escribe por WhatsApp, le hacemos las preguntas clave y entendemos qué necesita.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Diseño y propuesta</h3>
+        <p>En pocas horas le mostramos cómo quedará su página antes de construirla.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Construcción</h3>
+        <p>Armamos la página con su contenido, logo, colores y datos reales de su empresa.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Su página en vivo</h3>
+        <p>Le entregamos todo listo. Su negocio ya está en internet y listo para atraer clientes.</p>
+      </div>
+    </div>
+
+    <div class="otros-banner">
+      <div>
+        <h3>¿Busca otro tipo de ayuda tecnológica?</h3>
+        <p>También ofrecemos soporte técnico, mantenimiento y otros servicios para su negocio en <strong>serviciosapc.site</strong></p>
+      </div>
+      <a href="https://serviciosapc.site" target="_blank">Ver todos los servicios →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="contacto">
+  <div class="container">
+    <span class="section-tag">Contáctenos</span>
+    <h2 class="section-title">¿Listo para que su negocio<br>empiece a cazar clientes?</h2>
+    <p class="section-sub">Escríbanos hoy. En menos de 24 horas le respondemos con una propuesta concreta para su negocio.</p>
+    <a href="https://wa.me/573000000000?text=Hola%20Alejandro,%20quiero%20una%20p%C3%A1gina%20web%20con%20DogWeb" class="wa-btn" target="_blank">
+      <span class="wa-icon">💬</span> Escribir a Alejandro por WhatsApp
+    </a>
+    <p style="margin-top:1rem; font-size:.8rem; color:var(--gris);">Atención directa con Alejandro Piraquive · Sin bots, sin intermediarios</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>DogWeb</strong> · Páginas web que rastrean clientes · Alejandro Piraquive<br>
+  <a href="https://serviciosapc.site" style="color:var(--azul); text-decoration:none;">serviciosapc.site</a> · dogweb.online</p>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/573000000000?text=Hola%20DogWeb" class="wa-float" target="_blank" aria-label="Escribir por WhatsApp">💬</a>
+
+</body>
+</html>
