@@ -158,7 +158,7 @@
     <a href="https://wa.me/573133166524" class="btn-secondary" target="_blank">💬 Hablar con Alejandro</a>
   </div>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-n">4</div><div class="stat-l">líneas de servicio</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">líneas de servicio</div></div>
     <div class="stat"><div class="stat-n">72h</div><div class="stat-l">entrega web básica</div></div>
     <div class="stat"><div class="stat-n">24h</div><div class="stat-l">modalidad urgente</div></div>
   </div>
@@ -172,10 +172,11 @@
     <p class="section-sub">Elija la línea que necesita. Cada una tiene planes claros, precio fijo y entrega directa con Alejandro Piraquive.</p>
 
     <div class="tabs">
-      <button class="tab active" onclick="showTab('web')">🌐 Páginas Web</button>
-      <button class="tab" onclick="showTab('ia')">🤖 IA en WhatsApp</button>
-      <button class="tab" onclick="showTab('videos')">🎬 Videos con IA</button>
-      <button class="tab" onclick="showTab('mant')">🔧 Mantenimiento</button>
+      <button class="tab active" onclick="showTab('web', this)">🌐 Páginas Web</button>
+      <button class="tab" onclick="showTab('ia', this)">🤖 IA en WhatsApp</button>
+      <button class="tab" onclick="showTab('videos', this)">🎬 Videos con IA</button>
+      <button class="tab" onclick="showTab('ads', this)">📢 Ads y Prospección</button>
+      <button class="tab" onclick="showTab('mant', this)">🔧 Mantenimiento</button>
     </div>
 
     <!-- WEB -->
@@ -357,6 +358,26 @@
       </div>
     </div>
 
+    <!-- ADS Y PROSPECCIÓN -->
+    <div class="tab-panel" id="tab-ads">
+      <div class="single-plan">
+        <div class="plan-code">APC-MKT01</div>
+        <div class="plan-name">Campaña</div>
+        <h3 style="font-family:'Rajdhani',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.35rem;">Campaña Ads y Prospección Digital</h3>
+        <p style="font-size:.8rem;color:var(--gris);margin-bottom:1rem;line-height:1.6;">Configuración de campaña de atracción (gratis o paga) enfocada en capturar leads calificados directo a su WhatsApp, conectada con su sistema operativo local e implementación de IA.</p>
+        <div class="plan-price">$1.600.000 <span>COP</span></div>
+        <span class="plan-tipo">Interno / Campaña</span>
+        <ul class="plan-features" style="margin-top:1.25rem;">
+          <li><span class="check">✦</span>Configuración de campaña de prospección</li>
+          <li><span class="check">✦</span>Captura de leads calificados a WhatsApp</li>
+          <li><span class="check">✦</span>Integración con su sistema operativo local</li>
+          <li><span class="check">✦</span>Implementación de IA para calificar contactos</li>
+        </ul>
+        <a href="https://wa.me/573133166524?text=Quiero%20informaci%C3%B3n%20de%20la%20Campa%C3%B1a%20Ads%20y%20Prospecci%C3%B3n%20Digital" class="plan-btn" target="_blank" style="display:block;text-align:center;margin-top:1.25rem;">Quiero este plan</a>
+      </div>
+      <p style="font-size:.78rem;color:var(--gris);margin-top:1.25rem;max-width:520px;">💡 Este servicio se potencia al combinarlo con un plan de <strong style="color:var(--blanco);">IA en WhatsApp</strong> o <strong style="color:var(--blanco);">Videos con IA</strong> — pregúntenos por combos.</p>
+    </div>
+
     <!-- MANTENIMIENTO -->
     <div class="tab-panel" id="tab-mant">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;">
@@ -455,11 +476,11 @@
 <a href="https://wa.me/573133166524?text=Hola%20DogWeb" class="wa-float" target="_blank" aria-label="WhatsApp">💬</a>
 
 <script>
-function showTab(id) {
+function showTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
-  event.target.classList.add('active');
+  btn.classList.add('active');
 }
 </script>
 </body>
