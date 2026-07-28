@@ -104,11 +104,11 @@
 
     // Clasificación de dolor por palabras clave
     var pain = "otro";
-    if (/(camara|cctv|seguridad|vigilar|robo|video|monitoreo)/.test(t)) pain = "camaras";
-    else if (/(gente|cliente|flujo|persona|concurrencia|aglomer|cola|fila|espera)/.test(t)) pain = "flujo";
+    if (/(video|reel|contenido|tiktok|instagram|youtube|editar|edicion)/.test(t)) pain = "videos";
+    else if (/(publicidad|ads|anuncio|meta|google ads|facebook ads|prospeccion|leads)/.test(t)) pain = "datos";
     else if (/(web|pagina|sitio|google|seo|aparecer|posicion|digital)/.test(t)) pain = "web";
     else if (/(whatsapp|bot|automat|ia|chat|respuesta|cliente)/.test(t)) pain = "ia";
-    else if (/(dato|analitic|dashboard|reporte|kpi|metr|eficien)/.test(t)) pain = "datos";
+    else if (/(mantenimiento|actualizar|soporte|arreglo|caido|funciona)/.test(t)) pain = "otro";
     state.pain = pain;
 
     // Si el texto es una afirmación suelta sin palabra de dolor conocida,
@@ -127,10 +127,10 @@
         return startIntro();
       case "menu":
         return showMenu();
-      case "pain_camaras":
-        return painCamaras();
-      case "pain_flujo":
-        return painFlujo();
+      case "pain_videos":
+        return painVideos();
+      case "pain_ads":
+        return painAds();
       case "pain_web":
         return painWeb();
       case "pain_ia":
@@ -172,32 +172,33 @@
       });
   }
 
-  // --- Dolor: Cámaras / CCTV ---
-  function painCamaras() {
+  // --- Dolor: Videos / Contenido ---
+  function painVideos() {
     clearQuick();
-    pushMsg("bot", "Las cámaras que no sirven son un gasto que se ve todos los días y no avisa cuando falla. En Bogotá instalamos <strong>CCTV inteligente</strong> que no solo graba: <strong>detecta</strong>, alerta en tiempo real y se integra con tu celular.")
+    pushMsg("bot", "Sin contenido visual, tu negocio es invisible en redes. Hacemos <strong>videos con IA, reels y edits</strong> que convierten seguidores en clientes reales en Bogotá.")
       .then(function () {
-        pushMsg("bot", "Mientras lo piensas, la competencia que ya tiene visión activa está viendo lo que tú no. ¿Quieres que te muestre cómo quedaría en tu local?");
+        pushMsg("bot", "La competencia ya está publicando y tú sigues en blanco. ¿Quieres que te muestre un ejemplo de lo que podemos crear?");
       })
       .then(function () {
         showQuick([
-          { label: "Sí, muéstrame", step: "offer", data: { pain: "camaras" } },
-          { label: "Cuánto cuesta", step: "offer", data: { pain: "camaras" } },
+          { label: "Sí, muéstrame", step: "offer", data: { pain: "videos" } },
+          { label: "Cuánto cuesta", step: "offer", data: { pain: "videos" } },
           { label: "Habla con alguien", step: "wa" },
         ]);
       });
   }
 
-  function painFlujo() {
+  // --- Dolor: Publicidad / Ads ---
+  function painAds() {
     clearQuick();
-    pushMsg("bot", "El flujo de gente que no convierte es la fuga más cara y la menos visible. Con <strong>conteo de personas y mapas de calor</strong> ves exactamente dónde se pierden los clientes y abres caja antes de que se vayan.")
+    pushMsg("bot", "Sin publicidad enfocada, estás gastando sin saber si funciona. Hacemos <strong>campañas en Meta y Google</strong> que traen clientes reales a tu negocio, no likes vanos.")
       .then(function () {
-        pushMsg("bot", "Cada semana que pasa sin medirlo, sigues regalando ventas a quien sí lo hace. ¿Aparto tu demo de esta semana?");
+        pushMsg("bot", "Cada día sin ads es un día que tu competencia te quita clientes. ¿Aparto tu estrategia de esta semana?");
       })
       .then(function () {
         showQuick([
-          { label: "Aparta mi demo", step: "capture", data: { pain: "flujo" } },
-          { label: "Ver beneficios", step: "offer", data: { pain: "flujo" } },
+          { label: "Aparta mi estrategia", step: "capture", data: { pain: "datos" } },
+          { label: "Ver beneficios", step: "offer", data: { pain: "datos" } },
           { label: "Hablar por WA", step: "wa" },
         ]);
       });
@@ -235,14 +236,14 @@
 
   function painDatos() {
     clearQuick();
-    pushMsg("bot", "Sin datos no sabes si ganaste o perdiste. El <strong>dashboard analítico</strong> te dice en tiempo real lo que deja dinero y lo que lo quema.")
+    pushMsg("bot", "Sin publicidad, tu negocio depende del passaboca. Con <strong>campañas en Meta y Google</strong> atraemos clientes que buscan lo que vendes, todos los días.")
       .then(function () {
-        pushMsg("bot", "La decisión rápida es la que gana; la que se pospone la toma tu competencia. ¿Revisamos tus números?");
+        pushMsg("bot", "La inversión en ads se paga sola cuando está bien configurada. ¿Revisamos tu estrategia?");
       })
       .then(function () {
         showQuick([
-          { label: "Revisa mis números", step: "capture", data: { pain: "datos" } },
-          { label: "Ver dashboard", step: "offer", data: { pain: "datos" } },
+          { label: "Revisa mi estrategia", step: "capture", data: { pain: "datos" } },
+          { label: "Ver campañas", step: "offer", data: { pain: "datos" } },
           { label: "Hablar por WA", step: "wa" },
         ]);
       });
@@ -250,7 +251,7 @@
 
   function painOtro() {
     clearQuick();
-    pushMsg("bot", "Cuéntame con tus palabras ¿qué necesitas? Analytics, cámaras, web, bots o algo que aún no tengo etiquetado. Yo te digo si lo resolvemos.")
+    pushMsg("bot", "Cuéntame con tus palabras ¿qué necesitas? Web, WhatsApp IA, videos, publicidad o algo que aún no tengo etiquetado. Yo te digo si lo resolvemos.")
       .then(function () {
         // espera texto libre; el input lo manda a classify
         showQuick(C.pains);
