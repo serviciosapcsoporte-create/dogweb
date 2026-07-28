@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&display=swap">
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
-<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js" defer></script>
 
 <script type="application/ld+json">
 {
@@ -1599,7 +1599,7 @@ footer {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  lucide.createIcons();
+  if (typeof lucide !== 'undefined') { lucide.createIcons(); }
   var cf = document.getElementById('contactFormDogweb');
   var fs = document.getElementById('formStatus');
   if (cf) {
@@ -1653,6 +1653,9 @@ if (overlay) {
   window.addEventListener('scroll', updateOverlay, { passive: true });
   updateOverlay();
 }
+</script>
+<script>
+window.addEventListener('load', function() { if (typeof lucide !== 'undefined') { lucide.createIcons(); } });
 </script>
 <script src="chat/cristal-loader.js"></script>
 </body>
