@@ -41,8 +41,8 @@
   "image": "https://dogweb.lat/logo.png",
   "telephone": "+57-333-745-0634",
   "email": "serviciosapcsoporte@gmail.com",
-  "priceRange": "$120,000 - $3,000,000",
-  "areaServed": ["Colombia"],
+  "priceRange": "$120,000 - $3,000,000 COP (≈ US$30 - US$750)",
+  "areaServed": ["Colombia", "Panamá", "Ecuador"],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Cra. 52c #39b-22",
@@ -68,7 +68,7 @@
           "name": "Páginas Web",
           "description": "Desarrollo web profesional incluyendo landing pages, sitios dinámicos con Elementor, y sitios web avanzados con automatización y SEO técnico.",
           "category": "https://schema.org/WebSite",
-          "areaServed": "Colombia",
+          "areaServed": "Colombia, Panamá y Ecuador",
           "url": "https://dogweb.lat/#servicios",
           "offers": {
             "@type": "Offer",
@@ -76,7 +76,7 @@
               "@type": "PriceSpecification",
               "priceCurrency": "COP",
               "price": 800000,
-              "description": "Desde $800,000 COP"
+              "description": "Desde $800,000 COP (≈ US$200)"
             }
           }
         }
@@ -89,7 +89,7 @@
           "name": "IA en WhatsApp",
           "description": "Automatización de respuestas, atención al cliente con IA, registro de pedidos en tiempo real, y chatbots avanzados.",
           "category": "https://schema.org/Chat",
-          "areaServed": "Colombia",
+          "areaServed": "Colombia, Panamá y Ecuador",
           "url": "https://dogweb.lat/#servicios",
           "offers": {
             "@type": "Offer",
@@ -97,7 +97,7 @@
               "@type": "PriceSpecification",
               "priceCurrency": "COP",
               "price": 900000,
-              "description": "Desde $900,000 COP"
+              "description": "Desde $900,000 COP (≈ US$225)"
             }
           }
         }
@@ -110,7 +110,7 @@
           "name": "Videos con IA",
           "description": "Producción de videos cortos con avatares IA, locución profesional, y animación para redes sociales.",
           "category": "https://schema.org/VideoContent",
-          "areaServed": "Colombia",
+          "areaServed": "Colombia, Panamá y Ecuador",
           "url": "https://dogweb.lat/#servicios",
           "offers": {
             "@type": "Offer",
@@ -118,7 +118,7 @@
               "@type": "PriceSpecification",
               "priceCurrency": "COP",
               "price": 550000,
-              "description": "Desde $550,000 COP"
+              "description": "Desde $550,000 COP (≈ US$140)"
             }
           }
         }
@@ -131,7 +131,7 @@
           "name": "Ads y Prospección Digital",
           "description": "Campañas de prospección digital con captura de leads calificados directo a WhatsApp con IA integrada.",
           "category": "https://schema.org/Marketing",
-          "areaServed": "Colombia",
+          "areaServed": "Colombia, Panamá y Ecuador",
           "url": "https://dogweb.lat/#servicios",
           "offers": {
             "@type": "Offer",
@@ -139,36 +139,22 @@
               "@type": "PriceSpecification",
               "priceCurrency": "COP",
               "price": 1600000,
-              "description": "Desde $1,600,000 COP"
+              "description": "Desde $1,600,000 COP (≈ US$400)"
             }
           }
         }
       }
     ]
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "52",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "María Fernández" },
-      "datePublished": "2026-06-15",
-      "reviewBody": "Nos crearon la página web en 72 horas exactas. El bot de WhatsApp nos está ahorrando 4 horas diarias de atención al cliente. Excelente servicio.",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Carlos Mendoza" },
-      "datePublished": "2026-07-10",
-      "reviewBody": "Los videos que nos hicieron para Instagram aumentaron nuestro engagement un 340%. Muy profesionales y rápidos.",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-    }
-  ]
+  "keywords": "agencia digital, marketing digital, páginas web, IA WhatsApp, videos con IA, SEO técnico",
+  "slogan": "Rastreamos clientes para su negocio",
+  "serviceType": ["Diseño web", "Marketing digital", "Automatización IA", "Videos IA", "Publicidad digital"],
+  "makesOffer": {
+    "@type": "Offer",
+    "name": "Prueba gratis de diagnóstico digital",
+    "description": "DogWeb ofrece una evaluación sin costo de presencia digital, web, chatbot y videos con IA. Escríbanos por WhatsApp 573337450634 o visite serviciosapc.site para su prueba gratuita.",
+    "url": "https://serviciosapc.site"
+  }
 }
 </script>
 
@@ -599,6 +585,12 @@ h1 span { color: var(--accent); }
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-muted);
+}
+.plan-price-usd {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
 }
 .plan-terms {
   font-size: 0.85rem;
@@ -1168,7 +1160,7 @@ footer {
 <section class="hero">
   <div class="hero-content">
     <span class="tagline">Marketing digital · Páginas web · IA · Videos</span>
-    <h1>Tenemos el <span>olfato</span> para <span>cazar sus clientes</span></h1>
+    <h1>Agencia de Marketing Digital en Bogotá — Páginas Web, IA y Videos</h1>
     <p class="hero-sub">Nos llamamos DogWeb porque rastreamos oportunidades en el mercado como un sabueso. <strong>Páginas web, automatización con IA, videos y contenido</strong> — todo lo que su negocio necesita para aparecer, atraer y vender.</p>
     <div class="hero-btns">
       <a href="#servicios" class="btn-primary">Ver todos los servicios</a>
@@ -1246,6 +1238,7 @@ footer {
         <h3 class="plan-name">Básico</h3>
         <p class="plan-desc">Web Presencial — Para negocios que necesitan presencia digital rápida y profesional.</p>
         <div class="plan-price">$800.000 <span>COP</span></div>
+        <div class="plan-price-usd">≈ U$200</div>
         <p class="plan-terms">Un solo pago</p>
         <ul class="plan-features">
           <li>Landing page hasta 3 secciones</li>
@@ -1263,6 +1256,7 @@ footer {
         <h3 class="plan-name">Corporativo</h3>
         <p class="plan-desc">Web Dinámica — Para negocios que gestionan archivos y quieren escalar su presencia.</p>
         <div class="plan-price">$1.600.000 <span>COP</span></div>
+        <div class="plan-price-usd">≈ U$400</div>
         <p class="plan-terms">Un solo pago</p>
         <ul class="plan-features">
           <li>Web Hostinger con Elementor</li>
@@ -1279,6 +1273,7 @@ footer {
         <h3 class="plan-name">Premium</h3>
         <p class="plan-desc">Web Avanzada — Automatización, seguridad integral y posicionamiento SEO técnico.</p>
         <div class="plan-price">$3.000.000 <span>COP</span></div>
+        <div class="plan-price-usd">≈ U$750</div>
         <p class="plan-terms">Un solo pago</p>
         <ul class="plan-features">
           <li>Todo lo del plan Corporativo</li>
@@ -1301,6 +1296,7 @@ footer {
         <h3 class="plan-name">Básico</h3>
         <p class="plan-desc">IA WhatsApp Básica — Automatice respuestas frecuentes y envíe catálogos sin levantar el teléfono.</p>
         <div class="plan-price">$500.000 <span>COP</span></div>
+        <div class="plan-price-usd">≈ U$125</div>
         <p class="plan-terms">Un solo pago</p>
         <ul class="plan-features">
           <li>Config. en ManyChat/Jelou/n8n</li>
@@ -1316,6 +1312,7 @@ footer {
         <h3 class="plan-name">Intermedio</h3>
         <p class="plan-desc">IA WhatsApp Intermedia — Su bot habla de forma natural con IA y registra clientes en tiempo real.</p>
         <div class="plan-price">$900.000 <span>COP</span></div>
+        <div class="plan-price-usd">≈ U$225</div>
         <p class="plan-terms">Un solo pago</p>
         <ul class="plan-features">
           <li>Todo lo básico incluido</li>
@@ -1331,6 +1328,7 @@ footer {
         <h3 class="plan-name">Avanzado</h3>
         <p class="plan-desc">IA WhatsApp Avanzada — Ecosistema completo: su bot conectado a sus sistemas internos.</p>
         <div class="plan-price">$1.800.000 <span>COP</span></div>
+        <div class="plan-price-usd">≈ U$450</div>
         <p class="plan-terms">Un solo pago</p>
         <ul class="plan-features">
           <li>Todo lo intermedio incluido</li>
@@ -1416,6 +1414,7 @@ footer {
         <h3 class="plan-name">Esencial</h3>
         <p class="plan-desc">Pack Contenido Esencial — Para empezar a publicar con calidad sin invertir una fortuna.</p>
         <div class="plan-price">$120.000 <span>COP</span></div>
+        <div class="plan-price-usd">≈ U$30</div>
         <p class="plan-terms">Un solo pago</p>
         <ul class="plan-features">
           <li>Hasta 2 videos cortos</li>
@@ -1431,6 +1430,7 @@ footer {
         <h3 class="plan-name">Profesional</h3>
         <p class="plan-desc">Pack Contenido Profesional — Identidad visual completa con animación de logo y múltiples formatos.</p>
         <div class="plan-price">$280.000 <span>COP</span></div>
+        <div class="plan-price-usd">≈ U$70</div>
         <p class="plan-terms">Un solo pago</p>
         <ul class="plan-features">
           <li>Todo lo esencial incluido</li>
@@ -1446,6 +1446,7 @@ footer {
         <h3 class="plan-name">Premium</h3>
         <p class="plan-desc">Pack Contenido Premium — Locución humana real, A/B testing y ecosistema completo para redes.</p>
         <div class="plan-price">$550.000 <span>COP</span></div>
+        <div class="plan-price-usd">≈ U$140</div>
         <p class="plan-terms">Un solo pago</p>
         <ul class="plan-features">
           <li>Todo lo profesional incluido</li>
@@ -1464,6 +1465,7 @@ footer {
         <h3 class="plan-name">Plan Crecimiento Mensual</h3>
         <p class="plan-desc">8 a 12 videos cortos (Reels/TikTok) con avatares IA, plantilla de contenido, embudo de 3 segundos y analítica web mensual.</p>
         <div class="plan-price">$900.000 <span>COP/mes</span></div>
+        <div class="plan-price-usd">≈ U$225/mes</div>
         <a href="https://wa.me/573337450634?text=Quiero%20el%20Plan%20Crecimiento%20Mensual" class="card-button" target="_blank" style="margin-top:1.5rem;">Quiero este plan</a>
       </div>
     </div>
@@ -1476,6 +1478,7 @@ footer {
       <h3 class="plan-name">Campaña Ads y Prospección Digital</h3>
       <p class="plan-desc">Configuración de campaña de atracción (gratis o paga) enfocada en capturar leads calificados directo a su WhatsApp, conectada con su sistema operativo local e implementación de IA.</p>
       <div class="plan-price">$1.600.000 <span>COP</span></div>
+        <div class="plan-price-usd">≈ U$400</div>
       <p class="plan-terms">Interno / Campaña</p>
       <ul class="plan-features" style="margin-top:1.25rem;">
         <li>Configuración de campaña de prospección</li>
@@ -1496,6 +1499,7 @@ footer {
         <h3 class="plan-name">Soporte y Actualización Web</h3>
         <p class="plan-desc">Para que su página siempre esté actualizada, segura y funcionando.</p>
         <div class="plan-price">$300.000 <span>COP/mes</span></div>
+        <div class="plan-price-usd">≈ U$75/mes</div>
         <p class="plan-terms">Suscripción mensual</p>
         <ul class="plan-features">
           <li>Copias de seguridad semanales</li>
@@ -1511,6 +1515,7 @@ footer {
         <h3 class="plan-name">Soporte Bot WhatsApp</h3>
         <p class="plan-desc">Mantenga su IA funcionando correctamente mes a mes.</p>
         <div class="plan-price">$200.000 <span>COP/mes</span></div>
+        <div class="plan-price-usd">≈ U$50/mes</div>
         <p class="plan-terms">Desde · Suscripción mensual</p>
         <ul class="plan-features">
           <li>Revisión de logs y flujos n8n</li>
@@ -1640,10 +1645,12 @@ footer {
       <p style="font-size: 0.8rem; margin-top: 0.2rem;">Agencia Digital en Bogotá, Colombia · Alejandro Piraquive · dogweb.lat</p>
     </div>
     <div class="footer-links">
-      <a href="https://serviciosapc.site" target="_blank">serviciosapc.site</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#proceso">Proceso</a>
-      <a href="#contacto">Contacto</a>
+      <a href="https://serviciosapc.site" target="_blank">serviciosapc.site</a><br>
+      <a href="marketing-para-abogados.html">Marketing para Abogados</a><br>
+      <a href="pagina-web-inmobiliaria.html">Web para Inmobiliarias</a><br>
+      <a href="software-para-salones.html">Software para Salones</a><br>
+      <a href="blog/marketing-para-abogados.html">Blog: Marketing Jurídico</a><br>
+      <a href="blog/paginas-web-con-ia.html">Blog: Web con IA</a>
     </div>
   </div>
 </footer>
