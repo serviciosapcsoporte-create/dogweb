@@ -997,6 +997,81 @@ h1 span { color: var(--accent); }
   padding: 0 2rem 5.5rem;
 }
 
+/* --- BLOG RECOMENDADO (light) --- */
+.blog-section {
+  position: relative;
+  z-index: 1;
+  background-color: var(--light-bg);
+  padding: 0 2rem 6rem;
+}
+.blog-section .section-header {
+  margin-bottom: 2rem;
+}
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #A87600;
+  margin-bottom: 0.75rem;
+}
+.blog-featured {
+  max-width: 1240px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, var(--navy) 0%, #123a73 100%);
+  border-radius: 16px;
+  padding: 2.75rem;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+.blog-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 209, 0, 0.14);
+  color: #ffd100;
+  border: 1px solid rgba(255, 209, 0, 0.45);
+  margin-bottom: 1.1rem;
+}
+.blog-featured h3 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.28;
+  color: #fff;
+  margin-bottom: 0.7rem;
+}
+.blog-featured p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.98rem;
+  margin-bottom: 1.35rem;
+}
+.blog-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.2s;
+}
+.blog-link:hover { gap: 12px; }
+.blog-emoji {
+  font-size: 3.2rem;
+  text-align: center;
+  line-height: 1;
+}
+@media (max-width: 768px) {
+  .blog-featured { grid-template-columns: 1fr; padding: 2rem; }
+  .blog-emoji { text-align: left; }
+}
+
 /* --- CONTACT (dark) --- */
 .contact-section {
   position: relative;
@@ -1745,12 +1820,30 @@ footer {
 <div class="banner-wrap">
   <div class="infra-banner">
     <div class="infra-text">
-      <h3>¿Necesita cámaras, control de personal o GPS?</h3>
-      <p>Esos servicios de seguridad física e infraestructura tecnológica los encontrará en Servicios APC.</p>
+      <h3>¿Necesita cámaras, control de personal o instalar IA en su operación?</h3>
+      <p>Son soluciones de tecnología e inteligencia artificial: cámaras con visión IA, automatización y análisis para el crecimiento de su negocio. Las encuentra en Servicios APC.</p>
     </div>
     <a href="https://serviciosapc.site" class="infra-link" target="_blank">Ir a serviciosapc.site →</a>
   </div>
 </div>
+
+<!-- BLOG RECOMENDADO -->
+<section class="blog-section">
+  <div class="section-header">
+    <span class="section-eyebrow">Blog recomendado</span>
+    <h2>Aprenda lo que su negocio <span>necesita para crecer</span></h2>
+    <p>El ecosistema completo: cámaras con IA, prospectos, marca, WhatsApp y datos.</p>
+  </div>
+  <div class="blog-featured">
+    <div>
+      <span class="blog-badge">Nuevo artículo</span>
+      <h3>Cámaras de seguridad con IA en Bogotá: y todo lo que su negocio necesita para crecer</h3>
+      <p>Cómo instalar cámaras con visión IA (YOLO), conseguir prospectos con SEO, crear su marca, atender y facturar por WhatsApp, y medir todo con paneles de KPI donde la IA es asistente en cada cargo.</p>
+      <a class="blog-link" href="blog/camaras-seguridad-ia-bogota.html">Leer el artículo →</a>
+    </div>
+    <div class="blog-emoji">📘</div>
+  </div>
+</section>
 
 <!-- CONTACTO -->
 <section class="contact-section" id="contacto">
@@ -1838,7 +1931,8 @@ footer {
       <a href="pagina-web-inmobiliaria.html">Web para Inmobiliarias</a><br>
       <a href="software-para-salones.html">Software para Salones</a><br>
       <a href="blog/marketing-para-abogados.html">Blog: Marketing Jurídico</a><br>
-      <a href="blog/paginas-web-con-ia.html">Blog: Web con IA</a>
+      <a href="blog/paginas-web-con-ia.html">Blog: Web con IA</a><br>
+      <a href="blog/camaras-seguridad-ia-bogota.html">Blog: Cámaras IA Bogotá</a>
     </div>
   </div>
 </footer>
