@@ -27,7 +27,7 @@
 <link rel="icon" href="logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&display=swap">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
 
 <script type="application/ld+json">
@@ -42,7 +42,7 @@
   "telephone": "+57-333-745-0634",
   "email": "serviciosapcsoporte@gmail.com",
   "priceRange": "$120,000 - $3,000,000 COP (≈ US$30 - US$750)",
-  "areaServed": ["Colombia", "Panamá", "Ecuador"],
+  "areaServed": ["Colombia", "Panamá", "Ecuador", "LATAM"],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Cra. 52c #39b-22",
@@ -192,7 +192,7 @@
       "name": "¿DogWeb atiende en toda Colombia?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí. DogWeb está ubicada en Bogotá y presta servicios digitales en toda Colombia. La atención es directa con Alejandro Piraquive, sin intermediarios."
+        "text": "Sí. DogWeb está ubicada en Bogotá y presta servicios digitales en toda Colombia y LATAM. La atención es directa con Alejandro Piraquive, sin intermediarios."
       }
     },
     {
@@ -217,6 +217,14 @@
   --text-muted: #9ca3af;
   --border-color: #22252a;
   --card-glow: rgba(255, 209, 0, 0.05);
+
+  --light-bg: #FAFAF8;
+  --light-bg-alt: #F2F1EC;
+  --navy: #0F2C59;
+  --navy-2: #0F172A;
+  --light-border: #E6E4DC;
+  --light-text: #0F172A;
+  --light-muted: #5B6472;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -252,6 +260,46 @@ body {
   transition: opacity 0.3s;
 }
 
+/* --- TOPBAR --- */
+.topbar {
+  position: relative;
+  z-index: 101;
+  background: var(--navy);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+.topbar-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.topbar-inner span.sep { opacity: 0.3; }
+.topbar-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  display: inline-block;
+  animation: pulse 1.6s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.topbar-item { display: inline-flex; align-items: center; gap: 0.5rem; }
+.topbar-item b { color: var(--accent); font-weight: 700; }
+@media (max-width: 768px) {
+  .topbar-hide { display: none; }
+  .topbar-inner { justify-content: center; }
+}
+
 /* --- HEADER --- */
 header {
   position: sticky;
@@ -263,9 +311,9 @@ header {
   z-index: 100;
 }
 .nav-container {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0.85rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -354,13 +402,29 @@ nav a:hover {
 .hero {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 7rem 2rem 5rem 2rem;
+  padding: 6.5rem 2rem 5rem 2rem;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.15fr 0.85fr;
   gap: 4rem;
   align-items: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 209, 0, 0.08);
+  border: 1px solid rgba(255, 209, 0, 0.35);
+  color: var(--accent);
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
 }
 .tagline {
   background-color: #1a1500;
@@ -374,11 +438,12 @@ nav a:hover {
   margin-bottom: 1.5rem;
 }
 h1 {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 900;
-  line-height: 1.15;
+  line-height: 1.12;
   margin-bottom: 1.5rem;
   letter-spacing: -0.03em;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
 h1 span { color: var(--accent); }
 .hero-sub {
@@ -433,6 +498,7 @@ h1 span { color: var(--accent); }
   font-weight: 800;
   color: var(--accent);
   line-height: 1;
+  font-family: 'Rajdhani', 'Inter', sans-serif;
 }
 .stat-item p {
   font-size: 0.85rem;
@@ -458,7 +524,112 @@ h1 span { color: var(--accent); }
   filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.5));
 }
 
-/* --- SECTIONS --- */
+/* === SECCIONES CLARAS (estilo artifact) === */
+.section-light {
+  position: relative;
+  z-index: 1;
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+.section-light h2 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+.section-light h2 em {
+  color: var(--accent);
+  font-style: normal;
+}
+.section-head-light {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-top: 5.5rem;
+  text-align: center;
+}
+.section-head-light p {
+  color: var(--light-muted);
+  font-size: 1.05rem;
+  max-width: 640px;
+  margin: 0.75rem auto 0;
+}
+.light-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem 2rem 5.5rem;
+}
+
+/* Servicios resumen (líneas del artifact) */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+.svc-card {
+  background: #fff;
+  border: 1px solid var(--light-border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.svc-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(15, 44, 89, 0.25);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+.svc-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-2));
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+.svc-card h3 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.svc-card p {
+  font-size: 0.92rem;
+  color: var(--light-muted);
+  line-height: 1.55;
+}
+.svc-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--light-border);
+}
+.svc-price {
+  font-weight: 800;
+  font-size: 1.02rem;
+  color: #B98B00;
+}
+.svc-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(15, 44, 89, 0.07);
+  color: var(--navy);
+  border: 1px solid rgba(15, 44, 89, 0.12);
+}
+
+/* --- SECTIONS (dark pricing) --- */
 .section-pricing {
   position: relative;
   z-index: 1;
@@ -468,15 +639,17 @@ h1 span { color: var(--accent); }
   border-bottom: 1px solid var(--border-color);
 }
 .section-header {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto 4rem auto;
   text-align: center;
 }
 .section-header h2 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 1rem;
 }
+.section-header h2 span { color: var(--accent); }
 .section-header p {
   color: var(--text-muted);
   font-size: 1.1rem;
@@ -521,7 +694,7 @@ h1 span { color: var(--accent); }
 
 /* --- PRICING CARDS --- */
 .pricing-grid {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -566,6 +739,7 @@ h1 span { color: var(--accent); }
   margin-bottom: 0.5rem;
 }
 .plan-name {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
   margin-bottom: 0.2rem;
@@ -580,6 +754,7 @@ h1 span { color: var(--accent); }
   font-weight: 800;
   margin-bottom: 0.2rem;
   color: var(--text-main);
+  font-family: 'Rajdhani', 'Inter', sans-serif;
 }
 .plan-price span {
   font-size: 1rem;
@@ -660,7 +835,7 @@ h1 span { color: var(--accent); }
 
 /* --- COMPETITIVE ADVANTAGE --- */
 .advantage-section {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 3rem auto 0;
   padding: 2rem;
   background: var(--bg-primary);
@@ -712,7 +887,7 @@ h1 span { color: var(--accent); }
 
 /* --- QUALITY LINKS --- */
 .quality-links {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 2rem auto 0;
   padding: 1.5rem 2rem;
   background: var(--bg-primary);
@@ -749,14 +924,19 @@ h1 span { color: var(--accent); }
   color: var(--accent);
 }
 
-/* --- PROCESS --- */
+/* --- PROCESS (light) --- */
 .process-section {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 6rem 2rem;
+  background-color: var(--light-bg-alt);
+  color: var(--light-text);
 }
+.process-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 5.5rem 2rem;
+}
+.process-container .section-head-light { padding-top: 0; }
 .process-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -765,33 +945,44 @@ h1 span { color: var(--accent); }
 }
 .process-step {
   position: relative;
+  background: #fff;
+  border: 1px solid var(--light-border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.process-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 .step-number {
-  font-size: 3rem;
-  font-weight: 900;
-  color: rgba(255, 209, 0, 0.15);
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: rgba(15, 44, 89, 0.16);
   line-height: 1;
   margin-bottom: 0.5rem;
 }
 .process-step h3 {
-  font-size: 1.25rem;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
+  color: var(--navy);
 }
 .process-step p {
-  color: var(--text-muted);
+  color: var(--light-muted);
   font-size: 0.95rem;
 }
 
-/* --- APC BANNER --- */
+/* --- APC BANNER (light) --- */
 .infra-banner {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto 6rem auto;
+  max-width: 1240px;
+  margin: 0 auto;
   padding: 2.5rem;
-  background: linear-gradient(135deg, #111317 0%, #16181d 100%);
-  border: 1px dashed var(--border-color);
+  background: linear-gradient(135deg, var(--navy) 0%, #123a73 100%);
   border-radius: 16px;
   display: flex;
   justify-content: space-between;
@@ -800,12 +991,14 @@ h1 span { color: var(--accent); }
   flex-wrap: wrap;
 }
 .infra-text h3 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 0.4rem;
+  color: #fff;
 }
 .infra-text p {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.95rem;
 }
 .infra-link {
@@ -818,8 +1011,14 @@ h1 span { color: var(--accent); }
   transition: gap 0.2s;
 }
 .infra-link:hover { gap: 12px; }
+.banner-wrap {
+  position: relative;
+  z-index: 1;
+  background-color: var(--light-bg);
+  padding: 0 2rem 5.5rem;
+}
 
-/* --- CONTACT --- */
+/* --- CONTACT (dark) --- */
 .contact-section {
   position: relative;
   z-index: 1;
@@ -828,7 +1027,7 @@ h1 span { color: var(--accent); }
   padding: 6rem 2rem;
 }
 .contact-grid {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -836,10 +1035,12 @@ h1 span { color: var(--accent); }
   align-items: start;
 }
 .contact-left h2 {
-  font-size: 2.5rem;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 2.3rem;
   font-weight: 900;
   margin-bottom: 1rem;
 }
+.contact-left h2 span { color: var(--accent); }
 .contact-left > p {
   color: var(--text-muted);
   font-size: 1.1rem;
@@ -1020,7 +1221,7 @@ footer {
   background-color: var(--bg-primary);
 }
 .footer-container {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -1035,6 +1236,7 @@ footer {
 .footer-links {
   display: flex;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
 .footer-links a {
   color: var(--text-muted);
@@ -1044,7 +1246,7 @@ footer {
 }
 .footer-links a:hover { color: var(--accent); }
 
-/* --- SOCIAL FLOAT (right, para no tapar el boton Cristal a la izquierda) --- */
+/* --- SOCIAL FLOAT --- */
 .social-float {
   position: fixed;
   bottom: 24px;
@@ -1105,19 +1307,24 @@ footer {
   .hamb { display: block; }
   h1 { font-size: 2.5rem; }
   .section-header h2 { font-size: 2rem; }
+  .section-head-light h2 { font-size: 2rem; }
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
   .contact-info-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   h1 { font-size: 2rem; }
   .hero { padding: 5rem 1rem 3rem; }
-  .section-pricing, .process-section { padding: 4rem 1rem; }
+  .section-pricing, .process-section { padding: 0; }
+  .section-pricing { padding: 4rem 1rem; }
   .contact-section { padding: 4rem 1rem; }
+  .section-head-light { padding-top: 4rem; }
+  .light-container { padding-bottom: 4rem; }
   .pricing-grid { grid-template-columns: 1fr; }
   .tabs { gap: 0.3rem; }
   .tab { font-size: 0.78rem; padding: 0.5rem 0.8rem; }
   .hero-stats { gap: 1.5rem; }
   .stat-item h3 { font-size: 1.6rem; }
+  .process-container { padding: 4rem 1rem; }
 }
 </style>
 </head>
@@ -1129,6 +1336,17 @@ footer {
     <source src="Buscando Clientes-opt.mp4" type="video/mp4">
   </video>
   <div id="videoOverlay"></div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-item topbar-hide"><span class="topbar-dot"></span><b>AGENCIA DIGITAL VERIFICADA</b></span>
+    <span class="sep topbar-hide">·</span>
+    <span class="topbar-item">Bogotá, Colombia · Atención directa con Alejandro Piraquive</span>
+    <span class="sep topbar-hide">·</span>
+    <span class="topbar-item topbar-hide"><b>Respuesta &lt;24h</b></span>
+  </div>
 </div>
 
 <!-- HEADER -->
@@ -1159,9 +1377,10 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <span class="tagline">Marketing digital · Páginas web · IA · Videos</span>
-    <h1>Agencia de Marketing Digital en Bogotá — Páginas Web, IA y Videos</h1>
-    <p class="hero-sub">Nos llamamos DogWeb porque rastreamos oportunidades en el mercado como un sabueso. <strong>Páginas web, automatización con IA, videos y contenido</strong> — todo lo que su negocio necesita para aparecer, atraer y vender.</p>
+    <span class="hero-badge">Marketing digital · Páginas web · IA · Videos · LATAM</span>
+    <span class="tagline">Rastreamos clientes para su negocio</span>
+    <h1>Agencia de Marketing Digital en Bogotá — <span>Páginas Web, IA</span> y Videos</h1>
+    <p class="hero-sub">Nos llamamos DogWeb porque rastreamos oportunidades en el mercado como un sabueso. <strong>Páginas web, automatización con IA, videos y contenido</strong> — todo lo que su negocio necesita para aparecer, atraer y vender en Google.</p>
     <div class="hero-btns">
       <a href="#servicios" class="btn-primary">Ver todos los servicios</a>
       <a href="https://wa.me/573337450634" class="btn-secondary" target="_blank">Hablar con Alejandro</a>
@@ -1215,10 +1434,67 @@ footer {
   </div>
 </section>
 
+<!-- LÍNEAS DE SERVICIO (estilo artifact, sección clara) -->
+<section class="section-light" id="lineas">
+  <div class="section-head-light">
+    <h2>Líneas de servicio · <em>Ecosistema digital completo</em></h2>
+    <p>Todo lo que su negocio necesita para aparecer, atraer y vender. Precios fijos, entrega directa y sin intermediarios.</p>
+  </div>
+  <div class="light-container">
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🌐</div>
+        <h3>Páginas Web</h3>
+        <p>Desde una landing lista para vender hasta una web corporativa con automatización y SEO técnico. Entrega web básica garantizada.</p>
+        <div class="svc-meta">
+          <span class="svc-price">Desde $800k COP</span>
+          <span class="svc-badge">Entrega 72h</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤖</div>
+        <h3>IA en WhatsApp</h3>
+        <p>Automatiza respuestas y captura leads 24/7, sin perder el tono humano de su marca. Bots + CRM conectados a su operación.</p>
+        <div class="svc-meta">
+          <span class="svc-price">Desde $900k COP</span>
+          <span class="svc-badge">Bots + CRM</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🎬</div>
+        <h3>Videos con IA</h3>
+        <p>Contenido profesional en horas, no semanas. Reels, anuncios y explicativos con avatares IA y locución natural.</p>
+        <div class="svc-meta">
+          <span class="svc-price">Desde $120k COP</span>
+          <span class="svc-badge">Entrega 48h</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📢</div>
+        <h3>Ads y Prospección</h3>
+        <p>Campañas que cazan clientes, no clicks. Google, Meta y prospección directa con leads calificados a su WhatsApp.</p>
+        <div class="svc-meta">
+          <span class="svc-price">Desde $1.6M COP</span>
+          <span class="svc-badge">ROI medible</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <h3>Mantenimiento</h3>
+        <p>Su web siempre rápida y segura. Backups, SSL, actualizaciones y soporte continuo para no detener su operación.</p>
+        <div class="svc-meta">
+          <span class="svc-price">Desde $120k/mes</span>
+          <span class="svc-badge">Soporte continuo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICIOS / PLANES -->
 <section class="section-pricing" id="servicios">
   <div class="section-header">
-    <h2>Todo su ecosistema digital, en un solo lugar</h2>
+    <h2>Todo su ecosistema digital, <span>en un solo lugar</span></h2>
     <p>Elija la línea que necesita. Cada una tiene planes claros, precio fijo y entrega directa con Alejandro Piraquive.</p>
   </div>
 
@@ -1364,7 +1640,7 @@ footer {
           <div class="advantage-icon">🎯</div>
           <div class="advantage-content">
             <h5>Experto Local de Colombia</h5>
-            <p>Empresa colombiana con conocimiento profundo del mercado local, soluciones adaptadas a las condiciones de negocio en Colombia y región.</p>
+            <p>Empresa colombiana con conocimiento profundo del mercado local y LATAM, soluciones adaptadas a las condiciones de negocio de la región.</p>
           </div>
         </div>
         <div class="advantage-item">
@@ -1488,7 +1764,7 @@ footer {
       </ul>
       <a href="https://wa.me/573337450634?text=Quiero%20informaci%C3%B3n%20de%20la%20Campa%C3%B1a%20Ads%20y%20Prospecci%C3%B3n%20Digital" class="card-button" target="_blank" style="margin-top:1.25rem;">Quiero este plan</a>
     </div>
-    <p class="extra-note">💡 Este servicio se potencia al combinarlo con un plan de <strong>IA en WhatsApp</strong> o <strong>Videos con IA</strong> — pregúntenos por combos.</p>
+    <p class="extra-note" style="max-width:1240px;margin-left:auto;margin-right:auto;text-align:center;">💡 Este servicio se potencia al combinarlo con un plan de <strong>IA en WhatsApp</strong> o <strong>Videos con IA</strong> — pregúntenos por combos.</p>
   </div>
 
   <!-- TAB: MANTENIMIENTO -->
@@ -1531,48 +1807,52 @@ footer {
 
 <!-- PROCESO -->
 <section class="process-section" id="proceso">
-  <div class="section-header">
-    <h2>¿Cómo funciona?</h2>
-    <p>Del primer mensaje a resultados reales. Sin reuniones eternas ni tecnicismos. Comunicación directa en cada paso.</p>
-  </div>
-  <div class="process-grid">
-    <div class="process-step">
-      <div class="step-number">01</div>
-      <h3>Cuéntenos su negocio</h3>
-      <p>Nos escribe por WhatsApp y entendemos exactamente qué necesita su proyecto.</p>
+  <div class="process-container">
+    <div class="section-head-light">
+      <h2>¿Cómo funciona?</h2>
+      <p>Del primer mensaje a resultados reales. Sin reuniones eternas ni tecnicismos. Comunicación directa en cada paso.</p>
     </div>
-    <div class="process-step">
-      <div class="step-number">02</div>
-      <h3>Propuesta clara</h3>
-      <p>Le enviamos el plan y el precio exacto de inmediato. Sin sorpresas ocultas.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-number">03</div>
-      <h3>Producción</h3>
-      <p>Construimos su página, bot o video adaptándonos por completo a su contenido y marca.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-number">04</div>
-      <h3>Entrega y soporte</h3>
-      <p>Le entregamos todo funcionando y le explicamos en un video corto cómo administrarlo.</p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <h3>Cuéntenos su negocio</h3>
+        <p>Nos escribe por WhatsApp y entendemos exactamente qué necesita su proyecto.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <h3>Propuesta clara</h3>
+        <p>Le enviamos el plan y el precio exacto de inmediato. Sin sorpresas ocultas. Si le sirve, avanzamos.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <h3>Producción</h3>
+        <p>Construimos su página, bot o video adaptándonos por completo a su contenido y marca.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">04</div>
+        <h3>Entrega y soporte</h3>
+        <p>Le entregamos todo funcionando y le explicamos en un video corto cómo administrarlo.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- APC BANNER -->
-<div class="infra-banner">
-  <div class="infra-text">
-    <h3>¿Necesita cámaras, control de personal o GPS?</h3>
-    <p>Esos servicios de seguridad física e infraestructura tecnológica los encontrará en Servicios APC.</p>
+<div class="banner-wrap">
+  <div class="infra-banner">
+    <div class="infra-text">
+      <h3>¿Necesita cámaras, control de personal o GPS?</h3>
+      <p>Esos servicios de seguridad física e infraestructura tecnológica los encontrará en Servicios APC.</p>
+    </div>
+    <a href="https://serviciosapc.site" class="infra-link" target="_blank">Ir a serviciosapc.site →</a>
   </div>
-  <a href="https://serviciosapc.site" class="infra-link" target="_blank">Ir a serviciosapc.site →</a>
 </div>
 
 <!-- CONTACTO -->
 <section class="contact-section" id="contacto">
   <div class="contact-grid">
     <div class="contact-left">
-      <h2>¿Listo para que su negocio empiece a crecer en digital?</h2>
+      <h2>¿Listo para que su negocio <span>empiece a crecer en digital?</span></h2>
       <p>Escríbanos hoy. En menos de 24 horas le respondemos con una propuesta directa, clara y lista para ejecutar.</p>
 
       <div class="contact-info-grid">
@@ -1602,6 +1882,10 @@ footer {
         </div>
       </div>
 
+      <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" class="contact-btn" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.505 5.264l-.999 3.648 3.984-1.042zm11.387-5.309c-.214-.12-1.264-.634-1.461-.708-.197-.073-.34-.11-.483.11-.143.22-.549.708-.672.854-.124.145-.247.163-.46.055-.214-.11-.903-.333-1.72-1.06-.636-.566-1.066-1.265-.19-1.265-.124 0-.266-.018-.408-.048-.142-.03-.386-.145-.587-.27-.201-.125-.359-.258-.493-.582-.134-.324-.027-.562.066-.744.094-.18.408-.705.561-1.17z"/></svg>
+        Hablar por WhatsApp
+      </a>
       <span class="contact-note">Atención directa con Alejandro Piraquive · Sin bots, sin intermediarios molestos.</span>
     </div>
 
@@ -1617,7 +1901,7 @@ footer {
           <div class="form-field"><label>Nombre</label><input type="text" name="nombre" required placeholder="Tu nombre"></div>
           <div class="form-field"><label>Correo electrónico</label><input type="email" name="email" required placeholder="tu@correo.com"></div>
           <div class="form-field"><label>Teléfono / WhatsApp</label><input type="tel" name="telefono" required placeholder="+57 333 745 0634"></div>
-          <div class="form-field"><label>Mensaje</label><textarea name="mensaje" rows="4" required placeholder="Cuéntanos sobre tu proyecto..."></textarea></div>
+          <div class="form-field"><label>Mensaje</label><textarea name="mensaje" rows="4" required placeholder="Cuéntanos sobre tu proyecto, qué vendes y qué necesitas lograr en Google..."></textarea></div>
           <button type="submit" class="contact-form-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Enviar mensaje</button>
           <p id="formStatus" class="form-status hidden">Mensaje enviado correctamente. Te contactaremos pronto.</p>
         </form>
@@ -1655,8 +1939,11 @@ footer {
   </div>
 </footer>
 
-<!-- SOCIAL FLOAT (left) -->
+<!-- SOCIAL FLOAT -->
 <div class="social-float" aria-label="Redes sociales">
+  <a href="https://wa.me/573337450634?text=Hola%20DogWeb" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-wa">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.505 5.264l-.999 3.648 3.984-1.042zm11.387-5.309c-.214-.12-1.264-.634-1.461-.708-.197-.073-.34-.11-.483.11-.143.22-.549.708-.672.854-.124.145-.247.163-.46.055-.214-.11-.903-.333-1.72-1.06-.636-.566-1.066-1.265-.19-1.265-.124 0-.266-.018-.408-.048-.142-.03-.386-.145-.587-.27-.201-.125-.359-.258-.493-.582-.134-.324-.027-.562.066-.744.094-.18.408-.705.561-1.17z"/></svg>
+  </a>
   <a href="https://www.facebook.com/alejandropiraquiveapc" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
   </a>
@@ -1665,9 +1952,6 @@ footer {
   </a>
   <a href="https://www.linkedin.com/in/alejandropiraquive/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.497H9.351V9h5.405v1.561h.081c.746-1.409 2.563-2.902 5.263-2.902 5.532 0 6.554 3.649 6.554 8.401v4.449zM5.337 7.433a2.062 2.062 0 0 1-2.062-2.062 2.062 2.062 0 0 1 2.062-2.062 2.062 2.062 0 0 1 2.062 2.062 2.062 2.062 0 0 1-2.062 2.062zM3.113 20.452h3.554V9.073H3.113z"/></svg>
-  </a>
-  <a href="https://wa.me/573337450634?text=Hola%20DogWeb" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-wa">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.505 5.264l-.999 3.648 3.984-1.042zm11.387-5.309c-.214-.12-1.264-.634-1.461-.708-.197-.073-.34-.11-.483.11-.143.22-.549.708-.672.854-.124.145-.247.163-.46.055-.214-.11-.903-.333-1.72-1.06-.636-.566-1.066-1.265-.19-1.265-.124 0-.266-.018-.408-.048-.142-.03-.386-.145-.587-.27-.201-.125-.359-.258-.493-.582-.134-.324-.027-.562.066-.744.094-.18.408-.705.561-1.17z"/></svg>
   </a>
 </div>
 
