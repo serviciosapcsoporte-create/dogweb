@@ -1,6 +1,6 @@
-# DogWeb — Agencia de Marketing Digital en Bogotá
+# DogWeb — Agencia de Marketing Digital en Bogotá y Latinoamérica
 
-> Agencia digital en Bogotá, Colombia. Creamos páginas web profesionales, automatizamos con IA en WhatsApp, producimos videos con IA y lanzamos campañas para captar clientes. Servicio directo con Alejandro Piraquive (sin intermediarios).
+> Agencia digital con sede en Bogotá, Colombia. Creamos páginas web profesionales, automatizamos con IA en WhatsApp y lanzamos campañas para captar clientes. Servicio remoto en toda Latinoamérica (Panamá, Puerto Rico, Ecuador, México) con precios fijos en dólares (USD) y entrega directa con Alejandro Piraquive (sin intermediarios).
 
 ## Contacto
 - Teléfono: +57 333 745 0634 (WhatsApp)
@@ -8,26 +8,49 @@
 - Dirección: Cra. 52c #39b-22, Bogotá, Colombia
 - Horario: Lunes a viernes 8:00-18:00, sábados 9:00-14:00
 
-## Servicios y precios
-- **Páginas Web**: desde $800.000 COP (≈ US$200). Web corporativa $1.600.000 COP (≈ US$400). Web avanzada con automatización $3.000.000 COP (≈ US$750).
-- **IA en WhatsApp**: desde $500.000 COP (≈ US$125). Intermedia $900.000 COP (≈ US$225). Avanzada $1.800.000 COP (≈ US$450).
-- **Videos con IA**: desde $120.000 COP (≈ US$30). Profesional $280.000 COP (≈ US$70). Premium $550.000 COP (≈ US$140).
-- **Ads y Prospección Digital**: plan mensual desde $900.000 COP (≈ US$225/mes); campaña desde $1.600.000 COP (≈ US$400).
-- **Mantenimiento web**: desde $300.000 COP/mes (≈ US$75/mes). Soporte de bot de WhatsApp $200.000 COP/mes (≈ US$50/mes).
+## Servicios y precios (en USD)
+- **Páginas Web**: desde US$200 (≈ $800.000 COP). Web corporativa desde US$400 (≈ $1.600.000 COP). Web avanzada con automatización US$750 (≈ $3.000.000 COP).
+- **IA en WhatsApp**: desde US$125 (≈ $500.000 COP). Intermedia US$225 (≈ $900.000 COP). Avanzada US$450 (≈ $1.800.000 COP).
+- **Ads y Prospección Digital**: campaña desde US$400 (≈ $1.600.000 COP); plan mensual desde US$225/mes.
+- **Mantenimiento web**: desde US$75/mes (≈ $300.000 COP/mes). Soporte de bot de WhatsApp desde US$50/mes (≈ $200.000 COP/mes).
 
-## Páginas de nicho
+## Páginas por país y ciudad
+- Agencia de marketing digital en Panamá: https://dogweb.lat/agencia-de-marketing-digital-panama.html
+- Agencia de marketing digital en Puerto Rico: https://dogweb.lat/agencia-de-marketing-digital-puerto-rico.html
+- Agencia de marketing digital en Ecuador: https://dogweb.lat/agencia-de-marketing-digital-ecuador.html
+- Agencia de marketing digital en México: https://dogweb.lat/agencia-de-marketing-digital-mexico.html
+- Página web en Ciudad de Panamá: https://dogweb.lat/pagina-web-ciudad-de-panama.html
+- Página web en San Juan, Puerto Rico: https://dogweb.lat/pagina-web-san-juan.html
+- Página web en Quito: https://dogweb.lat/pagina-web-quito.html
+- Página web en Guayaquil: https://dogweb.lat/pagina-web-guayaquil.html
+- Página web en CDMX, México: https://dogweb.lat/pagina-web-cdmx.html
+
+## Páginas por industria
 - Marketing para abogados: https://dogweb.lat/marketing-para-abogados.html
 - Página web para inmobiliarias: https://dogweb.lat/pagina-web-inmobiliaria.html
 - Software para peluquerías y salones: https://dogweb.lat/software-para-salones.html
+- Marketing digital para restaurantes: https://dogweb.lat/marketing-digital-para-restaurantes.html
+- Página web para clínicas y odontólogos: https://dogweb.lat/pagina-web-para-clinicas.html
+- Página web para constructoras: https://dogweb.lat/pagina-web-para-constructoras.html
+- Software para gimnasios: https://dogweb.lat/software-para-gimnasios.html
+- Marketing digital para veterinarias: https://dogweb.lat/marketing-digital-para-veterinarias.html
+- Página web para hoteles: https://dogweb.lat/pagina-web-para-hoteles.html
 
 ## Blog
+- Índice del blog: https://dogweb.lat/blog.html
+- ¿Cuánto cuesta una página web en Panamá?: https://dogweb.lat/blog/cuanto-cuesta-una-pagina-web-en-panama.html
+- ¿Cuánto cuesta una página web en Puerto Rico?: https://dogweb.lat/blog/cuanto-cuesta-una-pagina-web-en-puerto-rico.html
+- Marketing digital para restaurantes (guía): https://dogweb.lat/blog/agencia-de-marketing-digital-para-restaurantes.html
+- Cómo crear un chatbot de WhatsApp: https://dogweb.lat/blog/como-crear-chatbot-de-whatsapp-para-tu-negocio.html
+- Agencia de marketing digital para pymes LATAM: https://dogweb.lat/blog/agencia-de-marketing-digital-para-pymes-latam.html
 - Marketing digital para abogados: https://dogweb.lat/blog/marketing-para-abogados.html
 - Páginas web con IA: https://dogweb.lat/blog/paginas-web-con-ia.html
+- Cámaras de seguridad con IA en Bogotá: https://dogweb.lat/blog/camaras-seguridad-ia-bogota.html
 
 ## Acerca de nosotros
 - Fundador: Alejandro Piraquive, entrega directa de todos los proyectos.
 - Ecosistema relacionado: https://serviciosapc.site
-- Prueba gratuita: diagnóstico digital sin costo (web, IA e videos) escribiendo por WhatsApp.
+- Prueba gratuita: diagnóstico digital sin costo (web, IA y ads) escribiendo por WhatsApp.
 
 ---
 DogWeb · dogweb.lat · Bogotá, Colombia

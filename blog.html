@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog DogWeb | Marketing Digital, Páginas Web e IA en WhatsApp</title>
+<meta name="description" content="Guías y artículos de DogWeb sobre marketing digital, páginas web e IA en WhatsApp para negocios de Latinoamérica: precios, cómo crear un chatbot y más.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Blog DogWeb | Marketing Digital, Páginas Web e IA en WhatsApp">
+<meta property="og:description" content="Guías y artículos de DogWeb sobre marketing digital, páginas web e IA en WhatsApp para negocios de Latinoamérica.">
+<meta property="og:image" content="https://dogweb.lat/og-image.png">
+<meta property="og:url" content="https://dogweb.lat/blog.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="DogWeb">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://dogweb.lat/blog.html">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&display=swap">
+<style>
+:root {
+  --bg-primary: #0a0b0d;
+  --bg-secondary: #14161a;
+  --accent: #ffd100;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border-color: #22252a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+a { color: var(--accent); }
+.container { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
+header {
+  position: sticky; top: 0; z-index: 100;
+  background-color: rgba(10, 11, 13, 0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-color);
+}
+.nav-container { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 0.6rem; font-size: 1.3rem; font-weight: 800; color: var(--text-main); text-decoration: none; }
+.logo span { color: var(--accent); }
+.logo img { height: 38px; width: auto; }
+nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+nav a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+nav a:hover { color: var(--accent); }
+.article-head { padding: 3rem 0 1rem; text-align: center; }
+.article-head .tagline { color: var(--accent); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.article-head h1 { font-size: 2.1rem; font-weight: 900; line-height: 1.2; margin: 1rem 0; }
+.article-head .meta { color: var(--text-muted); font-size: 0.9rem; }
+.article-body { padding: 2rem 0 4rem; }
+.article-body h2 { font-size: 1.45rem; margin: 2.5rem 0 1rem; color: var(--accent); }
+.article-body p { margin-bottom: 1.2rem; color: #d1d5db; }
+.article-body ul { margin-bottom: 1.2rem; padding-left: 1.5rem; color: #d1d5db; }
+.article-body li { margin-bottom: 0.5rem; }
+.article-body a { color: var(--accent); }
+.note {
+  background: var(--bg-secondary); border-left: 3px solid var(--accent);
+  border-radius: 8px; padding: 1rem 1.25rem; margin: 1.5rem 0; color: var(--text-muted);
+}
+.cta-box {
+  background: linear-gradient(135deg, #1a1500 0%, var(--bg-secondary) 100%);
+  border: 1px solid rgba(255, 209, 0, 0.25); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0;
+}
+.cta-box h3 { font-size: 1.4rem; margin-bottom: 0.8rem; }
+.cta-box p { color: var(--text-muted); margin-bottom: 1.5rem; }
+.btn-primary {
+  background-color: var(--accent); color: #000; padding: 0.8rem 1.6rem; border-radius: 8px;
+  font-weight: 700; text-decoration: none; display: inline-block;
+}
+.btn-primary:hover { background-color: #e6bd00; }
+footer { border-top: 1px solid var(--border-color); padding: 2rem 1.5rem; background: var(--bg-secondary); }
+.footer-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-info p { color: var(--text-muted); font-size: 0.9rem; }
+.footer-links a { color: var(--text-muted); font-size: 0.9rem; margin-left: 1.5rem; text-decoration: none; }
+.footer-links a:hover { color: var(--accent); }
+@media (max-width: 768px) {
+  .article-head h1 { font-size: 1.5rem; }
+  nav ul { display: none; }
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWFDLTCM8R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EWFDLTCM8R');
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog DogWeb",
+  "description": "Guías de marketing digital, páginas web e IA en WhatsApp para negocios de Latinoamérica.",
+  "url": "https://dogweb.lat/blog.html",
+  "publisher": { "@type": "Organization", "name": "DogWeb", "logo": { "@type": "ImageObject", "url": "https://dogweb.lat/logo.png" } },
+  "blogPost": ["https://dogweb.lat/blog/cuanto-cuesta-una-pagina-web-en-panama.html","https://dogweb.lat/blog/cuanto-cuesta-una-pagina-web-en-puerto-rico.html","https://dogweb.lat/blog/agencia-de-marketing-digital-para-restaurantes.html","https://dogweb.lat/blog/como-crear-chatbot-de-whatsapp-para-tu-negocio.html","https://dogweb.lat/blog/agencia-de-marketing-digital-para-pymes-latam.html","https://dogweb.lat/blog/marketing-para-abogados.html","https://dogweb.lat/blog/paginas-web-con-ia.html","https://dogweb.lat/blog/camaras-seguridad-ia-bogota.html"]
+}
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="DogWeb" width="38" height="38" loading="eager">
+      <span>Dog</span>Web
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#servicios">Servicios</a></li>
+        <li><a href="https://wa.me/573337450634?text=Hola%20DogWeb" class="btn-cta" target="_blank">Hablar ahora</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container" style="padding-top:3rem;padding-bottom:4rem;">
+  <div class="article-head" style="text-align:left;padding-bottom:1.5rem;">
+    <p class="tagline">Blog DogWeb</p>
+    <h1>Guías para hacer crecer su negocio</h1>
+    <p class="meta">Marketing digital, páginas web e IA en WhatsApp · Actualizado el 16 de agosto de 2026</p>
+  </div>
+
+  <div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;padding:20px;margin-bottom:14px;">
+      <a href="blog/cuanto-cuesta-una-pagina-web-en-panama.html" style="text-decoration:none;color:var(--text-main);">
+        <strong style="color:var(--accent);font-size:1.05rem;">¿Cuánto cuesta una página web en Panamá en 2026?</strong>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-top:6px;">Precios reales de páginas web en Panamá en 2026: desde US$200 una página básica hasta proyectos con automatización. Qué …</p>
+      </a>
+    </div>
+<div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;padding:20px;margin-bottom:14px;">
+      <a href="blog/cuanto-cuesta-una-pagina-web-en-puerto-rico.html" style="text-decoration:none;color:var(--text-main);">
+        <strong style="color:var(--accent);font-size:1.05rem;">¿Cuánto cuesta una página web en Puerto Rico en 2026?</strong>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-top:6px;">Precios reales de páginas web en Puerto Rico en 2026: desde US$200 una página básica hasta proyectos con automatización.…</p>
+      </a>
+    </div>
+<div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;padding:20px;margin-bottom:14px;">
+      <a href="blog/agencia-de-marketing-digital-para-restaurantes.html" style="text-decoration:none;color:var(--text-main);">
+        <strong style="color:var(--accent);font-size:1.05rem;">Marketing digital para restaurantes: guía completa</strong>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-top:6px;">Guía de marketing digital para restaurantes: página web con carta digital, pedidos y reservas por WhatsApp con IA, y cam…</p>
+      </a>
+    </div>
+<div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;padding:20px;margin-bottom:14px;">
+      <a href="blog/como-crear-chatbot-de-whatsapp-para-tu-negocio.html" style="text-decoration:none;color:var(--text-main);">
+        <strong style="color:var(--accent);font-size:1.05rem;">Cómo crear un chatbot de WhatsApp para tu negocio</strong>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-top:6px;">Guía paso a paso para crear un chatbot de WhatsApp con IA para tu negocio: respuestas 24/7, toma de pedidos y captura de…</p>
+      </a>
+    </div>
+<div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;padding:20px;margin-bottom:14px;">
+      <a href="blog/agencia-de-marketing-digital-para-pymes-latam.html" style="text-decoration:none;color:var(--text-main);">
+        <strong style="color:var(--accent);font-size:1.05rem;">Agencia de marketing digital para pymes en Latinoamérica</strong>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-top:6px;">Cómo una agencia de marketing digital remota ayuda a las pymes de Latinoamérica (Panamá, Puerto Rico, Ecuador, México) a…</p>
+      </a>
+    </div>
+
+
+  <div class="note" style="margin-top:2rem;">
+    <strong>¿Necesita una solución directa?</strong> No tiene que leer todo el blog: escribanos por WhatsApp y le hacemos un diagnóstico gratis de su negocio.
+  </div>
+  <div class="cta-box" style="margin-top:1.5rem;">
+    <h3>¿Listo para crecer?</h3>
+    <p>Página web, IA en WhatsApp y campañas con precios fijos en dólares.</p>
+    <a href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20mi%20diagn%C3%B3stico%20gratis" class="btn-primary" target="_blank">Hablar con Alejandro</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-info">
+      <p>© 2026 DogWeb. Todos los derechos reservados.</p>
+      <p style="font-size: 0.8rem; margin-top: 0.2rem;">Bogotá, Colombia · Alejandro Piraquive · dogweb.lat</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://serviciosapc.site" target="_blank">serviciosapc.site</a>
+      <a href="index.html">Inicio</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
