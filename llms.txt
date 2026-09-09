@@ -38,6 +38,7 @@
 
 ## Blog
 - Índice del blog: https://dogweb.lat/blog.html
+- Velocidad de carga web, SEO local y ventas: cómo leer PageSpeed Insights: https://dogweb.lat/blog/velocidad-web-seo-local-aumentar-ventas.html
 - ¿Cuánto cuesta una página web en Panamá?: https://dogweb.lat/blog/cuanto-cuesta-una-pagina-web-en-panama.html
 - ¿Cuánto cuesta una página web en Puerto Rico?: https://dogweb.lat/blog/cuanto-cuesta-una-pagina-web-en-puerto-rico.html
 - Marketing digital para restaurantes (guía): https://dogweb.lat/blog/agencia-de-marketing-digital-para-restaurantes.html
