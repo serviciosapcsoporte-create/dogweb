@@ -1,11 +1,12 @@
-/* DogWeb - Service Worker v1
+/* DogWeb - Service Worker v2
    GitHub Pages fija Cache-Control max-age=600 y no permite headers custom.
-   Este SW da cache de larga duracion a assets estaticos (stale-while-revalidate)
-   y fallback offline: menos solicitudes de red en visitas repetidas -> mejor LCP. */
-var CACHE = 'dogweb-v1';
+   Este SW da cache de larga duracion a assets estaticos (stale-while-revalidate),
+   network-first para navegacion (html siempre fresco) y fallback offline. */
+var CACHE = 'dogweb-v2';
 var CORE = [
   '/',
   '/index.html',
+  '/blog.html',
   '/logo.png',
   '/og-image.png',
   '/chat/cristal-loader.js',
@@ -40,11 +41,14 @@ self.addEventListener('fetch', function(e) {
       fetch(request).then(function(resp) {
         if (resp && resp.status === 200) {
           var copy = resp.clone();
-          caches.open(CACHE).then(function(c) { c.put('/index.html', copy); });
+          caches.open(CACHE).then(function(c) { c.put(request, copy); });
         }
         return resp;
       }).catch(function() {
-        return caches.match('/index.html');
+        return caches.match(request).then(function(cached) {
+          if (cached) { return cached; }
+          return caches.match('/index.html');
+        });
       })
     );
     return;
