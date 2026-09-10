@@ -257,5 +257,14 @@ footer { border-top: 1px solid var(--border-color); padding: 2rem 1.5rem; backgr
   </div>
 </footer>
 
+
+<script>
+/* SW-REGISTER-DOGWEB */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function(e) { console.warn('SW not registered', e); });
+  });
+}
+</script>
 </body>
 </html>

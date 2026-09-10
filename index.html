@@ -2061,5 +2061,14 @@ if (overlay) {
 }
 </script>
 <script src="chat/cristal-loader.js"></script>
+
+<script>
+/* SW-REGISTER-DOGWEB */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function(e) { console.warn('SW not registered', e); });
+  });
+}
+</script>
 </body>
 </html>
