@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -158,6 +158,107 @@ footer { border-top: 1px solid var(--border-color); padding: 2rem 1.5rem; backgr
   .btn-whatsapp-official { animation: none; }
 }
 
+
+/* === CTA DINAMICO WHATSAPP (badge live + radar + hover 3D) === */
+.wa-dynamic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+  width: 100%;
+}
+.wa-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.42rem 1.05rem;
+  border-radius: 999px;
+  background: rgba(11, 20, 26, 0.55);
+  border: 1px solid rgba(37, 211, 102, 0.42);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.wa-ping-dot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #25d366;
+  flex: 0 0 auto;
+}
+.wa-ping-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #25d366;
+  animation: waPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes waPing {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+.wa-status-text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #d1fae5;
+  white-space: nowrap;
+}
+.wa-button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.wa-radar-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(37, 211, 102, 0.5);
+  border-radius: 16px;
+  animation: waRadar 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+@keyframes waRadar {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+.wa-btn-dynamic {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #25d366;
+  color: #0b141a;
+  text-decoration: none;
+  padding: 1rem 1.9rem;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  transition: transform 0.22s ease-out, box-shadow 0.22s ease-out;
+}
+.wa-icon { flex: 0 0 auto; }
+.wa-arrow {
+  display: inline-flex;
+  margin-left: 0.2rem;
+  transition: transform 0.22s ease-out;
+}
+@media (hover: hover) and (pointer: fine) {
+  .wa-btn-dynamic:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 35px rgba(37, 211, 102, 0.7), 0 10px 30px rgba(37, 211, 102, 0.35);
+  }
+  .wa-btn-dynamic:hover .wa-arrow { transform: translateX(6px); }
+}
+.contact-left .wa-dynamic-container { align-items: flex-start; }
+@media (max-width: 480px) {
+  .wa-status-text { font-size: 0.65rem; letter-spacing: 0.06em; white-space: normal; text-align: center; }
+  .wa-btn-dynamic { padding: 0.9rem 1.5rem; font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-ping-dot::after, .wa-radar-ring { animation: none; opacity: 0.55; }
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWFDLTCM8R"></script>
@@ -219,7 +320,7 @@ footer { border-top: 1px solid var(--border-color); padding: 2rem 1.5rem; backgr
     <div class="cta-box">
       <h3>Pida su diagnóstico digital gratis</h3>
       <p>Revisamos su presencia web y le decimos qué le conviene: web o IA. Sin costo.</p>
-      <a href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-official"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.505 5.264l-.999 3.648 3.984-1.042zm11.387-5.309c-.214-.12-1.264-.634-1.461-.708-.197-.073-.34-.11-.483.11-.143.22-.549.708-.672.854-.124.145-.247.163-.46.055-.214-.11-.903-.333-1.72-1.06-.636-.566-1.066-1.265-.19-1.265-.124 0-.266-.018-.408-.048-.142-.03-.386-.145-.587-.27-.201-.125-.359-.258-.493-.582-.134-.324-.027-.562.066-.744.094-.18.408-.705.561-1.17z"/></svg><span>Hablar con Alejandro</span></a>
+      <div class="wa-dynamic-container"><div class="wa-status-badge"><span class="wa-ping-dot"></span><span class="wa-status-text">SISTEMA IA // RESPUESTA EN &lt; 5 MINUTOS</span></div><div class="wa-button-wrapper"><div class="wa-radar-ring"></div><a href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer" class="wa-btn-dynamic"><svg class="wa-icon" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.505 5.264l-.999 3.648 3.984-1.042zm11.387-5.309c-.214-.12-1.264-.634-1.461-.708-.197-.073-.34-.11-.483.11-.143.22-.549.708-.672.854-.124.145-.247.163-.46.055-.214-.11-.903-.333-1.72-1.06-.636-.566-1.066-1.265-.19-1.265-.124 0-.266-.018-.408-.048-.142-.03-.386-.145-.587-.27-.201-.125-.359-.258-.493-.582-.134-.324-.027-.562.066-.744.094-.18.408-.705.561-1.17z"/></svg><span>Hablar por WhatsApp</span><span class="wa-arrow" aria-hidden="true">→</span></a></div></div>
     </div>
   </div>
 </main>
