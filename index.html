@@ -232,8 +232,8 @@ body {
   overflow-x: hidden;
 }
 
-/* --- VIDEO BACKGROUND (contenedor 5 tomas, 720p) --- */
-#video-bg-container {
+/* --- VIDEO BACKGROUND (scrollytelling 5 tomas, 720p) --- */
+#video-scroll-container {
   position: fixed;
   inset: 0;
   width: 100vw;
@@ -242,14 +242,14 @@ body {
   pointer-events: none;
   z-index: -2;
 }
-#video-bg-container video {
+#video-scroll-container video {
   position: absolute;
   inset: 0;
   z-index: -2;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  filter: brightness(0.65) contrast(1.1);
+  filter: brightness(0.6) contrast(1.1);
 }
 #videoOverlay {
   position: absolute;
@@ -477,7 +477,16 @@ nav a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
   text-align: center;
+}
+/* Scrollytelling: cada sección-escena ocupa al menos un viewport para dar recorrido al video */
+#hero,
+#servicios,
+#proceso,
+#blog,
+#contacto {
+  min-height: 100vh;
 }
 .hero-badge {
   display: inline-flex;
@@ -1649,10 +1658,6 @@ footer,
 .process-container,
 .section-head-light { background: transparent; }
 
-/* tinte por toma: el overlay cambia opacidad según sección activa */
-#video-bg-container[data-take] #videoOverlay { opacity: 0.9; }
-#video-bg-container[data-take="1"] #videoOverlay { opacity: 1; }
-
 /* moviles: sin backdrop-filter, fondo más opaco para legibilidad */
 @media (max-width: 768px) {
   .svc-card, .process-step, .blog-card, .card, .single-plan, .hours-block, .contact-form-box {
@@ -1662,10 +1667,10 @@ footer,
   }
 }
 
-/* reduced motion: video pausado + poster estático, sin IO */
+/* reduced motion: video pausado + poster estático, sin scrubbing */
 @media (prefers-reduced-motion: reduce) {
-  #video-bg-container video { display: none; }
-  #video-bg-container {
+  #video-scroll-container video { display: none; }
+  #video-scroll-container {
     background-image: url("assets/hero-poster.jpg");
     background-size: cover;
     background-position: center;
@@ -1686,10 +1691,8 @@ footer,
 <body>
 
 <!-- VIDEO BACKGROUND (contenedor 5 tomas, fondo fijo) -->
-<div id="video-bg-container" aria-hidden="true">
-  <video poster="assets/hero-poster.jpg" autoplay muted loop playsinline preload="auto" id="heroBgVideo">
-    <source src="assets/hero-bg.mp4" type="video/mp4">
-  </video>
+<div id="video-scroll-container" aria-hidden="true">
+  <video poster="assets/hero-poster.jpg" id="bg-scroll-video" src="assets/hero-bg.mp4" muted playsinline preload="auto"></video>
   <div id="videoOverlay"></div>
   <div id="videoScanlines"></div>
 </div>
@@ -2344,48 +2347,88 @@ function closeMenu() {
   if (mm) toggleMenu(false);
 }
 var overlay = document.getElementById('videoOverlay');
-var sceneVideo = document.getElementById('heroBgVideo');
-var bgContainer = document.getElementById('video-bg-container');
-/* Toma por sección: hero→1, servicios→2, proceso→3, blog→4, contacto→5 */
-var TAKES = [
-  { id: 'hero',     take: 1, at: 0 },
-  { id: 'servicios', take: 2, at: 10 },
-  { id: 'proceso',  take: 3, at: 20 },
-  { id: 'blog',     take: 4, at: 30 },
-  { id: 'contacto', take: 5, at: 40 }
-];
-var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var currentTake = 0;
-function setTake(t) {
-  if (currentTake === t) return;
-  currentTake = t;
-  if (bgContainer) bgContainer.setAttribute('data-take', String(t));
-  if (overlay) {
-    overlay.style.opacity = '0.45';
-    setTimeout(function () { if (overlay) overlay.style.opacity = ''; }, 400);
+var sceneVideo = document.getElementById('bg-scroll-video');
+var bgContainer = document.getElementById('video-scroll-container');
+/* SCROLL-SCRUBBING: 5 escenas sincronizadas con las 5 secciones (H1..H5) */
+(function () {
+  if (!sceneVideo || !bgContainer) return;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) { sceneVideo.pause(); return; }
+
+  // Secciones en orden de documento; cada tramo de scroll = una escena del video
+  var SCENES = ['hero', 'servicios', 'proceso', 'blog', 'contacto'];
+  // Fracción del video al inicio/cierre de cada tramo (0-20%, 20-40%, 40-60%, 60-80%, 80-100%)
+  var VIDEO_FRAC = [0, 0.2, 0.4, 0.6, 0.8, 1];
+  var videoDuration = 50;
+  var sceneTops = [-1, -1, -1, -1, -1];
+  var targetTime = 0;
+  var currentTime = 0;
+  var rafId = null;
+  var lastScrollAt = 0;
+
+  function computeTops() {
+    for (var i = 0; i < SCENES.length; i++) {
+      var el = document.getElementById(SCENES[i]);
+      sceneTops[i] = el ? (el.getBoundingClientRect().top + window.pageYOffset) : -1;
+    }
   }
-  if (sceneVideo && !reducedMotion && t >= 1) {
-    var at = TAKES[t - 1].at;
-    var isSeeking = sceneVideo.seeking;
-    sceneVideo.currentTime = at;
+
+  function maxScroll() {
+    return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
   }
-}
-if (overlay && sceneVideo && 'IntersectionObserver' in window && !reducedMotion) {
-  var iv = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting && en.intersectionRatio >= 0.35) {
-        var idx = TAKES.findIndex(function (s) { return s.id === en.target.id; });
-        if (idx !== -1) setTake(TAKES[idx].take);
+
+  function update() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var m = maxScroll();
+    if (m <= 0) { targetTime = 0; return; }
+    var frac;
+    if (y <= 0) frac = 0;
+    else if (y >= m) frac = 1;
+    else {
+      // Tramo k: arranca en top de sección k (hero=0) y cierra en top de sección k+1 (contacto=cénit del scroll)
+      var seg = -1;
+      for (var k = 0; k < 5; k++) {
+        var from = k === 0 ? 0 : Math.max(0, sceneTops[k]);
+        var to = k === 4 ? m : Math.max(from + 1, sceneTops[k + 1]);
+        if (y >= from && y < to) { seg = k; break; }
       }
-    });
-  }, { threshold: [0.25, 0.35, 0.5] });
-  TAKES.forEach(function (s) {
-    var el = document.getElementById(s.id);
-    if (el) iv.observe(el);
-  });
-  if (sceneVideo.readyState >= 1) setTake(1);
-  else sceneVideo.addEventListener('loadeddata', function () { setTake(1); }, { once: true });
-}
+      if (seg === -1) seg = 4;
+      var from = seg === 0 ? 0 : Math.max(0, sceneTops[seg]);
+      var to = seg === 4 ? m : Math.max(from + 1, sceneTops[seg + 1]);
+      var f = (y - from) / Math.max(1, to - from);
+      f = Math.max(0, Math.min(1, f));
+      frac = VIDEO_FRAC[seg] + (VIDEO_FRAC[seg + 1] - VIDEO_FRAC[seg]) * f;
+    }
+    targetTime = frac * videoDuration;
+    lastScrollAt = Date.now();
+  }
+
+  function render() {
+    // LERP: suaviza tirones en scroll rápido (0.1 = retardo de seguimiento)
+    // Cuando el scroll se detiene (>120 ms sin updates) aterriza EXACTO en el frame objetivo
+    var snap = Date.now() - lastScrollAt > 120;
+    currentTime += (targetTime - currentTime) * (snap ? 1 : 0.1);
+    if (Math.abs(targetTime - currentTime) > 0.001) {
+      try { sceneVideo.currentTime = currentTime; } catch (e) {}
+    }
+    rafId = requestAnimationFrame(render);
+  }
+
+  function onReady() {
+    videoDuration = (sceneVideo.duration && isFinite(sceneVideo.duration)) ? sceneVideo.duration : 50;
+    sceneVideo.pause();
+    sceneVideo.currentTime = 0;
+    computeTops();
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', computeTops, { passive: true });
+    window.addEventListener('load', computeTops, { passive: true });
+    if (rafId === null) rafId = requestAnimationFrame(render);
+  }
+
+  if (sceneVideo.readyState >= 1 && sceneVideo.duration) onReady();
+  else sceneVideo.addEventListener('loadedmetadata', onReady, { once: true });
+})();
 </script>
 <script>
 /* REVEAL-ON-SCROLL (Agente 3D) */
