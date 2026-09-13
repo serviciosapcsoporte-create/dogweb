@@ -214,6 +214,15 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 body {
   background-color: var(--bg-primary);
   color: var(--text-main);
@@ -223,27 +232,45 @@ body {
   overflow-x: hidden;
 }
 
-/* --- VIDEO BACKGROUND --- */
-#videoBg {
+/* --- VIDEO BACKGROUND (contenedor 5 tomas, 720p) --- */
+#video-bg-container {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   pointer-events: none;
-  z-index: 0;
+  z-index: -2;
 }
-#videoBg video {
-  width: 100%;
-  height: 100%;
+#video-bg-container video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
+  filter: brightness(0.65) contrast(1.1);
 }
 #videoOverlay {
   position: absolute;
   inset: 0;
-  background: var(--bg-primary);
-  opacity: 0.55;
-  transition: opacity 0.3s;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(8, 8, 12, 0.4) 0%, rgba(8, 8, 12, 0.85) 100%);
+  transition: opacity 0.4s ease;
+}
+#videoScanlines {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.3;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 4px
+  );
 }
 
 /* --- TOPBAR --- */
@@ -296,6 +323,13 @@ header {
   border-bottom: 1px solid var(--border-color);
   z-index: 100;
 }
+@media (max-width: 768px) {
+  header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(10, 11, 13, 0.97);
+  }
+}
 .nav-container {
   max-width: 1240px;
   margin: 0 auto;
@@ -333,8 +367,10 @@ nav a {
   font-weight: 500;
   transition: color 0.2s ease;
 }
-nav a:hover {
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  nav a:hover {
+    color: var(--accent);
+  }
 }
 .btn-cta {
   background-color: var(--accent);
@@ -348,9 +384,11 @@ nav a:hover {
   transition: transform 0.2s, background-color 0.2s;
   display: inline-block;
 }
-.btn-cta:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .btn-cta:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+  }
 }
 .hamb {
   display: none;
@@ -362,15 +400,25 @@ nav a:hover {
   padding: 4px;
 }
 .mobile-menu {
-  display: none;
+  visibility: hidden;
   flex-direction: column;
-  background: rgba(10, 11, 13, 0.96);
+  background: rgba(10, 11, 13, 0.97);
   border-bottom: 1px solid var(--border-color);
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   gap: 1rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), max-height 220ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 220ms;
 }
 .mobile-menu.open {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 420px;
+  padding: 1rem 2rem;
+  transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), max-height 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .mobile-menu a {
   color: var(--text-muted);
@@ -382,7 +430,9 @@ nav a:hover {
   transition: color 0.2s;
 }
 .mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a:hover { color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+  .mobile-menu a:hover { color: var(--accent); }
+}
 
 /* --- HERO --- */
 .hero {
@@ -454,9 +504,11 @@ h1 span { color: var(--accent); }
   text-decoration: none;
   transition: transform 0.2s, background-color 0.2s;
 }
-.btn-primary:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+  }
 }
 .btn-secondary {
   background-color: transparent;
@@ -468,10 +520,12 @@ h1 span { color: var(--accent); }
   text-decoration: none;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
-.btn-secondary:hover {
-  background-color: var(--text-main);
-  color: #000;
-  border-color: var(--text-main);
+@media (hover: hover) and (pointer: fine) {
+  .btn-secondary:hover {
+    background-color: var(--text-main);
+    color: #000;
+    border-color: var(--text-main);
+  }
 }
 .hero-stats {
   display: flex;
@@ -498,16 +552,37 @@ h1 span { color: var(--accent); }
   position: relative;
 }
 .circle-glow {
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   background: radial-gradient(circle, rgba(255, 209, 0, 0.12) 0%, rgba(10, 11, 13, 0) 70%);
   position: absolute;
   z-index: 1;
 }
-.hero-visual svg {
+.stage {
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.5));
+  width: 320px;
+  height: 320px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 209, 0, 0.15);
+  background: radial-gradient(circle at 50% 40%, rgba(15, 44, 89, 0.55) 0%, rgba(10, 11, 13, 0) 75%);
+}
+.stage canvas { display: block; width: 100%; height: 100%; }
+#dotLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.5;
+  will-change: transform;
 }
 
 /* === SECCIONES CLARAS (estilo artifact) === */
@@ -563,10 +638,12 @@ h1 span { color: var(--accent); }
   gap: 0.75rem;
   transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
-.svc-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(15, 44, 89, 0.25);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+@media (hover: hover) and (pointer: fine) {
+  .svc-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(15, 44, 89, 0.25);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  }
 }
 .svc-icon {
   width: 46px;
@@ -661,11 +738,13 @@ h1 span { color: var(--accent); }
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.tab:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .tab:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 }
 .tab.active {
   background-color: var(--accent);
@@ -697,10 +776,12 @@ h1 span { color: var(--accent); }
   position: relative;
   transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
-.card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255, 209, 0, 0.4);
-  box-shadow: 0 10px 30px var(--card-glow);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 209, 0, 0.4);
+    box-shadow: 0 10px 30px var(--card-glow);
+  }
 }
 .card.featured {
   border-color: var(--accent);
@@ -796,13 +877,17 @@ h1 span { color: var(--accent); }
   color: #000;
   border: none;
 }
-.card.featured .card-button:hover {
-  background-color: var(--accent-hover);
+@media (hover: hover) and (pointer: fine) {
+  .card.featured .card-button:hover {
+    background-color: var(--accent-hover);
+  }
 }
-.card:not(.featured) .card-button:hover {
-  background-color: var(--text-main);
-  color: #000;
-  border-color: var(--text-main);
+@media (hover: hover) and (pointer: fine) {
+  .card:not(.featured) .card-button:hover {
+    background-color: var(--text-main);
+    color: #000;
+    border-color: var(--text-main);
+  }
 }
 .single-plan {
   background-color: var(--bg-primary);
@@ -906,9 +991,11 @@ h1 span { color: var(--accent); }
   transition: background 0.2s, color 0.2s;
   display: block;
 }
-.resource-links a:hover {
-  background: rgba(255, 209, 0, 0.06);
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .resource-links a:hover {
+    background: rgba(255, 209, 0, 0.06);
+    color: var(--accent);
+  }
 }
 
 /* --- PROCESS (light) --- */
@@ -938,9 +1025,11 @@ h1 span { color: var(--accent); }
   padding: 1.75rem;
   transition: transform 0.25s, box-shadow 0.25s;
 }
-.process-step:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+@media (hover: hover) and (pointer: fine) {
+  .process-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  }
 }
 .step-number {
   font-family: 'Rajdhani', 'Inter', sans-serif;
@@ -997,7 +1086,9 @@ h1 span { color: var(--accent); }
   gap: 8px;
   transition: gap 0.2s;
 }
-.infra-link:hover { gap: 12px; }
+@media (hover: hover) and (pointer: fine) {
+  .infra-link:hover { gap: 12px; }
+}
 .banner-wrap {
   position: relative;
   z-index: 1;
@@ -1069,7 +1160,9 @@ h1 span { color: var(--accent); }
   gap: 8px;
   transition: gap 0.2s;
 }
-.blog-link:hover { gap: 12px; }
+@media (hover: hover) and (pointer: fine) {
+  .blog-link:hover { gap: 12px; }
+}
 .blog-emoji {
   font-size: 3.2rem;
   text-align: center;
@@ -1093,10 +1186,12 @@ h1 span { color: var(--accent); }
   gap: 0.5rem;
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
-.blog-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent);
-  box-shadow: 0 10px 25px rgba(15, 44, 89, 0.12);
+@media (hover: hover) and (pointer: fine) {
+  .blog-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px rgba(15, 44, 89, 0.12);
+  }
 }
 .blog-card-title {
   font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
@@ -1117,6 +1212,26 @@ h1 span { color: var(--accent); }
   .blog-emoji { text-align: left; }
   .blog-grid { grid-template-columns: 1fr; }
 }
+
+/* --- REVEAL ON SCROLL (grids) --- */
+.svc-card, .card, .process-step, .blog-card { opacity: 0; }
+.svc-card.is-in, .card.is-in, .process-step.is-in, .blog-card.is-in {
+  opacity: 1;
+  animation: riseIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.svc-grid > :nth-child(1), .pricing-grid > :nth-child(1),
+.process-grid > :nth-child(1), .blog-grid > :nth-child(1) { --i: 1; }
+.svc-grid > :nth-child(2), .pricing-grid > :nth-child(2),
+.process-grid > :nth-child(2), .blog-grid > :nth-child(2) { --i: 2; }
+.svc-grid > :nth-child(3), .pricing-grid > :nth-child(3),
+.process-grid > :nth-child(3), .blog-grid > :nth-child(3) { --i: 3; }
+.svc-grid > :nth-child(4), .process-grid > :nth-child(4) { --i: 4; }
+.svc-grid > :nth-child(5) { --i: 5; }
 
 /* --- CONTACT (dark) --- */
 .contact-section {
@@ -1166,7 +1281,9 @@ h1 span { color: var(--accent); }
   text-decoration: none;
   line-height: 1.7;
 }
-.info-block a:hover { color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+  .info-block a:hover { color: var(--accent); }
+}
 .social-links {
   display: flex;
   gap: 0.8rem;
@@ -1181,12 +1298,14 @@ h1 span { color: var(--accent); }
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
-  transition: all 0.2s;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.social-links a:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(255, 209, 0, 0.06);
+@media (hover: hover) and (pointer: fine) {
+  .social-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(255, 209, 0, 0.06);
+  }
 }
 .contact-btn {
   display: inline-flex;
@@ -1201,9 +1320,11 @@ h1 span { color: var(--accent); }
   font-size: 1.1rem;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.contact-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25);
+@media (hover: hover) and (pointer: fine) {
+  .contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25);
+  }
 }
 .contact-note {
   display: block;
@@ -1302,7 +1423,9 @@ h1 span { color: var(--accent); }
   gap: 0.5rem;
   transition: background 0.2s;
 }
-.contact-form-btn:hover { background: var(--accent-hover); }
+@media (hover: hover) and (pointer: fine) {
+  .contact-form-btn:hover { background: var(--accent-hover); }
+}
 .contact-form-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .form-status {
   font-size: 0.75rem;
@@ -1344,7 +1467,9 @@ footer {
   text-decoration: none;
   transition: color 0.2s;
 }
-.footer-links a:hover { color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+  .footer-links a:hover { color: var(--accent); }
+}
 
 /* --- SOCIAL FLOAT --- */
 .social-float {
@@ -1370,20 +1495,24 @@ footer {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s, color 0.2s, border-color 0.2s;
 }
-.social-float a:hover {
-  transform: scale(1.1);
-  color: var(--accent);
-  border-color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .social-float a:hover {
+    transform: scale(1.1);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
 }
 .social-float a.social-wa {
   background: #25d366;
   color: #fff;
   border-color: #25d366;
 }
-.social-float a.social-wa:hover {
-  color: #fff;
-  border-color: #1ebe5d;
-  background: #1ebe5d;
+@media (hover: hover) and (pointer: fine) {
+  .social-float a.social-wa:hover {
+    color: #fff;
+    border-color: #1ebe5d;
+    background: #1ebe5d;
+  }
 }
 @media (max-width: 600px) {
   .social-float { bottom: 16px; right: 16px; left: auto; gap: 10px; }
@@ -1402,7 +1531,8 @@ footer {
   .hero-btns { justify-content: center; }
   .hero-stats { justify-content: center; }
   .hero-visual { order: -1; }
-  .hero-visual svg { width: 160px; height: 160px; }
+  .hero-visual .stage { width: 260px; height: 260px; }
+  .circle-glow { width: 260px; height: 260px; }
   nav ul { display: none; }
   .hamb { display: block; }
   h1 { font-size: 2.5rem; }
@@ -1426,6 +1556,124 @@ footer {
   .stat-item h3 { font-size: 1.6rem; }
   .process-container { padding: 4rem 1rem; }
 }
+
+/* === OVERRIDE: video fondo fijo + glassmorphism sobre video (5 tomas 720p) === */
+.section-light,
+.section-pricing,
+.process-section,
+.banner-wrap,
+.blog-section,
+.contact-section,
+footer {
+  background-color: transparent;
+}
+/* secciones claras: texto claro para legibilidad sobre video oscuro */
+.section-light,
+.process-section,
+.blog-section {
+  color: var(--text-main);
+}
+.section-light h2,
+.process-section .section-head-light h2 {
+  color: var(--text-main);
+}
+.section-light h2 em { color: var(--accent); }
+.section-head-light p,
+.process-container .section-head-light p {
+  color: var(--text-muted);
+}
+.blog-section .section-header h2 { color: var(--text-main); }
+.section-eyebrow { color: #ffd100; }
+
+/* tarjetas/resúmenes → glass */
+.svc-card,
+.process-step,
+.blog-card,
+.single-plan {
+  background: rgba(15, 44, 89, 0.45);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-color: rgba(255, 209, 0, 0.12);
+}
+.svc-card h3,
+.process-step h3,
+.blog-card-title {
+  color: var(--text-main);
+}
+.svc-card p,
+.process-step p,
+.blog-card-meta {
+  color: var(--text-muted);
+}
+.step-number { color: rgba(255, 209, 0, 0.3); }
+.svc-meta { border-top-color: rgba(255, 209, 0, 0.14); }
+.svc-price { color: #ffd100; }
+.svc-badge {
+  background: rgba(255, 209, 0, 0.1);
+  color: #ffd100;
+  border-color: rgba(255, 209, 0, 0.25);
+}
+.svc-icon {
+  background: linear-gradient(135deg, rgba(15, 44, 89, 0.9), rgba(15, 23, 42, 0.9));
+}
+.process-step { border-color: rgba(255, 209, 0, 0.12); }
+.blog-card { border-color: rgba(255, 209, 0, 0.12); }
+
+/* pricing/contacto/form/horarios → glass sobre video */
+.card,
+.hours-block,
+.contact-form-box {
+  background: rgba(15, 44, 89, 0.45);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.contact-map {
+  background: rgba(15, 44, 89, 0.3);
+  border-color: rgba(255, 209, 0, 0.12);
+}
+/* secciones que tenían borde de contraste: más sutil sobre video */
+.section-pricing,
+.contact-section {
+  border-color: rgba(255, 209, 0, 0.08);
+}
+footer { border-color: rgba(255, 209, 0, 0.08); }
+/* contenedores de texto interno transparentes (info blocks, footer) */
+.hours-block p,
+.info-block p,
+.info-block a,
+footer,
+.footer-info,
+.footer-links a { color: var(--text-muted); }
+
+/* glassmorphism dentro de zonas de sección clara: dejar pasar video */
+.light-container,
+.process-container,
+.section-head-light { background: transparent; }
+
+/* tinte por toma: el overlay cambia opacidad según sección activa */
+#video-bg-container[data-take] #videoOverlay { opacity: 0.9; }
+#video-bg-container[data-take="1"] #videoOverlay { opacity: 1; }
+
+/* moviles: sin backdrop-filter, fondo más opaco para legibilidad */
+@media (max-width: 768px) {
+  .svc-card, .process-step, .blog-card, .card, .single-plan, .hours-block, .contact-form-box {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(10, 11, 13, 0.82);
+  }
+}
+
+/* reduced motion: video pausado + poster estático, sin IO */
+@media (prefers-reduced-motion: reduce) {
+  #video-bg-container video { display: none; }
+  #video-bg-container {
+    background-image: url("assets/hero-poster.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  #videoOverlay,
+  #videoScanlines { display: block; }
+}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWFDLTCM8R"></script>
@@ -1435,15 +1683,25 @@ footer {
   gtag('js', new Date());
   gtag('config', 'G-EWFDLTCM8R');
 </script>
+<script async src="https://unpkg.com/es-module-shims@1.8.2/dist/es-module-shims.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm"
+  }
+}
+</script>
 </head>
 <body>
 
-<!-- VIDEO BACKGROUND -->
-<div id="videoBg" aria-hidden="true">
-  <video poster="og-image.png" autoplay muted loop playsinline preload="auto">
-    <source src="Buscando Clientes-opt.mp4" type="video/mp4">
+<!-- VIDEO BACKGROUND (contenedor 5 tomas, fondo fijo) -->
+<div id="video-bg-container" aria-hidden="true">
+  <video poster="assets/hero-poster.jpg" autoplay muted loop playsinline preload="auto" id="heroBgVideo">
+    <source src="assets/hero-bg.mp4" type="video/mp4">
   </video>
   <div id="videoOverlay"></div>
+  <div id="videoScanlines"></div>
 </div>
 
 <!-- TOPBAR -->
@@ -1485,7 +1743,7 @@ footer {
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-content">
     <span class="hero-badge">Marketing digital · Páginas web · IA · LATAM</span>
     <span class="tagline">Rastreamos clientes para su negocio</span>
@@ -1510,37 +1768,19 @@ footer {
       </div>
     </div>
   </div>
-  <div class="hero-visual">
+  <div class="hero-visual" id="hero3d">
     <div class="circle-glow"></div>
-    <svg width="220" height="220" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,209,0,0.08)" stroke-width="1"/>
-      <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(255,209,0,0.05)" stroke-width="1"/>
-      <!-- Dog head -->
-      <path d="M55 85 C55 65, 75 45, 95 42 C105 40, 118 42, 125 48 C132 42, 148 42, 152 55 C156 68, 145 80, 138 85 L135 88 C140 95, 142 105, 140 115 C137 130, 125 142, 110 145 C100 147, 88 145, 80 138 C70 128, 55 115, 55 95 Z" fill="#ffd100" opacity="0.9"/>
-      <!-- Ears -->
-      <path d="M75 55 C65 35, 50 30, 42 40 C35 50, 42 65, 55 72" fill="#e6bd00" opacity="0.7"/>
-      <path d="M135 55 C145 35, 160 30, 168 40 C175 50, 168 65, 155 72" fill="#e6bd00" opacity="0.7"/>
-      <!-- Eyes -->
-      <circle cx="88" cy="78" r="5" fill="#0a0b0d"/>
-      <circle cx="122" cy="78" r="5" fill="#0a0b0d"/>
-      <circle cx="89.5" cy="76.5" r="1.5" fill="#fff"/>
-      <circle cx="123.5" cy="76.5" r="1.5" fill="#fff"/>
-      <!-- Nose -->
-      <ellipse cx="105" cy="98" rx="7" ry="5" fill="#0a0b0d"/>
-      <ellipse cx="105" cy="97" rx="2" ry="1" fill="#333" opacity="0.5"/>
-      <!-- Mouth -->
-      <path d="M98 103 Q105 112 112 103" stroke="#0a0b0d" stroke-width="1.5" fill="none"/>
-      <!-- Collar -->
-      <path d="M72 120 Q105 135 138 120" stroke="#ffd100" stroke-width="3" fill="none" opacity="0.5"/>
-      <circle cx="105" cy="130" r="4" fill="#ffd100" opacity="0.6"/>
-      <!-- Tech dots -->
-      <circle cx="60" cy="60" r="2" fill="#ffd100" opacity="0.3"/>
-      <circle cx="150" cy="60" r="2" fill="#ffd100" opacity="0.3"/>
-      <circle cx="45" cy="100" r="1.5" fill="#ffd100" opacity="0.2"/>
-      <circle cx="165" cy="100" r="1.5" fill="#ffd100" opacity="0.2"/>
-      <circle cx="70" cy="140" r="1.5" fill="#ffd100" opacity="0.2"/>
-      <circle cx="140" cy="145" r="1.5" fill="#ffd100" opacity="0.2"/>
-    </svg>
+    <div class="stage">
+      <canvas id="stage3d" aria-hidden="true" role="presentation"></canvas>
+      <div id="dotLayer">
+        <span class="dot" data-depth="0.12" style="left:14%; top:22%;"></span>
+        <span class="dot" data-depth="0.2" style="left:82%; top:18%; width:4px; height:4px;"></span>
+        <span class="dot" data-depth="0.08" style="left:24%; top:78%;"></span>
+        <span class="dot" data-depth="0.24" style="left:70%; top:74%; width:4px; height:4px;"></span>
+        <span class="dot" data-depth="0.16" style="left:8%; top:48%; width:3px; height:3px;"></span>
+        <span class="dot" data-depth="0.28" style="left:90%; top:52%; width:3px; height:3px;"></span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2109,13 +2349,211 @@ function closeMenu() {
   if (hamb) hamb.textContent = '☰';
 }
 var overlay = document.getElementById('videoOverlay');
-if (overlay) {
-  function updateOverlay() {
-    var p = Math.min(window.scrollY / window.innerHeight, 1);
-    overlay.style.opacity = 0.55 + (0.45 * p);
+var sceneVideo = document.getElementById('heroBgVideo');
+var bgContainer = document.getElementById('video-bg-container');
+/* Toma por sección: hero→1, servicios→2, proceso→3, blog→4, contacto→5 */
+var TAKES = [
+  { id: 'hero',     take: 1, at: 0 },
+  { id: 'servicios', take: 2, at: 10 },
+  { id: 'proceso',  take: 3, at: 20 },
+  { id: 'blog',     take: 4, at: 30 },
+  { id: 'contacto', take: 5, at: 40 }
+];
+var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var currentTake = 0;
+function setTake(t) {
+  if (currentTake === t) return;
+  currentTake = t;
+  if (bgContainer) bgContainer.setAttribute('data-take', String(t));
+  if (overlay) {
+    overlay.style.opacity = '0.45';
+    setTimeout(function () { if (overlay) overlay.style.opacity = ''; }, 400);
   }
-  window.addEventListener('scroll', updateOverlay, { passive: true });
-  updateOverlay();
+  if (sceneVideo && !reducedMotion && t >= 1) {
+    var at = TAKES[t - 1].at;
+    var isSeeking = sceneVideo.seeking;
+    sceneVideo.currentTime = at;
+  }
+}
+if (overlay && sceneVideo && 'IntersectionObserver' in window && !reducedMotion) {
+  var iv = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting && en.intersectionRatio >= 0.35) {
+        var idx = TAKES.findIndex(function (s) { return s.id === en.target.id; });
+        if (idx !== -1) setTake(TAKES[idx].take);
+      }
+    });
+  }, { threshold: [0.25, 0.35, 0.5] });
+  TAKES.forEach(function (s) {
+    var el = document.getElementById(s.id);
+    if (el) iv.observe(el);
+  });
+  if (sceneVideo.readyState >= 1) setTake(1);
+  else sceneVideo.addEventListener('loadeddata', function () { setTake(1); }, { once: true });
+}
+</script>
+<script>
+/* REVEAL-ON-SCROLL (Agente 3D) */
+(function () {
+  var els = document.querySelectorAll('.svc-card, .card, .process-step, .blog-card');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) {
+        en.target.classList.add('is-in');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+<script type="module">
+/* HERO 3D Three.js (Agente 3D) — portado desde preview/b.html */
+import * as THREE from 'three';
+import gsap from 'gsap';
+
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const coarse = window.matchMedia('(pointer: coarse)').matches;
+
+const stage = document.querySelector('.stage');
+const canvas = document.getElementById('stage3d');
+if (stage && canvas) {
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'low-power' });
+  renderer.setPixelRatio(coarse ? 1 : Math.min(window.devicePixelRatio || 1, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 60);
+  camera.position.set(0, 1.4, 7.4);
+  const cameraGroup = new THREE.Group();
+  cameraGroup.add(camera);
+  scene.add(cameraGroup);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+  const dir = new THREE.DirectionalLight(0xffffff, 1.4);
+  dir.position.set(4, 6, 3);
+  scene.add(dir);
+  const point = new THREE.PointLight(0xffd100, 1.6, 12);
+  point.position.set(0, 1, 2);
+  scene.add(point);
+
+  const dog = new THREE.Group();
+  const navy1 = 0x1d3a6b, navy2 = 0x0F172A, gold = 0xffd100, goldDark = 0xe6bd00, blue = 0x3b5fa8;
+  const mat = (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.55, metalness: 0.15 });
+
+  const body = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.75, 0.8), mat(navy1));
+  body.position.set(0, 0.42, 0);
+  const chest = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.62, 0.7), mat(navy1));
+  chest.position.set(0, 0.62, 0.74);
+  const head = new THREE.Mesh(new THREE.BoxGeometry(0.78, 0.78, 0.8), mat(blue));
+  head.position.set(0, 1.22, 1.2);
+  const snout = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.34, 0.5), mat(navy2));
+  snout.position.set(0, 0.98, 1.68);
+  const nose = new THREE.Mesh(new THREE.SphereGeometry(0.09, 16, 16), mat(gold));
+  nose.position.set(0, 0.98, 1.94);
+  const earL = new THREE.Mesh(new THREE.ConeGeometry(0.24, 0.5, 4), mat(goldDark));
+  earL.position.set(-0.3, 1.62, 1.12);
+  earL.rotation.z = -0.25;
+  const earR = new THREE.Mesh(new THREE.ConeGeometry(0.24, 0.5, 4), mat(goldDark));
+  earR.position.set(0.3, 1.62, 1.12);
+  earR.rotation.z = 0.25;
+  const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.05, 12, 12), mat(gold));
+  eyeL.position.set(-0.2, 1.3, 1.56);
+  const eyeR = new THREE.Mesh(new THREE.SphereGeometry(0.05, 12, 12), mat(gold));
+  eyeR.position.set(0.2, 1.3, 1.56);
+  const collar = new THREE.Mesh(new THREE.TorusGeometry(0.3, 0.045, 12, 24), mat(gold));
+  collar.position.set(0, 0.88, 1.02);
+  collar.rotation.x = Math.PI / 2;
+  const tail = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.6, 0.12), mat(blue));
+  tail.position.set(0, 0.9, -0.72);
+  tail.rotation.z = 0.45;
+
+  [dog, body, chest, head, snout, nose, earL, earR, eyeL, eyeR, collar, tail].forEach((o) => { dog.add(o); });
+  scene.add(dog);
+
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.06, 16, 40), mat(gold));
+  ring.position.set(2.3, 1.0, -2.2);
+  scene.add(ring);
+  const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(0.55, 0), mat(navy1));
+  ico.position.set(-2.5, 0.3, -3.2);
+  scene.add(ico);
+  const s1 = new THREE.Mesh(new THREE.SphereGeometry(0.09, 12, 12), mat(gold));
+  s1.position.set(-2.0, 1.7, -1.6);
+  const s2 = new THREE.Mesh(new THREE.SphereGeometry(0.12, 12, 12), mat(gold));
+  s2.position.set(2.0, 0.1, -3.8);
+  const s3 = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 12), mat(gold));
+  s3.position.set(0.6, 2.0, -2.6);
+  scene.add(s1, s2, s3);
+
+  const pCount = 160;
+  const pGeo = new THREE.BufferGeometry();
+  const pos = new Float32Array(pCount * 3);
+  for (let i = 0; i < pCount; i++) {
+    pos[i * 3] = (Math.random() - 0.5) * 7;
+    pos[i * 3 + 1] = (Math.random() - 0.5) * 4 + 0.6;
+    pos[i * 3 + 2] = (Math.random() - 0.5) * 7 - 2;
+  }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const pMat = new THREE.PointsMaterial({ color: gold, size: 0.035, transparent: true, opacity: 0.5 });
+  const pts = new THREE.Points(pGeo, pMat);
+  scene.add(pts);
+
+  const cursor = { x: 0, y: 0 };
+  const dots = [...document.querySelectorAll('.dot')].map((d) => {
+    const depth = parseFloat(d.dataset.depth || 0.1);
+    return {
+      el: d,
+      depth,
+      xTo: gsap.quickTo(d, 'x', { duration: 0.14, ease: 'power3.out' }),
+      yTo: gsap.quickTo(d, 'y', { duration: 0.14, ease: 'power3.out' })
+    };
+  });
+  window.addEventListener('mousemove', (e) => {
+    const nx = e.clientX / window.innerWidth - 0.5;
+    const ny = e.clientY / window.innerHeight - 0.5;
+    cursor.x = nx; cursor.y = ny;
+    if (reduced) return;
+    dots.forEach((d) => { d.xTo(nx * d.depth * 180); d.yTo(ny * d.depth * 180); });
+  });
+
+  function onResize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', onResize);
+  onResize();
+
+  if (reduced) {
+    renderer.render(scene, camera);
+  } else {
+    const clock = new THREE.Clock();
+    function tick() {
+      requestAnimationFrame(tick);
+      const delta = Math.min(clock.getDelta(), 0.05);
+      const t = performance.now() / 1000;
+      cameraGroup.position.x += (cursor.x * 1.15 - cameraGroup.position.x) * 3 * delta;
+      cameraGroup.position.y += (-cursor.y * 0.75 - cameraGroup.position.y) * 3 * delta;
+      dog.rotation.y += (cursor.x * 0.55 - dog.rotation.y) * 4 * delta;
+      dog.rotation.z = Math.sin(t * 1.1) * 0.035;
+      tail.rotation.z = 0.45 + Math.sin(t * 2.2) * 0.18;
+      ring.rotation.x += delta * 0.4;
+      ring.rotation.y += delta * 0.3;
+      ico.rotation.y += delta * 0.35;
+      ico.rotation.x -= delta * 0.25;
+      s1.position.y = 1.7 + Math.sin(t * 1.4) * 0.18;
+      s2.position.y = 0.1 + Math.cos(t * 1.2) * 0.22;
+      pts.rotation.y += delta * 0.02;
+      point.position.x = cursor.x * 4;
+      point.position.y = -cursor.y * 3 + 1;
+      renderer.render(scene, camera);
+    }
+    tick();
+  }
 }
 </script>
 <script src="chat/cristal-loader.js"></script>

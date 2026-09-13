@@ -199,9 +199,36 @@ spline-viewer {
   .circle-glow { width: 300px; height: 300px; }
   h1 { font-size: 2.1rem; }
 }
+.deprecated-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #1a1000;
+  border-bottom: 1px solid rgba(255, 209, 0, 0.35);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.6rem 1rem;
+}
+.deprecated-bar a { color: #fff; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  spline-viewer { pointer-events: none !important; }
+}
 </style>
 </head>
 <body>
+
+<!-- DEPRECADO (Agente 3D): Esta vista Opción A (Spline) queda obsoleta.
+     El lienzo oficial pasó al hero de index.html con Three.js (antes preview/b.html).
+     Se mantiene solo como referencia histórica y QA de peso (Spline ~10x más pesado). -->
+<div class="deprecated-bar">⚠️ Preview OBSOLETO — Spline fue reemplazado por Three.js en el hero oficial. <a href="b.html">Ver Opción B →</a></div>
 
 <div class="preview-top">
   <span class="pill">Preview 3D · Opción A · Spline LookAt</span>
@@ -229,8 +256,8 @@ spline-viewer {
     <div class="spline-box">
       <spline-viewer
         url="https://prod.spline.design/VYmCzkGyw675D-gY/scene.splinecode"
-        events-target="global"
-        loading="eager"></spline-viewer>
+        events-target="local"
+        loading="lazy"></spline-viewer>
     </div>
   </div>
 </section>

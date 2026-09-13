@@ -369,8 +369,8 @@ const dots = [...document.querySelectorAll('.dot')].map((d) => {
   return {
     el: d,
     depth,
-    xTo: gsap.quickTo(d, 'x', { duration: 0.8, ease: 'power3' }),
-    yTo: gsap.quickTo(d, 'y', { duration: 0.8, ease: 'power3' })
+    xTo: gsap.quickTo(d, 'x', { duration: 0.14, ease: 'power3.out' }),
+    yTo: gsap.quickTo(d, 'y', { duration: 0.14, ease: 'power3.out' })
   };
 });
 window.addEventListener('mousemove', (e) => {
