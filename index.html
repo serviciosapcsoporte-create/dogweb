@@ -415,11 +415,17 @@ nav a {
 .hamb.open span:nth-child(2) { opacity: 0; }
 .hamb.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 .mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
   display: flex;
   flex-direction: column;
   visibility: hidden;
   background: rgba(10, 11, 13, 0.97);
   border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.45);
   padding: 0 2rem;
   gap: 0.15rem;
   max-height: 0;
@@ -1708,14 +1714,14 @@ footer,
       <span></span><span></span><span></span>
     </button>
   </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#servicios" onclick="closeMenu()">Servicios</a>
+    <a href="#proceso" onclick="closeMenu()">Proceso</a>
+    <a href="#blog" onclick="closeMenu()">Blog</a>
+    <a href="#contacto" onclick="closeMenu()">Contacto</a>
+    <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" class="btn-cta" target="_blank" style="text-align:center;" onclick="closeMenu()">Hablar ahora</a>
+  </div>
 </header>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#servicios" onclick="closeMenu()">Servicios</a>
-  <a href="#proceso" onclick="closeMenu()">Proceso</a>
-  <a href="#blog" onclick="closeMenu()">Blog</a>
-  <a href="#contacto" onclick="closeMenu()">Contacto</a>
-  <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" class="btn-cta" target="_blank" style="text-align:center;" onclick="closeMenu()">Hablar ahora</a>
-</div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
