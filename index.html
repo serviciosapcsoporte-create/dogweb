@@ -211,6 +211,10 @@
   --light-border: #E6E4DC;
   --light-text: #0F172A;
   --light-muted: #5B6472;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -1904,6 +1908,123 @@ footer,
   .why-grid { grid-template-columns: 1fr; }
 }
 
+/* === EMIL-DESIGN-ENG: ACTIVE STATES === */
+.btn-primary:active,
+.btn-secondary:active,
+.btn-cta:active,
+.card-button:active,
+.contact-form-btn:active,
+.wa-btn-dynamic:active {
+  transform: scale(0.97) !important;
+  transition: transform 160ms var(--ease-out) !important;
+}
+
+/* === EMIL-DESIGN-ENG: REVEAL EXTENSIONS === */
+.ecosystem-section, .testimonial-section, .why-section, .contact-section {
+  opacity: 0;
+}
+.ecosystem-section.is-in, .testimonial-section.is-in, .why-section.is-in, .contact-section.is-in {
+  opacity: 1;
+  animation: riseIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) backwards;
+}
+.eco-step, .why-item {
+  opacity: 0;
+}
+.eco-step.is-in, .why-item.is-in {
+  opacity: 1;
+  animation: riseIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+.eco-step:nth-child(1) { --i: 1; }
+.eco-step:nth-child(2) { --i: 2; }
+.eco-step:nth-child(3) { --i: 3; }
+.why-item:nth-child(1) { --i: 1; }
+.why-item:nth-child(2) { --i: 2; }
+.why-item:nth-child(3) { --i: 3; }
+.why-item:nth-child(4) { --i: 4; }
+.why-item:nth-child(5) { --i: 5; }
+.why-item:nth-child(6) { --i: 6; }
+
+/* === EMIL-DESIGN-ENG: CARD HOVER GLOW === */
+.svc-card {
+  transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .svc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px var(--card-glow);
+    border-color: var(--accent);
+  }
+}
+.card {
+  transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px var(--card-glow);
+  }
+}
+
+/* === EMIL-DESIGN-ENG: PROCESS STEP HOVER === */
+.process-step {
+  transition: transform 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .process-step:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+}
+
+/* === EMIL-DESIGN-ENG: WHY ITEM HOVER === */
+.why-item {
+  transition: transform 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .why-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+}
+
+/* === EMIL-DESIGN-ENG: ECO STEP HOVER === */
+.eco-step {
+  transition: transform 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .eco-step:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+}
+
+/* === EMIL-DESIGN-ENG: TRANSITION FIXES === */
+#videoOverlay {
+  transition: opacity 250ms var(--ease-out);
+}
+.btn-cta {
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out);
+}
+.btn-primary {
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out);
+}
+.btn-secondary {
+  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+}
+.card-button {
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.contact-form-btn {
+  transition: background 160ms var(--ease-out);
+}
+.wa-btn-dynamic {
+  transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+}
+.wa-btn-dynamic .wa-arrow {
+  transition: transform 200ms var(--ease-out);
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWFDLTCM8R"></script>
@@ -2684,9 +2805,9 @@ var bgContainer = document.getElementById('video-scroll-container');
 })();
 </script>
 <script>
-/* REVEAL-ON-SCROLL (Agente 3D) */
+/* REVEAL-ON-SCROLL (emil-design-eng + Agente 3D) */
 (function () {
-  var els = document.querySelectorAll('.svc-card, .card, .process-step, .blog-card');
+  var els = document.querySelectorAll('.svc-card, .card, .process-step, .blog-card, .ecosystem-section, .testimonial-section, .why-section, .eco-step, .why-item, .contact-section');
   if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     els.forEach(function (el) { el.classList.add('is-in'); });
     return;
