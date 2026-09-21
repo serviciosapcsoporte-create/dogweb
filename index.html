@@ -36,33 +36,21 @@
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://dogweb.lat/#business",
   "name": "DogWeb",
   "description": "Marketing digital, páginas web, IA en WhatsApp y contenido digital. Rastreamos clientes para su negocio.",
   "url": "https://dogweb.lat",
   "logo": "https://dogweb.lat/logo.png",
-  "image": "https://dogweb.lat/logo.png",
+  "image": [
+    "https://dogweb.lat/og-image.png",
+    "https://dogweb.lat/logo.png"
+  ],
   "telephone": "+57-333-745-0634",
   "email": "serviciosapcsoporte@gmail.com",
-  "priceRange": "$800,000 - $3,000,000 COP (≈ US$200 - US$750)",
-  "areaServed": ["Colombia", "Panamá", "Puerto Rico", "Ecuador", "México", "LATAM"],
-  "sameAs": [
-    "https://www.facebook.com/alejandropiraquiveapc",
-    "https://www.instagram.com/serviciosapc",
-    "https://www.linkedin.com/in/alejandropiraquive/"
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Cra. 52c #39b-22",
-    "addressLocality": "Bogotá",
-    "addressCountry": "CO"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+57-333-745-0634",
-    "contactType": "sales",
-    "areaServed": "CO",
-    "availableLanguage": ["Spanish"]
-  },
+  "priceRange": "$$",
+  "currenciesAccepted": "COP, USD",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer, Nequi, Daviplata",
+  "areaServed": ["Colombia", "Panamá", "Puerto Rico", "Ecuador", "México"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Servicios DogWeb",
@@ -71,11 +59,8 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "@id": "https://dogweb.lat/#servicios",
           "name": "Páginas Web",
-          "description": "Desarrollo web profesional incluyendo landing pages, sitios dinámicos con Elementor, y sitios web avanzados con automatización y SEO técnico.",
-          "category": "https://schema.org/WebSite",
-          "areaServed": "Colombia, Panamá y Ecuador",
+          "description": "Desarrollo web profesional: landing pages, sitios dinámicos con Elementor, y sitios avanzados con automatización y SEO técnico.",
           "url": "https://dogweb.lat/#servicios",
           "offers": {
             "@type": "Offer",
@@ -83,6 +68,7 @@
               "@type": "PriceSpecification",
               "priceCurrency": "COP",
               "price": 800000,
+              "minPrice": 800000,
               "description": "Desde $800,000 COP (≈ US$200)"
             }
           }
@@ -92,11 +78,8 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "@id": "https://dogweb.lat/#servicios",
           "name": "IA en WhatsApp",
-          "description": "Automatización de respuestas, atención al cliente con IA, registro de pedidos en tiempo real, y chatbots avanzados.",
-          "category": "https://schema.org/Chat",
-          "areaServed": "Colombia, Panamá y Ecuador",
+          "description": "Automatización de respuestas con IA, chatbots, registro de pedidos en tiempo real y captura de leads 24/7.",
           "url": "https://dogweb.lat/#servicios",
           "offers": {
             "@type": "Offer",
@@ -104,6 +87,7 @@
               "@type": "PriceSpecification",
               "priceCurrency": "COP",
               "price": 900000,
+              "minPrice": 900000,
               "description": "Desde $900,000 COP (≈ US$225)"
             }
           }
@@ -113,11 +97,8 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "@id": "https://dogweb.lat/#servicios",
           "name": "Ads y Prospección Digital",
           "description": "Campañas de prospección digital con captura de leads calificados directo a WhatsApp con IA integrada.",
-          "category": "https://schema.org/Marketing",
-          "areaServed": "Colombia, Panamá y Ecuador",
           "url": "https://dogweb.lat/#servicios",
           "offers": {
             "@type": "Offer",
@@ -125,6 +106,7 @@
               "@type": "PriceSpecification",
               "priceCurrency": "COP",
               "price": 1600000,
+              "minPrice": 1600000,
               "description": "Desde $1,600,000 COP (≈ US$400)"
             }
           }
@@ -132,14 +114,74 @@
       }
     ]
   },
-  "keywords": "agencia digital, marketing digital, páginas web, IA WhatsApp, SEO técnico",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Cra. 52c #39b-22",
+    "addressLocality": "Bogotá",
+    "addressRegion": "Bogotá D.C.",
+    "postalCode": "110221",
+    "addressCountry": "CO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 4.6486,
+    "longitude": -74.0817
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+57-333-745-0634",
+      "contactType": "sales",
+      "areaServed": "CO",
+      "availableLanguage": ["Spanish"],
+      "contactOption": "TollFree"
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+57-333-745-0634",
+      "contactType": "customer service",
+      "areaServed": ["CO", "PA", "PR", "EC", "MX"],
+      "availableLanguage": ["Spanish", "English"]
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/alejandropiraquiveapc",
+    "https://www.instagram.com/serviciosapc",
+    "https://www.linkedin.com/in/alejandropiraquive/"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Alejandro Piraquive",
+    "jobTitle": "Fundador",
+    "url": "https://www.linkedin.com/in/alejandropiraquive/"
+  },
+  "keywords": "agencia digital, marketing digital, páginas web, IA WhatsApp, SEO técnico, chatbot WhatsApp, automatización empresarial",
   "slogan": "Rastreamos clientes para su negocio",
   "serviceType": ["Diseño web", "Marketing digital", "Automatización IA", "Publicidad digital"],
   "makesOffer": {
     "@type": "Offer",
-    "name": "Prueba gratis de diagnóstico digital",
-    "description": "DogWeb ofrece una evaluación sin costo de presencia digital, web y chatbot. Escríbanos por WhatsApp 573337450634 o visite serviciosapc.site para su prueba gratuita.",
-    "url": "https://serviciosapc.site"
+    "name": "Diagnóstico digital gratuito",
+    "description": "Evaluación sin costo de presencia digital, web y chatbot. Escríbanos por WhatsApp.",
+    "url": "https://dogweb.lat/#contacto",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": 0,
+      "priceCurrency": "COP"
+    }
   }
 }
 </script>
@@ -2032,8 +2074,27 @@ footer,
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-EWFDLTCM8R');
+  gtag('config', 'G-EWFDLTCM8R', {
+    send_page_view: true,
+    cookie_flags: 'SameSite=None;Secure'
+  });
 </script>
+
+<!-- Meta Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'PIXEL_ID_AQUI');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=PIXEL_ID_AQUI&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
@@ -2832,6 +2893,136 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function(e) { console.warn('SW not registered', e); });
   });
 }
+</script>
+
+<!-- CRO: WhatsApp Click Tracking + GA4 Conversion Events -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── WhatsApp Click Tracker ── */
+  var WA_PHONE = '573337450634';
+  var waLinks = document.querySelectorAll('a[href*="wa.me/' + WA_PHONE + '"], a[href*="api.whatsapp.com/send?phone=' + WA_PHONE + '"]');
+
+  waLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      var section = 'unknown';
+      var el = link;
+      while (el && el !== document.body) {
+        if (el.id) { section = el.id; break; }
+        if (el.classList) {
+          if (el.classList.contains('hero')) { section = 'hero'; break; }
+          if (el.classList.contains('contact-section')) { section = 'contacto'; break; }
+          if (el.classList.contains('wa-dynamic-container')) { section = 'whatsapp-float'; break; }
+        }
+        el = el.parentNode;
+      }
+
+      var label = link.textContent.trim().substring(0, 60) || 'WhatsApp CTA';
+
+      /* GA4 event */
+      if (typeof gtag === 'function') {
+        gtag('event', 'whatsapp_click', {
+          event_category: 'conversion',
+          event_label: label,
+          section: section,
+          value: 1
+        });
+      }
+
+      /* Meta Pixel event */
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: label,
+          content_category: section
+        });
+      }
+
+      /* dataLayer push */
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'whatsapp_click',
+        whatsapp_section: section,
+        whatsapp_label: label
+      });
+    });
+  });
+
+  /* ── Form Submission Tracker ── */
+  var form = document.getElementById('contactFormDogweb');
+  if (form) {
+    form.addEventListener('submit', function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'form_submission', {
+          event_category: 'conversion',
+          event_label: 'contact_form',
+          value: 1
+        });
+      }
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'Contact Form',
+          content_category: 'contacto'
+        });
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'form_submission' });
+    });
+  }
+
+  /* ── CTA Button Tracker (pricing cards) ── */
+  var ctaButtons = document.querySelectorAll('.card-button, .btn-primary[href*="wa.me"], .btn-secondary[href*="#servicios"]');
+  ctaButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var label = btn.textContent.trim().substring(0, 60) || 'CTA';
+      if (typeof gtag === 'function') {
+        gtag('event', 'cta_click', {
+          event_category: 'engagement',
+          event_label: label,
+          value: 1
+        });
+      }
+    });
+  });
+
+  /* ── Scroll Depth Tracking ── */
+  var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+  function checkScroll() {
+    var scrollPercent = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+    Object.keys(scrollMilestones).forEach(function(milestone) {
+      if (scrollPercent >= parseInt(milestone) && !scrollMilestones[milestone]) {
+        scrollMilestones[milestone] = true;
+        if (typeof gtag === 'function') {
+          gtag('event', 'scroll_depth', {
+            event_category: 'engagement',
+            event_label: milestone + '%',
+            value: parseInt(milestone)
+          });
+        }
+      }
+    });
+  }
+  var scrollTimer;
+  window.addEventListener('scroll', function() {
+    if (scrollTimer) clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(checkScroll, 200);
+  });
+
+  /* ── Outbound Link Tracker ── */
+  var outboundLinks = document.querySelectorAll('a[href^="http"]:not([href*="dogweb.lat"]):not([href*="wa.me"]):not([href*="api.whatsapp"])');
+  outboundLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'outbound_click', {
+          event_category: 'navigation',
+          event_label: link.href,
+          transport_type: 'beacon'
+        });
+      }
+    });
+  });
+
+})();
 </script>
 </body>
 </html>
