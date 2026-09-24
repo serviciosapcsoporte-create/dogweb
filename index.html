@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -27,7 +27,9 @@
 <link rel="icon" href="logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'"> <!-- FONTS-ASYNC-DOGWEB -->
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
 
 <script type="application/ld+json">
@@ -212,6 +214,15 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 body {
   background-color: var(--bg-primary);
   color: var(--text-main);
@@ -221,27 +232,45 @@ body {
   overflow-x: hidden;
 }
 
-/* --- VIDEO BACKGROUND --- */
-#videoBg {
+/* --- VIDEO BACKGROUND (scrollytelling 5 tomas, 720p) --- */
+#video-scroll-container {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   pointer-events: none;
-  z-index: 0;
+  z-index: -2;
 }
-#videoBg video {
-  width: 100%;
-  height: 100%;
+#video-scroll-container video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
+  filter: brightness(0.6) contrast(1.1);
 }
 #videoOverlay {
   position: absolute;
   inset: 0;
-  background: var(--bg-primary);
-  opacity: 0.55;
-  transition: opacity 0.3s;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(8, 8, 12, 0.4) 0%, rgba(8, 8, 12, 0.85) 100%);
+  transition: opacity 0.4s ease;
+}
+#videoScanlines {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.3;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 4px
+  );
 }
 
 /* --- TOPBAR --- */
@@ -294,6 +323,13 @@ header {
   border-bottom: 1px solid var(--border-color);
   z-index: 100;
 }
+@media (max-width: 768px) {
+  header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(10, 11, 13, 0.97);
+  }
+}
 .nav-container {
   max-width: 1240px;
   margin: 0 auto;
@@ -331,8 +367,10 @@ nav a {
   font-weight: 500;
   transition: color 0.2s ease;
 }
-nav a:hover {
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  nav a:hover {
+    color: var(--accent);
+  }
 }
 .btn-cta {
   background-color: var(--accent);
@@ -346,53 +384,109 @@ nav a:hover {
   transition: transform 0.2s, background-color 0.2s;
   display: inline-block;
 }
-.btn-cta:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .btn-cta:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+  }
 }
 .hamb {
   display: none;
   background: none;
   border: none;
-  color: var(--text-main);
-  font-size: 1.6rem;
   cursor: pointer;
-  padding: 4px;
+  padding: 8px;
+  margin: -4px -4px -4px 0;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  z-index: 102;
 }
+.hamb span {
+  display: block;
+  width: 22px;
+  height: 2.5px;
+  background: var(--text-main);
+  border-radius: 2px;
+  margin: 5px auto;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms ease;
+}
+.hamb.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.hamb.open span:nth-child(2) { opacity: 0; }
+.hamb.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 .mobile-menu {
-  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display: flex;
   flex-direction: column;
-  background: rgba(10, 11, 13, 0.96);
+  visibility: hidden;
+  background: rgba(10, 11, 13, 0.97);
   border-bottom: 1px solid var(--border-color);
-  padding: 1rem 2rem;
-  gap: 1rem;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.45);
+  padding: 0 2rem;
+  gap: 0.15rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), max-height 220ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 220ms;
 }
 .mobile-menu.open {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 520px;
+  padding: 1rem 2rem;
+  transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1), max-height 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (min-width: 969px) {
+  .mobile-menu { display: none; }
 }
 .mobile-menu a {
+  display: block;
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.5rem 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.9rem 0;
   border-bottom: 1px solid var(--border-color);
   transition: color 0.2s;
 }
 .mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a:hover { color: var(--accent); }
+.mobile-menu a.btn-cta {
+  display: block;
+  width: 100%;
+  margin: 0.6rem 0 1rem 0;
+  text-align: center;
+  padding: 0.85rem 1rem;
+}
+@media (hover: hover) and (pointer: fine) {
+  .mobile-menu a:hover { color: var(--accent); }
+}
 
 /* --- HERO --- */
 .hero {
   position: relative;
   z-index: 1;
-  max-width: 1240px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 6.5rem 2rem 5rem 2rem;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 4rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+/* Scrollytelling: cada sección-escena ocupa al menos un viewport para dar recorrido al video */
+#hero,
+#servicios,
+#proceso,
+#blog,
+#contacto {
+  min-height: 100vh;
 }
 .hero-badge {
   display: inline-flex;
@@ -433,7 +527,7 @@ h1 span { color: var(--accent); }
 .hero-sub {
   font-size: 1.15rem;
   color: var(--text-muted);
-  margin-bottom: 2.5rem;
+  margin: 0 auto 2.5rem auto;
   max-width: 580px;
 }
 .hero-sub strong { color: var(--text-main); }
@@ -452,9 +546,11 @@ h1 span { color: var(--accent); }
   text-decoration: none;
   transition: transform 0.2s, background-color 0.2s;
 }
-.btn-primary:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+  }
 }
 .btn-secondary {
   background-color: transparent;
@@ -466,10 +562,12 @@ h1 span { color: var(--accent); }
   text-decoration: none;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
-.btn-secondary:hover {
-  background-color: var(--text-main);
-  color: #000;
-  border-color: var(--text-main);
+@media (hover: hover) and (pointer: fine) {
+  .btn-secondary:hover {
+    background-color: var(--text-main);
+    color: #000;
+    border-color: var(--text-main);
+  }
 }
 .hero-stats {
   display: flex;
@@ -488,24 +586,6 @@ h1 span { color: var(--accent); }
   font-size: 0.85rem;
   color: var(--text-muted);
   margin: 0.2rem 0 0 0;
-}
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.circle-glow {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(255, 209, 0, 0.12) 0%, rgba(10, 11, 13, 0) 70%);
-  position: absolute;
-  z-index: 1;
-}
-.hero-visual svg {
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.5));
 }
 
 /* === SECCIONES CLARAS (estilo artifact) === */
@@ -561,10 +641,12 @@ h1 span { color: var(--accent); }
   gap: 0.75rem;
   transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
-.svc-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(15, 44, 89, 0.25);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+@media (hover: hover) and (pointer: fine) {
+  .svc-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(15, 44, 89, 0.25);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  }
 }
 .svc-icon {
   width: 46px;
@@ -634,6 +716,7 @@ h1 span { color: var(--accent); }
   margin-bottom: 1rem;
 }
 .section-header h2 span { color: var(--accent); }
+.blog-section .section-header h2 { color: var(--light-text); }
 .section-header p {
   color: var(--text-muted);
   font-size: 1.1rem;
@@ -658,11 +741,13 @@ h1 span { color: var(--accent); }
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.tab:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .tab:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 }
 .tab.active {
   background-color: var(--accent);
@@ -694,10 +779,12 @@ h1 span { color: var(--accent); }
   position: relative;
   transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
-.card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255, 209, 0, 0.4);
-  box-shadow: 0 10px 30px var(--card-glow);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 209, 0, 0.4);
+    box-shadow: 0 10px 30px var(--card-glow);
+  }
 }
 .card.featured {
   border-color: var(--accent);
@@ -793,13 +880,17 @@ h1 span { color: var(--accent); }
   color: #000;
   border: none;
 }
-.card.featured .card-button:hover {
-  background-color: var(--accent-hover);
+@media (hover: hover) and (pointer: fine) {
+  .card.featured .card-button:hover {
+    background-color: var(--accent-hover);
+  }
 }
-.card:not(.featured) .card-button:hover {
-  background-color: var(--text-main);
-  color: #000;
-  border-color: var(--text-main);
+@media (hover: hover) and (pointer: fine) {
+  .card:not(.featured) .card-button:hover {
+    background-color: var(--text-main);
+    color: #000;
+    border-color: var(--text-main);
+  }
 }
 .single-plan {
   background-color: var(--bg-primary);
@@ -903,9 +994,11 @@ h1 span { color: var(--accent); }
   transition: background 0.2s, color 0.2s;
   display: block;
 }
-.resource-links a:hover {
-  background: rgba(255, 209, 0, 0.06);
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .resource-links a:hover {
+    background: rgba(255, 209, 0, 0.06);
+    color: var(--accent);
+  }
 }
 
 /* --- PROCESS (light) --- */
@@ -935,9 +1028,11 @@ h1 span { color: var(--accent); }
   padding: 1.75rem;
   transition: transform 0.25s, box-shadow 0.25s;
 }
-.process-step:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+@media (hover: hover) and (pointer: fine) {
+  .process-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  }
 }
 .step-number {
   font-family: 'Rajdhani', 'Inter', sans-serif;
@@ -994,7 +1089,9 @@ h1 span { color: var(--accent); }
   gap: 8px;
   transition: gap 0.2s;
 }
-.infra-link:hover { gap: 12px; }
+@media (hover: hover) and (pointer: fine) {
+  .infra-link:hover { gap: 12px; }
+}
 .banner-wrap {
   position: relative;
   z-index: 1;
@@ -1066,16 +1163,78 @@ h1 span { color: var(--accent); }
   gap: 8px;
   transition: gap 0.2s;
 }
-.blog-link:hover { gap: 12px; }
+@media (hover: hover) and (pointer: fine) {
+  .blog-link:hover { gap: 12px; }
+}
 .blog-emoji {
   font-size: 3.2rem;
   text-align: center;
   line-height: 1;
 }
+.blog-grid {
+  max-width: 1240px;
+  margin: 1.6rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.blog-card {
+  background: #ffffff;
+  border: 1px solid var(--light-border);
+  border-radius: 12px;
+  padding: 1.3rem 1.4rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .blog-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px rgba(15, 44, 89, 0.12);
+  }
+}
+.blog-card-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--light-text);
+  line-height: 1.3;
+}
+.blog-card-meta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--light-muted);
+}
 @media (max-width: 768px) {
   .blog-featured { grid-template-columns: 1fr; padding: 2rem; }
   .blog-emoji { text-align: left; }
+  .blog-grid { grid-template-columns: 1fr; }
 }
+
+/* --- REVEAL ON SCROLL (grids) --- */
+.svc-card, .card, .process-step, .blog-card { opacity: 0; }
+.svc-card.is-in, .card.is-in, .process-step.is-in, .blog-card.is-in {
+  opacity: 1;
+  animation: riseIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.svc-grid > :nth-child(1), .pricing-grid > :nth-child(1),
+.process-grid > :nth-child(1), .blog-grid > :nth-child(1) { --i: 1; }
+.svc-grid > :nth-child(2), .pricing-grid > :nth-child(2),
+.process-grid > :nth-child(2), .blog-grid > :nth-child(2) { --i: 2; }
+.svc-grid > :nth-child(3), .pricing-grid > :nth-child(3),
+.process-grid > :nth-child(3), .blog-grid > :nth-child(3) { --i: 3; }
+.svc-grid > :nth-child(4), .process-grid > :nth-child(4) { --i: 4; }
+.svc-grid > :nth-child(5) { --i: 5; }
 
 /* --- CONTACT (dark) --- */
 .contact-section {
@@ -1125,7 +1284,9 @@ h1 span { color: var(--accent); }
   text-decoration: none;
   line-height: 1.7;
 }
-.info-block a:hover { color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+  .info-block a:hover { color: var(--accent); }
+}
 .social-links {
   display: flex;
   gap: 0.8rem;
@@ -1140,35 +1301,14 @@ h1 span { color: var(--accent); }
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
-  transition: all 0.2s;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.social-links a:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(255, 209, 0, 0.06);
-}
-.contact-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background-color: #25d366;
-  color: white;
-  text-decoration: none;
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.contact-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25);
-}
-.contact-note {
-  display: block;
-  margin-top: 1rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
+@media (hover: hover) and (pointer: fine) {
+  .social-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(255, 209, 0, 0.06);
+  }
 }
 .contact-right {
   display: flex;
@@ -1261,7 +1401,9 @@ h1 span { color: var(--accent); }
   gap: 0.5rem;
   transition: background 0.2s;
 }
-.contact-form-btn:hover { background: var(--accent-hover); }
+@media (hover: hover) and (pointer: fine) {
+  .contact-form-btn:hover { background: var(--accent-hover); }
+}
 .contact-form-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .form-status {
   font-size: 0.75rem;
@@ -1303,7 +1445,9 @@ footer {
   text-decoration: none;
   transition: color 0.2s;
 }
-.footer-links a:hover { color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+  .footer-links a:hover { color: var(--accent); }
+}
 
 /* --- SOCIAL FLOAT --- */
 .social-float {
@@ -1329,20 +1473,24 @@ footer {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s, color 0.2s, border-color 0.2s;
 }
-.social-float a:hover {
-  transform: scale(1.1);
-  color: var(--accent);
-  border-color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .social-float a:hover {
+    transform: scale(1.1);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
 }
 .social-float a.social-wa {
   background: #25d366;
   color: #fff;
   border-color: #25d366;
 }
-.social-float a.social-wa:hover {
-  color: #fff;
-  border-color: #1ebe5d;
-  background: #1ebe5d;
+@media (hover: hover) and (pointer: fine) {
+  .social-float a.social-wa:hover {
+    color: #fff;
+    border-color: #1ebe5d;
+    background: #1ebe5d;
+  }
 }
 @media (max-width: 600px) {
   .social-float { bottom: 16px; right: 16px; left: auto; gap: 10px; }
@@ -1352,16 +1500,11 @@ footer {
 /* --- RESPONSIVE --- */
 @media (max-width: 968px) {
   .hero {
-    grid-template-columns: 1fr;
     padding-top: 5rem;
     gap: 2rem;
-    text-align: center;
   }
-  .hero-sub { margin: 0 auto 2.5rem auto; }
   .hero-btns { justify-content: center; }
   .hero-stats { justify-content: center; }
-  .hero-visual { order: -1; }
-  .hero-visual svg { width: 160px; height: 160px; }
   nav ul { display: none; }
   .hamb { display: block; }
   h1 { font-size: 2.5rem; }
@@ -1385,6 +1528,221 @@ footer {
   .stat-item h3 { font-size: 1.6rem; }
   .process-container { padding: 4rem 1rem; }
 }
+
+/* === OVERRIDE: video fondo fijo + glassmorphism sobre video (5 tomas 720p) === */
+.section-light,
+.section-pricing,
+.process-section,
+.banner-wrap,
+.blog-section,
+.contact-section,
+footer {
+  background-color: transparent;
+}
+/* secciones claras: texto claro para legibilidad sobre video oscuro */
+.section-light,
+.process-section,
+.blog-section {
+  color: var(--text-main);
+}
+.section-light h2,
+.process-section .section-head-light h2 {
+  color: var(--text-main);
+}
+.section-light h2 em { color: var(--accent); }
+.section-head-light p,
+.process-container .section-head-light p {
+  color: var(--text-muted);
+}
+.blog-section .section-header h2 { color: var(--text-main); }
+.section-eyebrow { color: #ffd100; }
+
+/* tarjetas/resúmenes → glass */
+.svc-card,
+.process-step,
+.blog-card,
+.single-plan {
+  background: rgba(15, 44, 89, 0.45);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-color: rgba(255, 209, 0, 0.12);
+}
+.svc-card h3,
+.process-step h3,
+.blog-card-title {
+  color: var(--text-main);
+}
+.svc-card p,
+.process-step p,
+.blog-card-meta {
+  color: var(--text-muted);
+}
+.step-number { color: rgba(255, 209, 0, 0.3); }
+.svc-meta { border-top-color: rgba(255, 209, 0, 0.14); }
+.svc-price { color: #ffd100; }
+.svc-badge {
+  background: rgba(255, 209, 0, 0.1);
+  color: #ffd100;
+  border-color: rgba(255, 209, 0, 0.25);
+}
+.svc-icon {
+  background: linear-gradient(135deg, rgba(15, 44, 89, 0.9), rgba(15, 23, 42, 0.9));
+}
+.process-step { border-color: rgba(255, 209, 0, 0.12); }
+.blog-card { border-color: rgba(255, 209, 0, 0.12); }
+
+/* pricing/contacto/form/horarios → glass sobre video */
+.card,
+.hours-block,
+.contact-form-box {
+  background: rgba(15, 44, 89, 0.45);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.contact-map {
+  background: rgba(15, 44, 89, 0.3);
+  border-color: rgba(255, 209, 0, 0.12);
+}
+/* secciones que tenían borde de contraste: más sutil sobre video */
+.section-pricing,
+.contact-section {
+  border-color: rgba(255, 209, 0, 0.08);
+}
+footer { border-color: rgba(255, 209, 0, 0.08); }
+/* contenedores de texto interno transparentes (info blocks, footer) */
+.hours-block p,
+.info-block p,
+.info-block a,
+footer,
+.footer-info,
+.footer-links a { color: var(--text-muted); }
+
+/* glassmorphism dentro de zonas de sección clara: dejar pasar video */
+.light-container,
+.process-container,
+.section-head-light { background: transparent; }
+
+/* moviles: sin backdrop-filter, fondo más opaco para legibilidad */
+@media (max-width: 768px) {
+  .svc-card, .process-step, .blog-card, .card, .single-plan, .hours-block, .contact-form-box {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(10, 11, 13, 0.82);
+  }
+}
+
+/* reduced motion: video pausado + poster estático, sin scrubbing */
+@media (prefers-reduced-motion: reduce) {
+  #video-scroll-container video { display: none; }
+  #video-scroll-container {
+    background-image: url("assets/hero-poster.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  #videoOverlay,
+  #videoScanlines { display: block; }
+}
+
+/* === CTA DINAMICO WHATSAPP (badge live + radar + hover 3D) === */
+.wa-dynamic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+  width: 100%;
+}
+.wa-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.42rem 1.05rem;
+  border-radius: 999px;
+  background: rgba(11, 20, 26, 0.55);
+  border: 1px solid rgba(37, 211, 102, 0.42);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.wa-ping-dot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #25d366;
+  flex: 0 0 auto;
+}
+.wa-ping-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #25d366;
+  animation: waPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes waPing {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+.wa-status-text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #d1fae5;
+  white-space: nowrap;
+}
+.wa-button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.wa-radar-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(37, 211, 102, 0.5);
+  border-radius: 16px;
+  animation: waRadar 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+@keyframes waRadar {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+.wa-btn-dynamic {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #25d366;
+  color: #0b141a;
+  text-decoration: none;
+  padding: 1rem 1.9rem;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  transition: transform 0.22s ease-out, box-shadow 0.22s ease-out;
+}
+.wa-icon { flex: 0 0 auto; }
+.wa-arrow {
+  display: inline-flex;
+  margin-left: 0.2rem;
+  transition: transform 0.22s ease-out;
+}
+@media (hover: hover) and (pointer: fine) {
+  .wa-btn-dynamic:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 35px rgba(37, 211, 102, 0.7), 0 10px 30px rgba(37, 211, 102, 0.35);
+  }
+  .wa-btn-dynamic:hover .wa-arrow { transform: translateX(6px); }
+}
+.contact-left .wa-dynamic-container { align-items: flex-start; }
+@media (max-width: 480px) {
+  .wa-status-text { font-size: 0.65rem; letter-spacing: 0.06em; white-space: normal; text-align: center; }
+  .wa-btn-dynamic { padding: 0.9rem 1.5rem; font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-ping-dot::after, .wa-radar-ring { animation: none; opacity: 0.55; }
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWFDLTCM8R"></script>
@@ -1397,12 +1755,11 @@ footer {
 </head>
 <body>
 
-<!-- VIDEO BACKGROUND -->
-<div id="videoBg" aria-hidden="true">
-  <video poster="og-image.png" autoplay muted loop playsinline preload="auto">
-    <source src="Buscando Clientes-opt.mp4" type="video/mp4">
-  </video>
+<!-- VIDEO BACKGROUND (contenedor 5 tomas, fondo fijo) -->
+<div id="video-scroll-container" aria-hidden="true">
+  <video poster="assets/hero-poster.jpg" id="bg-scroll-video" src="assets/hero-bg.mp4" muted playsinline preload="auto"></video>
   <div id="videoOverlay"></div>
+  <div id="videoScanlines"></div>
 </div>
 
 <!-- TOPBAR -->
@@ -1427,22 +1784,26 @@ footer {
       <ul>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#blog">Blog</a></li>
         <li><a href="#contacto">Contacto</a></li>
-        <li><a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" class="btn-cta" target="_blank">Hablar ahora</a></li>
+        <li><a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" class="btn-cta" target="_blank" rel="noopener noreferrer">Hablar ahora</a></li>
       </ul>
     </nav>
-    <button class="hamb" id="hambBtn" aria-label="Menú">☰</button>
+    <button class="hamb" id="hambBtn" aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false" aria-haspopup="true">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#servicios" onclick="closeMenu()">Servicios</a>
+    <a href="#proceso" onclick="closeMenu()">Proceso</a>
+    <a href="#blog" onclick="closeMenu()">Blog</a>
+    <a href="#contacto" onclick="closeMenu()">Contacto</a>
+    <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" class="btn-cta" target="_blank" style="text-align:center;" onclick="closeMenu()" rel="noopener noreferrer">Hablar ahora</a>
   </div>
 </header>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#servicios" onclick="closeMenu()">Servicios</a>
-  <a href="#proceso" onclick="closeMenu()">Proceso</a>
-  <a href="#contacto" onclick="closeMenu()">Contacto</a>
-  <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" class="btn-cta" target="_blank" style="text-align:center;">Hablar ahora</a>
-</div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-content">
     <span class="hero-badge">Marketing digital · Páginas web · IA · LATAM</span>
     <span class="tagline">Rastreamos clientes para su negocio</span>
@@ -1450,7 +1811,7 @@ footer {
     <p class="hero-sub">Nos llamamos DogWeb porque rastreamos oportunidades en el mercado como un sabueso. <strong>Páginas web, automatización con IA y contenido</strong> — todo lo que su negocio necesita para aparecer, atraer y vender en Google.</p>
     <div class="hero-btns">
       <a href="#servicios" class="btn-primary">Ver todos los servicios</a>
-      <a href="https://wa.me/573337450634" class="btn-secondary" target="_blank">Hablar con Alejandro</a>
+      <a href="https://wa.me/573337450634" class="btn-secondary" target="_blank" rel="noopener noreferrer">Hablar con Alejandro</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -1466,38 +1827,6 @@ footer {
         <p>Modalidad urgente</p>
       </div>
     </div>
-  </div>
-  <div class="hero-visual">
-    <div class="circle-glow"></div>
-    <svg width="220" height="220" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,209,0,0.08)" stroke-width="1"/>
-      <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(255,209,0,0.05)" stroke-width="1"/>
-      <!-- Dog head -->
-      <path d="M55 85 C55 65, 75 45, 95 42 C105 40, 118 42, 125 48 C132 42, 148 42, 152 55 C156 68, 145 80, 138 85 L135 88 C140 95, 142 105, 140 115 C137 130, 125 142, 110 145 C100 147, 88 145, 80 138 C70 128, 55 115, 55 95 Z" fill="#ffd100" opacity="0.9"/>
-      <!-- Ears -->
-      <path d="M75 55 C65 35, 50 30, 42 40 C35 50, 42 65, 55 72" fill="#e6bd00" opacity="0.7"/>
-      <path d="M135 55 C145 35, 160 30, 168 40 C175 50, 168 65, 155 72" fill="#e6bd00" opacity="0.7"/>
-      <!-- Eyes -->
-      <circle cx="88" cy="78" r="5" fill="#0a0b0d"/>
-      <circle cx="122" cy="78" r="5" fill="#0a0b0d"/>
-      <circle cx="89.5" cy="76.5" r="1.5" fill="#fff"/>
-      <circle cx="123.5" cy="76.5" r="1.5" fill="#fff"/>
-      <!-- Nose -->
-      <ellipse cx="105" cy="98" rx="7" ry="5" fill="#0a0b0d"/>
-      <ellipse cx="105" cy="97" rx="2" ry="1" fill="#333" opacity="0.5"/>
-      <!-- Mouth -->
-      <path d="M98 103 Q105 112 112 103" stroke="#0a0b0d" stroke-width="1.5" fill="none"/>
-      <!-- Collar -->
-      <path d="M72 120 Q105 135 138 120" stroke="#ffd100" stroke-width="3" fill="none" opacity="0.5"/>
-      <circle cx="105" cy="130" r="4" fill="#ffd100" opacity="0.6"/>
-      <!-- Tech dots -->
-      <circle cx="60" cy="60" r="2" fill="#ffd100" opacity="0.3"/>
-      <circle cx="150" cy="60" r="2" fill="#ffd100" opacity="0.3"/>
-      <circle cx="45" cy="100" r="1.5" fill="#ffd100" opacity="0.2"/>
-      <circle cx="165" cy="100" r="1.5" fill="#ffd100" opacity="0.2"/>
-      <circle cx="70" cy="140" r="1.5" fill="#ffd100" opacity="0.2"/>
-      <circle cx="140" cy="145" r="1.5" fill="#ffd100" opacity="0.2"/>
-    </svg>
   </div>
 </section>
 
@@ -1581,7 +1910,7 @@ footer {
           <li>Hasta 5 PDFs estáticos</li>
           <li>Entrega en 72 horas</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Presencial%20B%C3%A1sica" class="card-button" target="_blank">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Presencial%20B%C3%A1sica" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
       <div class="card featured">
         <span class="badge-popular">Más solicitado</span>
@@ -1599,7 +1928,7 @@ footer {
           <li>Estructura modular escalable</li>
           <li>Entrega en 5 días hábiles</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Corporativa" class="card-button" target="_blank">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Corporativa" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
       <div class="card">
         <span class="plan-code">APC-WEB-03</span>
@@ -1616,7 +1945,7 @@ footer {
           <li>Optimización SEO técnica</li>
           <li>Entrega en 10 días hábiles</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Avanzada" class="card-button" target="_blank">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Avanzada" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
     </div>
   </div>
@@ -1637,7 +1966,7 @@ footer {
           <li>Respuestas a preguntas frecuentes</li>
           <li>Envío automático de catálogos/PDFs</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20B%C3%A1sica" class="card-button" target="_blank">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20B%C3%A1sica" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
       <div class="card featured">
         <span class="badge-popular">Más solicitado</span>
@@ -1654,7 +1983,7 @@ footer {
           <li>IA con identidad personalizada (OpenAI)</li>
           <li>Conversación natural en español</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20Intermedia" class="card-button" target="_blank">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20Intermedia" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
       <div class="card">
         <span class="plan-code">APC-IA-03</span>
@@ -1670,7 +1999,7 @@ footer {
           <li>Pasarelas de pago integradas</li>
           <li>Agendamiento en Google Calendar</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20Avanzada" class="card-button" target="_blank">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20Avanzada" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
     </div>
 
@@ -1754,7 +2083,7 @@ footer {
         <li>Integración con su sistema operativo local</li>
         <li>Implementación de IA para calificar contactos</li>
       </ul>
-      <a href="https://wa.me/573337450634?text=Quiero%20informaci%C3%B3n%20de%20la%20Campa%C3%B1a%20Ads%20y%20Prospecci%C3%B3n%20Digital" class="card-button" target="_blank" style="margin-top:1.25rem;">Quiero este plan</a>
+      <a href="https://wa.me/573337450634?text=Quiero%20informaci%C3%B3n%20de%20la%20Campa%C3%B1a%20Ads%20y%20Prospecci%C3%B3n%20Digital" class="card-button" target="_blank" style="margin-top:1.25rem;" rel="noopener noreferrer">Quiero este plan</a>
     </div>
     <p class="extra-note" style="max-width:1240px;margin-left:auto;margin-right:auto;text-align:center;">💡 Este servicio se potencia al combinarlo con un plan de <strong>IA en WhatsApp</strong> — pregúntenos por combos.</p>
   </div>
@@ -1776,7 +2105,7 @@ footer {
           <li>Cambio de imágenes y precios</li>
           <li>Máximo 4 cambios al mes</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20de%20mantenimiento%20web" class="card-button" target="_blank">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20de%20mantenimiento%20web" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
       <div class="card">
         <span class="plan-code">APC-SOP-01 / 02</span>
@@ -1791,7 +2120,7 @@ footer {
           <li>Corrección de alucinaciones</li>
           <li><strong style="color:var(--text-main);">Avanzado $400.000:</strong> anti-inyección, seguridad API, anti-bucle</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20soporte%20mensual%20para%20mi%20bot%20de%20WhatsApp" class="card-button" target="_blank">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20soporte%20mensual%20para%20mi%20bot%20de%20WhatsApp" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
     </div>
   </div>
@@ -1834,35 +2163,52 @@ footer {
   <div class="infra-banner">
     <div class="infra-text">
       <h3>¿Necesita cámaras, control de personal o instalar IA en su operación?</h3>
-      <p>Son soluciones de tecnología e inteligencia artificial: cámaras con visión IA, automatización y análisis para el crecimiento de su negocio. Las encuentra en Servicios APC.</p>
+      <p>Son soluciones de tecnología e inteligencia artificial: cámaras con visión IA, automatización y análisis para el crecimiento de su negocio. Descarga tu Plantilla KPI gratis y agenda tu diagnóstico.</p>
     </div>
-    <a href="https://serviciosapc.site" class="infra-link" target="_blank">Ir a serviciosapc.site →</a>
+    <a href="camaras-ia-bogota.html" class="infra-link" target="_blank">Ir a cámaras IA →</a>
   </div>
 </div>
 
 <!-- BLOG RECOMENDADO -->
-<section class="blog-section">
+<section class="blog-section" id="blog">
   <div class="section-header">
     <span class="section-eyebrow">Blog recomendado</span>
-    <h2>Aprenda lo que su negocio <span>necesita para crecer</span></h2>
-    <p>El ecosistema completo: cámaras con IA, prospectos, marca, WhatsApp y datos.</p>
+    <h2>Aprenda lo que su negocio necesita para crecer</h2>
+    <p>Optimización web, IA en WhatsApp, posicionamiento local y ventas con datos.</p>
   </div>
   <div class="blog-featured">
     <div>
       <span class="blog-badge">Nuevo artículo</span>
-      <h3>Cámaras de seguridad con IA en Bogotá: y todo lo que su negocio necesita para crecer</h3>
-      <p>Cómo instalar cámaras con visión IA (YOLO), conseguir prospectos con SEO, crear su marca, atender y facturar por WhatsApp, y medir todo con paneles de KPI donde la IA es asistente en cada cargo.</p>
-      <a class="blog-link" href="blog/camaras-seguridad-ia-bogota.html">Leer el artículo →</a>
+      <h3>SEO Local para aumentar las ventas: web rápida, WhatsApp con IA y visión YOLO como datos</h3>
+      <p>Cómo el SEO local, una web rápida, un WhatsApp con IA y la visión YOLO trabajan juntos para convertir datos en clientes, con un plan de 72 horas accionable.</p>
+      <a class="blog-link" href="blog/seo-local-aumentar-ventas-vision-yolo-whatsapp-ia.html">Leer el artículo →</a>
     </div>
     <div class="blog-emoji">📘</div>
   </div>
+  <div class="blog-grid">
+    <a href="blog/incrementar-ventas-7-acciones-bajo-costo.html" class="blog-card">
+      <span class="blog-card-title">Incrementar ventas: 7 acciones de bajo costo</span>
+      <span class="blog-card-meta">29 de septiembre · Ventas</span>
+    </a>
+    <a href="blog/google-business-profile-posicionamiento-local.html" class="blog-card">
+      <span class="blog-card-title">Posicionamiento en Google Business Profile</span>
+      <span class="blog-card-meta">24 de septiembre · SEO local</span>
+    </a>
+    <a href="blog/plan-accion-incrementar-ventas-30-dias.html" class="blog-card">
+      <span class="blog-card-title">Plan de acción para incrementar ventas en 30 días</span>
+      <span class="blog-card-meta">22 de septiembre · Ventas</span>
+    </a>
+  </div>
+  <p style="text-align:center;margin-top:1.4rem;">
+    <a class="blog-link" href="blog.html">Ver todos los artículos del blog →</a>
+  </p>
 </section>
 
 <!-- COBERTURA INTERNACIONAL -->
 <section class="blog-section">
   <div class="section-header">
     <span class="section-eyebrow">Cobertura internacional</span>
-    <h2>Su negocio <span>en toda Latinoamérica</span></h2>
+    <h2>Su negocio en toda Latinoamérica</h2>
     <p>Precios fijos en dólares (USD) y servicio remoto con atención directa de Alejandro Piraquive. Elija su país, ciudad o industria.</p>
   </div>
   <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;padding:0 24px;">
@@ -1878,7 +2224,7 @@ footer {
   </div>
   <div class="section-header" style="margin-top:3.5rem;">
     <span class="section-eyebrow">Por industria</span>
-    <h2>Soluciones para <span>su sector</span></h2>
+    <h2>Soluciones para su sector</h2>
   </div>
   <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;padding:0 24px;">
     <a href="marketing-digital-para-restaurantes.html" style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;padding:18px;text-decoration:none;color:var(--text-main);">🍽️ <strong style="display:block;color:var(--accent);margin-top:6px;">Marketing para restaurantes</strong> Carta digital y pedidos por WhatsApp</a>
@@ -1924,11 +2270,8 @@ footer {
         </div>
       </div>
 
-      <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" class="contact-btn" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.505 5.264l-.999 3.648 3.984-1.042zm11.387-5.309c-.214-.12-1.264-.634-1.461-.708-.197-.073-.34-.11-.483.11-.143.22-.549.708-.672.854-.124.145-.247.163-.46.055-.214-.11-.903-.333-1.72-1.06-.636-.566-1.066-1.265-.19-1.265-.124 0-.266-.018-.408-.048-.142-.03-.386-.145-.587-.27-.201-.125-.359-.258-.493-.582-.134-.324-.027-.562.066-.744.094-.18.408-.705.561-1.17z"/></svg>
-        Hablar por WhatsApp
-      </a>
-      <span class="contact-note">Atención directa con Alejandro Piraquive · Sin bots, sin intermediarios molestos.</span>
+      <div class="wa-dynamic-container"><div class="wa-status-badge"><span class="wa-ping-dot"></span><span class="wa-status-text">SISTEMA IA // RESPUESTA EN &lt; 5 MINUTOS</span></div><div class="wa-button-wrapper"><div class="wa-radar-ring"></div><a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="wa-btn-dynamic"><svg class="wa-icon" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.505 5.264l-.999 3.648 3.984-1.042zm11.387-5.309c-.214-.12-1.264-.634-1.461-.708-.197-.073-.34-.11-.483.11-.143.22-.549.708-.672.854-.124.145-.247.163-.46.055-.214-.11-.903-.333-1.72-1.06-.636-.566-1.066-1.265-.19-1.265-.124 0-.266-.018-.408-.048-.142-.03-.386-.145-.587-.27-.201-.125-.359-.258-.493-.582-.134-.324-.027-.562.066-.744.094-.18.408-.705.561-1.17z"/></svg><span>Hablar por WhatsApp</span><span class="wa-arrow" aria-hidden="true">→</span></a></div></div>
+      
     </div>
 
     <div class="contact-right">
@@ -2038,26 +2381,145 @@ function showTab(id, btn) {
 }
 var hamb = document.getElementById('hambBtn');
 var mm = document.getElementById('mobileMenu');
+function toggleMenu(force) {
+  var open = typeof force === 'boolean' ? force : !mm.classList.contains('open');
+  mm.classList.toggle('open', open);
+  hamb.classList.toggle('open', open);
+  hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
+  hamb.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+}
 if (hamb && mm) {
-  hamb.onclick = function() {
-    mm.classList.toggle('open');
-    hamb.textContent = mm.classList.contains('open') ? '✕' : '☰';
-  };
+  hamb.onclick = function() { toggleMenu(); };
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mm.classList.contains('open')) {
+      toggleMenu(false);
+      hamb.focus();
+    }
+  });
+  document.addEventListener('click', function(e) {
+    if (mm.classList.contains('open') && !mm.contains(e.target) && !hamb.contains(e.target)) {
+      toggleMenu(false);
+    }
+  });
+  window.matchMedia('(min-width: 969px)').addEventListener('change', function(mq) {
+    if (mq.matches && mm.classList.contains('open')) toggleMenu(false);
+  });
 }
 function closeMenu() {
-  if (mm) mm.classList.remove('open');
-  if (hamb) hamb.textContent = '☰';
+  if (mm) toggleMenu(false);
 }
 var overlay = document.getElementById('videoOverlay');
-if (overlay) {
-  function updateOverlay() {
-    var p = Math.min(window.scrollY / window.innerHeight, 1);
-    overlay.style.opacity = 0.55 + (0.45 * p);
+var sceneVideo = document.getElementById('bg-scroll-video');
+var bgContainer = document.getElementById('video-scroll-container');
+/* SCROLL-SCRUBBING: 5 escenas sincronizadas con las 5 secciones (H1..H5) */
+(function () {
+  if (!sceneVideo || !bgContainer) return;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) { sceneVideo.pause(); return; }
+
+  // Secciones en orden de documento; cada tramo de scroll = una escena del video
+  var SCENES = ['hero', 'servicios', 'proceso', 'blog', 'contacto'];
+  // Fracción del video al inicio/cierre de cada tramo (0-20%, 20-40%, 40-60%, 60-80%, 80-100%)
+  var VIDEO_FRAC = [0, 0.2, 0.4, 0.6, 0.8, 1];
+  var videoDuration = 50;
+  var sceneTops = [-1, -1, -1, -1, -1];
+  var targetTime = 0;
+  var currentTime = 0;
+  var rafId = null;
+  var lastScrollAt = 0;
+
+  function computeTops() {
+    for (var i = 0; i < SCENES.length; i++) {
+      var el = document.getElementById(SCENES[i]);
+      sceneTops[i] = el ? (el.getBoundingClientRect().top + window.pageYOffset) : -1;
+    }
   }
-  window.addEventListener('scroll', updateOverlay, { passive: true });
-  updateOverlay();
-}
+
+  function maxScroll() {
+    return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  }
+
+  function update() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var m = maxScroll();
+    if (m <= 0) { targetTime = 0; return; }
+    var frac;
+    if (y <= 0) frac = 0;
+    else if (y >= m) frac = 1;
+    else {
+      // Tramo k: arranca en top de sección k (hero=0) y cierra en top de sección k+1 (contacto=cénit del scroll)
+      var seg = -1;
+      for (var k = 0; k < 5; k++) {
+        var from = k === 0 ? 0 : Math.max(0, sceneTops[k]);
+        var to = k === 4 ? m : Math.max(from + 1, sceneTops[k + 1]);
+        if (y >= from && y < to) { seg = k; break; }
+      }
+      if (seg === -1) seg = 4;
+      var from = seg === 0 ? 0 : Math.max(0, sceneTops[seg]);
+      var to = seg === 4 ? m : Math.max(from + 1, sceneTops[seg + 1]);
+      var f = (y - from) / Math.max(1, to - from);
+      f = Math.max(0, Math.min(1, f));
+      frac = VIDEO_FRAC[seg] + (VIDEO_FRAC[seg + 1] - VIDEO_FRAC[seg]) * f;
+    }
+    targetTime = frac * videoDuration;
+    lastScrollAt = Date.now();
+  }
+
+  function render() {
+    // LERP: suaviza tirones en scroll rápido (0.1 = retardo de seguimiento)
+    // Cuando el scroll se detiene (>120 ms sin updates) aterriza EXACTO en el frame objetivo
+    var snap = Date.now() - lastScrollAt > 120;
+    currentTime += (targetTime - currentTime) * (snap ? 1 : 0.1);
+    if (Math.abs(targetTime - currentTime) > 0.001) {
+      try { sceneVideo.currentTime = currentTime; } catch (e) {}
+    }
+    rafId = requestAnimationFrame(render);
+  }
+
+  function onReady() {
+    videoDuration = (sceneVideo.duration && isFinite(sceneVideo.duration)) ? sceneVideo.duration : 50;
+    sceneVideo.pause();
+    sceneVideo.currentTime = 0;
+    computeTops();
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', computeTops, { passive: true });
+    window.addEventListener('load', computeTops, { passive: true });
+    if (rafId === null) rafId = requestAnimationFrame(render);
+  }
+
+  if (sceneVideo.readyState >= 1 && sceneVideo.duration) onReady();
+  else sceneVideo.addEventListener('loadedmetadata', onReady, { once: true });
+})();
+</script>
+<script>
+/* REVEAL-ON-SCROLL (Agente 3D) */
+(function () {
+  var els = document.querySelectorAll('.svc-card, .card, .process-step, .blog-card');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) {
+        en.target.classList.add('is-in');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function (el) { io.observe(el); });
+})();
 </script>
 <script src="chat/cristal-loader.js"></script>
+
+<script>
+/* SW-REGISTER-DOGWEB */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function(e) { console.warn('SW not registered', e); });
+  });
+}
+</script>
 </body>
 </html>
