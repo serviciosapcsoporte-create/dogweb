@@ -37,33 +37,21 @@
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://dogweb.lat/#business",
   "name": "DogWeb",
   "description": "Marketing digital, páginas web, IA en WhatsApp y contenido digital. Rastreamos clientes para su negocio.",
   "url": "https://dogweb.lat",
   "logo": "https://dogweb.lat/logo.png",
-  "image": "https://dogweb.lat/logo.png",
+  "image": [
+    "https://dogweb.lat/og-image.png",
+    "https://dogweb.lat/logo.png"
+  ],
   "telephone": "+57-333-745-0634",
   "email": "serviciosapcsoporte@gmail.com",
-  "priceRange": "$800,000 - $3,000,000 COP (≈ US$200 - US$750)",
-  "areaServed": ["Colombia", "Panamá", "Puerto Rico", "Ecuador", "México", "LATAM"],
-  "sameAs": [
-    "https://www.facebook.com/alejandropiraquiveapc",
-    "https://www.instagram.com/serviciosapc",
-    "https://www.linkedin.com/in/alejandropiraquive/"
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Cra. 52c #39b-22",
-    "addressLocality": "Bogotá",
-    "addressCountry": "CO"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+57-333-745-0634",
-    "contactType": "sales",
-    "areaServed": "CO",
-    "availableLanguage": ["Spanish"]
-  },
+  "priceRange": "$$",
+  "currenciesAccepted": "COP, USD",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer, Nequi, Daviplata",
+  "areaServed": ["Colombia", "Panamá", "Puerto Rico", "Ecuador", "México"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Servicios DogWeb",
@@ -72,11 +60,8 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "@id": "https://dogweb.lat/#servicios",
           "name": "Páginas Web",
-          "description": "Desarrollo web profesional incluyendo landing pages, sitios dinámicos con Elementor, y sitios web avanzados con automatización y SEO técnico.",
-          "category": "https://schema.org/WebSite",
-          "areaServed": "Colombia, Panamá y Ecuador",
+          "description": "Desarrollo web profesional: landing pages, sitios dinámicos con Elementor, y sitios avanzados con automatización y SEO técnico.",
           "url": "https://dogweb.lat/#servicios",
           "offers": {
             "@type": "Offer",
@@ -84,6 +69,7 @@
               "@type": "PriceSpecification",
               "priceCurrency": "COP",
               "price": 800000,
+              "minPrice": 800000,
               "description": "Desde $800,000 COP (≈ US$200)"
             }
           }
@@ -93,11 +79,8 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "@id": "https://dogweb.lat/#servicios",
           "name": "IA en WhatsApp",
-          "description": "Automatización de respuestas, atención al cliente con IA, registro de pedidos en tiempo real, y chatbots avanzados.",
-          "category": "https://schema.org/Chat",
-          "areaServed": "Colombia, Panamá y Ecuador",
+          "description": "Automatización de respuestas con IA, chatbots, registro de pedidos en tiempo real y captura de leads 24/7.",
           "url": "https://dogweb.lat/#servicios",
           "offers": {
             "@type": "Offer",
@@ -105,6 +88,7 @@
               "@type": "PriceSpecification",
               "priceCurrency": "COP",
               "price": 900000,
+              "minPrice": 900000,
               "description": "Desde $900,000 COP (≈ US$225)"
             }
           }
@@ -114,11 +98,8 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "@id": "https://dogweb.lat/#servicios",
           "name": "Ads y Prospección Digital",
           "description": "Campañas de prospección digital con captura de leads calificados directo a WhatsApp con IA integrada.",
-          "category": "https://schema.org/Marketing",
-          "areaServed": "Colombia, Panamá y Ecuador",
           "url": "https://dogweb.lat/#servicios",
           "offers": {
             "@type": "Offer",
@@ -126,6 +107,7 @@
               "@type": "PriceSpecification",
               "priceCurrency": "COP",
               "price": 1600000,
+              "minPrice": 1600000,
               "description": "Desde $1,600,000 COP (≈ US$400)"
             }
           }
@@ -133,14 +115,74 @@
       }
     ]
   },
-  "keywords": "agencia digital, marketing digital, páginas web, IA WhatsApp, SEO técnico",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Cra. 52c #39b-22",
+    "addressLocality": "Bogotá",
+    "addressRegion": "Bogotá D.C.",
+    "postalCode": "110221",
+    "addressCountry": "CO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 4.6486,
+    "longitude": -74.0817
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+57-333-745-0634",
+      "contactType": "sales",
+      "areaServed": "CO",
+      "availableLanguage": ["Spanish"],
+      "contactOption": "TollFree"
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+57-333-745-0634",
+      "contactType": "customer service",
+      "areaServed": ["CO", "PA", "PR", "EC", "MX"],
+      "availableLanguage": ["Spanish", "English"]
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/alejandropiraquiveapc",
+    "https://www.instagram.com/serviciosapc",
+    "https://www.linkedin.com/in/alejandropiraquive/"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Alejandro Piraquive",
+    "jobTitle": "Fundador",
+    "url": "https://www.linkedin.com/in/alejandropiraquive/"
+  },
+  "keywords": "agencia digital, marketing digital, páginas web, IA WhatsApp, SEO técnico, chatbot WhatsApp, automatización empresarial",
   "slogan": "Rastreamos clientes para su negocio",
   "serviceType": ["Diseño web", "Marketing digital", "Automatización IA", "Publicidad digital"],
   "makesOffer": {
     "@type": "Offer",
-    "name": "Prueba gratis de diagnóstico digital",
-    "description": "DogWeb ofrece una evaluación sin costo de presencia digital, web y chatbot. Escríbanos por WhatsApp 573337450634 o visite serviciosapc.site para su prueba gratuita.",
-    "url": "https://serviciosapc.site"
+    "name": "Diagnóstico digital gratuito",
+    "description": "Evaluación sin costo de presencia digital, web y chatbot. Escríbanos por WhatsApp.",
+    "url": "https://dogweb.lat/#contacto",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": 0,
+      "priceCurrency": "COP"
+    }
   }
 }
 </script>
@@ -212,6 +254,10 @@
   --light-border: #E6E4DC;
   --light-text: #0F172A;
   --light-muted: #5B6472;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -1744,6 +1790,284 @@ footer,
   .wa-ping-dot::after, .wa-radar-ring { animation: none; opacity: 0.55; }
 }
 
+/* --- ECOSISTEMA CONECTADO --- */
+.ecosystem-section {
+  background: var(--bg-secondary);
+  padding: 5rem 24px;
+}
+.ecosystem-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.ecosystem-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+.eco-step {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  max-width: 280px;
+  position: relative;
+}
+.eco-number {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: var(--bg-primary);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.eco-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+}
+.eco-step h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+.eco-step p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.eco-arrow {
+  font-size: 1.8rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .eco-arrow { display: none; }
+  .ecosystem-flow { flex-direction: column; align-items: center; }
+  .eco-step { max-width: 100%; }
+}
+
+/* --- TESTIMONIO --- */
+.testimonial-section {
+  background: var(--bg-primary);
+  padding: 5rem 24px;
+}
+.testimonial-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.testimonial-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+}
+.testimonial-stars {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.testimonial-card blockquote {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.testimonial-author strong {
+  color: var(--accent);
+  font-size: 1rem;
+}
+.testimonial-author span {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+.testimonial-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.testimonial-link:hover { opacity: 0.8; }
+
+/* --- ¿POR QUÉ DOGWEB? --- */
+.why-section {
+  background: var(--bg-secondary);
+  padding: 5rem 24px;
+}
+.why-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.why-item {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.8rem;
+}
+.why-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+.why-item h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+.why-item p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+@media (max-width: 768px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+/* === EMIL-DESIGN-ENG: ACTIVE STATES === */
+.btn-primary:active,
+.btn-secondary:active,
+.btn-cta:active,
+.card-button:active,
+.contact-form-btn:active,
+.wa-btn-dynamic:active {
+  transform: scale(0.97) !important;
+  transition: transform 160ms var(--ease-out) !important;
+}
+
+/* === EMIL-DESIGN-ENG: REVEAL EXTENSIONS === */
+.ecosystem-section, .testimonial-section, .why-section, .contact-section {
+  opacity: 0;
+}
+.ecosystem-section.is-in, .testimonial-section.is-in, .why-section.is-in, .contact-section.is-in {
+  opacity: 1;
+  animation: riseIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) backwards;
+}
+.eco-step, .why-item {
+  opacity: 0;
+}
+.eco-step.is-in, .why-item.is-in {
+  opacity: 1;
+  animation: riseIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+.eco-step:nth-child(1) { --i: 1; }
+.eco-step:nth-child(2) { --i: 2; }
+.eco-step:nth-child(3) { --i: 3; }
+.why-item:nth-child(1) { --i: 1; }
+.why-item:nth-child(2) { --i: 2; }
+.why-item:nth-child(3) { --i: 3; }
+.why-item:nth-child(4) { --i: 4; }
+.why-item:nth-child(5) { --i: 5; }
+.why-item:nth-child(6) { --i: 6; }
+
+/* === EMIL-DESIGN-ENG: CARD HOVER GLOW === */
+.svc-card {
+  transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .svc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px var(--card-glow);
+    border-color: var(--accent);
+  }
+}
+.card {
+  transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px var(--card-glow);
+  }
+}
+
+/* === EMIL-DESIGN-ENG: PROCESS STEP HOVER === */
+.process-step {
+  transition: transform 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .process-step:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+}
+
+/* === EMIL-DESIGN-ENG: WHY ITEM HOVER === */
+.why-item {
+  transition: transform 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .why-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+}
+
+/* === EMIL-DESIGN-ENG: ECO STEP HOVER === */
+.eco-step {
+  transition: transform 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .eco-step:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+}
+
+/* === EMIL-DESIGN-ENG: TRANSITION FIXES === */
+#videoOverlay {
+  transition: opacity 250ms var(--ease-out);
+}
+.btn-cta {
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out);
+}
+.btn-primary {
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out);
+}
+.btn-secondary {
+  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+}
+.card-button {
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.contact-form-btn {
+  transition: background 160ms var(--ease-out);
+}
+.wa-btn-dynamic {
+  transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+}
+.wa-btn-dynamic .wa-arrow {
+  transition: transform 200ms var(--ease-out);
+}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWFDLTCM8R"></script>
@@ -1751,8 +2075,27 @@ footer,
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-EWFDLTCM8R');
+  gtag('config', 'G-EWFDLTCM8R', {
+    send_page_view: true,
+    cookie_flags: 'SameSite=None;Secure'
+  });
 </script>
+
+<!-- Meta Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'PIXEL_ID_AQUI');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=PIXEL_ID_AQUI&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
@@ -1808,24 +2151,24 @@ footer,
   <div class="hero-content">
     <span class="hero-badge">Marketing digital · Páginas web · IA · LATAM</span>
     <span class="tagline">Rastreamos clientes para su negocio</span>
-    <h1>Agencia de Marketing Digital en Bogotá — <span>Páginas Web e IA</span></h1>
-    <p class="hero-sub">Nos llamamos DogWeb porque rastreamos oportunidades en el mercado como un sabueso. <strong>Páginas web, automatización con IA y contenido</strong> — todo lo que su negocio necesita para aparecer, atraer y vender en Google.</p>
+    <h1>Su negocio pierde clientes todos los días. <span>Su web no los está atrapando.</span></h1>
+    <p class="hero-sub">Páginas web que convierten, automatización con IA que nunca duerme y marketing que cazan clientes reales. <strong>Todo conectado. Todo funcionando. Sin intermediarios.</strong></p>
     <div class="hero-btns">
-      <a href="#servicios" class="btn-primary">Ver todos los servicios</a>
-      <a href="https://wa.me/573337450634" class="btn-secondary" target="_blank" rel="noopener noreferrer">Hablar con Alejandro</a>
+      <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20una%20asesor%C3%ADa%20gratuita" class="btn-primary" target="_blank" rel="noopener noreferrer">Asesoría gratis por WhatsApp</a>
+      <a href="#servicios" class="btn-secondary">Ver planes y precios</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <h3>5</h3>
-        <p>Líneas de servicio</p>
+        <h3>72h</h3>
+        <p>Su web lista para vender</p>
       </div>
       <div class="stat-item">
-        <h3>72h</h3>
-        <p>Entrega web básica</p>
+        <h3>24/7</h3>
+        <p>IA atendiendo clientes</p>
       </div>
       <div class="stat-item">
         <h3>24h</h3>
-        <p>Modalidad urgente</p>
+        <p>Respuesta directa</p>
       </div>
     </div>
   </div>
@@ -1834,15 +2177,15 @@ footer,
 <!-- LÍNEAS DE SERVICIO (estilo artifact, sección clara) -->
 <section class="section-light" id="lineas">
   <div class="section-head-light">
-    <h2>Líneas de servicio · <em>Ecosistema digital completo</em></h2>
-    <p>Todo lo que su negocio necesita para aparecer, atraer y vender. Precios fijos, entrega directa y sin intermediarios.</p>
+    <h2>Todo lo que su negocio necesita para vender en digital. <em>Un solo equipo.</em></h2>
+    <p>Cada servicio funciona solo o conectado con los demás. Elija lo que necesita hoy, escale mañana.</p>
   </div>
   <div class="light-container">
     <div class="svc-grid">
       <div class="svc-card">
         <div class="svc-icon">🌐</div>
         <h3>Páginas Web</h3>
-        <p>Desde una landing lista para vender hasta una web corporativa con automatización y SEO técnico. Entrega web básica garantizada.</p>
+        <p>Su vitrina en Google, lista para vender en 72 horas. Desde landing pages hasta webs corporativas con SEO técnico.</p>
         <div class="svc-meta">
           <span class="svc-price">Desde U$200</span>
           <span class="svc-badge">Entrega 72h</span>
@@ -1851,7 +2194,7 @@ footer,
       <div class="svc-card">
         <div class="svc-icon">🤖</div>
         <h3>IA en WhatsApp</h3>
-        <p>Automatiza respuestas y captura leads 24/7, sin perder el tono humano de su marca. Bots + CRM conectados a su operación.</p>
+        <p>Su asistente virtual que nunca duerme. Captura leads 24/7, responde preguntas y registra pedidos sin perder el tono de su marca.</p>
         <div class="svc-meta">
           <span class="svc-price">Desde U$225</span>
           <span class="svc-badge">Bots + CRM</span>
@@ -1860,7 +2203,7 @@ footer,
       <div class="svc-card">
         <div class="svc-icon">📢</div>
         <h3>Ads y Prospección</h3>
-        <p>Campañas que cazan clientes, no clicks. Google, Meta y prospección directa con leads calificados a su WhatsApp.</p>
+        <p>Campañas que cazan clientes reales, no clicks. Google, Meta y prospección directa con leads calificados a su WhatsApp.</p>
         <div class="svc-meta">
           <span class="svc-price">Desde U$400</span>
           <span class="svc-badge">ROI medible</span>
@@ -1869,7 +2212,7 @@ footer,
       <div class="svc-card">
         <div class="svc-icon">🔧</div>
         <h3>Mantenimiento</h3>
-        <p>Su web siempre rápida y segura. Backups, SSL, actualizaciones y soporte continuo para no detener su operación.</p>
+        <p>Su web siempre rápida, segura y actualizada. Backups, SSL, soporte y cambios — todo incluido sin sorpresas.</p>
         <div class="svc-meta">
           <span class="svc-price">Desde U$30/mes</span>
           <span class="svc-badge">Soporte continuo</span>
@@ -1882,8 +2225,8 @@ footer,
 <!-- SERVICIOS / PLANES -->
 <section class="section-pricing" id="servicios">
   <div class="section-header">
-    <h2>Todo su ecosistema digital, <span>en un solo lugar</span></h2>
-    <p>Elija la línea que necesita. Cada una tiene planes claros, precio fijo y entrega directa con Alejandro Piraquive.</p>
+    <h2>Precios claros. <span>Sin sorpresas. Sin costos ocultos.</span></h2>
+    <p>Cada plan tiene todo incluido. El precio que ve es el precio que paga. Atención directa con Alejandro Piraquive.</p>
   </div>
 
   <div class="tabs">
@@ -2004,68 +2347,6 @@ footer,
       </div>
     </div>
 
-    <!-- Ventajas competitivas -->
-    <div class="advantage-section">
-      <h4>¿Por Qué Elegir DogWeb?</h4>
-      <p>Nos diferenciamos de la competencia con enfoque personalizado, entrega rápida y tecnología de vanguardia:</p>
-      <div class="advantage-grid">
-        <div class="advantage-item">
-          <div class="advantage-icon">🤖</div>
-          <div class="advantage-content">
-            <h5>Automatización IA con Identidad</h5>
-            <p>Chatbots personalizados con personalidad única de marca, no plantillas genéricas. Incluye identidad visual IA, tono de voz personalizado y aprendizaje continuo.</p>
-          </div>
-        </div>
-        <div class="advantage-item">
-          <div class="advantage-icon">⚡</div>
-          <div class="advantage-content">
-            <h5>Entrega Rápida Garantizada</h5>
-            <p>Web básica en 72h, dinámica en 5 días hábiles, avanzada en 10. Sin demoras, sin intermediarios — servicio directo con Alejandro.</p>
-          </div>
-        </div>
-        <div class="advantage-item">
-          <div class="advantage-icon">🎯</div>
-          <div class="advantage-content">
-            <h5>Experto Local de Colombia</h5>
-            <p>Empresa colombiana con conocimiento profundo del mercado local y LATAM, soluciones adaptadas a las condiciones de negocio de la región.</p>
-          </div>
-        </div>
-        <div class="advantage-item">
-          <div class="advantage-icon">💰</div>
-          <div class="advantage-content">
-            <h5>Precios Transparentes y Fijos</h5>
-            <p>Sin sorpresas, sin costos ocultos. Presupuestos claros desde $120.000 COP — planes fijos sin recargos adicionales.</p>
-          </div>
-        </div>
-        <div class="advantage-item">
-          <div class="advantage-icon">🛡️</div>
-          <div class="advantage-content">
-            <h5>Soporte Post-Lanzamiento</h5>
-            <p>Soporte técnico incluido: actualizaciones, seguridad, copias de seguridad, mantenimiento — todo incluido en su plan.</p>
-          </div>
-        </div>
-        <div class="advantage-item">
-          <div class="advantage-icon">🚀</div>
-          <div class="advantage-content">
-            <h5>Desarrollo Escalable</h5>
-            <p>Estructura modular que crece con su negocio — desde landing pages hasta sistemas empresariales completos sin reinventar la rueda.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Links de calidad -->
-    <div class="quality-links">
-      <h4>Guías y Recursos Relevantes</h4>
-      <p>Enlaces recomendados para optimizar su estrategia de IA en WhatsApp:</p>
-      <ul class="resource-links">
-        <li><a href="https://www.chatbot.com/es/guide" target="_blank" rel="noopener">📚 Guía Completa de Chatbots: Learn How to Build Effective WhatsApp Bots</a></li>
-        <li><a href="https://www.interaction-design.org/literature/article/chatbot-conversation-design" target="_blank" rel="noopener">🎯 Diseño de Conversación: Principios de Diseño de Experiencia de Chatbot</a></li>
-        <li><a href="https://www.klawjam.com/blog/whatsapp-chatbot-best-practices" target="_blank" rel="noopener">⚡ 10 Mejores Prácticas para WhatsApp Chatbots que Generan Resultados</a></li>
-        <li><a href="https://blog.jotform.com/es/how-to-create-a-whatsapp-chatbot" target="_blank" rel="noopener">📝 Cómo Crear un Chatbot de WhatsApp en 10 Pasos Simples</a></li>
-      </ul>
-    </div>
-
     <p class="extra-note" style="margin-top:1.5rem;">🔧 <strong>Soporte mensual disponible:</strong> Mantenimiento del bot desde <strong style="color:var(--accent);">$200.000/mes</strong> (estándar) o <strong style="color:var(--accent);">$400.000/mes</strong> (avanzado con seguridad anti-bots).</p>
   </div>
 
@@ -2127,33 +2408,125 @@ footer,
   </div>
 </section>
 
+<!-- ECOSISTEMA CONECTADO -->
+<section class="ecosystem-section" id="ecosistema">
+  <div class="ecosystem-container">
+    <div class="section-head-light">
+      <h2>No vendemos herramientas sueltas. <em>Instalamos una máquina que funciona sola.</em></h2>
+      <p>Web + WhatsApp IA + Marketing + Datos conectados. Cada pieza alimenta a la otra. Más clientes, menos esfuerzo manual.</p>
+    </div>
+    <div class="ecosystem-flow">
+      <div class="eco-step">
+        <div class="eco-number">1</div>
+        <div class="eco-icon">🔍</div>
+        <h3>Atrae</h3>
+        <p>Web optimizada + SEO + Ads = visitantes encontrándote en Google y redes.</p>
+      </div>
+      <div class="eco-arrow">→</div>
+      <div class="eco-step">
+        <div class="eco-number">2</div>
+        <div class="eco-icon">💬</div>
+        <h3>Convierte</h3>
+        <p>WhatsApp IA + CRM = leads calificados que responden solos 24/7.</p>
+      </div>
+      <div class="eco-arrow">→</div>
+      <div class="eco-step">
+        <div class="eco-number">3</div>
+        <div class="eco-icon">📊</div>
+        <h3>Retiene</h3>
+        <p>Datos + Automatización = clientes recurrentes y operación sin fricción.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20mi%20ecosistema%20digital" class="btn-primary" target="_blank" rel="noopener noreferrer">Quiero mi ecosistema digital →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIO -->
+<section class="testimonial-section">
+  <div class="testimonial-container">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+      <blockquote>"DogWeb nos construyó un panel de control operativo y financiero personalizado. Antes manejábamos todo en hojas de cálculo. Ahora tenemos datos en tiempo real, automatizamos reportes y tomamos decisiones con información, no con intuición."</blockquote>
+      <div class="testimonial-author">
+        <strong>Excellencia Automotriz</strong>
+        <span>Panel de control operativo y financiero · Posicionamiento en Google</span>
+      </div>
+      <a href="https://excelenciaautomotriz.store" target="_blank" rel="noopener noreferrer" class="testimonial-link">Visitar excelenciaautomotriz.store →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ¿POR QUÉ DOGWEB? -->
+<section class="why-section" id="porque">
+  <div class="why-container">
+    <div class="section-header">
+      <h2>Por qué negocios como el suyo <span>eligen DogWeb</span></h2>
+      <p>Six razones por las que no necesitan otra agencia.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🤖</div>
+        <h3>IA con identidad de marca</h3>
+        <p>No es un chatbot genérico. Habla como su negocio, aprende de sus clientes y evoluciona con su operación.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <h3>72 horas para su web</h3>
+        <p>Su página lista para vender en 3 días. No 3 semanas. No 2 meses. Resultados, no promesas.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🎯</div>
+        <h3>Experto en su mercado</h3>
+        <p>Conocemos Colombia y LATAM. No le vendemos soluciones diseñadas para otro continente.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💰</div>
+        <h3>Precio fijo, sin sorpresas</h3>
+        <p>El presupuesto que le damos es el que paga. Sin costos ocultos, sin recargos, sin letra pequeña.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🛡️</div>
+        <h3>Soporte real, no bots</h3>
+        <p>Le respondemos en menos de 24 horas. Con una persona. Que sabe su proyecto.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🚀</div>
+        <h3>Crece sin reiniciar</h3>
+        <p>Empiece con una landing. Escale a sistema completo. La misma base, sin perder lo que ya construyó.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESO -->
 <section class="process-section" id="proceso">
   <div class="process-container">
     <div class="section-head-light">
-      <h2>¿Cómo funciona?</h2>
-      <p>Del primer mensaje a resultados reales. Sin reuniones eternas ni tecnicismos. Comunicación directa en cada paso.</p>
+      <h2>De el primer mensaje a resultados reales. <em>En 4 pasos.</em></h2>
+      <p>Sin reuniones eternas. Sin tecnicismos. Comunicación directa en cada paso.</p>
     </div>
     <div class="process-grid">
       <div class="process-step">
         <div class="step-number">01</div>
         <h3>Cuéntenos su negocio</h3>
-        <p>Nos escribe por WhatsApp y entendemos exactamente qué necesita su proyecto.</p>
+        <p>Nos escribe por WhatsApp. En 5 minutos entendemos qué vende, a quién se lo vende y qué necesita lograr en digital.</p>
       </div>
       <div class="process-step">
         <div class="step-number">02</div>
         <h3>Propuesta clara</h3>
-        <p>Le enviamos el plan y el precio exacto de inmediato. Sin sorpresas ocultas. Si le sirve, avanzamos.</p>
+        <p>Le enviamos el plan exacto y el precio exacto. Sin rodeos, sin sorpresas. Si le sirve, avanzamos.</p>
       </div>
       <div class="process-step">
         <div class="step-number">03</div>
         <h3>Producción</h3>
-        <p>Construimos su página o bot adaptándonos por completo a su contenido y marca.</p>
+        <p>Construimos su web, bot o campaña adaptados a su marca y contenido. Todo personalizado, nada genérico.</p>
       </div>
       <div class="process-step">
         <div class="step-number">04</div>
         <h3>Entrega y soporte</h3>
-        <p>Le entregamos todo funcionando y le explicamos en un video corto cómo administrarlo.</p>
+        <p>Le entregamos todo funcionando. Un video corto le explica cómo administrarlo. Y seguimos ahí si necesita ayuda.</p>
       </div>
     </div>
   </div>
@@ -2241,8 +2614,8 @@ footer,
 <section class="contact-section" id="contacto">
   <div class="contact-grid">
     <div class="contact-left">
-      <h2>¿Listo para que su negocio <span>empiece a crecer en digital?</span></h2>
-      <p>Escríbanos hoy. En menos de 24 horas le respondemos con una propuesta directa, clara y lista para ejecutar.</p>
+      <h2>Su negocio merece <span>aparecer, atraer y vender en digital.</span></h2>
+      <p>Escríbanos hoy. En menos de 24 horas le respondemos con una propuesta directa, clara y lista para ejecutar. Sin compromiso.</p>
 
       <div class="contact-info-grid">
         <div class="info-block">
@@ -2494,9 +2867,9 @@ var bgContainer = document.getElementById('video-scroll-container');
 })();
 </script>
 <script>
-/* REVEAL-ON-SCROLL (Agente 3D) */
+/* REVEAL-ON-SCROLL (emil-design-eng + Agente 3D) */
 (function () {
-  var els = document.querySelectorAll('.svc-card, .card, .process-step, .blog-card');
+  var els = document.querySelectorAll('.svc-card, .card, .process-step, .blog-card, .ecosystem-section, .testimonial-section, .why-section, .eco-step, .why-item, .contact-section');
   if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     els.forEach(function (el) { el.classList.add('is-in'); });
     return;
@@ -2521,6 +2894,136 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function(e) { console.warn('SW not registered', e); });
   });
 }
+</script>
+
+<!-- CRO: WhatsApp Click Tracking + GA4 Conversion Events -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── WhatsApp Click Tracker ── */
+  var WA_PHONE = '573337450634';
+  var waLinks = document.querySelectorAll('a[href*="wa.me/' + WA_PHONE + '"], a[href*="api.whatsapp.com/send?phone=' + WA_PHONE + '"]');
+
+  waLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      var section = 'unknown';
+      var el = link;
+      while (el && el !== document.body) {
+        if (el.id) { section = el.id; break; }
+        if (el.classList) {
+          if (el.classList.contains('hero')) { section = 'hero'; break; }
+          if (el.classList.contains('contact-section')) { section = 'contacto'; break; }
+          if (el.classList.contains('wa-dynamic-container')) { section = 'whatsapp-float'; break; }
+        }
+        el = el.parentNode;
+      }
+
+      var label = link.textContent.trim().substring(0, 60) || 'WhatsApp CTA';
+
+      /* GA4 event */
+      if (typeof gtag === 'function') {
+        gtag('event', 'whatsapp_click', {
+          event_category: 'conversion',
+          event_label: label,
+          section: section,
+          value: 1
+        });
+      }
+
+      /* Meta Pixel event */
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: label,
+          content_category: section
+        });
+      }
+
+      /* dataLayer push */
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'whatsapp_click',
+        whatsapp_section: section,
+        whatsapp_label: label
+      });
+    });
+  });
+
+  /* ── Form Submission Tracker ── */
+  var form = document.getElementById('contactFormDogweb');
+  if (form) {
+    form.addEventListener('submit', function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'form_submission', {
+          event_category: 'conversion',
+          event_label: 'contact_form',
+          value: 1
+        });
+      }
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'Contact Form',
+          content_category: 'contacto'
+        });
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'form_submission' });
+    });
+  }
+
+  /* ── CTA Button Tracker (pricing cards) ── */
+  var ctaButtons = document.querySelectorAll('.card-button, .btn-primary[href*="wa.me"], .btn-secondary[href*="#servicios"]');
+  ctaButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var label = btn.textContent.trim().substring(0, 60) || 'CTA';
+      if (typeof gtag === 'function') {
+        gtag('event', 'cta_click', {
+          event_category: 'engagement',
+          event_label: label,
+          value: 1
+        });
+      }
+    });
+  });
+
+  /* ── Scroll Depth Tracking ── */
+  var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+  function checkScroll() {
+    var scrollPercent = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+    Object.keys(scrollMilestones).forEach(function(milestone) {
+      if (scrollPercent >= parseInt(milestone) && !scrollMilestones[milestone]) {
+        scrollMilestones[milestone] = true;
+        if (typeof gtag === 'function') {
+          gtag('event', 'scroll_depth', {
+            event_category: 'engagement',
+            event_label: milestone + '%',
+            value: parseInt(milestone)
+          });
+        }
+      }
+    });
+  }
+  var scrollTimer;
+  window.addEventListener('scroll', function() {
+    if (scrollTimer) clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(checkScroll, 200);
+  });
+
+  /* ── Outbound Link Tracker ── */
+  var outboundLinks = document.querySelectorAll('a[href^="http"]:not([href*="dogweb.lat"]):not([href*="wa.me"]):not([href*="api.whatsapp"])');
+  outboundLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'outbound_click', {
+          event_category: 'navigation',
+          event_label: link.href,
+          transport_type: 'beacon'
+        });
+      }
+    });
+  });
+
+})();
 </script>
 </body>
 </html>
