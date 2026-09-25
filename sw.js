@@ -7,6 +7,7 @@ var CORE = [
   '/',
   '/index.html',
   '/blog.html',
+  '/camaras-ia-bogota.html',
   '/logo.png',
   '/og-image.png',
   '/chat/cristal-loader.js',
