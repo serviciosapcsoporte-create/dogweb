@@ -8,7 +8,7 @@
 <meta name="keywords" content="desarrollo web profesional Colombia, chatbot IA WhatsApp, automatización empresarial, páginas web Elementor, landing pages Bogotá, IA para negocios, marketing digital estratégico, posicionamiento web, SEO técnico, ChatGPT integración, WhatsApp bots, conversión de leads, agencia digital Colombia, servicios IA, soluciones digitales, experto en web development">
 <meta name="author" content="DogWeb - Alejandro Piraquive">
 <meta name="robots" content="index, follow">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com; frame-src 'self' https://www.google.com https://maps.google.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://api.web3forms.com https://static.cloudflareinsights.com; frame-src 'self' https://www.google.com https://maps.google.com;">
 <meta property="og:title" content="DogWeb — Agencia Digital: Páginas Web, IA en WhatsApp y Marketing">
 <meta property="og:description" content="Páginas web profesionales, automatización con IA en WhatsApp y campañas de prospección digital. Rastreamos clientes para su negocio en Colombia.">
 <meta property="og:image" content="https://dogweb.lat/og-image.png">
@@ -27,6 +27,9 @@
 <link rel="canonical" href="https://dogweb.lat">
 <link rel="icon" href="logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" href="chat/cristal-loader.js" as="script">
+<link rel="preload" href="chat/cristal.css" as="style">
+<link rel="preload" href="chat/cristal.js" as="script">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'"> <!-- FONTS-ASYNC-DOGWEB -->
@@ -622,7 +625,7 @@ h1 span { color: var(--accent); }
   border-top: 1px solid var(--border-color);
   padding-top: 2rem;
 }
-.stat-item h3 {
+.stat-item h2 {
   font-size: 2.2rem;
   font-weight: 800;
   color: var(--accent);
@@ -1317,7 +1320,7 @@ h1 span { color: var(--accent); }
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
-.info-block h4 {
+.info-block h3 {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--accent);
@@ -1572,7 +1575,7 @@ footer {
   .tabs { gap: 0.3rem; }
   .tab { font-size: 0.78rem; padding: 0.5rem 0.8rem; }
   .hero-stats { gap: 1.5rem; }
-  .stat-item h3 { font-size: 1.6rem; }
+  .stat-item h2 { font-size: 1.6rem; }
   .process-container { padding: 4rem 1rem; }
 }
 
@@ -1682,7 +1685,7 @@ footer,
 @media (prefers-reduced-motion: reduce) {
   #video-scroll-container video { display: none; }
   #video-scroll-container {
-    background-image: url("assets/hero-poster.jpg");
+    background-image: url("assets/hero-poster.webp");
     background-size: cover;
     background-position: center;
   }
@@ -2081,27 +2084,12 @@ footer,
   });
 </script>
 
-<!-- Meta Pixel -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', 'PIXEL_ID_AQUI');
-  fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=PIXEL_ID_AQUI&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
 <!-- VIDEO BACKGROUND (contenedor 5 tomas, fondo fijo) -->
 <div id="video-scroll-container" aria-hidden="true">
-  <video poster="assets/hero-poster.jpg" id="bg-scroll-video" src="assets/hero-bg.mp4" muted playsinline preload="auto"></video>
+  <video poster="assets/hero-poster.webp" id="bg-scroll-video" src="assets/hero-bg.mp4" muted playsinline preload="auto"></video>
   <div id="videoOverlay"></div>
   <div id="videoScanlines"></div>
 </div>
@@ -2121,7 +2109,7 @@ footer,
 <header>
   <div class="nav-container">
     <a href="#" class="logo">
-      <img src="logo.png" alt="DogWeb" width="38" height="38" loading="eager">
+      <img src="logo.png" alt="" width="38" height="38" loading="eager">
       <span>Dog</span>Web
     </a>
     <nav>
@@ -2145,6 +2133,7 @@ footer,
     <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" class="btn-cta" target="_blank" style="text-align:center;" onclick="closeMenu()" rel="noopener noreferrer">Hablar ahora</a>
   </div>
 </header>
+<main>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -2159,15 +2148,15 @@ footer,
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <h3>72h</h3>
+        <h2>72h</h2>
         <p>Su web lista para vender</p>
       </div>
       <div class="stat-item">
-        <h3>24/7</h3>
+        <h2>24/7</h2>
         <p>IA atendiendo clientes</p>
       </div>
       <div class="stat-item">
-        <h3>24h</h3>
+        <h2>24h</h2>
         <p>Respuesta directa</p>
       </div>
     </div>
@@ -2254,7 +2243,7 @@ footer,
           <li>Hasta 5 PDFs estáticos</li>
           <li>Entrega en 72 horas</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Presencial%20B%C3%A1sica" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Presencial%20B%C3%A1sica" class="card-button" target="_blank" rel="noopener noreferrer">Quiero el plan Web Presencial Básica</a>
       </div>
       <div class="card featured">
         <span class="badge-popular">Más solicitado</span>
@@ -2272,7 +2261,7 @@ footer,
           <li>Estructura modular escalable</li>
           <li>Entrega en 5 días hábiles</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Corporativa" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Corporativa" class="card-button" target="_blank" rel="noopener noreferrer">Quiero el plan Web Corporativa</a>
       </div>
       <div class="card">
         <span class="plan-code">APC-WEB-03</span>
@@ -2289,7 +2278,7 @@ footer,
           <li>Optimización SEO técnica</li>
           <li>Entrega en 10 días hábiles</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Avanzada" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20Web%20Avanzada" class="card-button" target="_blank" rel="noopener noreferrer">Quiero el plan Web Avanzada</a>
       </div>
     </div>
   </div>
@@ -2310,7 +2299,7 @@ footer,
           <li>Respuestas a preguntas frecuentes</li>
           <li>Envío automático de catálogos/PDFs</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20B%C3%A1sica" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20B%C3%A1sica" class="card-button" target="_blank" rel="noopener noreferrer">Quiero IA WhatsApp Básica</a>
       </div>
       <div class="card featured">
         <span class="badge-popular">Más solicitado</span>
@@ -2327,7 +2316,7 @@ footer,
           <li>IA con identidad personalizada (OpenAI)</li>
           <li>Conversación natural en español</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20Intermedia" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20Intermedia" class="card-button" target="_blank" rel="noopener noreferrer">Quiero IA WhatsApp Intermedia</a>
       </div>
       <div class="card">
         <span class="plan-code">APC-IA-03</span>
@@ -2343,7 +2332,7 @@ footer,
           <li>Pasarelas de pago integradas</li>
           <li>Agendamiento en Google Calendar</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20Avanzada" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20IA%20WhatsApp%20Avanzada" class="card-button" target="_blank" rel="noopener noreferrer">Quiero IA WhatsApp Avanzada</a>
       </div>
     </div>
 
@@ -2365,7 +2354,7 @@ footer,
         <li>Integración con su sistema operativo local</li>
         <li>Implementación de IA para calificar contactos</li>
       </ul>
-      <a href="https://wa.me/573337450634?text=Quiero%20informaci%C3%B3n%20de%20la%20Campa%C3%B1a%20Ads%20y%20Prospecci%C3%B3n%20Digital" class="card-button" target="_blank" style="margin-top:1.25rem;" rel="noopener noreferrer">Quiero este plan</a>
+      <a href="https://wa.me/573337450634?text=Quiero%20informaci%C3%B3n%20de%20la%20Campa%C3%B1a%20Ads%20y%20Prospecci%C3%B3n%20Digital" class="card-button" target="_blank" style="margin-top:1.25rem;" rel="noopener noreferrer">Quiero información de la Campaña Ads</a>
     </div>
     <p class="extra-note" style="max-width:1240px;margin-left:auto;margin-right:auto;text-align:center;">💡 Este servicio se potencia al combinarlo con un plan de <strong>IA en WhatsApp</strong> — pregúntenos por combos.</p>
   </div>
@@ -2387,7 +2376,7 @@ footer,
           <li>Cambio de imágenes y precios</li>
           <li>Máximo 4 cambios al mes</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20de%20mantenimiento%20web" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20el%20plan%20de%20mantenimiento%20web" class="card-button" target="_blank" rel="noopener noreferrer">Quiero el plan de mantenimiento web</a>
       </div>
       <div class="card">
         <span class="plan-code">APC-SOP-01 / 02</span>
@@ -2402,7 +2391,7 @@ footer,
           <li>Corrección de alucinaciones</li>
           <li><strong style="color:var(--text-main);">Avanzado $400.000:</strong> anti-inyección, seguridad API, anti-bucle</li>
         </ul>
-        <a href="https://wa.me/573337450634?text=Quiero%20soporte%20mensual%20para%20mi%20bot%20de%20WhatsApp" class="card-button" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/573337450634?text=Quiero%20soporte%20mensual%20para%20mi%20bot%20de%20WhatsApp" class="card-button" target="_blank" rel="noopener noreferrer">Quiero soporte mensual para mi bot</a>
       </div>
     </div>
   </div>
@@ -2619,17 +2608,17 @@ footer,
 
       <div class="contact-info-grid">
         <div class="info-block">
-          <h4>Ubicación</h4>
+          <h3>Ubicación</h3>
           <p>Cra. 52c #39b-22<br>Bogotá, Colombia</p>
           <a href="https://maps.google.com/?q=Cra.+52c+%2339b-22,+Bogot%C3%A1,+Colombia" target="_blank" style="color:var(--accent);font-size:0.85rem;">Ver en mapa ↗</a>
         </div>
         <div class="info-block">
-          <h4>Contacto directo</h4>
+          <h3>Contacto directo</h3>
           <p><a href="tel:+573337450634">+57-333-745-0634</a></p>
           <p><a href="mailto:serviciosapcsoporte@gmail.com">serviciosapcsoporte@gmail.com</a></p>
         </div>
         <div class="info-block">
-          <h4>Síguenos</h4>
+          <h3>Síguenos</h3>
           <div class="social-links">
             <a href="https://www.facebook.com/alejandropiraquiveapc" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -2681,6 +2670,7 @@ footer,
 </section>
 
 <!-- FOOTER -->
+</main>
 <footer>
   <div class="footer-container">
     <div class="footer-info">
@@ -2698,7 +2688,7 @@ footer,
       <a href="software-para-salones.html">Software para Salones</a><br>
       <a href="marketing-digital-para-restaurantes.html">Marketing para Restaurantes</a><br>
       <a href="pagina-web-para-clinicas.html">Web para Clínicas</a><br>
-      <a href="blog.html">Blog</a>
+      <a href="blog.html">Blog completo</a>
     </div>
   </div>
 </footer>
