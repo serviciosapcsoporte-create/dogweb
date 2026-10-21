@@ -27,6 +27,27 @@ h1,h2,h3,.num{font-family:'Rajdhani',system-ui,sans-serif;font-weight:700;line-h
 img{max-width:100%;display:block}
 a{color:var(--accent);text-decoration:none}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.topbar{border-bottom:1px solid var(--border-color);background:var(--bg-primary)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.45rem 0;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.topbar span:nth-child(2){color:var(--accent);font-weight:700;white-space:nowrap}
+.menu{display:none;gap:1.6rem;list-style:none}
+.menu a{color:var(--text-muted);font-weight:600;font-size:.95rem}
+.menu a:hover{color:var(--accent)}
+.burger{display:none;background:none;border:1px solid var(--border-color);border-radius:8px;padding:.4rem .55rem;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--accent);margin:4px 0}
+.navbtn{padding:.62rem 1.15rem;font-size:.92rem}
+.pill{display:inline-block;border:1px solid rgba(255,209,0,.5);color:var(--accent);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:700;padding:.42rem .95rem;border-radius:999px;margin-bottom:1.2rem}
+.ctas{display:flex;flex-wrap:wrap;gap:1.1rem;align-items:center}
+.secondary{color:var(--text-main);font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--accent)}
+.secondary:hover{color:var(--accent)}
+.hmetrics{display:grid;grid-template-columns:1fr;gap:1.1rem;margin:2.4rem 0 0}
+.hmetrics>div{border-top:2px solid var(--border-color);padding-top:.9rem}
+.hmetrics .num{display:block;font-size:1.9rem;color:var(--accent)}
+.hmetrics p{color:var(--text-muted);font-size:.85rem}
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:15;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.35);transition:transform .2s}
+.wa-float:hover{transform:translateY(-3px)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+@media(max-width:767px){header.open .menu{display:flex;position:absolute;left:0;right:0;top:100%;background:var(--bg-secondary);flex-direction:column;padding:.6rem 4% 1rem;border-bottom:1px solid var(--border-color);gap:0}.menu a{padding:.8rem 0;border-bottom:1px solid var(--border-color);display:block}}
 .wrap{width:min(1120px,92%);margin:0 auto}
 section{padding:64px 0}
 .kicker{color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:600}
@@ -74,26 +95,46 @@ footer a{color:var(--text-main);font-weight:600}
 footer a:hover{color:var(--accent)}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
-@media (min-width:480px){.pgrid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:2.7rem}}
-@media (min-width:768px){.grid3{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(3,1fr)}section{padding:88px 0}.hero{padding:96px 0 72px}}
+@media (min-width:480px){.pgrid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:2.7rem}.hmetrics{grid-template-columns:repeat(3,1fr);gap:1.4rem}}
+@media (min-width:768px){.menu{display:flex}.grid3{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(3,1fr)}section{padding:88px 0}.hero{padding:96px 0 72px}}
 @media (min-width:1080px){.hero h1{font-size:3.2rem}h2{font-size:2.4rem}.pgrid{grid-template-columns:repeat(3,1fr)}.pgrid .plan.feature{margin:-10px -6px;padding:1.9rem}}
 </style>
 </head>
 <body>
+<div class="topbar">
+  <div class="wrap">
+    <span>• AGENCIA DIGITAL VERIFICADA | Bogotá, Colombia • Atención directa</span>
+    <span>Respuesta en &lt;24h</span>
+  </div>
+</div>
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#"><img src="../logo.webp" alt="Logo de DogWeb" width="34" height="34">DogWeb</a>
-    <a class="btn" href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito" aria-label="Agendar diagnóstico gratuito por WhatsApp">Diagnóstico</a>
+    <a class="brand" href="#"><img src="../logo.webp" alt="Logo de DogWeb" width="34" height="34">Dog Web</a>
+    <ul class="menu" id="menu">
+      <li><a href="#pilares">Servicios</a></li>
+      <li><a href="#showroom-ia">Showroom IA</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#showroom-ia">Casos de Éxito</a></li>
+    </ul>
+    <button class="burger" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    <a class="btn navbtn" href="https://wa.me/573337450634" aria-label="Hablar ahora por WhatsApp">Hablar ahora</a>
   </div>
 </header>
 <main>
 <section class="hero">
   <div class="wrap">
-    <p class="kicker">Agencia digital B2B · Colombia</p>
+    <p class="pill">MARKETING B2B • INTELIGENCIA ARTIFICIAL • PERFORMANCE</p>
     <h1>Tu marca B2B, acelerada con IA: videos hiperrealistas, SEO y pauta que traen clientes reales.</h1>
     <p class="sub">DogWeb es la agencia digital que une producción audiovisual con inteligencia artificial, una estrategia de contenidos unificada y un motor de captación en Google y Meta. Sin humo, sin promesas infladas: entregables medibles cada semana.</p>
-    <a class="btn" href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito" aria-label="Agendar diagnóstico gratuito por WhatsApp">Agendar Diagnóstico Gratuito</a>
-    <p class="micro">Ve nuestro portafolio real: <a href="#portafolio">videos IA por sector, sin rodajes ni actores.</a></p>
+    <div class="ctas">
+      <a class="btn" href="https://wa.me/573337450634?text=Hola,%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratuito%20para%20mi%20empresa" aria-label="Agendar diagnóstico gratuito por WhatsApp">Agendar Diagnóstico Gratuito →</a>
+      <a class="secondary" href="#showroom-ia">Ver portafolio de videos IA</a>
+    </div>
+    <div class="hmetrics">
+      <div><span class="num">72h</span><p>Sitio web listo para convertir</p></div>
+      <div><span class="num">100% IA</span><p>Producción audiovisual hiperrealista</p></div>
+      <div><span class="num">Semanal</span><p>Reportes y optimización de leads B2B</p></div>
+    </div>
   </div>
 </section>
 <section id="pilares">
@@ -116,7 +157,7 @@ footer a:hover{color:var(--accent)}
     </div>
   </div>
 </section>
-<section id="portafolio" style="background:var(--bg-secondary)">
+<section id="showroom-ia" style="background:var(--bg-secondary)">
   <div class="wrap">
     <p class="kicker">Portafolio</p>
     <h2>Portafolio real por sector</h2>
@@ -194,11 +235,14 @@ footer a:hover{color:var(--accent)}
     <p>Agencia digital B2B · Colombia</p>
   </div>
 </footer>
+<a class="wa-float" href="https://wa.me/573337450634" aria-label="Escribir a DogWeb por WhatsApp"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg></a>
 <script>
 var vds=[].slice.call(document.querySelectorAll("video"));
 vds.forEach(function(v){var c=v.closest(".vcard");c.addEventListener("mouseenter",function(){vds.forEach(function(o){if(o!==v)o.pause()});v.play().catch(function(){})});c.addEventListener("mouseleave",function(){v.pause()});c.addEventListener("click",function(e){v.paused?(vds.forEach(function(o){if(o!==v)o.pause()}),v.play().catch(function(){})):v.pause()})});
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.12});
 document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+var brg=document.querySelector(".burger"),hdr=document.querySelector("header");
+if(brg){brg.addEventListener("click",function(){hdr.classList.toggle("open");brg.setAttribute("aria-expanded",hdr.classList.contains("open"))});document.querySelectorAll(".menu a").forEach(function(a){a.addEventListener("click",function(){hdr.classList.remove("open");brg.setAttribute("aria-expanded","false")})})}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"DogWeb","url":"https://dogweb.lat/","logo":"https://dogweb.lat/logo.webp","telephone":"+57 333 745 0634","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"},"areaServed":"Colombia","priceRange":"210000 - 3500000 COP","hasOfferCatalog":{"@type":"OfferCatalog","name":"Planes DogWeb","itemListElement":[{"@type":"Offer","name":"Plan Impulso Local","price":"800000","priceCurrency":"COP"},{"@type":"Offer","name":"Plan Ecosistema SEO + Contenidos","price":"1500000","priceCurrency":"COP"},{"@type":"Offer","name":"Plan Enterprise B2B","price":"3500000","priceCurrency":"COP"}]}}
