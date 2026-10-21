@@ -71,14 +71,32 @@ header{position:sticky;top:0;z-index:10;background:rgba(10,11,13,.88);backdrop-f
 .card h3{font-size:1.25rem;margin-bottom:.6rem;color:var(--accent)}
 .card p{color:var(--text-muted);font-size:.95rem}
 .pgrid{display:grid;gap:1rem;grid-template-columns:1fr;margin-top:2rem}
+.sgrid{display:grid;gap:1.2rem;grid-template-columns:1fr;margin-top:2rem}
+.scard{position:relative;border:1px solid var(--border-color);border-radius:14px;overflow:hidden;background:var(--bg-primary);transition:border-color .2s}
+.scard:hover{border-color:var(--accent)}
+.smedia{position:relative;height:430px;background:var(--bg-primary)}
+.scard video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--bg-primary);cursor:pointer}
+.scard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.saudio .smedia{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:1.4rem 1.4rem 3.6rem;gap:1.4rem}
+.wave{display:flex;gap:7px;align-items:center;height:46%;margin:auto 0}
+.wave i{display:block;width:9px;background:var(--accent);border-radius:5px;height:30%;transform-origin:center;animation:wav 1.3s ease-in-out infinite;animation-play-state:paused}
+.saudio.playing .wave i{animation-play-state:running}
+.wave i:nth-child(2){height:55%}.wave i:nth-child(3){height:85%;animation-delay:.15s}.wave i:nth-child(4){height:40%;animation-delay:.3s}.wave i:nth-child(5){height:70%;animation-delay:.45s}.wave i:nth-child(6){height:30%;animation-delay:.6s}.wave i:nth-child(7){height:60%;animation-delay:.75s}
+.wave i:nth-child(2){animation-delay:.1s}.wave i:nth-child(1){animation-delay:.2s}
+@keyframes wav{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+.saudio audio{width:100%;max-width:300px;filter:hue-rotate(190deg) saturate(.6)}
+.legal{margin-top:1.3rem;color:var(--text-muted);font-size:.8rem}
+.etag{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.5rem}
+.pp{font-size:.8rem;color:var(--text-muted);font-weight:600}
+.subp{font-size:.9rem;color:var(--text-muted);margin:-.7rem 0 1rem}
+.plan li::before{content:"✓";background:none;position:absolute;left:0;top:0;width:auto;height:auto;color:var(--accent);font-weight:700}
 .vcard{border-radius:14px;overflow:hidden;background:var(--bg-secondary);border:1px solid var(--border-color);position:relative}
 .vcard video{width:100%;aspect-ratio:9/16;object-fit:cover;background:var(--bg-secondary);display:block;cursor:pointer}
 .vlabel{position:absolute;left:0;right:0;bottom:0;padding:2.2rem .9rem .8rem;font-size:.85rem;font-weight:600;color:var(--text-main);background:linear-gradient(transparent,rgba(10,11,13,.92));pointer-events:none}
 .plan{display:flex;flex-direction:column}
 .plan .price{font-family:'Rajdhani',sans-serif;font-size:1.35rem;font-weight:700;color:var(--accent);margin:.4rem 0 1rem}
 .plan ul{list-style:none;margin:0 0 1.3rem;display:grid;gap:.55rem}
-.plan li{color:var(--text-muted);font-size:.94rem;padding-left:1.2rem;position:relative}
-.plan li::before{content:"";position:absolute;left:0;top:.55rem;width:.5rem;height:.5rem;background:var(--accent);border-radius:2px}
+.plan li{color:var(--text-muted);font-size:.94rem;padding-left:1.3rem;position:relative}
 .plan .opt{font-size:.85rem;color:var(--text-muted)}
 .plan .btn{text-align:center;margin-top:auto}
 .plan.feature{border:2px solid var(--accent);box-shadow:0 12px 40px rgba(255,209,0,.10);transform:translateY(-6px)}
@@ -96,7 +114,7 @@ footer a:hover{color:var(--accent)}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media (min-width:480px){.pgrid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:2.7rem}.hmetrics{grid-template-columns:repeat(3,1fr);gap:1.4rem}}
-@media (min-width:768px){.menu{display:flex}.grid3{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(3,1fr)}section{padding:88px 0}.hero{padding:96px 0 72px}}
+@media (min-width:768px){.menu{display:flex}.grid3{grid-template-columns:repeat(3,1fr)}.sgrid{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(3,1fr)}section{padding:88px 0}.hero{padding:96px 0 72px}}
 @media (min-width:1080px){.hero h1{font-size:3.2rem}h2{font-size:2.4rem}.pgrid{grid-template-columns:repeat(3,1fr)}.pgrid .plan.feature{margin:-10px -6px;padding:1.9rem}}
 </style>
 </head>
@@ -111,7 +129,7 @@ footer a:hover{color:var(--accent)}
   <div class="wrap nav">
     <a class="brand" href="#"><img src="../logo.webp" alt="Logo de DogWeb" width="34" height="34">Dog Web</a>
     <ul class="menu" id="menu">
-      <li><a href="#pilares">Servicios</a></li>
+      <li><a href="#servicios">Servicios</a></li>
       <li><a href="#showroom-ia">Showroom IA</a></li>
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#showroom-ia">Casos de Éxito</a></li>
@@ -148,7 +166,7 @@ footer a:hover{color:var(--accent)}
       </article>
       <article class="card reveal">
         <h3>Estrategia de contenidos unificada (Blog ↔ Redes)</h3>
-        <p>Un solo mensaje narrado en dos frentes: el blog contesta lo que tu cliente real busca en Google, y tus redes lo refuerzan con video y piezas cortas mediante planificación semanal con guiones, keywords y calendario.</p>
+        <p>Un solo mensaje narrado en dos frentes: el blog contesta lo que tu cliente real busca en Google, y tus redes lo refuerzan con video y piezas cortas. Esta conexión no es casualidad: es planificación semanal con guiones, keywords y calendario.</p>
       </article>
       <article class="card reveal">
         <h3>Motor de captación: SEO + Meta Ads</h3>
@@ -159,28 +177,36 @@ footer a:hover{color:var(--accent)}
 </section>
 <section id="showroom-ia" style="background:var(--bg-secondary)">
   <div class="wrap">
-    <p class="kicker">Portafolio</p>
-    <h2>Portafolio real por sector</h2>
-    <p class="sub">Producciones generadas y editadas con IA. Cada sector, una escena distinta; el mismo estándar de entrega.</p>
-    <div class="pgrid">
-      <figure class="vcard reveal"><video muted loop playsinline preload="metadata" src="assets/videos/demo-seo-local.mp4" aria-label="Video demo: SEO local y contenidos web"></video><figcaption class="vlabel">SEO local y contenidos web</figcaption></figure>
-      <figure class="vcard reveal"><video muted loop playsinline preload="metadata" src="assets/videos/demo-clinica-dental.mp4" aria-label="Video demo: Salud y clínicas"></video><figcaption class="vlabel">Salud y clínicas</figcaption></figure>
-      <figure class="vcard reveal"><video muted loop playsinline preload="metadata" src="assets/videos/demo-retail-tiendas.mp4" aria-label="Video demo: Retail y tiendas"></video><figcaption class="vlabel">Retail y tiendas</figcaption></figure>
-      <figure class="vcard reveal"><video muted loop playsinline preload="metadata" src="assets/videos/demo-restaurante.mp4" aria-label="Video demo: Restaurantes"></video><figcaption class="vlabel">Restaurantes</figcaption></figure>
-      <figure class="vcard reveal"><video muted loop playsinline preload="metadata" src="assets/videos/demo-taller-tecnico.mp4" aria-label="Video demo: Talleres y técnicos"></video><figcaption class="vlabel">Talleres y técnicos</figcaption></figure>
-      <figure class="vcard reveal"><video muted loop playsinline preload="metadata" src="assets/videos/demo-bodega-logistica.mp4" aria-label="Video demo: Logística y bodega"></video><figcaption class="vlabel">Logística y bodega</figcaption></figure>
-      <figure class="vcard reveal"><video muted loop playsinline preload="metadata" src="assets/videos/demo-automatizacion-ia.mp4" aria-label="Video demo: Automatización y datos"></video><figcaption class="vlabel">Automatización y datos</figcaption></figure>
+    <p class="kicker">Showroom IA</p>
+    <h2>Showroom IA: Producción Audiovisual sin Rodajes ni Actores</h2>
+    <p class="sub">Demostración real de activos hiperrealistas para marcas B2B y locales: video, fotografía y audio producidos con IA.</p>
+    <div class="sgrid">
+      <figure class="scard reveal">
+        <div class="smedia"><video id="reel-ciclo" muted playsinline preload="auto" src="assets/videos/demo-restaurante.mp4" aria-label="Reel IA de industria y servicios"></video></div>
+        <figcaption class="vlabel">Industria &amp; Servicios</figcaption>
+      </figure>
+      <figure class="scard reveal">
+        <div class="smedia"><img src="assets/img/foto-ia-ciudad.webp" alt="Fotografía hiperrealista generada con IA de una ciudad de noche con luces doradas" loading="lazy" width="864" height="486"></div>
+        <figcaption class="vlabel">Fotografía IA</figcaption>
+      </figure>
+      <figure class="scard reveal saudio">
+        <div class="smedia"><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><audio controls preload="none" src="assets/audio/locucion-demo.mp3" aria-label="Locución de demostración generada con IA"></audio></div>
+        <figcaption class="vlabel">Audio IA</figcaption>
+      </figure>
     </div>
+    <p class="legal">Regla de marca: Sin testimonios inventados. Nuestro portafolio real es la única prueba.</p>
   </div>
 </section>
-<section id="paquetes">
+<section id="servicios">
   <div class="wrap">
     <p class="kicker">Paquetes</p>
-    <h2>Planes de trabajo</h2>
+    <h2>Planes Transparentes y Escalables</h2>
+    <p class="sub">Sin letras chiquitas: inversión clara y enfocada en retorno. Elige el punto de entrada y escala cuando los datos lo respalden.</p>
     <div class="pgrid">
       <article class="card plan reveal">
+        <p class="etag">Para negocios locales</p>
         <h3>Plan Impulso Local</h3>
-        <p class="price">Desde $800.000 COP (pago único)</p>
+        <p class="price">$800.000 COP <span class="pp">(pago único)</span></p>
         <ul>
           <li>Landing de 1 sección profesional (72 horas)</li>
           <li>SEO on-page y Google Business Profile</li>
@@ -188,12 +214,14 @@ footer a:hover{color:var(--accent)}
           <li>Revisión técnica de tus canales actuales</li>
         </ul>
         <p class="opt">Opcional: mantenimiento y optimización por $250.000 COP/mes.</p>
-        <a class="btn" href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20cotizar%20el%20Plan%20Impulso%20Local" aria-label="Cotizar Plan Impulso Local por WhatsApp">Cotizar Impulso Local</a>
+        <a class="btn" href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20cotizar%20el%20Plan%20Impulso%20Local" aria-label="Cotizar Plan Impulso Local por WhatsApp">Cotizar Impulso Local →</a>
       </article>
       <article class="card plan feature reveal">
-        <span class="badge">RECOMENDADO</span>
+        <span class="badge">MÁS POPULAR</span>
+        <p class="etag">Pymes B2B y escalables</p>
         <h3>Plan Ecosistema SEO + Contenidos</h3>
-        <p class="price">$1.500.000 COP implementación + $590.000 COP/mes</p>
+        <p class="price">$1.500.000 COP <span class="pp">(Setup)</span></p>
+        <p class="subp">+ $590.000 COP/mes</p>
         <ul>
           <li>Sitio completo con blog SEO enfocado en keywords de compra</li>
           <li>4 videos IA/mes alineados a calendario</li>
@@ -201,18 +229,20 @@ footer a:hover{color:var(--accent)}
           <li>SEO técnico mensual y reporte de leads</li>
           <li>Ajustes de pauta según datos</li>
         </ul>
-        <a class="btn" href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20activar%20el%20Plan%20Ecosistema" aria-label="Activar Plan Ecosistema por WhatsApp">Activar Ecosistema</a>
+        <a class="btn" href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20activar%20el%20Plan%20Ecosistema" aria-label="Activar Plan Ecosistema por WhatsApp">Activar Ecosistema →</a>
       </article>
       <article class="card plan reveal">
+        <p class="etag">Empresas medianas</p>
         <h3>Plan Enterprise B2B</h3>
-        <p class="price">Desde $3.500.000 COP + administración $990.000 COP/mes</p>
+        <p class="price">Desde $3.500.000 COP <span class="pp">(Setup)</span></p>
+        <p class="subp">+ $990.000 COP/mes</p>
         <ul>
           <li>Ecosistema completo + automatización de WhatsApp (funnel de leads)</li>
           <li>8+ producciones IA/mes por producto o vertical</li>
           <li>Administración de pauta Meta Ads orientada a leads B2B</li>
           <li>Dashboard de reportes y soporte prioritario por WhatsApp directo</li>
         </ul>
-        <a class="btn" href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20Enterprise" aria-label="Agendar diagnóstico Enterprise por WhatsApp">Agendar diagnóstico Enterprise</a>
+        <a class="btn" href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20Enterprise" aria-label="Agendar diagnóstico Enterprise por WhatsApp">Agendar Diagnóstico Enterprise →</a>
       </article>
     </div>
   </div>
@@ -237,8 +267,16 @@ footer a:hover{color:var(--accent)}
 </footer>
 <a class="wa-float" href="https://wa.me/573337450634" aria-label="Escribir a DogWeb por WhatsApp"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg></a>
 <script>
-var vds=[].slice.call(document.querySelectorAll("video"));
-vds.forEach(function(v){var c=v.closest(".vcard");c.addEventListener("mouseenter",function(){vds.forEach(function(o){if(o!==v)o.pause()});v.play().catch(function(){})});c.addEventListener("mouseleave",function(){v.pause()});c.addEventListener("click",function(e){v.paused?(vds.forEach(function(o){if(o!==v)o.pause()}),v.play().catch(function(){})):v.pause()})});
+var reel=document.getElementById("reel-ciclo");
+var reels=["assets/videos/demo-restaurante.mp4","assets/videos/demo-clinica-dental.mp4","assets/videos/demo-retail-tiendas.mp4","assets/videos/demo-taller-tecnico.mp4","assets/videos/demo-bodega-logistica.mp4","assets/videos/demo-automatizacion-ia.mp4","assets/videos/demo-seo-local.mp4"];var ri=0;
+if(reel){
+ reel.addEventListener("ended",function(){ri=(ri+1)%reels.length;reel.src=reels[ri];reel.load();reel.play().catch(function(){})});
+ reel.addEventListener("click",function(){reel.paused?reel.play().catch(function(){}):reel.pause()});
+ reel.addEventListener("mouseenter",function(){reel.play().catch(function(){})});
+ reel.addEventListener("mouseleave",function(){if(!reel.ended)reel.pause()});
+}
+var au=document.querySelector(".saudio audio"),sw=document.querySelector(".saudio");
+if(au&&sw){au.addEventListener("play",function(){sw.classList.add("playing")});au.addEventListener("pause",function(){sw.classList.remove("playing")});au.addEventListener("ended",function(){sw.classList.remove("playing")})}
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.12});
 document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
 var brg=document.querySelector(".burger"),hdr=document.querySelector("header");
