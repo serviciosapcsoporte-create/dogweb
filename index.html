@@ -755,7 +755,25 @@ h1 span { color: var(--accent); }
   border: 1px solid rgba(15, 44, 89, 0.12);
 }
 
-/* --- SECTIONS (dark pricing) --- */
+/* SHOWROOM IA: media cards (video on-demand) */
+.show-card {
+  padding: 0;
+  overflow: hidden;
+}
+.show-card video {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: var(--bg-primary);
+  border-bottom: 1px solid rgba(255, 209, 0, 0.25);
+}
+.show-card .svc-icon {
+  margin: 0 auto 0.5rem;
+}
+.show-body {
+  padding: 1rem 1.1rem 1.3rem;
+}
 .section-pricing {
   position: relative;
   z-index: 1;
@@ -2238,15 +2256,72 @@ footer,
   </div>
   <div class="light-container" style="padding-top:0;">
     <div class="svc-grid">
-      <div class="svc-card"><div class="svc-icon">🖥️</div><h3>SEO &amp; Web Corporativa</h3><p>Demos de sitios rápidos y SEO local que capturan búsquedas de compra.</p></div>
-      <div class="svc-card"><div class="svc-icon">🩺</div><h3>Salud &amp; Clínicas</h3><p>Reels para clínicas y odontólogos con agenda de citas con IA.</p></div>
-      <div class="svc-card"><div class="svc-icon">🛍️</div><h3>Retail &amp; Tiendas</h3><p>Piezas de producto y carruseles IA para retail y tiendas.</p></div>
-      <div class="svc-card"><div class="svc-icon">🍽️</div><h3>Restaurantes</h3><p>Carta digital, pedidos por WhatsApp y videos de ambiente.</p></div>
-      <div class="svc-card"><div class="svc-icon">🔧</div><h3>Talleres &amp; Servicios Técnicos</h3><p>Contenido para talleres y técnicos que genera confianza local.</p></div>
-      <div class="svc-card"><div class="svc-icon">📦</div><h3>Logística &amp; Bodegas</h3><p>Operación de bodega y flotas mostrada con datos y video IA.</p></div>
-      <div class="svc-card"><div class="svc-icon">⚙️</div><h3>Automatización &amp; IA</h3><p>Demos de funnels, bots y datos conectados operando solos.</p></div>
-      <div class="svc-card"><div class="svc-icon">🎨</div><h3>Marca Web &amp; Agencia</h3><p>Identidades visuales y activos creativos para marcas B2B.</p></div>
+      <div class="svc-card show-card">
+        <video controls preload="none" poster="assets/showroom/01-seo-web.jpg" src="assets/showroom/01-seo-web.mp4"></video>
+        <div class="show-body">
+          <div class="svc-icon">🖥️</div>
+          <h3>SEO &amp; Web Corporativa</h3>
+          <p>Demos de sitios rápidos y SEO local que capturan búsquedas de compra.</p>
+        </div>
+      </div>
+      <div class="svc-card show-card">
+        <video controls preload="none" poster="assets/showroom/02-salud-clinicas.jpg" src="assets/showroom/02-salud-clinicas.mp4"></video>
+        <div class="show-body">
+          <div class="svc-icon">🩺</div>
+          <h3>Salud &amp; Clínicas</h3>
+          <p>Reels para clínicas y odontólogos con agenda de citas con IA.</p>
+        </div>
+      </div>
+      <div class="svc-card show-card">
+        <video controls preload="none" poster="assets/showroom/03-retail-tiendas.jpg" src="assets/showroom/03-retail-tiendas.mp4"></video>
+        <div class="show-body">
+          <div class="svc-icon">🛍️</div>
+          <h3>Retail &amp; Tiendas</h3>
+          <p>Piezas de producto y carruseles IA para retail y tiendas.</p>
+        </div>
+      </div>
+      <div class="svc-card show-card">
+        <video controls preload="none" poster="assets/showroom/04-restaurantes.jpg" src="assets/showroom/04-restaurantes.mp4"></video>
+        <div class="show-body">
+          <div class="svc-icon">🍽️</div>
+          <h3>Restaurantes</h3>
+          <p>Carta digital, pedidos por WhatsApp y videos de ambiente.</p>
+        </div>
+      </div>
+      <div class="svc-card show-card">
+        <video controls preload="none" poster="assets/showroom/05-talleres-tecnicos.jpg" src="assets/showroom/05-talleres-tecnicos.mp4"></video>
+        <div class="show-body">
+          <div class="svc-icon">🔧</div>
+          <h3>Talleres &amp; Servicios Técnicos</h3>
+          <p>Contenido para talleres y técnicos que genera confianza local.</p>
+        </div>
+      </div>
+      <div class="svc-card show-card">
+        <video controls preload="none" poster="assets/showroom/06-logistica-bodega.jpg" src="assets/showroom/06-logistica-bodega.mp4"></video>
+        <div class="show-body">
+          <div class="svc-icon">📦</div>
+          <h3>Logística &amp; Bodegas</h3>
+          <p>Operación de bodega y flotas mostrada con datos y video IA.</p>
+        </div>
+      </div>
+      <div class="svc-card show-card">
+        <video controls preload="none" poster="assets/showroom/07-automatizacion-ia.jpg" src="assets/showroom/07-automatizacion-ia.mp4"></video>
+        <div class="show-body">
+          <div class="svc-icon">⚙️</div>
+          <h3>Automatización &amp; IA</h3>
+          <p>Demos de funnels, bots y datos conectados operando solos.</p>
+        </div>
+      </div>
+      <div class="svc-card show-card">
+        <video controls preload="none" poster="assets/showroom/08-marca-web-agencia.jpg" src="assets/showroom/08-marca-web-agencia.mp4"></video>
+        <div class="show-body">
+          <div class="svc-icon">🎨</div>
+          <h3>Marca Web &amp; Agencia</h3>
+          <p>Identidades visuales y activos creativos para marcas B2B.</p>
+        </div>
+      </div>
     </div>
+    <p style="max-width:900px;margin:1.6rem auto 0;text-align:center;font-size:.85rem;color:var(--text-muted);">Cada tarjeta reproduce una muestra real del portafolio por sector. El video carga únicamente al interactuar.</p>
   </div>
 </section>
 
@@ -2771,6 +2846,17 @@ var bgContainer = document.getElementById('video-scroll-container');
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+<script>
+/* SHOWROOM: solo un video a la vez */
+(function () {
+  var vids = document.querySelectorAll('#showroom-ia video');
+  vids.forEach(function (v) {
+    v.addEventListener('play', function () {
+      vids.forEach(function (o) { if (o !== v) o.pause(); });
+    });
+  });
 })();
 </script>
 <script src="chat/cristal-loader.js"></script>
