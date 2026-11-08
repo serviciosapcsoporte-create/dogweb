@@ -2853,6 +2853,38 @@ function closeMenu() {
 var overlay = document.getElementById('videoOverlay');
 var sceneVideo = document.getElementById('bg-scroll-video');
 var bgContainer = document.getElementById('video-scroll-container');
+/* DOGWEB-LAYOUT-METRICS: cachea scrollHeight/innerHeight para no forzar layout en cada scroll */
+(function () {
+  var docEl = document.documentElement;
+  var m = { vh: window.innerHeight || 0, docH: 0, max: 0, ready: false, listeners: [] };
+  var raf = null;
+  function measure() {
+    raf = null;
+    m.vh = window.innerHeight || 0;
+    m.docH = docEl.scrollHeight;
+    m.max = Math.max(0, m.docH - m.vh);
+    m.ready = true;
+    for (var i = 0; i < m.listeners.length; i++) {
+      try { m.listeners[i](); } catch (e) {}
+    }
+  }
+  function schedule() {
+    if (raf === null) raf = requestAnimationFrame(measure);
+  }
+  m.schedule = schedule;
+  m.ensure = function () { if (!m.ready) schedule(); };
+  m.onMeasure = function (fn) { m.listeners.push(fn); };
+  window.addEventListener('resize', schedule, { passive: true });
+  window.addEventListener('orientationchange', schedule, { passive: true });
+  window.addEventListener('load', schedule, { passive: true });
+  if ('ResizeObserver' in window && document.body) {
+    // La callback inicial del observer llega con el layout ya resuelto: medimos sin forzar reflow
+    try { new ResizeObserver(schedule).observe(document.body); } catch (e) { schedule(); }
+  } else {
+    schedule();
+  }
+  window.__dwLayout = m;
+})();
 /* SCROLL-SCRUBBING: 5 escenas sincronizadas con las 5 secciones (H1..H5) */
 (function () {
   if (!sceneVideo || !bgContainer) return;
@@ -2869,21 +2901,35 @@ var bgContainer = document.getElementById('video-scroll-container');
   var currentTime = 0;
   var rafId = null;
   var lastScrollAt = 0;
+  var layout = window.__dwLayout || { vh: window.innerHeight || 0, max: 0, onMeasure: function () {} };
+  var topsDirty = false;
+  var topsRaf = null;
 
+  /* Una sola pasada de layout por recalculo: todos los rects se leen juntos */
   function computeTops() {
+    topsRaf = null;
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var tops = [];
     for (var i = 0; i < SCENES.length; i++) {
       var el = document.getElementById(SCENES[i]);
-      sceneTops[i] = el ? (el.getBoundingClientRect().top + window.pageYOffset) : -1;
+      tops.push(el ? el.getBoundingClientRect().top : null);
     }
+    for (var j = 0; j < tops.length; j++) {
+      sceneTops[j] = tops[j] === null ? -1 : tops[j] + y;
+    }
+    topsDirty = false;
   }
 
-  function maxScroll() {
-    return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  function scheduleTops() {
+    topsDirty = true;
+    if (topsRaf === null) topsRaf = requestAnimationFrame(computeTops);
   }
 
   function update() {
+    if (!layout.ready && layout.ensure) layout.ensure();
+    if (topsDirty && topsRaf === null) scheduleTops();
     var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    var m = maxScroll();
+    var m = layout.max;
     if (m <= 0) { targetTime = 0; return; }
     var frac;
     if (y <= 0) frac = 0;
@@ -2905,28 +2951,29 @@ var bgContainer = document.getElementById('video-scroll-container');
     }
     targetTime = frac * videoDuration;
     lastScrollAt = Date.now();
+    if (rafId === null) rafId = requestAnimationFrame(render);
   }
 
   function render() {
-    // LERP: suaviza tirones en scroll rápido (0.1 = retardo de seguimiento)
+    rafId = null;
+    // LERP: suaviza tirones en scroll rapido (0.1 = retardo de seguimiento)
     // Cuando el scroll se detiene (>120 ms sin updates) aterriza EXACTO en el frame objetivo
     var snap = Date.now() - lastScrollAt > 120;
     currentTime += (targetTime - currentTime) * (snap ? 1 : 0.1);
-    if (Math.abs(targetTime - currentTime) > 0.001) {
-      try { sceneVideo.currentTime = currentTime; } catch (e) {}
-    }
-    rafId = requestAnimationFrame(render);
+    try { sceneVideo.currentTime = currentTime; } catch (e) {}
+    // El bucle solo vive mientras hay movimiento: idle = 0 trabajo de main thread
+    if (Math.abs(targetTime - currentTime) > 0.0005) rafId = requestAnimationFrame(render);
   }
 
   function onReady() {
     videoDuration = (sceneVideo.duration && isFinite(sceneVideo.duration)) ? sceneVideo.duration : 50;
     sceneVideo.pause();
     sceneVideo.currentTime = 0;
-    computeTops();
-    update();
+    scheduleTops();
     window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', computeTops, { passive: true });
-    window.addEventListener('load', computeTops, { passive: true });
+    // Remedir cotas cuando cambie el layout (resize, fuentes, widget de chat), nunca en cada scroll
+    layout.onMeasure(function () { computeTops(); update(); });
+    layout.ensure();
     if (rafId === null) rafId = requestAnimationFrame(render);
   }
 
@@ -3068,7 +3115,12 @@ if ('serviceWorker' in navigator) {
   /* ── Scroll Depth Tracking ── */
   var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
   function checkScroll() {
-    var scrollPercent = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+    // Metricas cacheadas: no forzar layout al medir la profundidad de scroll
+    var lm = window.__dwLayout;
+    var vh = lm ? lm.vh : window.innerHeight;
+    var pageH = lm ? lm.docH : document.body.scrollHeight;
+    if (!pageH) return;
+    var scrollPercent = Math.round((window.scrollY + vh) / pageH * 100);
     Object.keys(scrollMilestones).forEach(function(milestone) {
       if (scrollPercent >= parseInt(milestone) && !scrollMilestones[milestone]) {
         scrollMilestones[milestone] = true;
@@ -3086,7 +3138,7 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('scroll', function() {
     if (scrollTimer) clearTimeout(scrollTimer);
     scrollTimer = setTimeout(checkScroll, 200);
-  });
+  }, { passive: true });
 
   /* ── Outbound Link Tracker ── */
   var outboundLinks = document.querySelectorAll('a[href^="http"]:not([href*="dogweb.lat"]):not([href*="wa.me"]):not([href*="api.whatsapp"])');
