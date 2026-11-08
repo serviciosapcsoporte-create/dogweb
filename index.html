@@ -2918,6 +2918,7 @@ var bgContainer = document.getElementById('video-scroll-container');
       sceneTops[j] = tops[j] === null ? -1 : tops[j] + y;
     }
     topsDirty = false;
+    update();
   }
 
   function scheduleTops() {
@@ -2972,7 +2973,7 @@ var bgContainer = document.getElementById('video-scroll-container');
     scheduleTops();
     window.addEventListener('scroll', update, { passive: true });
     // Remedir cotas cuando cambie el layout (resize, fuentes, widget de chat), nunca en cada scroll
-    layout.onMeasure(function () { computeTops(); update(); });
+    layout.onMeasure(computeTops);
     layout.ensure();
     if (rafId === null) rafId = requestAnimationFrame(render);
   }
