@@ -351,7 +351,7 @@
       "name": "¿Cuánto cuesta una página web con DogWeb?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Las páginas web comienzan desde $800,000 COP e incluyen landing pages, sitios dinámicos con Elementor y desarrollos avanzados con automatización y SEO técnico. El precio final depende del alcance del proyecto."
+        "text": "Las páginas web comienzan desde $800.000 COP e incluyen landing pages, sitios dinámicos con editor visual profesional y desarrollos avanzados con automatización y SEO técnico. El precio final depende del alcance del proyecto."
       }
     },
     {
@@ -383,7 +383,7 @@
       "name": "¿Cómo funciona la IA en WhatsApp?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Integramos chatbots con inteligencia artificial que automatizan respuestas, atienden clientes, registran pedidos en tiempo real y capturan leads calificados directamente en su WhatsApp. Desde $900,000 COP."
+        "text": "Integramos chatbots con inteligencia artificial que automatizan respuestas, atienden clientes, registran pedidos en tiempo real y capturan leads calificados directamente en su WhatsApp. La automatización de WhatsApp con IA está incluida en el Plan Enterprise B2B (desde $3.500.000 COP de setup + $990.000 COP/mes)."
       }
     }
   ]
@@ -2179,11 +2179,72 @@ footer,
   transition: transform 160ms var(--ease-out) !important;
 }
 
+/* === FAQ === */
+.faq-section {
+  position: relative;
+  z-index: 1;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  padding: 6rem 2rem;
+}
+.faq-section .section-eyebrow { color: var(--accent); }
+.faq-list {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.faq-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+.faq-item[open] { border-color: rgba(255, 209, 0, 0.35); }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.4rem;
+  font-family: 'Plus Jakarta Sans', 'PJS Fallback', 'Inter', 'Inter Fallback', sans-serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--text-main);
+  transition: color 0.2s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--accent); }
+.faq-item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--accent);
+  font-family: 'Rajdhani', 'Rajdhani Fallback', 'Inter', 'Inter Fallback', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1), background 0.25s;
+}
+.faq-item[open] .faq-icon { transform: rotate(45deg); background: rgba(255, 209, 0, 0.08); }
+.faq-a { padding: 0 1.4rem 1.3rem; }
+.faq-a p { color: var(--text-muted); font-size: 0.98rem; line-height: 1.7; max-width: 680px; }
+.faq-a a { color: var(--accent); }
+
 /* === EMIL-DESIGN-ENG: REVEAL EXTENSIONS === */
-.ecosystem-section, .testimonial-section, .why-section, .contact-section {
+.ecosystem-section, .testimonial-section, .why-section, .contact-section, .faq-section {
   opacity: 0;
 }
-.ecosystem-section.is-in, .testimonial-section.is-in, .why-section.is-in, .contact-section.is-in {
+.ecosystem-section.is-in, .testimonial-section.is-in, .why-section.is-in, .contact-section.is-in, .faq-section.is-in {
   opacity: 1;
   animation: riseIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) backwards;
 }
@@ -2674,6 +2735,37 @@ footer,
   </p>
 </section>
 
+<!-- FAQ (contenido espejo del JSON-LD FAQPage) -->
+<section class="faq-section" id="faq">
+  <div class="section-header">
+    <span class="section-eyebrow">Preguntas frecuentes</span>
+    <h2>Dudas antes de <span>escribirnos</span></h2>
+    <p>Respuestas directas sobre precios, tiempos y cómo trabajamos. Lo que no vea aquí, lo resolvemos por WhatsApp en menos de 24 horas.</p>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary><span class="faq-q">¿Cuánto cuesta una página web con DogWeb?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+      <div class="faq-a"><p>Las páginas web comienzan desde $800.000 COP e incluyen landing pages, sitios dinámicos con editor visual profesional y desarrollos avanzados con automatización y SEO técnico. El precio final depende del alcance del proyecto.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-q">¿En cuánto tiempo entregan una página web?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+      <div class="faq-a"><p>La entrega de una página web básica es en 72 horas. Contamos con una modalidad urgente de entrega en 24 horas para proyectos que lo requieran.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-q">¿Qué servicios ofrece DogWeb?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+      <div class="faq-a"><p>DogWeb ofrece cuatro líneas de servicio: páginas web profesionales, automatización con IA en WhatsApp, campañas de Ads y prospección digital, y mantenimiento web.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-q">¿DogWeb atiende en toda Colombia?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+      <div class="faq-a"><p>Sí. DogWeb está ubicada en Bogotá y presta servicios digitales en toda Colombia y LATAM. La atención es directa con Alejandro Piraquive, sin intermediarios.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-q">¿Cómo funciona la IA en WhatsApp?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+      <div class="faq-a"><p>Integramos chatbots con inteligencia artificial que automatizan respuestas, atienden clientes, registran pedidos en tiempo real y capturan leads calificados directamente en su WhatsApp. La automatización de WhatsApp con IA está incluida en el Plan Enterprise B2B (desde $3.500.000 COP de setup + $990.000 COP/mes).</p></div>
+    </details>
+  </div>
+</section>
+
 <!-- CONTACTO -->
 <section class="contact-section" id="contacto">
   <div class="contact-grid">
@@ -2985,7 +3077,7 @@ var bgContainer = document.getElementById('video-scroll-container');
 <script>
 /* REVEAL-ON-SCROLL (emil-design-eng + Agente 3D) */
 (function () {
-  var els = document.querySelectorAll('.svc-card, .card, .process-step, .blog-card, .ecosystem-section, .testimonial-section, .why-section, .eco-step, .why-item, .contact-section');
+  var els = document.querySelectorAll('.svc-card, .card, .process-step, .blog-card, .ecosystem-section, .testimonial-section, .why-section, .faq-section, .eco-step, .why-item, .contact-section');
   if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     els.forEach(function (el) { el.classList.add('is-in'); });
     return;
