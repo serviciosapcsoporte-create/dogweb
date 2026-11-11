@@ -2,7 +2,7 @@
    GitHub Pages fija Cache-Control max-age=600 y no permite headers custom.
    Este SW da cache de larga duracion a assets estaticos (stale-while-revalidate),
    network-first para navegacion (html siempre fresco) y fallback offline. */
-var CACHE = 'dogweb-v2';
+var CACHE = 'dogweb-v3';
 var CORE = [
   '/',
   '/index.html',

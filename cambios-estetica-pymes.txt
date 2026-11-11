@@ -1,0 +1,93 @@
+================================================================================
+CAMBIOS DE ESTÉTICA — DOGWEB.LAT → ENFOQUE MARKETING PARA PYMES
+Fecha: 11/11/2026 · Agente: OpenCode (GLM) · Dirección aprobada por Alejandro
+Dirección elegida: base oscura intacta + VERDE WHATSAPP (#25d366) como acento
+principal + DORADO (#ffd100) como secundario (badges premium y detalles).
+================================================================================
+
+CONTEXTO (gate del skill niche-validator)
+--------------------------------------------------------------------------------
+La validación de nicho del 11/11/2026 dio VERDE 7,0 para "marketing digital pyme
+Colombia/LATAM". Con nicho viable, invertir en la estética está justificado.
+La nueva paleta alinea la web con lo que DogWeb vende de verdad: captación por
+WhatsApp. El visitante ve el color del canal por el que le van a responder.
+
+HALLAZGOS (lo que el agente encontró antes de tocar nada)
+--------------------------------------------------------------------------------
+1. Paleta previa: fondo #0a0b0d, acento dorado #ffd100 (+hover #e6bd00),
+   verde WhatsApp ya presente SOLO en el botón flotante y el radar del CTA.
+2. El dorado vivía como hex directo y rgba en 37 archivos (171 puntos):
+   index.html (35), camaras-ia-bogota.html (26), seo-local.html (6),
+   21 landings programáticas (3-4 c/u), 16 artículos del blog (1-2 c/u).
+3. Los artículos del blog YA usaban #25D366 en sus botones WhatsApp — la
+   convergencia de paleta es natural, no forzada.
+4. El widget de chat IA (chat/cristal.*) no tiene dorado: no requirió cambios.
+5. DogWeb-LATAM-Agencia-de-Confianza.html (205 KB, bundle React compilado)
+   NO está enlazado desde ningún archivo del sitio: experimento huérfano.
+   → NO se tocó.
+6. nueva-landing/ (prueba B noindex) y preview/ (a/b): NO se tocaron para no
+   contaminar los experimentos con la nueva paleta.
+7. Restricción técnica respetada: NO se cambiaron familias de fuentes ni
+   @font-face. Los woff2 self-hosted con fallbacks métricos (size-adjust,
+   ascent/descent-override) son los que dejaron el CLS en 0 móvil — cambiar
+   fuentes destruiría ese trabajo. La identidad tipográfica se mantiene.
+
+CAMBIOS REALIZADOS (37 HTML + sw.js)
+--------------------------------------------------------------------------------
+MAPA DE COLOR APLICADO (idéntico en los 37 archivos):
+  #ffd100 → #25d366   (acento principal: enlaces, spans de titulares, precios,
+                       iconos, botones CTA, glows)
+  #e6bd00 → #1fb855   (hover del acento)
+  #B98B00 → #0b7a3d   (variante oscura en blog)
+  #A87600 → #0b7a3d   (eyebrow sobre fondo claro: verde oscuro legible AA)
+  #1a1500 → #0b2417   (fondo de badge oscuro teñido de dorado → verde)
+  rgba(255,209,0,α) → rgba(37,211,102,α)   (bordes, glows, badges, faq abierto)
+  rgba(230,189,0,α) → rgba(31,184,85,α)
+
+CASOS ESPECIALES EN index.html:
+  :root        → --accent: #25d366; --accent-hover: #1fb855;
+                 + NUEVO --accent-2: #ffd100 (dorado secundario documentado)
+  .plan-flag   → VUELVE A DORADO (badge "PARA NEGOCIOS LOCALES" /
+                 "MÁS POPULAR": dorado = insignia premium, verde = acción)
+  .blog-badge  → VUELVE A DORADO ("Nuevo artículo")
+  .step-number → la variante oscura (línea 1845) conserva tinte dorado
+  .svc-price   → VERDE (el precio es conversión, no decoración)
+
+sw.js → CACHE 'dogweb-v2' → 'dogweb-v3' (invalida estáticos cacheados por el
+PWA en visitas recurrentes; el HTML ya era network-first).
+
+CONTABILIDAD: 136 reemplazos en 36 archivos simples + 35 en index.html = 171.
+
+QA (Puppeteer, 11/11/2026, local)
+--------------------------------------------------------------------------------
+- index: --accent #25d366, --accent-2 #ffd100, botón nav rgb(37,211,102),
+  .plan-flag dorado, .blog-badge dorado, h2 spans verdes, FAQ borde normal.
+- landing (pagina-web-para-clinicas): --accent verde, .btn-cta verde.
+- blog (seo-local-...-whatsapp-ia): h2 y tagline verdes.
+- Recursos rotos: 0 en las 3 páginas.
+- Capturas: dw_est_hero.png, dw_est_planes.png (Temp opencode).
+- Grep post-cambio: el hex #ffd100 solo existe en la definición de --accent-2;
+  los rgba dorados solo en .plan-flag y .blog-badge.
+
+PENDIENTES (detectados, NO ejecutados)
+--------------------------------------------------------------------------------
+1. og-image.png y logo.png llevan el dorado en su diseño (imagen, no CSS).
+   Regenerar con la paleta nueva (CF images / Pollinations) en otra sesión.
+2. favicon: revisar si la versión actual contrasta bien con verde.
+3. Revisar en vivo el contraste de #0b7a3d sobre #FAFAF8 en eyebrows de
+   secciones claras (AA para texto pequeño está al límite, ~5:1 EST.).
+4. La CSS de blog.html tiene 2 tokens cambiados por mapa general — revisar
+   visual en un pase de browser real (baja prioridad).
+
+REVERSIÓN
+--------------------------------------------------------------------------------
+git checkout <commit-anterior> -- index.html sw.js *.html blog/*.html
+(los commits son atómicos; el cambio estético queda en un solo commit)
+
+REVALIDACIÓN DEL NICHO (señal a vigilar)
+--------------------------------------------------------------------------------
+Si en 30 días del plan de capitalización la estética verde no mueve el CTR del
+CTA principal (GA4: clicks WhatsApp por sección) por encima del comportamiento
+previo, el cambio de acento no contribuye y se puede volver a dorado tocando
+solo :root (1 línea) — la estructura de tokens lo permite.
+================================================================================

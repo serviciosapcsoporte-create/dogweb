@@ -1,0 +1,355 @@
+================================================================================
+AUDITORIA WEB COMPLETA — DOGWEB.LAT (pagina viva)
+Fecha: 21 oct 2026 · Analisis de https://dogweb.lat/ tal como esta publicada
+================================================================================
+
+--------------------------------------------------------------------------------
+1. RESUMEN EJECUTIVO (que es la pagina en 5 lineas)
+--------------------------------------------------------------------------------
+DogWeb.lat es la landing de la agencia digital de Alejandro Piraquive (Bogota,
+Colombia). Es una sola pagina larga estilo "one-page scrollytelling": un video de
+fondo con 5 tomas se va desplazando al mover el scroll y sirve de escenario para
+5 escenas de venta. El discurso comercial es: dolor (pierde clientes) ->
+solucion conectada (web + IA WhatsApp + Ads + datos) -> precios claros ->
+prueba social real -> proceso simple -> contacto directo por WhatsApp.
+
+Mercado: pymes de Colombia y LATAM (Panama, Puerto Rico, Ecuador, Mexico).
+Precio ancla de entrada: desde $800.000 COP / U$200, entrega en 72h.
+Canal de conversion principal: WhatsApp directo (+57 333 745 0634) con mensajes
+precargados segun la seccion. Canal secundario: formulario (Web3Forms) a email.
+
+--------------------------------------------------------------------------------
+2. MAPA DE SECCIONES — COPY EXACTO Y FUNCION (seccion por seccion)
+--------------------------------------------------------------------------------
+El recorrido del visitante es de arriba hacia abajo, en este orden:
+
+--- 2.1 TOPBAR (barra superior azul marino) ---
+Texto: ". AGENCIA DIGITAL VERIFICADA . Bogota, Colombia . Atencion directa con
+Alejandro Piraquive . Respuesta <24h" (con punto verde pulsante).
+Funcion: credibilidad inmediata. Dice quien responde y en cuanto tiempo.
+
+--- 2.2 HEADER (menu pegajoso/sticky) ---
+Logo "Dog Web" (la palabra "Dog" en dorado). Enlaces: Servicios / Proceso /
+Blog / Contacto + boton dorado "Hablar ahora" -> wa.me con texto precargado
+"Hola DogWeb, quiero informacion".
+En movil: hamburguesa que despliega un panel oscuro con los mismos enlaces.
+
+--- 2.3 HERO (primera pantalla) ---
+Badge: "Marketing digital . Paginas web . IA . LATAM"
+Tagline chip: "Rastreamos clientes para su negocio" (eslogan oficial).
+TITULO PRINCIPAL (H1): "Su negocio pierde clientes todos los dias.
+  Su web no los esta atrapando."  (la segunda frase va en dorado)
+Subtitulo: "Paginas web que convierten, automatizacion con IA que nunca duerme
+  y marketing que cazan clientes reales. Todo conectado. Todo funcionando.
+  Sin intermediarios."
+Botones: [Asesoria gratis por WhatsApp] [Ver planes y precios]
+Metricas en fila: 72h "Su web lista para vender" / 24/7 "IA atendiendo
+  clientes" / 24h "Respuesta directa".
+Funcion: gancho de dolor + promesa + prueba de velocidad.
+
+--- 2.4 LINEAS DE SERVICIO (4 tarjetas vidrio, resumen rapido) ---
+Titular: "Todo lo que su negocio necesita para vender en digital. Un solo
+equipo." / "Cada servicio funciona solo o conectado con los demas. Elija lo que
+necesita hoy, escale manana."
+* Paginas Web — "Su vitrina en Google, lista para vender en 72 horas. Desde
+  landing pages hasta webs corporativas con SEO tecnico." [Desde U$200 | Entrega 72h]
+* IA en WhatsApp — "Su asistente virtual que nunca duerme. Captura leads 24/7,
+  responde preguntas y registra pedidos sin perder el tono de su marca."
+  [Desde U$225 | Bots + CRM]
+* Ads y Prospeccion — "Campanas que cazan clientes reales, no clicks. Google,
+  Meta y prospeccion directa con leads calificados a su WhatsApp."
+  [Desde U$400 | ROI medible]
+* Mantenimiento — "Su web siempre rapida, segura y actualizada. Backups, SSL,
+  soporte y cambios — todo incluido sin sorpresas." [Desde U$30/mes]
+  *** ERROR: el plan real de mantenimiento cuesta $300.000/mes = U$75/mes,
+  no U$30. Ver inconsistencias en seccion 8.
+
+--- 2.5 PLANES Y PRECIOS (pestañas/tabs interactivas) ---
+Titular: "Precios claros. Sin sorpresas. Sin costos ocultos." / "Cada plan
+tiene todo incluido. El precio que ve es el precio que paga. Atencion directa
+con Alejandro Piraquive."
+Hay 4 pestañas (tabs): Paginas Web / IA en WhatsApp / Ads y Prospeccion /
+Mantenimiento. Solo la activa se ve (el resto se abre con click).
+
+TAB WEB (3 planes):
+* APC-WEB-01 "Basico" — Web Presencial — $800.000 COP (~U$200), un solo pago.
+  Landing hasta 3 secciones, optimizacion movil, botones WhatsApp, 5 PDFs,
+  entrega 72 horas.
+* APC-WEB-02 "Corporativo" — Web Dinamica — $1.600.000 (~U$400), un pago.
+  Hostinger con Elementor, 6 secciones, modulo de archivos, chat WhatsApp,
+  entrega 5 dias habiles. Tarjeta destacada "Mas solicitado".
+* APC-WEB-03 "Premium" — Web Avanzada — $3.000.000 (~U$750), un pago.
+  Todo el corporativo + formularios de cotizacion automaticos, base de datos
+  de clientes, filtros antivirus, SEO tecnico, entrega 10 dias habiles.
+
+TAB IA WHATSAPP (3 planes + nota de soporte):
+* APC-IA-01 "Basico" — $500.000 (~U$125): ManyChat/Jelou/n8n, menu
+  interactivo, FAQ, envio de catalogos.
+* APC-IA-02 "Intermedio" — $900.000 (~U$225), "Mas solicitado": + Google
+  Sheets, registro de clientes/pedidos, IA con identidad (OpenAI),
+  conversacion natural.
+* APC-IA-03 "Avanzado" — $1.800.000 (~U$450): + webhooks/APIs, CRM o software
+  contable, pasarelas de pago, agendamiento Google Calendar.
+* Nota bajo los planes: soporte mensual del bot desde $200.000/mes (estandar)
+  o $400.000/mes (avanzado con seguridad anti-bots).
+
+TAB ADS Y PROSPECCION (1 plan):
+* APC-MKT01 "Campana Ads y Prospeccion Digital" — $1.600.000 (~U$400).
+  Campana de atraccion (gratis o paga), leads calificados a WhatsApp,
+  integracion con sistema local e IA para calificar contactos.
+* Nota: "se potencia al combinarlo con IA en WhatsApp — preguntenos por combos."
+
+TAB MANTENIMIENTO (2 planes):
+* APC-MANT-01 "Soporte y Actualizacion Web" — $300.000 COP/mes (~U$75/mes).
+  Backups semanales, plugins/seguridad, subida de PDFs, cambios de
+  imagenes/precios (max 4 cambios/mes).
+* APC-SOP-01/02 "Soporte Bot WhatsApp" — desde $200.000 COP/mes (~U$50/mes).
+  Logs y flujos n8n, calibracion del prompt, correccion de alucinaciones;
+  version Avanzada $400.000 con anti-inyeccion y seguridad API.
+
+--- 2.6 ECOSISTEMA CONECTADO (3 pasos con flechas) ---
+Titular: "No vendemos herramientas sueltas. Instalamos una maquina que funciona
+sola." / "Web + WhatsApp IA + Marketing + Datos conectados. Cada pieza alimenta
+a la otra."
+Flujo: (1) ATRAE "Web optimizada + SEO + Ads" -> (2) CONVIERTE "WhatsApp IA +
+CRM, leads que responden solos 24/7" -> (3) RETIENE "Datos + Automatizacion,
+clientes recurrentes".
+CTA: "Quiero mi ecosistema digital" (WhatsApp).
+
+--- 2.7 TESTIMONIO (prueba real) ---
+5 estrellas. "DogWeb nos construyo un panel de control operativo y financiero
+personalizado. Antes manejabamos todo en hojas de calculo. Ahora tenemos datos
+en tiempo real, automatizamos reportes y tomamos decisiones con informacion,
+no con intuicion." — Excelencia Automotriz, con link a
+excelenciaautomotriz.store. ES UN CASO REAL (no testimonio inventado).
+
+--- 2.8 POR QUE DOGWEB (6 razones) ---
+Titular: "Por que negocios como el suyo eligen DogWeb" / "Six razones por las
+que no necesitan otra agencia."   *** ERROR: "Six" esta en ingles.
+Razones: IA con identidad de marca / 72 horas para su web / Experto en su
+mercado (Colombia y LATAM) / Precio fijo sin sorpresas / Soporte real, no bots
+(persona que conoce su proyecto) / Crece sin reiniciar (landing -> sistema
+completo, misma base).
+
+--- 2.9 PROCESO (4 pasos) ---
+Titular: "De el primer mensaje a resultados reales. En 4 pasos."
+  *** ERROR: debe ser "DEL primer mensaje".
+Pasos: (01) Cuentenos su negocio — WhatsApp, 5 minutos para entender.
+  (02) Propuesta clara — plan y precio exactos. (03) Produccion — web, bot o
+  campana personalizados. (04) Entrega y soporte — todo funcionando + video
+  de como administrarlo + acompanamiento.
+
+--- 2.10 BANNER CRUZADO (puente al ecosistema APC) ---
+"¿Necesita camaras, control de personal o instalar IA en su operacion?" ->
+enlace a camaras-ia-bogota.html. Posiciona camaras como tecnologia de datos/IA,
+no como seguridad. Incluye gancho "Descarga tu Plantilla KPI gratis".
+
+--- 2.11 BLOG RECOMENDADO ---
+Titular: "Aprenda lo que su negocio necesita para crecer".
+Destacado (tarjeta grande): "SEO Local para aumentar las ventas: web rapida,
+WhatsApp con IA y vision YOLO como datos" (nuevo articulo).
+3 tarjetas: "Incrementar ventas: 7 acciones de bajo costo" (29 sep), "Google
+Business Profile: posicionamiento local" (24 sep), "Plan de accion para
+incrementar ventas en 30 dias" (22 sep). + "Ver todos los articulos del blog".
+
+--- 2.12 COBERTURA INTERNACIONAL ---
+Titular: "Su negocio en toda Latinoamerica" — "Precios fijos en dolares (USD)
+y servicio remoto con atencion directa de Alejandro Piraquive."
+4 paises: Panama / Puerto Rico / Ecuador / Mexico (agencia de marketing USD).
+5 ciudades: Ciudad de Panama / San Juan / Quito / Guayaquil / CDMX ("Desde
+US$200 en 72 horas").
+Por industria (6 tarjetas): Restaurantes (carta digital + pedidos WhatsApp) /
+Clinicas y odontologos (agenda de citas con IA) / Constructoras (portafolio y
+cotizaciones) / Gimnasios (agenda y membresias) / Veterinarias (citas) /
+Hoteles (reservas directas con IA).
+
+--- 2.13 CONTACTO ---
+Titular: "Su negocio merece aparecer, atraer y vender en digital." / "En menos
+de 24 horas le respondemos con una propuesta directa, clara y lista para
+ejecutar. Sin compromiso."
+Columna izquierda: Ubicacion (Cra. 52c #39b-22, Bogota, con link a Google Maps)
+/ Telefono +57-333-745-0634 / Email (protegido por Cloudflare) / iconos de
+Facebook, Instagram, LinkedIn.
+Boton WhatsApp con animacion de radar y badge verde "SISTEMA IA // RESPUESTA
+EN < 5 MINUTOS" + punto que late.
+Columna derecha: Formulario "Envianos un mensaje" (Nombre, Correo, Telefono,
+Mensaje) — envia via Web3Forms a serviciosapcsoporte@gmail.com, con honeypot
+anti-spam, mensaje de confirmacion y redireccion a la home.
+Mapa de Google embebido + Horarios: L-V 8:00-18:00, Sab 9:00-14:00, Dom cerrado.
+
+--- 2.14 FOOTER ---
+"(c) 2026 DogWeb. Todos los derechos reservados." + "Agencia Digital en Bogota,
+Colombia . Alejandro Piraquive . dogweb.lat"
+Enlaces de cortesia: serviciosapc.site, 4 landings de paises, Marketing para
+Abogados, Web para Inmobiliarias, Software para Salones, Marketing Restaurantes,
+Web para Clinicas, Blog completo.
+Boton flotante fijo: WhatsApp (verde) + Facebook + Instagram + LinkedIn.
+
+--------------------------------------------------------------------------------
+3. ARQUITECTURA Y DE CONTENIDO (archivos y articulos)
+--------------------------------------------------------------------------------
+Home index.html (esta pagina) + blog.html (indice del blog).
+22 landings de nicho por pais/ciudad/industria (listadas en seccion 2.12 y en
+el sitemap) — estrategia SEO programatica para "agencia de marketing en X" y
+"pagina web en Y".
+
+BLOG: 17 articulos activos. Los mas recientes (sept 2026):
+- Incrementar ventas: 7 acciones de bajo costo (29 sep)
+- Google Business Profile: posicionamiento local (24 sep)
+- Plan de accion incrementar ventas en 30 dias (22 sep)
+- Posicionamiento SEO local: guia (17 sep)
+- Servicio SEO local agencia Colombia (15 sep)
+- SEO local: aumentar ventas con vision YOLO + WhatsApp IA (10 sep, destacado)
+- Velocidad web y SEO local (9 sep)
+Y mas antiguos: cuanto cuesta una pagina web en Panama / Puerto Rico, marketing
+para restaurantes y abogados, como crear un chatbot de WhatsApp, paginas web
+con IA, camaras de seguridad IA Bogota, agencia para pymes LATAM.
+Los articulos alimentan las landings (cada nicho tiene su articulo puente).
+
+Investigacion y tracking instalado: Google Analytics 4 (G-EWFDLTCM8R),
+seguidor de clicks en WhatsApp por seccion (CRO listo para reportes),
+widget de chat IA "cristal" (3 archivos precargados) y Service Worker (PWA
+ligera: cachea la pagina para visitas repetidas).
+
+--------------------------------------------------------------------------------
+4. SEO — LO BUENO
+--------------------------------------------------------------------------------
+* Title fuerte: "DogWeb — Agencia Digital en Colombia: Paginas Web, IA en
+  WhatsApp y Marketing" + description con oferta y pais.
+* Schema JSON-LD doble y completo:
+  (1) LocalBusiness con NAP, coordenadas geo, horarios, monedas, metodos de
+  pago, redes (sameAs), founder Alejandro Piraquive, y catalogo de 3 ofertas
+  con precios COP.
+  (2) FAQPage con 5 preguntas frecuentes (cuanto cuesta, tiempos de entrega,
+  servicios, cobertura, como funciona la IA).
+* robots.txt correcto y GEO-ready: permite Google + bots de IA (GPTBot,
+  ClaudeBot, PerplexityBot) -> el contenido puede aparecer en respuestas de IA.
+* sitemap.xml con 37 URLs y prioridades logicas (home 1.0, landings nicho
+  0.7-0.9, blog 0.6-0.7).
+* Canonical, Open Graph completo (og-image 1200x630, twitter card), favicon,
+  link rel=sitemap, CSP de seguridad estricta, fonts cargadas async
+  (media="print" trick), meta theme-color.
+
+--------------------------------------------------------------------------------
+5. SEO Y CALIDAD — PROBLEMAS
+--------------------------------------------------------------------------------
+(SEVERIDAD ALTA)
+* FAQPage en JSON-LD pero NO existe seccion FAQ visible en la pagina.
+  Google exige que el contenido marcado se muestre al usuario; es inconsistencia
+  que puede costar resultados enriquecidos o trigger de revision manual.
+  ACCION SUGERIDA: agregar una seccion FAQ con acordeon usando esas 5 preguntas
+  (ademas ayuda a cerrar dudas antes del contacto).
+(SEVERIDAD ALTA)
+* Inconsistencias de precio entre capas:
+  - Schema dice IA "desde $900.000" pero el tab IA tiene Basico $500.000.
+  - Tarjeta resumen "Mantenimiento desde U$30/mes" vs plan real $300.000/mes
+    (~U$75). El visitante ve un precio y el plan otro.
+  ACCION SUGERIDA: unificar (tarjeta resumen -> "Desde U$75/mes"; schema IA ->
+  desde $500.000).
+(SEVERIDAD MEDIA)
+* Errores de copy: "Do el/de el primer mensaje" (debe ser "DEL primer mensaje"),
+  "Six razones" (traducir a "Seis razones"), "marketing que cazan clientes
+  reales" (caza). Poca cosa pero restan profesionalismo en un sitio que vende
+  esmero.
+* Jerarquia de titulos rota: las metricas del hero (72h, 24/7, 24h) usan <h2>,
+  apagando el orden semanticamente correcto de encabezados.
+* El plan Web Corporativo dice "Web Hostinger con Elementor": expone el
+  proveedor/herramienta interna; conviene reformular como "editor visual
+  profesional" (el cliente no necesita saber el hosting interno).
+(SEVERIDAD BAJA)
+* Meta keywords: ya no aporta (no penaliza).
+* Footer: <br> intercalados entre enlaces rompen la alineacion del bloque;
+  el primer enlace (serviciosapc.site) mezcla marcas hermana sin contexto.
+* lastmod del sitemap desactualizados respecto a cambios recientes.
+* Email ofuscado por Cloudflare: sin JS activado no se ve la direccion.
+
+--------------------------------------------------------------------------------
+6. DISENO, TIPOGRAFIA Y DISTRIBUCION
+--------------------------------------------------------------------------------
+PALETA: fondo casi negro #0a0b0d, secundario #14161a, acento dorado #ffd100
+(con hover #e6bd00), grises de texto #f3f4f6 / #9ca3af, bordes #22252a, azul
+marino #0F2C59 para topbar/banner y verde WhatsApp #25d366.
+TIPOGRAFIA: cuerpo = Inter; titulos = Plus Jakarta Sans (800/900); numeros y
+metricas = Rajdhani. Escala de H1: 3.2rem escritorio -> 2rem movil. Linea de
+lectura 1.6. Legibilidad consistent.
+DISTRIBUCION: contenedor max 1240px; hero centrado; secciones alternan fondo
+"vidrio" (tarjetas translucidas con blur sobre el video — glassmorphism) y
+secciones oscuras solidas. En movil el blur se desactiva y las tarjetas pasan
+a fondo opaco al 82% para garantizar lecturabilidad (buen criterio).
+MOTION: revelado de tarjetas al entrar en pantalla con escalonado (60ms por
+tarjeta), hover con elevacion, radar pulsante del boton WhatsApp, scrubbing del
+video de fondo sincronizado al scroll con interpolacion (lerp) para suavidad.
+Accesible: respeta prefers-reduced-motion (pausa video, poster estatico,
+quita animaciones).
+RESPONSIVO: breakpoints 968 / 768 / 480 px; menu hamburguesa accesible
+(tecla ESC, click fuera, aria-expanded), metricas y Grillas colapsan a 1
+columna; video fondo fijo en todas las pantallas.
+ACCESIBILIDAD (a11y): roles/aria en menu y boton WhatsApp, alt en imagenes
+principales; PENDIENTE: link "saltar al contenido" y outline de foco visible
+en esta home (la nueva landing si lo tiene).
+
+--------------------------------------------------------------------------------
+7. CONVERSIONES (CTAs) — COMO SE CAPTAN LOS CLIENTES
+--------------------------------------------------------------------------------
+* WhatsApp wa.me 573337450634 aparece en 9+ puntos: topbar (implícito), header,
+  hero, cada plan (con TEXTO PRECARGADO SEGUN EL PLAN: "Quiero el plan Web
+  Presencial Basica" etc.), flujo del ecosistema, contacto (gran boton con
+  radar + badge <5 min), boton flotante fijo. El tracker de clicks registra
+  cada seccion para GA4 (hero / contacto / float...).
+* Formulario Web3Forms con honeypot + redireccion a home (flujo de respaldo).
+* Sin carrito ni checkout: la venta sigue por WhatsApp — coherente con el
+  mercado LATAM pyme.
+* CTA count por tipo: 6 de los 8 CTAs mayoritarios son WhatsApp; 2 son
+  navegacion interna (ver planes / contacto).
+
+--------------------------------------------------------------------------------
+8. TABLA DE PRECIOS PÚBLICADOS (COP y USD)
+--------------------------------------------------------------------------------
+PLAN                                COP          USD          TERCIO
+Web Basico (landing 3 secciones)    800.000      ~200         un pago
+Web Corporativo (6 secciones)     1.600.000      ~400         un pago
+Web Premium (avanzada + SEO)      3.000.000      ~750         un pago
+IA WhatsApp Basico                  500.000      ~125         un pago
+IA WhatsApp Intermedio              900.000      ~225         un pago
+IA WhatsApp Avanzado              1.800.000      ~450         un pago
+Campana Ads y Prospeccion         1.600.000      ~400         un pago
+Mantenimiento Web                  300.000/mes    ~75/mes     suscripcion
+Soporte Bot WhatsApp (estandar)    200.000/mes    ~50/mes     suscripcion
+Soporte Bot WhatsApp (avanzado)    400.000/mes   ~100/mes     suscripcion
+
+Fuente: tabs de precios de la home. DESCUADRES detectados:
+ - Tarjeta resumen "Mantenimiento desde U$30/mes" (deberia decir U$75/mes).
+ - Schema JSON-LD dice IA "desde $900.000" (el plan Basico es $500.000).
+
+--------------------------------------------------------------------------------
+9. RECOMENDACIONES PRIORIZADAS (que implementariamos)
+--------------------------------------------------------------------------------
+P1 (rapido, alto impacto):
+ 1) Anadir seccion FAQ visible con acordeon usando las 5 preguntas del JSON-LD
+    (cierra el hueco SEO y aumenta conversion respondiendo objeciones de precio
+    y tiempos justamente antes del contacto).
+ 2) Corregir el precio de la tarjeta resumen de Mantenimiento (U$30 -> U$75/mes)
+    y el schema de IA (desde $900k -> desde $500k) para coherencia total.
+ 3) Corregir typos: "cazan" -> "caza", "De el primer mensaje" -> "Del primer
+    mensaje", "Six razones" -> "Seis razones".
+P2 (calidad):
+ 4) Cambiar metricas del hero de <h2> a elementos no-encabezado (div/span) para
+    reparar la jerarquia de titulos.
+ 5) Reformular "Web Hostinger con Elementor" -> "editor visual profesional"
+    (ocultar herramienta interna).
+ 6) Acomodar el footer (quitar <br>, agrupar enlaces por tema: paises /
+    industrias / blog / sitio hermana con etiqueta "para camaras y automatizacion
+    visite serviciosapc.site").
+P3 (estrategia):
+ 7) Decidir el destino de la NUEVA landing (nueva-landing/, ya publicada en
+    /nueva-landing/ con noindex): promocionarla como home nueva (enfoque B2B
+    con IA y videos hiperrealistas) o dejarla como segunda prueba de negocio.
+    NO dejar que convivied indecidida indefinidamente porque compite consigo
+    misma en mensaje.
+ 8) Actualizar lastmod del sitemap con el proximo despliegue.
+ 9) Agregar link "saltar al contenido" y outline de foco visible en la home.
+
+================================================================================
+FIN — Documento generado por analisis de la pagina viva; sin cambios en el
+codigo. Ruta del sitio: \\DESKTOP-BB2QBQ3\D-Portatil\APC\Hosting APC\dogweb.lat
+================================================================================
