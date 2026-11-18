@@ -385,6 +385,14 @@
         "@type": "Answer",
         "text": "Integramos chatbots con inteligencia artificial que automatizan respuestas, atienden clientes, registran pedidos en tiempo real y capturan leads calificados directamente en su WhatsApp. La automatización de WhatsApp con IA está incluida en el Plan Enterprise B2B (desde $3.500.000 COP de setup + $990.000 COP/mes)."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si no funciona?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Revisamos el panel y el flujo de WhatsApp con usted, sin costo, durante los primeros 15 días. Si aun así no ve los datos llegando, le devolvemos el pago del setup. Sin letra pequeña."
+      }
     }
   ]
 }
@@ -432,47 +440,6 @@ body {
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
-}
-
-/* --- VIDEO BACKGROUND (scrollytelling 5 tomas, 720p) --- */
-#video-scroll-container {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -2;
-}
-#video-scroll-container video {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  filter: brightness(0.6) contrast(1.1);
-}
-#videoOverlay {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(circle, rgba(8, 8, 12, 0.4) 0%, rgba(8, 8, 12, 0.85) 100%);
-  transition: opacity 0.4s ease;
-}
-#videoScanlines {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.3;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.05) 0px,
-    rgba(255, 255, 255, 0.05) 1px,
-    transparent 1px,
-    transparent 4px
-  );
 }
 
 /* --- TOPBAR --- */
@@ -1794,120 +1761,6 @@ footer {
   .process-container { padding: 4rem 1rem; }
 }
 
-/* === OVERRIDE: video fondo fijo + glassmorphism sobre video (5 tomas 720p) === */
-.section-light,
-.section-pricing,
-.process-section,
-.banner-wrap,
-.blog-section,
-.contact-section,
-footer {
-  background-color: transparent;
-}
-/* secciones claras: texto claro para legibilidad sobre video oscuro */
-.section-light,
-.process-section,
-.blog-section {
-  color: var(--text-main);
-}
-.section-light h2,
-.process-section .section-head-light h2 {
-  color: var(--text-main);
-}
-.section-light h2 em { color: var(--accent); }
-.section-head-light p,
-.process-container .section-head-light p {
-  color: var(--text-muted);
-}
-.blog-section .section-header h2 { color: var(--text-main); }
-.section-eyebrow { color: #25d366; }
-
-/* tarjetas/resúmenes → glass */
-.svc-card,
-.process-step,
-.blog-card,
-.single-plan {
-  background: rgba(15, 44, 89, 0.45);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border-color: rgba(37, 211, 102, 0.12);
-}
-.svc-card h3,
-.process-step h3,
-.blog-card-title {
-  color: var(--text-main);
-}
-.svc-card p,
-.process-step p,
-.blog-card-meta {
-  color: var(--text-muted);
-}
-.step-number { color: rgba(255, 209, 0, 0.3); }
-.svc-meta { border-top-color: rgba(37, 211, 102, 0.14); }
-.svc-price { color: #25d366; }
-.svc-badge {
-  background: rgba(37, 211, 102, 0.1);
-  color: #25d366;
-  border-color: rgba(37, 211, 102, 0.25);
-}
-.svc-icon {
-  background: linear-gradient(135deg, rgba(15, 44, 89, 0.9), rgba(15, 23, 42, 0.9));
-}
-.process-step { border-color: rgba(37, 211, 102, 0.12); }
-.blog-card { border-color: rgba(37, 211, 102, 0.12); }
-
-/* pricing/contacto/form/horarios → glass sobre video */
-.card,
-.hours-block,
-.contact-form-box {
-  background: rgba(15, 44, 89, 0.45);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-.contact-map {
-  background: rgba(15, 44, 89, 0.3);
-  border-color: rgba(37, 211, 102, 0.12);
-}
-/* secciones que tenían borde de contraste: más sutil sobre video */
-.section-pricing,
-.contact-section {
-  border-color: rgba(37, 211, 102, 0.08);
-}
-footer { border-color: rgba(37, 211, 102, 0.08); }
-/* contenedores de texto interno transparentes (info blocks, footer) */
-.hours-block p,
-.info-block p,
-.info-block a,
-footer,
-.footer-info,
-.footer-links a { color: var(--text-muted); }
-
-/* glassmorphism dentro de zonas de sección clara: dejar pasar video */
-.light-container,
-.process-container,
-.section-head-light { background: transparent; }
-
-/* moviles: sin backdrop-filter, fondo más opaco para legibilidad */
-@media (max-width: 768px) {
-  .svc-card, .process-step, .blog-card, .card, .single-plan, .hours-block, .contact-form-box {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    background: rgba(10, 11, 13, 0.82);
-  }
-}
-
-/* reduced motion: video pausado + poster estático, sin scrubbing */
-@media (prefers-reduced-motion: reduce) {
-  #video-scroll-container video { display: none; }
-  #video-scroll-container {
-    background-image: url("assets/hero-poster.webp");
-    background-size: cover;
-    background-position: center;
-  }
-  #videoOverlay,
-  #videoScanlines { display: block; }
-}
-
 /* === CTA DINAMICO WHATSAPP (badge live + radar + hover 3D) === */
 .wa-dynamic-container {
   display: flex;
@@ -2360,15 +2213,88 @@ footer,
   });
 </script>
 
+<style>
+/* === TEMA NIEVE / NAVIDAD 2026 (web-builder) === */
+html { background: var(--light-bg); }
+body { background: var(--light-bg); color: var(--light-text); }
+#dw-snow { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+.sr-only { position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+.section-light, .section-pricing, .process-section, .banner-wrap, .blog-section, .contact-section, footer { background-color: rgba(250,250,248,0.90); color: var(--light-text); }
+.section-pricing, .process-section, .contact-section { border-color: var(--light-border); }
+.section-light, .process-section, .blog-section { color: var(--light-text); }
+.section-light h2, .process-section h2, .blog-section h2, .section-header h2, .section-head-light h2, .contact-left h2 { color: var(--navy); }
+.section-light h2 em, .section-header h2 span, .contact-left h2 span { color: var(--navy-2); }
+.section-header p, .section-head-light p, .section-light p, .process-step p, .blog-card p, .content p { color: var(--light-muted); }
+.section-eyebrow { color: #0b7a3d; }
+.svc-card, .process-step, .blog-card, .card, .single-plan, .hours-block, .contact-form-box, .testimonial-card, .why-item, .proof-container { background:#fff; border-color:var(--light-border); color:var(--light-text); box-shadow:0 8px 24px rgba(15,23,42,.06); }
+.svc-card h3, .process-step h3, .blog-card-title, .why-item h3, .plan-name { color: var(--navy); }
+.svc-card p, .process-step p, .blog-card-meta, .why-item p, .plan-desc, .plan-features li { color: var(--light-muted); }
+.svc-price, .stat-item .stat-num { color: var(--navy-2); }
+.btn-secondary { color: var(--navy); border-color: rgba(15,44,89,.35); }
+@media (hover:hover) and (pointer:fine){ .btn-secondary:hover { background: var(--navy); color:#fff; border-color: var(--navy); } }
+.step-number { color: rgba(15,44,89,.18); }
+.svc-badge, .plan-flag { background:rgba(15,44,89,.06); color:var(--navy); border-color:rgba(15,44,89,.14); }
+.svc-icon { background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: var(--accent-2); }
+footer, .footer-info, .footer-links a, .footer-cob-list a { color: var(--light-muted); }
+
+/* HERO invierno: copy a la izquierda, arbol a la derecha */
+.hero { min-height:auto; padding-top:4rem; padding-bottom:4rem; }
+.hero-winter { max-width:1280px; }
+.hero-winter-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:2.5rem; align-items:center; width:100%; max-width:1240px; }
+.hero-copy { text-align:left; }
+.hero-copy h1 { font-size:clamp(2rem,4vw,3.25rem); text-align:left; }
+.hero-copy .hero-sub { text-align:left; margin-left:0; }
+.hero-copy .hero-btns, .hero-copy .hero-microcopy, .hero-copy .hero-stats { justify-content:flex-start; text-align:left; margin-left:0; }
+.hero-ascii { width:100%; }
+@media (max-width:968px){ .hero-winter-grid{ grid-template-columns:1fr; } .hero-copy{ text-align:center; } .hero-copy h1,.hero-copy .hero-sub{ text-align:center; margin-left:auto; margin-right:auto; } .hero-copy .hero-btns,.hero-copy .hero-microcopy,.hero-copy .hero-stats{ justify-content:center; text-align:center; margin-left:auto; margin-right:auto; } }
+
+/* TARJETAS ASCII (adaptadas del estudio, sin Tailwind ni Google Fonts) */
+.ascii-card { background:radial-gradient(circle at 50% 44%, #0f233c 0%, #071120 48%, #030711 100%); border:1px solid rgba(255,255,255,.15); border-radius:18px; padding:1.1rem; box-shadow:0 25px 60px -18px rgba(2,6,23,.85); overflow:hidden; }
+.ascii-card-wide { max-width:1240px; margin:0 auto; }
+.ascii-badge { display:inline-flex; align-items:center; gap:.45rem; font:600 10px/1 'Consolas','Courier New',monospace; letter-spacing:.16em; text-transform:uppercase; color:#cbd5e1; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); padding:.4rem .75rem; border-radius:999px; margin-bottom:.7rem; }
+.ascii-dot { width:6px; height:6px; border-radius:50%; background:#fbbf24; display:inline-block; animation:dwPing 1.8s infinite; }
+@keyframes dwPing { 0%,100%{opacity:1} 50%{opacity:.35} }
+.ascii-matrix { font-family:'Consolas','Courier New',monospace; font-size:clamp(6px,1.1vw,12px); line-height:1.06; letter-spacing:.04em; white-space:pre; user-select:none; margin:0 auto; width:max-content; max-width:100%; overflow:auto; color:#e2e8f0; }
+.ascii-footer { text-align:center; margin-top:.8rem; }
+.ascii-footer strong { display:block; font:600 clamp(12px,1.6vw,18px)/1.2 Georgia,serif; letter-spacing:.2em; color:#f7e7c9; }
+.ascii-footer span { display:block; margin-top:.35rem; font:600 9px/1 'Consolas','Courier New',monospace; letter-spacing:.22em; text-transform:uppercase; color:#90afb0; }
+.ascii-section { padding:4rem 1rem; background:transparent; position:relative; z-index:1; }
+.ascii-section-head { max-width:1240px; margin:0 auto 2rem; text-align:center; }
+.ascii-section-head h2 { font-family:'Plus Jakarta Sans','PJS Fallback',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); color:var(--navy); margin:.4rem 0; }
+.ascii-section-head p { color:var(--light-muted); max-width:680px; margin:0 auto; }
+.proof-section { padding:3rem 1rem; text-align:center; }
+.proof-container { max-width:900px; margin:0 auto; border-radius:16px; padding:2rem; }
+.proof-container h2 { color:var(--navy); margin:.3rem 0 .7rem; }
+.proof-slot { margin-top:1rem; padding:1.2rem; border:1px dashed rgba(15,44,89,.3); border-radius:10px; font:600 12px 'Consolas','Courier New',monospace; color:var(--navy); }
+.guarantee-box { max-width:1240px; margin:2.5rem auto 0; padding:1.4rem 1.6rem; border-radius:14px; background:rgba(15,44,89,.05); border:1px solid rgba(15,44,89,.15); color:var(--navy); }
+.guarantee-box p { margin:.4rem 0 0; color:var(--light-muted); }
+@media (prefers-reduced-motion: reduce){ #dw-snow { display:none; } .ascii-dot{ animation:none; } }
+
+/* Colores ASCII (del estudio, sin cambios de marca) */
+.c-star{color:#fffbeb;text-shadow:0 0 6px #fef08a,0 0 16px #facc15,0 0 30px #eab308}
+.c-pine-dark{color:#15803d;text-shadow:0 0 4px rgba(22,163,74,.45)}
+.c-pine{color:#22c55e;text-shadow:0 0 7px rgba(34,197,94,.65)}
+.c-pine-bright{color:#86efac;text-shadow:0 0 6px #4ade80,0 0 14px rgba(74,222,128,.55)}
+.c-garland{color:#fef08a;text-shadow:0 0 5px #fde047,0 0 14px rgba(250,204,21,.75)}
+.c-bulb-red{color:#fecaca;text-shadow:0 0 6px #f87171,0 0 16px #ef4444,0 0 26px #dc2626}
+.c-bulb-cyan{color:#cffafe;text-shadow:0 0 6px #22d3ee,0 0 16px #06b6d4,0 0 26px #0891b2}
+.c-bulb-gold{color:#fef9c3;text-shadow:0 0 6px #facc15,0 0 16px #f59e0b,0 0 24px #d97706}
+.c-bulb-magenta{color:#fae8ff;text-shadow:0 0 6px #e879f9,0 0 16px #d946ef}
+.c-trunk{color:#d97706;text-shadow:0 0 8px rgba(217,119,6,.6)}
+.c-gift-red{color:#fda4af;text-shadow:0 0 6px #fb7185,0 0 14px #e11d48}
+.c-gift-gold{color:#fde68a;text-shadow:0 0 6px #fbbf24,0 0 14px #d97706}
+.c-gift-cyan{color:#a5f3fc;text-shadow:0 0 6px #38bdf8,0 0 14px #0284c7}
+.c-apc-core{color:#fff;text-shadow:0 0 8px #38bdf8,0 0 20px #0284c7,0 0 32px rgba(56,189,248,.7)}
+.c-apc-ring{color:#38bdf8;text-shadow:0 0 8px rgba(56,189,248,.55)}
+.c-apc-gold{color:#fde047;text-shadow:0 0 7px #f59e0b,0 0 16px rgba(245,158,11,.65)}
+.c-apc-emerald{color:#6ee7b7;text-shadow:0 0 7px #10b981,0 0 18px rgba(16,185,129,.75)}
+.c-apc-dim{color:#64748b;text-shadow:none}
+.c-radar-wave{color:#a7f3d0;text-shadow:0 0 8px #34d399,0 0 20px #10b981}
+</style>
 </head>
 <body>
-
-<!-- VIDEO BACKGROUND (contenedor 5 tomas, fondo fijo) -->
-<div id="video-scroll-container" aria-hidden="true">
-  <video poster="assets/hero-poster.webp" id="bg-scroll-video" src="assets/hero-bg.mp4" muted playsinline preload="auto"></video>
-  <div id="videoOverlay"></div>
-  <div id="videoScanlines"></div>
-</div>
+<canvas id="dw-snow" aria-hidden="true"></canvas>
 
 <!-- TOPBAR -->
 <div class="topbar">
@@ -2411,30 +2337,77 @@ footer,
 </header>
 <main>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-content">
-    <span class="hero-preheader">Agencia de Marketing B2B especializada en IA y captación predecible</span>
-    <h1>¿Cansado de quemar presupuesto en pauta digital sin ver leads B2B <span>calificados</span>?</h1>
-    <p class="hero-sub">Acelera la captación de tu empresa combinando <strong>producción audiovisual con IA</strong>, estrategias SEO de alta intención y campañas en Meta Ads con entregables semanales medibles. Deja de adivinar y empieza a escalar con datos.</p>
-    <div class="hero-btns">
-      <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20agendar%20mi%20Auditor%C3%ADa%20de%20Crecimiento%20B2B%20Gratuita" class="btn-primary" target="_blank" rel="noopener noreferrer">🚀 Agenda una Auditoría de Crecimiento B2B Gratuita</a>
-    </div>
-    <p class="hero-microcopy">Sin compromisos. Descubre en 15 minutos cómo automatizar tu prospección con IA.</p>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">72h</div>
-        <p>Su web lista para vender</p>
+<!-- HERO · NAVIDAD 2026 -->
+<section class="hero hero-winter" id="hero">
+  <div class="hero-content hero-winter-grid">
+    <div class="hero-copy">
+      <span class="hero-preheader">TEMPORADA 2026 · CAPTACIÓN EN LUZ</span>
+      <h1>Instalamos una máquina de captación B2B en 72 horas. <span>Sin equipo propio.</span></h1>
+      <p class="hero-sub">Unimos su web, su WhatsApp y sus datos en un solo sistema. Mientras otros apagan la temporada, su negocio sigue respondiendo, registrando y cerrando.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20mi%20diagn%C3%B3stico%20gratis" class="btn-primary" target="_blank" rel="noopener noreferrer">Quiero mi diagnóstico gratis</a>
+        <a href="#servicios" class="btn-secondary">Ver planes y precios</a>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">24/7</div>
-        <p>IA atendiendo clientes</p>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">24h</div>
-        <p>Respuesta directa</p>
+      <p class="hero-microcopy">En 24 horas le devuelvo 3 cosas: velocidad de su web, cómo respondería su WhatsApp con IA y las 3 primeras acciones.</p>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">72h</div><p>Su web lista para vender</p></div>
+        <div class="stat-item"><div class="stat-num">24/7</div><p>IA atendiendo clientes</p></div>
+        <div class="stat-item"><div class="stat-num">24h</div><p>Respuesta directa</p></div>
       </div>
     </div>
+    <div class="hero-ascii">
+      <div class="ascii-card">
+        <div class="ascii-badge"><span class="ascii-dot"></span> RENDER ENGINE · NEON SHADER TEXT</div>
+        <pre id="dw-ascii-tree" class="ascii-matrix" aria-hidden="true"></pre>
+        <div class="ascii-footer"><strong>DOGWEB · SISTEMA ACR</strong><span>NAVIDAD 2026 · ESCRITO EN LUZ</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSISTEMA CONECTADO -->
+<section class="ecosystem-section" id="ecosistema">
+  <div class="ecosystem-container">
+    <div class="section-head-light">
+      <h2>No vendemos servicios sueltos. <em>Instalamos el Sistema ACR: una máquina de captación que funciona sola.</em></h2>
+      <p>Contenido con IA + SEO Local + Meta Ads + WhatsApp. Cada pieza alimenta a la otra para generar clientes reales.</p>
+    </div>
+    <div class="ecosystem-flow">
+      <div class="eco-step">
+        <div class="eco-number">1</div>
+        <div class="eco-icon">🔍</div>
+        <h3>Atrae</h3>
+        <p>Posicionamiento SEO + Pauta Meta Ads + Producción IA = Visitantes cualificados encontrándote en Google y redes sociales.</p>
+      </div>
+      <div class="eco-arrow">→</div>
+      <div class="eco-step">
+        <div class="eco-number">2</div>
+        <div class="eco-icon">💬</div>
+        <h3>Convierte</h3>
+        <p>Pistas de aterrizaje de alta velocidad + WhatsApp IA = Leads filtrados que responden y se califican solos 24/7.</p>
+      </div>
+      <div class="eco-arrow">→</div>
+      <div class="eco-step">
+        <div class="eco-number">3</div>
+        <div class="eco-icon">📊</div>
+        <h3>Retiene</h3>
+        <p>Estrategia de contenidos unificada + Automatización = Clientes recurrentes y una operación comercial sin fricción.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n%20sobre%20el%20ecosistema%20digital" class="btn-primary" target="_blank" rel="noopener noreferrer">Quiero mi ecosistema digital →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRUEBA REAL (rellenar antes de publicar) -->
+<section class="proof-section" id="prueba" data-pending="PRUEBA REAL" hidden>
+  <div class="proof-container">
+    <span class="section-eyebrow">Prueba verificable</span>
+    <h2>Resultados que se pueden mostrar, no solo prometer</h2>
+    <p>Aquí va una captura real del panel con datos anonimizados o el tiempo real de respuesta del WhatsApp. Espacio reservado: rellenar con dato verificable antes de publicar. Sin testimonios inventados.</p>
+    <div class="proof-slot" aria-label="Espacio reservado para prueba real">[ PRUEBA REAL · INSERTAR CAPTURA O DATO VERIFICABLE ]</div>
   </div>
 </section>
 
@@ -2516,6 +2489,21 @@ footer,
 </section>
 
 <!-- PAQUETES / PLANES -->
+<!-- ECOSISTEMA APC ASCII (debajo del showroom) -->
+<section class="ascii-section" id="sistema">
+  <div class="ascii-section-head">
+    <span class="section-eyebrow">Arquitectura conectada</span>
+    <h2>Un sistema, no cinco herramientas sueltas</h2>
+    <p>Así se conectan DogWeb, Servicios APC, APC Core, Automatización y Visión IA para alimentar el mismo panel de datos.</p>
+  </div>
+  <div class="ascii-card ascii-card-wide">
+    <div class="ascii-badge"><span class="ascii-dot"></span> SYSTEM ARCHITECTURE · RADAR PULSE ACTIVE</div>
+    <pre id="dw-ascii-apc" class="ascii-matrix" aria-hidden="true"></pre>
+    <p class="sr-only">Ecosistema DogWeb: página web y SEO local, Servicios APC como holding, APC Core y redes, automatización con bots 24/7 y n8n, y Visión IA con analítica de video como fuente de datos operativos.</p>
+    <div class="ascii-footer"><strong>SISTEMA ACR</strong><span>WEB + IA + DATOS EN UN SOLO PANEL</span></div>
+  </div>
+</section>
+
 <section class="section-pricing" id="servicios">
   <div class="section-header">
     <h2>Planes Transparentes <span>y Escalables</span></h2>
@@ -2566,40 +2554,11 @@ footer,
   </div>
 </section>
 
-<!-- ECOSISTEMA CONECTADO -->
-<section class="ecosystem-section" id="ecosistema">
-  <div class="ecosystem-container">
-    <div class="section-head-light">
-      <h2>No vendemos servicios sueltos. <em>Instalamos una máquina de captación que funciona sola.</em></h2>
-      <p>Contenido con IA + SEO Local + Meta Ads + WhatsApp. Cada pieza alimenta a la otra para generar clientes reales.</p>
-    </div>
-    <div class="ecosystem-flow">
-      <div class="eco-step">
-        <div class="eco-number">1</div>
-        <div class="eco-icon">🔍</div>
-        <h3>Atrae</h3>
-        <p>Posicionamiento SEO + Pauta Meta Ads + Producción IA = Visitantes cualificados encontrándote en Google y redes sociales.</p>
-      </div>
-      <div class="eco-arrow">→</div>
-      <div class="eco-step">
-        <div class="eco-number">2</div>
-        <div class="eco-icon">💬</div>
-        <h3>Convierte</h3>
-        <p>Pistas de aterrizaje de alta velocidad + WhatsApp IA = Leads filtrados que responden y se califican solos 24/7.</p>
-      </div>
-      <div class="eco-arrow">→</div>
-      <div class="eco-step">
-        <div class="eco-number">3</div>
-        <div class="eco-icon">📊</div>
-        <h3>Retiene</h3>
-        <p>Estrategia de contenidos unificada + Automatización = Clientes recurrentes y una operación comercial sin fricción.</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:2.5rem;">
-      <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n%20sobre%20el%20ecosistema%20digital" class="btn-primary" target="_blank" rel="noopener noreferrer">Quiero mi ecosistema digital →</a>
-    </div>
-  </div>
-</section>
+<!-- GARANTIA -->
+<div class="guarantee-box">
+  <strong>Precio fijo y revisión sin costo.</strong>
+  <p>Si en los primeros 15 días el panel no se está alimentando de su WhatsApp, lo revisamos con usted sin costo. Usted no asume el riesgo de probar esto.</p>
+</div>
 
 <!-- TESTIMONIO -->
 <section class="testimonial-section">
@@ -2763,6 +2722,10 @@ footer,
     <details class="faq-item">
       <summary><span class="faq-q">¿Cómo funciona la IA en WhatsApp?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
       <div class="faq-a"><p>Integramos chatbots con inteligencia artificial que automatizan respuestas, atienden clientes, registran pedidos en tiempo real y capturan leads calificados directamente en su WhatsApp. La automatización de WhatsApp con IA está incluida en el Plan Enterprise B2B (desde $3.500.000 COP de setup + $990.000 COP/mes).</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-q">¿Qué pasa si no funciona?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+      <div class="faq-a"><p>Revisamos el panel y el flujo de WhatsApp con usted, sin costo, durante los primeros 15 días. Si aun así no ve los datos llegando, le devolvemos el pago del setup. Sin letra pequeña.</p></div>
     </details>
   </div>
 </section>
@@ -2943,137 +2906,6 @@ if (hamb && mm) {
 function closeMenu() {
   if (mm) toggleMenu(false);
 }
-var overlay = document.getElementById('videoOverlay');
-var sceneVideo = document.getElementById('bg-scroll-video');
-var bgContainer = document.getElementById('video-scroll-container');
-/* DOGWEB-LAYOUT-METRICS: cachea scrollHeight/innerHeight para no forzar layout en cada scroll */
-(function () {
-  var docEl = document.documentElement;
-  var m = { vh: window.innerHeight || 0, docH: 0, max: 0, ready: false, listeners: [] };
-  var raf = null;
-  function measure() {
-    raf = null;
-    m.vh = window.innerHeight || 0;
-    m.docH = docEl.scrollHeight;
-    m.max = Math.max(0, m.docH - m.vh);
-    m.ready = true;
-    for (var i = 0; i < m.listeners.length; i++) {
-      try { m.listeners[i](); } catch (e) {}
-    }
-  }
-  function schedule() {
-    if (raf === null) raf = requestAnimationFrame(measure);
-  }
-  m.schedule = schedule;
-  m.ensure = function () { if (!m.ready) schedule(); };
-  m.onMeasure = function (fn) { m.listeners.push(fn); };
-  window.addEventListener('resize', schedule, { passive: true });
-  window.addEventListener('orientationchange', schedule, { passive: true });
-  window.addEventListener('load', schedule, { passive: true });
-  if ('ResizeObserver' in window && document.body) {
-    // La callback inicial del observer llega con el layout ya resuelto: medimos sin forzar reflow
-    try { new ResizeObserver(schedule).observe(document.body); } catch (e) { schedule(); }
-  } else {
-    schedule();
-  }
-  window.__dwLayout = m;
-})();
-/* SCROLL-SCRUBBING: 5 escenas sincronizadas con las 5 secciones (H1..H5) */
-(function () {
-  if (!sceneVideo || !bgContainer) return;
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reducedMotion) { sceneVideo.pause(); return; }
-
-  // Secciones en orden de documento; cada tramo de scroll = una escena del video
-  var SCENES = ['hero', 'servicios', 'proceso', 'blog', 'contacto'];
-  // Fracción del video al inicio/cierre de cada tramo (0-20%, 20-40%, 40-60%, 60-80%, 80-100%)
-  var VIDEO_FRAC = [0, 0.2, 0.4, 0.6, 0.8, 1];
-  var videoDuration = 50;
-  var sceneTops = [-1, -1, -1, -1, -1];
-  var targetTime = 0;
-  var currentTime = 0;
-  var rafId = null;
-  var lastScrollAt = 0;
-  var layout = window.__dwLayout || { vh: window.innerHeight || 0, max: 0, onMeasure: function () {} };
-  var topsDirty = false;
-  var topsRaf = null;
-
-  /* Una sola pasada de layout por recalculo: todos los rects se leen juntos */
-  function computeTops() {
-    topsRaf = null;
-    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    var tops = [];
-    for (var i = 0; i < SCENES.length; i++) {
-      var el = document.getElementById(SCENES[i]);
-      tops.push(el ? el.getBoundingClientRect().top : null);
-    }
-    for (var j = 0; j < tops.length; j++) {
-      sceneTops[j] = tops[j] === null ? -1 : tops[j] + y;
-    }
-    topsDirty = false;
-    update();
-  }
-
-  function scheduleTops() {
-    topsDirty = true;
-    if (topsRaf === null) topsRaf = requestAnimationFrame(computeTops);
-  }
-
-  function update() {
-    if (!layout.ready && layout.ensure) layout.ensure();
-    if (topsDirty && topsRaf === null) scheduleTops();
-    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    var m = layout.max;
-    if (m <= 0) { targetTime = 0; return; }
-    var frac;
-    if (y <= 0) frac = 0;
-    else if (y >= m) frac = 1;
-    else {
-      // Tramo k: arranca en top de sección k (hero=0) y cierra en top de sección k+1 (contacto=cénit del scroll)
-      var seg = -1;
-      for (var k = 0; k < 5; k++) {
-        var from = k === 0 ? 0 : Math.max(0, sceneTops[k]);
-        var to = k === 4 ? m : Math.max(from + 1, sceneTops[k + 1]);
-        if (y >= from && y < to) { seg = k; break; }
-      }
-      if (seg === -1) seg = 4;
-      var from = seg === 0 ? 0 : Math.max(0, sceneTops[seg]);
-      var to = seg === 4 ? m : Math.max(from + 1, sceneTops[seg + 1]);
-      var f = (y - from) / Math.max(1, to - from);
-      f = Math.max(0, Math.min(1, f));
-      frac = VIDEO_FRAC[seg] + (VIDEO_FRAC[seg + 1] - VIDEO_FRAC[seg]) * f;
-    }
-    targetTime = frac * videoDuration;
-    lastScrollAt = Date.now();
-    if (rafId === null) rafId = requestAnimationFrame(render);
-  }
-
-  function render() {
-    rafId = null;
-    // LERP: suaviza tirones en scroll rapido (0.1 = retardo de seguimiento)
-    // Cuando el scroll se detiene (>120 ms sin updates) aterriza EXACTO en el frame objetivo
-    var snap = Date.now() - lastScrollAt > 120;
-    currentTime += (targetTime - currentTime) * (snap ? 1 : 0.1);
-    try { sceneVideo.currentTime = currentTime; } catch (e) {}
-    // El bucle solo vive mientras hay movimiento: idle = 0 trabajo de main thread
-    if (Math.abs(targetTime - currentTime) > 0.0005) rafId = requestAnimationFrame(render);
-  }
-
-  function onReady() {
-    videoDuration = (sceneVideo.duration && isFinite(sceneVideo.duration)) ? sceneVideo.duration : 50;
-    sceneVideo.pause();
-    sceneVideo.currentTime = 0;
-    scheduleTops();
-    window.addEventListener('scroll', update, { passive: true });
-    // Remedir cotas cuando cambie el layout (resize, fuentes, widget de chat), nunca en cada scroll
-    layout.onMeasure(computeTops);
-    layout.ensure();
-    if (rafId === null) rafId = requestAnimationFrame(render);
-  }
-
-  if (sceneVideo.readyState >= 1 && sceneVideo.duration) onReady();
-  else sceneVideo.addEventListener('loadedmetadata', onReady, { once: true });
-})();
 </script>
 <script>
 /* REVEAL-ON-SCROLL (emil-design-eng + Agente 3D) */
@@ -3248,6 +3080,175 @@ if ('serviceWorker' in navigator) {
     });
   });
 
+})();
+</script>
+<script>
+/* === DOGWEB NIEVE + ASCII PASIVO (web-builder) === */
+(function () {
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- NIEVE ---------- */
+  var canvas = document.getElementById('dw-snow');
+  if (canvas && canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+    var flakes = [], W = 0, H = 0, last = 0;
+    function sizeCanvas() {
+      W = canvas.width = Math.floor(window.innerWidth);
+      H = canvas.height = Math.floor(window.innerHeight);
+    }
+    function makeFlakes() {
+      var n = Math.min(80, Math.floor((W * H) / 14000));
+      flakes = [];
+      for (var i = 0; i < n; i++) {
+        flakes.push({
+          x: Math.random() * W, y: Math.random() * H,
+          r: Math.random() * 1.8 + .5,
+          vy: Math.random() * .35 + .12,
+          vx: (Math.random() - .5) * .2,
+          a: Math.random() * .45 + .12
+        });
+      }
+    }
+    function paint(ts) {
+      if (document.hidden) { requestAnimationFrame(paint); return; }
+      if (ts - last < 33) { requestAnimationFrame(paint); return; }
+      last = ts;
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < flakes.length; i++) {
+        var f = flakes[i];
+        f.y += f.vy; f.x += f.vx;
+        if (f.y > H) { f.y = -4; f.x = Math.random() * W; }
+        if (f.x > W) f.x = 0;
+        if (f.x < 0) f.x = W;
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(56,189,248,' + f.a + ')';
+        ctx.fill();
+      }
+      requestAnimationFrame(paint);
+    }
+    sizeCanvas(); makeFlakes();
+    window.addEventListener('resize', function () { sizeCanvas(); makeFlakes(); }, { passive: true });
+    if (reduced) {
+      ctx.clearRect(0, 0, W, H);
+      for (var j = 0; j < 40; j++) {
+        ctx.beginPath(); ctx.arc(Math.random()*W, Math.random()*H, Math.random()*1.5+.5, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(56,189,248,.25)'; ctx.fill();
+      }
+    } else {
+      requestAnimationFrame(paint);
+    }
+  }
+
+  /* ---------- ARBOL ASCII (adaptado del estudio) ---------- */
+  function esc(x) { return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function treeFrame(t) {
+    var L = [], star = t % 2 === 0;
+    L.push('<span class="c-star">                        .   *   .                        </span>');
+    L.push('<span class="c-star">                          \\ | /                          </span>');
+    L.push('<span class="c-star">' + (star ? '-- * ★ * --' : '-= ★ ✦ ★ =-') + '</span>');
+    L.push('<span class="c-star">                          / | \\                          </span>');
+    L.push('<span class="c-star">                            ^                            </span>');
+    var H = 23, C = 28, chars = ['@','#','%','&','*','+','=','~',':'];
+    var bulbs = ['c-bulb-red','c-bulb-cyan','c-bulb-gold','c-bulb-magenta'];
+    for (var r = 0; r < H; r++) {
+      var step = Math.floor(r / 4), half = Math.max(1, Math.floor(r * 1.08) - step + 1);
+      var le = C - half, ri = C + half, line = '';
+      for (var c = 0; c <= C * 2; c++) {
+        if (c < le || c > ri) {
+          line += ((r * 17 + c * 31 + t) % 97 === 0) ? '<span class="c-star">.</span>' : ' ';
+          continue;
+        }
+        if (c === le) { line += '<span class="c-pine-bright">/</span>'; continue; }
+        if (c === ri) { line += '<span class="c-pine-bright">\\</span>'; continue; }
+        var g = (r * 2 + c) % 9;
+        if (g === 0 || g === 1) { line += '<span class="c-garland">' + ((c + t) % 2 === 0 ? '~' : '*') + '</span>'; continue; }
+        var h = (r * 37 + c * 13) % 19;
+        if (h === 0 || h === 7) {
+          var lit = (r + c + t) % 3 !== 0;
+          line += '<span class="' + (lit ? bulbs[(r + c + Math.floor(t / 2)) % bulbs.length] : 'c-pine-dark') + '">' + (lit ? (h === 0 ? 'O' : 'o') : '•') + '</span>';
+          continue;
+        }
+        var ch = esc(chars[(r * 5 + c * 3 + (t % 3)) % chars.length]);
+        var d = Math.abs(c - C);
+        var tone = d > half - 3 ? 'c-pine-bright' : ((r + c) % 3 === 0 ? 'c-pine-dark' : 'c-pine');
+        line += '<span class="' + tone + '">' + ch + '</span>';
+      }
+      L.push(line);
+    }
+    L.push('      <span class="c-gift-red">.___★___.</span>         <span class="c-trunk">[|||||]</span>         <span class="c-gift-cyan">.___✦___.</span>      ');
+    L.push('      <span class="c-gift-red">|   |   |</span>   <span class="c-gift-gold">._*_.</span> <span class="c-trunk">[|||||]</span> <span class="c-gift-gold">._*_.</span>   <span class="c-gift-cyan">|   |   |</span>      ');
+    L.push('      <span class="c-gift-red">|===+===|</span>   <span class="c-gift-gold">|_+_|</span> <span class="c-trunk">[|||||]</span> <span class="c-gift-gold">|_+_|</span>   <span class="c-gift-cyan">|===+===|</span>      ');
+    L.push('      <span class="c-gift-red">|___|___|</span>   <span class="c-gift-gold">|___|</span> <span class="c-trunk">[=====]</span> <span class="c-gift-gold">|___|</span>   <span class="c-gift-cyan">|___|___|</span>      ');
+    return L.join('\n');
+  }
+
+  /* ---------- ECOSISTEMA APC ASCII ---------- */
+  function apcFrame(t) {
+    var p = t % 6;
+    var w1 = (p === 0 || p === 1) ? 'c-radar-wave' : 'c-apc-ring';
+    var w2 = (p === 2 || p === 3) ? 'c-radar-wave' : 'c-apc-emerald';
+    var w3 = (p === 4 || p === 5) ? 'c-radar-wave' : 'c-apc-gold';
+    var beam = ['|','/','-','\\'][t % 4];
+    return [
+      '<span class="c-apc-gold">          ✦   A R Q U I T E C T U R A   P H Y G I T A L   ✦          </span>',
+      '<span class="c-apc-dim">               . - ~ * ~ - .   [ SYS_v2.6 ]   . - ~ * ~ - .          </span>',
+      '<span class="' + w1 + '">                 . - \' \' - .                  . - \' \' - .            </span>',
+      '<span class="' + w1 + '">              .\'     <span class="c-apc-gold">[01] DOGWEB.LAT</span>           \'.          </span>',
+      '<span class="' + w2 + '">            /        <span class="c-apc-ring">SEO Local &amp; Web B2B</span>          \\        </span>',
+      '<span class="' + w2 + '">          /    . - \' \' - .              . - \' \' - .    \\      </span>',
+      '<span class="c-apc-ring">         |   .\'   <span class="c-apc-gold">[02] SERVICIOS APC</span>               \'.   |     </span>',
+      '<span class="c-apc-ring">        |   /     <span class="c-apc-emerald">Holding &amp; Estrategia</span>               \\   |    </span>',
+      '<span class="c-apc-core">        |  |          .======================.          |  |    </span>',
+      '<span class="c-apc-core">        |  |         ||   <span class="c-apc-gold">★ ECOSISTEMA APC ★</span>   ||         |  |    </span>',
+      '<span class="c-apc-core">        |  |         ||  SISTEMA ACR [' + beam + '] ||         |  |    </span>',
+      '<span class="c-apc-core">        |  |          \'======================\'          |  |    </span>',
+      '<span class="c-apc-ring">        |   \\     <span class="c-apc-emerald">[03] APC CORE &amp; REDES</span>              /   |    </span>',
+      '<span class="c-apc-ring">         |   \'.   <span class="c-apc-ring">[04] APC AUTOMATIZACIÓN</span>         .\'   |     </span>',
+      '<span class="' + w3 + '">          \\    \' - . _ . - \'   <span class="c-apc-gold">Bots 24/7 &amp; n8n</span>  \' - . _ . - \'    /      </span>',
+      '<span class="' + w3 + '">            \\                                                  /        </span>',
+      '<span class="' + w2 + '">              \'.     <span class="c-apc-emerald">[05] APC VISIÓN AI (YOLO)</span>       .\'          </span>',
+      '<span class="' + w2 + '">                 \' - . _ . - \'   <span class="c-apc-ring">Datos operativos</span>  \' - . _ . - \'            </span>',
+      '<span class="c-apc-dim">      ───────────────────────────────────────────────────────────      </span>',
+      '<span class="c-apc-emerald">      /\\_/\\     / \\__      <span class="c-apc-gold">[DB]</span>  <span class="c-apc-core">[API]</span>  <span class="c-apc-emerald">[YOLO]</span>      __/ \\     /\\_/\\     </span>',
+      '<span class="c-apc-emerald">     / o.o \\   (    @\\___                      ___/@    )   / o.o \\    </span>',
+      '<span class="c-apc-ring">     \\  ^  /   /         O                    O         \\   \\  ^  /    </span>',
+      '<span class="c-apc-dim">     /-----\\   \\________________________________________/   /-----\\    </span>'
+    ].join('\n');
+  }
+
+  var stages = [
+    { el: document.getElementById('dw-ascii-tree'), fn: treeFrame, tick: 0, on: false, timer: null },
+    { el: document.getElementById('dw-ascii-apc'),  fn: apcFrame,  tick: 0, on: false, timer: null }
+  ];
+  stages.forEach(function (st) {
+    if (!st.el) return;
+    st.el.innerHTML = st.fn(0);
+    if (reduced) return;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && !st.on) {
+            st.on = true;
+            st.timer = setInterval(function () { st.el.innerHTML = st.fn(++st.tick); }, 260);
+          } else if (!en.isIntersecting && st.on) {
+            st.on = false; clearInterval(st.timer); st.timer = null;
+          }
+        });
+      }, { threshold: 0.05 }).observe(st.el);
+    } else {
+      st.timer = setInterval(function () { st.el.innerHTML = st.fn(++st.tick); }, 260);
+    }
+  });
+  document.addEventListener('visibilitychange', function () {
+    stages.forEach(function (st) {
+      if (document.hidden && st.timer) { clearInterval(st.timer); st.timer = null; st.on = false; }
+      else if (!document.hidden && st.on && !st.timer) {
+        st.timer = setInterval(function () { st.el.innerHTML = st.fn(++st.tick); }, 260);
+      }
+    });
+  });
 })();
 </script>
 </body>
