@@ -2335,6 +2335,54 @@ footer, .footer-info, .footer-links a, .footer-cob-list a { color: var(--light-m
 .testimonial-card { background:#fff; border-color:var(--light-border); }
 .testimonial-author strong { color:var(--navy); }
 </style>
+<style>
+/* === HERO VIDEO: fondo azul ASCII + texto claro + pista de perros === */
+.hero.hero-winter {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 68% 44%, #0f233c 0%, #071120 52%, #030711 100%);
+}
+.hero-bg-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: -2;
+  filter: brightness(0.55) contrast(1.08);
+  pointer-events: none;
+}
+.hero-bg-overlay {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(circle at 68% 44%, rgba(15,35,60,.35) 0%, rgba(7,17,32,.62) 52%, rgba(3,7,17,.82) 100%);
+}
+.hero-copy h1 { color:#FFFFFF; }
+.hero-copy h1 span { color:#25d366; }
+.hero-copy .hero-preheader { color:#25d366; border-color:rgba(37,211,102,.45); background:rgba(37,211,102,.10); }
+.hero-copy .hero-sub { color:#CBD5E1; }
+.hero-copy .hero-microcopy { color:#94A3B8; }
+.hero-copy .stat-item p { color:#94A3B8; }
+.hero-copy .stat-item .stat-num { color:#25d366; }
+.hero-copy .btn-secondary { color:#FFFFFF; border-color:rgba(255,255,255,.45); background:rgba(255,255,255,.05); }
+@media (hover:hover) and (pointer:fine){ .hero-copy .btn-secondary:hover { background:rgba(255,255,255,.16); color:#FFF; } }
+.hero-ascii .ascii-card { background:transparent; border:0; box-shadow:none; padding:0; border-radius:0; }
+.hero-ascii .ascii-badge { background:rgba(255,255,255,.05); }
+.dw-pack-tree-only { display:flex; justify-content:center; }
+.hero-ascii .ascii-footer strong { color:#f7e7c9; }
+.dw-pack-track { grid-column:1 / -1; width:100%; overflow:hidden; margin-top:1rem; }
+.dw-pack-dogs-inner { display:inline-flex; align-items:flex-end; gap:2rem; white-space:nowrap; }
+.dw-pack-dogs { color:#64748b; transition:transform 280ms cubic-bezier(0.23,1,0.32,1); }
+.hero-ascii .dw-pack-caption { color:#94A3B8; }
+@media (prefers-reduced-motion:reduce){ .hero-bg-video{ display:none; } .dw-pack-dogs{ transition:none!important; transform:none!important; } }
+</style>
+<style>
+/* === ALTURA DEL ARBOL ASCII = ALTO DEL BLOQUE H1 === */
+.hero-winter-grid { align-items:start; }
+.hero-ascii { align-self:start; padding-top:3.2rem; }
+.hero-ascii .dw-pack-tree { font-size:clamp(12px,2.4vw,30px); line-height:1.02; }
+.hero-ascii .dw-pack-star,
+.hero-ascii .dw-pack-gifts { font-size:clamp(10px,1.4vw,16px); }
+@media (max-width:968px){
+  .hero-winter-grid { align-items:center; }
+  .hero-ascii { align-self:center; padding-top:0; }
+}
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
@@ -2380,15 +2428,19 @@ footer, .footer-info, .footer-links a, .footer-cob-list a { color: var(--light-m
 </header>
 <main>
 
-<!-- HERO · NAVIDAD 2026 -->
+<!-- HERO · NAVIDAD 2026 (video de fondo + arbol ASCII) -->
 <section class="hero hero-winter" id="hero">
+  <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" poster="assets/perros-arbol-poster.jpg" aria-hidden="true">
+    <source src="assets/perros-arbol-navidad.mp4" type="video/mp4">
+  </video>
+  <div class="hero-bg-overlay" aria-hidden="true"></div>
   <div class="hero-content hero-winter-grid">
     <div class="hero-copy">
       <span class="hero-preheader">TEMPORADA 2026 · CAPTACIÓN EN LUZ</span>
       <h1>Instalamos una máquina de captación B2B en 72 horas. <span>Sin equipo propio.</span></h1>
       <p class="hero-sub">Unimos su web, su WhatsApp y sus datos en un solo sistema. Mientras otros apagan la temporada, su negocio sigue respondiendo, registrando y cerrando.</p>
       <div class="hero-btns">
-        <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20mi%20diagn%C3%B3stico%20gratis" class="btn-primary" target="_blank" rel="noopener noreferrer">Quiero mi diagnóstico gratis</a>
+        <a href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20mi%20diagn%C3%B3stico%20gratis" class="btn-primary" target="_blank" rel="noopener noreferrer">Quiero mi diagnóstico gratis</a>
         <a href="#servicios" class="btn-secondary">Ver planes y precios</a>
       </div>
       <p class="hero-microcopy">En 24 horas le devuelvo 3 cosas: velocidad de su web, cómo respondería su WhatsApp con IA y las 3 primeras acciones.</p>
@@ -2405,11 +2457,7 @@ footer, .footer-info, .footer-links a, .footer-cob-list a { color: var(--light-m
         <div class="dw-pack-viewport">
           <pre id="dwPackSignature" class="dw-pack-signature" aria-hidden="true"></pre>
           <pre id="dwPackStar" class="dw-pack-pre dw-pack-star" aria-hidden="true">          [ ☆ ]</pre>
-          <div class="dw-pack-grid">
-            <pre id="dwPackDogsLeft" class="dw-pack-pre dw-pack-dogs" aria-hidden="true"></pre>
-            <pre id="dwPackTree" class="dw-pack-pre dw-pack-tree" aria-hidden="true"></pre>
-            <pre id="dwPackDogsRight" class="dw-pack-pre dw-pack-dogs" aria-hidden="true"></pre>
-          </div>
+          <div class="dw-pack-grid dw-pack-tree-only"><pre id="dwPackTree" class="dw-pack-pre dw-pack-tree" aria-hidden="true"></pre></div>
           <pre id="dwPackGifts" class="dw-pack-pre dw-pack-gifts" aria-hidden="true">      [🎁]    [🎁]    [🎁]</pre>
         </div>
         <p class="dw-pack-caption">Rottweiler · Pastor Alemán · Pitbull · Labrador</p>
@@ -2420,6 +2468,12 @@ footer, .footer-info, .footer-links a, .footer-cob-list a { color: var(--light-m
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.75.453 3.469 1.328 5l-1.406 5.156 5.297-1.391c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969s-4.453-9.984-9.969-9.984zm5.813 14.125c-.25.703-1.438 1.344-1.984 1.422-.516.078-1.156.109-1.859-.109-.438-.141-1-.328-1.719-.641-3.016-1.313-4.984-4.344-5.141-4.547-.156-.203-1.234-1.641-1.234-3.125s.781-2.219 1.063-2.516c.281-.297.609-.375.813-.375.203 0 .406 0 .594.016.188 0 .453-.078.703.531.25.609.859 2.094.938 2.25.078.156.125.344.031.547-.094.203-.141.328-.281.5-.141.172-.297.391-.422.516-.141.141-.297.297-.125.594.172.297.766 1.266 1.641 2.047 1.125 1 2.078 1.313 2.375 1.453.297.141.469.125.641-.078.172-.203.734-.859.938-1.156.203-.297.406-.25.688-.141.281.109 1.781.844 2.094 1 .313.156.516.234.594.359.078.141.078.781-.172 1.484z"/></svg>
           <span>Diagnóstico B2B por WhatsApp</span>
         </a>
+      </div>
+    </div>
+    <div class="dw-pack-track" id="dwPackTrack" aria-hidden="true">
+      <div class="dw-pack-dogs-inner" id="dwPackDogsInner">
+        <pre id="dwPackDogsLeft" class="dw-pack-pre dw-pack-dogs"></pre>
+        <pre id="dwPackDogsRight" class="dw-pack-pre dw-pack-dogs"></pre>
       </div>
     </div>
   </div>
@@ -3412,7 +3466,7 @@ if ('serviceWorker' in navigator) {
          U   \\_____/ /    |`
   ];
 
-  var m = { vh: 0, top: 0, height: 0, ready: false };
+  var m = { vh: 0, top: 0, height: 0, heroH: 0, travel: 0, ready: false };
   var measureRaf = null;
   var scrollRaf = null;
   var tick = 0;
@@ -3427,6 +3481,11 @@ if ('serviceWorker' in navigator) {
     m.vh = window.innerHeight || 1;
     m.top = rect.top + (window.pageYOffset || 0);
     m.height = rect.height;
+    var heroEl = document.getElementById('hero');
+    m.heroH = heroEl ? heroEl.offsetHeight : 0;
+    var tr = document.getElementById('dwPackTrack');
+    var inn = document.getElementById('dwPackDogsInner');
+    m.travel = (tr && inn) ? Math.max(0, tr.clientWidth - inn.scrollWidth) : 0;
     m.ready = true;
     render();
   }
@@ -3435,7 +3494,7 @@ if ('serviceWorker' in navigator) {
   }
   function progress() {
     if (!m.ready) scheduleMeasure();
-    return clamp((window.pageYOffset + m.vh - m.top) / Math.max(1, m.vh + m.height));
+    return clamp((window.pageYOffset || 0) / Math.max(1, m.heroH));
   }
 
   function render() {
@@ -3446,16 +3505,15 @@ if ('serviceWorker' in navigator) {
     left.textContent = dogsLeft[i];
     right.textContent = dogsRight[i];
     if (!phase2) {
-      var off = Math.round((1 - p / 0.45) * 28);
-      left.style.transform = 'translateX(-' + off + 'px)';
-      right.style.transform = 'translateX(' + off + 'px)';
+      var inn = document.getElementById('dwPackDogsInner');
+      if (inn) inn.style.transform = 'translateX(' + Math.round(m.travel * clamp(p / 0.45)) + 'px)';
       tree.textContent = treeOff[i];
       star.textContent = '          [ ☆ ]';
       sig.classList.remove('is-visible');
       sig.textContent = '';
     } else {
-      left.style.transform = 'translateX(0px)';
-      right.style.transform = 'translateX(0px)';
+      var inn2 = document.getElementById('dwPackDogsInner');
+      if (inn2) inn2.style.transform = 'translateX(' + Math.round(m.travel) + 'px)';
       tree.textContent = treeOn[i];
       star.textContent = '          [ ★ ]';
       var ratio = clamp((p - 0.65) / 0.35);
