@@ -1295,10 +1295,10 @@ h1 span { color: var(--accent); }
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: gap 0.2s;
+  transition: transform 200ms var(--ease-out);
 }
 @media (hover: hover) and (pointer: fine) {
-  .infra-link:hover { gap: 12px; }
+  .infra-link:hover { transform: translateX(4px); }
 }
 .banner-wrap {
   position: relative;
@@ -1369,10 +1369,10 @@ h1 span { color: var(--accent); }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: gap 0.2s;
+  transition: transform 200ms var(--ease-out);
 }
 @media (hover: hover) and (pointer: fine) {
-  .blog-link:hover { gap: 12px; }
+  .blog-link:hover { transform: translateX(4px); }
 }
 .blog-emoji {
   font-size: 3.2rem;
