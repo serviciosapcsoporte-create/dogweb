@@ -2464,6 +2464,34 @@ header nav a,
 .hero.hero-winter { background-color:#030711; }
 .dw-video-layer { background-color:#030711; }
 </style>
+<style>
+/* === RUEDA DE ARQUITECTURA CONECTADA (sin CDN, fuentes locales) === */
+.dw-wheel-section { position:relative; z-index:1; padding:4rem 1rem; }
+.dw-wheel-layout { max-width:1240px; margin:0 auto; display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:2.5rem; align-items:center; }
+.dw-wheel-inspector { background:#fff; border:1px solid var(--light-border); border-radius:16px; padding:1.6rem; box-shadow:0 8px 24px rgba(15,23,42,.06); }
+.dw-wheel-badge { display:inline-block; font:700 11px Consolas,'Courier New',monospace; letter-spacing:.06em; color:#B98B00; background:rgba(255,209,0,.14); border:1px solid rgba(255,209,0,.4); border-radius:8px; padding:.3rem .7rem; }
+.dw-wheel-macro { display:block; margin-top:.7rem; font:700 10px Consolas,'Courier New',monospace; letter-spacing:.16em; color:#0b7a3d; text-transform:uppercase; }
+.dw-wheel-title { font-family:'Plus Jakarta Sans','PJS Fallback',sans-serif; font-size:1.4rem; font-weight:800; color:var(--navy); margin:.4rem 0 .2rem; }
+.dw-wheel-platform { font:700 12px Consolas,'Courier New',monospace; color:var(--navy-2); margin:0 0 .8rem; }
+.dw-wheel-desc { color:var(--light-muted); font-size:.9rem; line-height:1.6; margin:0 0 1.1rem; }
+.dw-wheel-tactics { display:flex; flex-wrap:wrap; gap:.5rem; }
+.dw-wheel-tactics span { font-size:.75rem; font-weight:600; color:var(--navy); background:rgba(15,44,89,.05); border:1px solid rgba(15,44,89,.14); border-radius:8px; padding:.35rem .65rem; }
+.dw-wheel-pills { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1.2rem; padding-top:1rem; border-top:1px solid var(--light-border); }
+.dw-wheel-pills button { width:32px; height:32px; border-radius:8px; font:700 12px Consolas,'Courier New',monospace; background:rgba(15,44,89,.05); color:var(--navy); border:1px solid var(--light-border); cursor:pointer; transition:transform 160ms cubic-bezier(0.23,1,0.32,1), opacity 160ms cubic-bezier(0.23,1,0.32,1); }
+.dw-wheel-pills button:active { transform:scale(.97); }
+.dw-wheel-visual { width:100%; display:flex; justify-content:center; }
+.dw-wheel-visual svg { width:100%; max-width:640px; height:auto; }
+.dw-wheel-seg { cursor:pointer; transition:opacity 200ms cubic-bezier(0.23,1,0.32,1); }
+.dw-wheel-seg:hover { opacity:.85; }
+.dw-wheel-dim .dw-wheel-seg:not(.is-active) { opacity:.42; }
+.dw-wheel-pulse { animation:dwPulse 3.2s ease-in-out infinite; }
+@keyframes dwPulse { 0%,100%{opacity:.35} 50%{opacity:.9} }
+.dw-wheel-paused .dw-wheel-pulse { animation-play-state:paused; }
+.dw-wheel-footer { max-width:1240px; margin:2rem auto 0; text-align:center; font:600 11px Consolas,'Courier New',monospace; letter-spacing:.16em; color:var(--light-muted); }
+.dw-wheel-footer strong { color:var(--navy); display:block; letter-spacing:.22em; }
+@media (max-width:968px){ .dw-wheel-layout { grid-template-columns:1fr; gap:1.5rem; } }
+@media (prefers-reduced-motion:reduce){ .dw-wheel-pulse{ animation:none; opacity:.7; } .dw-wheel-seg,.dw-wheel-pills button{ transition:none!important; } }
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
@@ -2665,19 +2693,53 @@ header nav a,
 </section>
 
 <!-- PAQUETES / PLANES -->
-<!-- ECOSISTEMA APC ASCII (debajo del showroom) -->
-<section class="ascii-section" id="sistema">
+<!-- ARQUITECTURA CONECTADA (rueda SVG adaptada, sin CDN) -->
+<section class="dw-wheel-section" id="sistema">
   <div class="ascii-section-head">
     <span class="section-eyebrow">Arquitectura conectada</span>
     <h2>Un sistema, no cinco herramientas sueltas</h2>
-    <p>Así se conectan DogWeb, Servicios APC, APC Core, Automatización y Visión IA para alimentar el mismo panel de datos.</p>
+    <p>Seis fases conectan la captación B2B con los datos de operación. Pasa el cursor o haz clic en cada segmento para ver qué incluye.</p>
   </div>
-  <div class="ascii-card ascii-card-wide">
-    <div class="ascii-badge"><span class="ascii-dot"></span> SYSTEM ARCHITECTURE · RADAR PULSE ACTIVE</div>
-    <pre id="dw-ascii-apc" class="ascii-matrix" aria-hidden="true"></pre>
-    <p class="sr-only">Ecosistema DogWeb: página web y SEO local, Servicios APC como holding, APC Core y redes, automatización con bots 24/7 y n8n, y Visión IA con analítica de video como fuente de datos operativos.</p>
-    <div class="ascii-footer"><strong>SISTEMA APC</strong><span>WEB + IA + DATOS EN UN SOLO PANEL</span></div>
+
+  <div class="dw-wheel-layout">
+    <div class="dw-wheel-inspector" id="dwInspector">
+      <span class="dw-wheel-badge" id="dwBadge">FASE 01 · METODOLOGÍA APC</span>
+      <span class="dw-wheel-macro" id="dwMacro">ANÁLISIS SITUACIONAL</span>
+      <h3 class="dw-wheel-title" id="dwTitle">Diagnóstico &amp; Auditoría</h3>
+      <p class="dw-wheel-platform" id="dwPlatform">Fugas digitales</p>
+      <p class="dw-wheel-desc" id="dwDesc">Detectamos dónde se pierden oportunidades: búsquedas locales sin capturar, web lenta y flujo sin medir.</p>
+      <div class="dw-wheel-tactics" id="dwTactics"></div>
+      <div class="dw-wheel-pills" id="dwPills"></div>
+    </div>
+
+    <div class="dw-wheel-visual">
+      <svg id="dwWheelSvg" viewBox="0 0 900 900" role="img" aria-label="Rueda de seis fases del sistema APC: diagnóstico, estrategia, activos, adquisición, automatización y analítica aplicada">
+        <defs>
+          <radialGradient id="dwCoreGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#131c2e"></stop>
+            <stop offset="85%" stop-color="#090d16"></stop>
+            <stop offset="100%" stop-color="#05070c"></stop>
+          </radialGradient>
+        </defs>
+        <g id="dwWheelGuide"></g>
+        <g id="dwWheelSegments"></g>
+        <g id="dwWheelLabels"></g>
+        <g id="dwWheelArcs"></g>
+        <g id="dwWheelCore" tabindex="0" role="button" aria-label="Ver vista general del sistema">
+          <circle cx="450" cy="450" r="104" fill="url(#dwCoreGrad)" stroke="rgba(255,255,255,.18)" stroke-width="2"></circle>
+          <circle class="dw-wheel-pulse" cx="450" cy="450" r="112" fill="none" stroke="#25d366" stroke-width="1.5"></circle>
+          <text x="450" y="412" text-anchor="middle" fill="#25d366" font-family="Consolas, 'Courier New', monospace" font-size="11" font-weight="700" letter-spacing="2">SISTEMA 360°</text>
+          <text x="450" y="446" text-anchor="middle" fill="#ffffff" font-family="'Plus Jakarta Sans', 'PJS Fallback', sans-serif" font-size="20" font-weight="800">ECOSISTEMA</text>
+          <text x="450" y="474" text-anchor="middle" fill="#ffffff" font-family="'Plus Jakarta Sans', 'PJS Fallback', sans-serif" font-size="23" font-weight="800" letter-spacing="1.5">APC</text>
+          <rect x="378" y="486" width="144" height="22" rx="11" fill="rgba(37,211,102,.16)" stroke="rgba(37,211,102,.45)" stroke-width="1"></rect>
+          <text x="450" y="501" text-anchor="middle" fill="#6ee7b7" font-family="Consolas, 'Courier New', monospace" font-size="11" font-weight="700">WEB + IA + DATOS</text>
+        </g>
+      </svg>
+    </div>
   </div>
+
+  <p class="dw-wheel-footer"><strong>SISTEMA APC</strong><span>WEB + IA + DATOS EN UN SOLO PANEL</span></p>
+  <p class="sr-only">Rueda interactiva de seis fases: diagnóstico, estrategia, activos, adquisición, automatización y analítica aplicada con visión IA como fuente de datos operativos.</p>
 </section>
 
 <section class="section-pricing" id="servicios">
@@ -3637,6 +3699,181 @@ if ('serviceWorker' in navigator) {
     if (document.hidden) { v.pause(); return; }
     var p = v.play(); if (p && p.catch) p.catch(function () {});
   });
+})();
+</script>
+<script>
+/* === RUEDA CONECTADA: 6 FASES, 3 ANILLOS, SIN LIBRERIAS === */
+(function () {
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg';
+  var svg = document.getElementById('dwWheelSvg');
+  if (!svg) return;
+
+  var PHASES = [
+    { id:1, macro:'ANÁLISIS SITUACIONAL', title:['Diagnóstico &','Auditoría'], platform:'Fugas digitales',
+      tactics:['Auditoría SEO','Velocidad web','Mapa de fugas'], r:['#d97706','#f59e0b','#fbbf24'],
+      desc:'Detectamos dónde se pierden oportunidades: búsquedas locales sin capturar, web lenta y flujo sin medir.' },
+    { id:2, macro:'ARQUITECTURA DEL PLAN', title:['Estrategia &','Arquitectura'], platform:'Ecosistema 5 verticales',
+      tactics:['Embudo B2B','KPIs claros','Diseño de red'], r:['#c2410c','#ea580c','#fb923c'],
+      desc:'Trazamos el plano maestro que conecta canales digitales y datos de operación con indicadores claros.' },
+    { id:3, macro:'ECOSISTEMA FÍSICO-DIGITAL', title:['Activos &','Infraestructura'], platform:'dogweb.lat + apccore.site',
+      tactics:['Web SEO local','Flujos n8n','Dashboards'], r:['#be123c','#e11d48','#fb7185'],
+      desc:'Construimos la base: web rápida orientada a conversión, automatizaciones y paneles de datos.' },
+    { id:4, macro:'CAPTACIÓN Y TRÁFICO', title:['Adquisición','& Tráfico'], platform:'SEO Local + Píxeles + RRSS',
+      tactics:['Google Maps','Demos sectoriales','Remarketing'], r:['#1d4ed8','#2563eb','#60a5fa'],
+      desc:'Posicionamos el negocio en búsquedas locales y activamos embudos sectoriales con seguimiento.' },
+    { id:5, macro:'CONVERSIÓN AUTOMATIZADA', title:['Automatización','& Operación'], platform:'apcautomatizacion.site',
+      tactics:['Bot WhatsApp 24/7','Auto-registro','Reportes vivos'], r:['#0e7490','#0891b2','#22d3ee'],
+      desc:'El bot califica clientes por WhatsApp, los portales registran contactos y los datos fluyen solos.' },
+    { id:6, macro:'CONTROL Y ANALÍTICA REAL', title:['Analítica','aplicada (IA)'], platform:'apcvisionai.site + serviciosapc.site',
+      tactics:['Conteo de flujo','Mapas de calor','Cruce SEO vs datos'], r:['#047857','#10b981','#25d366'], plus:true,
+      desc:'Convertimos video en datos operativos con visión IA (YOLO) y los cruzamos con el tráfico web para decidir con información.' }
+  ];
+
+  var CX = 450, CY = 450;
+  var R = { i1:118, o1:204, i2:207, o2:292, i3:295, o3:382, arc:406 };
+  var gGuide = document.getElementById('dwWheelGuide');
+  var gSeg = document.getElementById('dwWheelSegments');
+  var gLbl = document.getElementById('dwWheelLabels');
+  var gArc = document.getElementById('dwWheelArcs');
+  var gCore = document.getElementById('dwWheelCore');
+
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function polar(r, deg) {
+    var a = (deg - 90) * Math.PI / 180;
+    return { x: CX + r * Math.cos(a), y: CY + r * Math.sin(a) };
+  }
+  function sector(ri, ro, a0, a1) {
+    var p1 = polar(ro,a0), p2 = polar(ro,a1), p3 = polar(ri,a1), p4 = polar(ri,a0);
+    var big = (a1 - a0) <= 180 ? '0' : '1';
+    return ['M',p1.x.toFixed(2),p1.y.toFixed(2),'A',ro,ro,0,big,1,p2.x.toFixed(2),p2.y.toFixed(2),
+            'L',p3.x.toFixed(2),p3.y.toFixed(2),'A',ri,ri,0,big,0,p4.x.toFixed(2),p4.y.toFixed(2),'Z'].join(' ');
+  }
+  function arcPath(r, a0, a1, rev) {
+    var s = polar(r, rev ? a1 : a0), e = polar(r, rev ? a0 : a1);
+    var big = (a1 - a0) <= 180 ? '0' : '1';
+    return 'M '+s.x.toFixed(2)+' '+s.y.toFixed(2)+' A '+r+' '+r+' 0 '+big+' '+(rev?0:1)+' '+e.x.toFixed(2)+' '+e.y.toFixed(2);
+  }
+
+  [392,434].forEach(function(r){
+    gGuide.appendChild(el('circle',{cx:CX,cy:CY,r:r,fill:'none',stroke:'rgba(255,255,255,.08)','stroke-width':1,'stroke-dasharray':r===434?'6 6':'none'}));
+  });
+
+  var slice = 60, gap = 1.4;
+
+  PHASES.forEach(function(p, i) {
+    var a0 = i * slice + gap/2, a1 = (i+1) * slice - gap/2, mid = (a0+a1)/2;
+
+    var g = el('g',{ 'class':'dw-wheel-seg', 'data-phase':p.id, tabindex:'0', role:'button',
+      'aria-label':'Fase '+p.id+': '+p.title.join(' ') });
+    [ [R.i1,R.o1,p.r[0]], [R.i2,R.o2,p.r[1]] ].forEach(function(x){
+      g.appendChild(el('path',{d:sector(x[0],x[1],a0,a1),fill:x[2],stroke:'#0a0b0d','stroke-width':1.5}));
+    });
+
+    var subGap = 0.8, span = ((a1-a0) - subGap*(p.tactics.length-1)) / p.tactics.length;
+    p.tactics.forEach(function(t, j){
+      var s0 = a0 + j*(span+subGap), s1 = s0+span, sm = (s0+s1)/2;
+      g.appendChild(el('path',{d:sector(R.i3,R.o3,s0,s1),fill:p.r[2],stroke:'#0a0b0d','stroke-width':1.2}));
+      var pos = polar((R.i3+R.o3)/2, sm);
+      var rot = sm > 180 ? sm + 90 : sm - 90;
+      var tx = el('text',{x:pos.x.toFixed(2),y:pos.y.toFixed(2),fill:'#090d16','font-family':"Consolas, 'Courier New', monospace",'font-size':9.6,'font-weight':700,'text-anchor':'middle','dominant-baseline':'central',transform:'rotate('+rot.toFixed(2)+','+pos.x.toFixed(2)+','+pos.y.toFixed(2)+')'});
+      tx.textContent = t;
+      gLbl.appendChild(tx);
+    });
+
+    function labelGroup(radius, lines, isMono) {
+      var pos = polar(radius, mid);
+      var rot = mid;
+      if (mid > 90 && mid < 270) rot = mid + 180;
+      var grp = el('g',{transform:'rotate('+rot.toFixed(2)+','+pos.x.toFixed(2)+','+pos.y.toFixed(2)+')','pointer-events':'none'});
+      lines.forEach(function(line, k){
+        var t = el('text',{x:pos.x.toFixed(2),y:(pos.y + (k - (lines.length-1)/2)*14).toFixed(2),
+          fill:'#ffffff','font-family':isMono ? "Consolas, 'Courier New', monospace" : "'Plus Jakarta Sans', 'PJS Fallback', sans-serif",
+          'font-size':isMono?10.5:11.5,'font-weight':800,'text-anchor':'middle','dominant-baseline':'central'});
+        t.textContent = line;
+        grp.appendChild(t);
+      });
+      gLbl.appendChild(grp);
+    }
+    labelGroup((R.i1+R.o1)/2, [String(p.id)].concat(p.title), false);
+    labelGroup((R.i2+R.o2)/2, [p.platform], true);
+
+    var arcId = 'dwArc'+p.id;
+    var defs = svg.querySelector('defs');
+    defs.appendChild(el('path',{id:arcId,d:arcPath(R.arc,a0+2,a1-2, mid>95&&mid<265)}));
+    var mt = el('text',{fill:p.plus?'#25d366':'#475569','font-family':"Consolas, 'Courier New', monospace",'font-size':10.5,'font-weight':700,'letter-spacing':1.4});
+    var tp = el('textPath',{href:'#'+arcId,startOffset:'50%','text-anchor':'middle'});
+    tp.textContent = p.macro;
+    mt.appendChild(tp);
+    gArc.appendChild(mt);
+
+    g.addEventListener('mouseenter', function(){ select(p.id); });
+    g.addEventListener('click', function(){ select(p.id); });
+    g.addEventListener('focus', function(){ select(p.id); });
+    gSeg.appendChild(g);
+  });
+
+  var badge = document.getElementById('dwBadge');
+  var macro = document.getElementById('dwMacro');
+  var title = document.getElementById('dwTitle');
+  var platform = document.getElementById('dwPlatform');
+  var desc = document.getElementById('dwDesc');
+  var tactics = document.getElementById('dwTactics');
+  var pills = document.getElementById('dwPills');
+
+  PHASES.forEach(function(p){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = p.id;
+    b.setAttribute('aria-label','Fase '+p.id);
+    b.addEventListener('click', function(){ select(p.id); });
+    pills.appendChild(b);
+  });
+
+  function select(id) {
+    var p = PHASES.filter(function(x){ return x.id===id; })[0];
+    if (!p) return;
+    svg.classList.add('dw-wheel-dim');
+    Array.prototype.forEach.call(gSeg.children, function(g){
+      if (Number(g.getAttribute('data-phase'))===id) g.classList.add('is-active');
+      else g.classList.remove('is-active');
+    });
+    Array.prototype.forEach.call(pills.children, function(b, idx){
+      b.style.backgroundColor = (idx+1)===id ? p.r[1] : '';
+      b.style.color = (idx+1)===id ? '#fff' : '';
+    });
+    badge.textContent = 'FASE 0'+p.id+' · ' + (p.plus ? 'DIFERENCIAL APC' : 'METODOLOGÍA APC');
+    badge.style.color = p.plus ? '#0b7a3d' : '#B98B00';
+    macro.textContent = p.macro;
+    title.textContent = p.title.join(' ');
+    platform.textContent = p.platform;
+    desc.textContent = p.desc;
+    tactics.innerHTML = '';
+    p.tactics.forEach(function(t){
+      var sp = document.createElement('span');
+      sp.textContent = t;
+      tactics.appendChild(sp);
+    });
+  }
+  function reset() {
+    svg.classList.remove('dw-wheel-dim');
+    Array.prototype.forEach.call(gSeg.children, function(g){ g.classList.remove('is-active'); });
+  }
+  gCore.addEventListener('click', reset);
+  gCore.addEventListener('focus', reset);
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ svg.classList.toggle('dw-wheel-paused', !e.isIntersecting); });
+    }, {threshold:.05}).observe(svg);
+  }
+  document.addEventListener('visibilitychange', function(){ svg.classList.toggle('dw-wheel-paused', document.hidden); });
+
+  select(6);
 })();
 </script>
 </body>
