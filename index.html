@@ -2442,6 +2442,28 @@ footer, .footer-info, .footer-links a, .footer-cob-list a { color: var(--light-m
   .hero-copy .dw-video-caption { margin-top:1rem; }
 }
 </style>
+<style>
+/* === MENU Y HERO UNIFICADOS CON EL FONDO DEL VIDEO (#030711) === */
+.topbar {
+  background:#030711;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  color:#CBD5E1;
+}
+header {
+  background-color:#030711;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+@media (max-width:768px){ header { background-color:#030711; } }
+.mobile-menu,
+.mobile-menu.open { background:#030711; border-bottom-color:rgba(255,255,255,.08); }
+header nav a,
+.mobile-menu a { color:#CBD5E1; }
+.btn-cta { background-color:#25d366; }
+.hero.hero-winter { background-color:#030711; }
+.dw-video-layer { background-color:#030711; }
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
