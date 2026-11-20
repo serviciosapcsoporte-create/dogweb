@@ -3750,6 +3750,19 @@ if ('serviceWorker' in navigator) {
   var gArc = document.getElementById('dwWheelArcs');
   var gCore = document.getElementById('dwWheelCore');
 
+  function luminance(hex) {
+    var n = parseInt(hex.replace('#',''), 16);
+    var c = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(function(v){
+      v /= 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  }
+  function inkFor(fill) {
+    var l = luminance(fill);
+    return (1.05 / (l + 0.05)) >= 4.5 ? '#ffffff' : '#090d16';
+  }
+
   function el(tag, attrs) {
     var e = document.createElementNS(NS, tag);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
@@ -3792,7 +3805,7 @@ if ('serviceWorker' in navigator) {
       g.appendChild(el('path',{d:sector(R.i3,R.o3,s0,s1),fill:p.r[2],stroke:'#0a0b0d','stroke-width':1.2}));
       var pos = polar((R.i3+R.o3)/2, sm);
       var rot = sm > 180 ? sm + 90 : sm - 90;
-      var tx = el('text',{x:pos.x.toFixed(2),y:pos.y.toFixed(2),fill:'#090d16','font-family':"Consolas, 'Courier New', monospace",'font-size':9.6,'font-weight':700,'text-anchor':'middle','dominant-baseline':'central',transform:'rotate('+rot.toFixed(2)+','+pos.x.toFixed(2)+','+pos.y.toFixed(2)+')'});
+      var tx = el('text',{x:pos.x.toFixed(2),y:pos.y.toFixed(2),fill:inkFor(p.r[2]),'font-family':"Consolas, 'Courier New', monospace",'font-size':9.6,'font-weight':700,'text-anchor':'middle','dominant-baseline':'central',transform:'rotate('+rot.toFixed(2)+','+pos.x.toFixed(2)+','+pos.y.toFixed(2)+')'});
       tx.textContent = t;
       gLbl.appendChild(tx);
     });
@@ -3804,7 +3817,7 @@ if ('serviceWorker' in navigator) {
       var grp = el('g',{transform:'rotate('+rot.toFixed(2)+','+pos.x.toFixed(2)+','+pos.y.toFixed(2)+')','pointer-events':'none'});
       lines.forEach(function(line, k){
         var t = el('text',{x:pos.x.toFixed(2),y:(pos.y + (k - (lines.length-1)/2)*14).toFixed(2),
-          fill:'#ffffff','font-family':isMono ? "Consolas, 'Courier New', monospace" : "'Plus Jakarta Sans', 'PJS Fallback', sans-serif",
+          fill:inkFor(isMono ? p.r[1] : p.r[0]),'font-family':isMono ? "Consolas, 'Courier New', monospace" : "'Plus Jakarta Sans', 'PJS Fallback', sans-serif",
           'font-size':isMono?10.5:11.5,'font-weight':800,'text-anchor':'middle','dominant-baseline':'central'});
         t.textContent = line;
         grp.appendChild(t);
