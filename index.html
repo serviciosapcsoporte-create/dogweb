@@ -1428,7 +1428,7 @@ h1 span { color: var(--accent); }
 .svc-card, .card, .process-step, .blog-card { opacity: 0; }
 .svc-card.is-in, .card.is-in, .process-step.is-in, .blog-card.is-in {
   opacity: 1;
-  animation: riseIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation: riseIn 300ms cubic-bezier(0.23, 1, 0.32, 1) backwards;
   animation-delay: calc(var(--i, 0) * 60ms);
 }
 @keyframes riseIn {
@@ -2100,14 +2100,14 @@ footer {
 }
 .ecosystem-section.is-in, .testimonial-section.is-in, .why-section.is-in, .contact-section.is-in, .faq-section.is-in {
   opacity: 1;
-  animation: riseIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) backwards;
+  animation: riseIn 300ms cubic-bezier(0.23, 1, 0.32, 1) backwards;
 }
 .eco-step, .why-item {
   opacity: 0;
 }
 .eco-step.is-in, .why-item.is-in {
   opacity: 1;
-  animation: riseIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation: riseIn 300ms cubic-bezier(0.23, 1, 0.32, 1) backwards;
   animation-delay: calc(var(--i, 0) * 60ms);
 }
 .eco-step:nth-child(1) { --i: 1; }
@@ -2491,6 +2491,19 @@ header nav a,
 .dw-wheel-footer strong { color:var(--navy); display:block; letter-spacing:.22em; }
 @media (max-width:968px){ .dw-wheel-layout { grid-template-columns:1fr; gap:1.5rem; } }
 @media (prefers-reduced-motion:reduce){ .dw-wheel-pulse{ animation:none; opacity:.7; } .dw-wheel-seg,.dw-wheel-pills button{ transition:none!important; } }
+</style>
+<style>
+/* === POLISH DE MOVIMIENTO (animate-expo transferido a web) === */
+.dw-wheel-seg { transition:opacity 200ms cubic-bezier(0.23,1,0.32,1), transform 160ms cubic-bezier(0.23,1,0.32,1); transform-box:fill-box; transform-origin:center; }
+.dw-wheel-seg:active { transform:scale(.985); }
+#dwWheelCore { cursor:pointer; transition:transform 160ms cubic-bezier(0.23,1,0.32,1), opacity 160ms cubic-bezier(0.23,1,0.32,1); transform-box:fill-box; transform-origin:center; }
+#dwWheelCore:active { transform:scale(.985); }
+.dw-wheel-inspector { opacity:1; transform:translateY(0); transition:opacity 240ms cubic-bezier(0.23,1,0.32,1), transform 240ms cubic-bezier(0.23,1,0.32,1); }
+@starting-style { .dw-wheel-inspector { opacity:0; transform:translateY(8px); } }
+@media (prefers-reduced-motion:reduce){
+  .dw-wheel-seg, #dwWheelCore, .dw-wheel-inspector { transition:none!important; transform:none!important; }
+  @starting-style { .dw-wheel-inspector { opacity:1; transform:none; } }
+}
 </style>
 </head>
 <body>
