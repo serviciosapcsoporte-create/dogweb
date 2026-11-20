@@ -2504,6 +2504,20 @@ header nav a,
   @starting-style { .dw-wheel-inspector { opacity:1; transform:none; } }
 }
 </style>
+<style>
+/* === ACENTO NARANJA: contraparte del verde sin tocar conversion === */
+.hero.hero-winter {
+  --accent-orange: #ea580c;
+  --accent-orange-light: #fb923c;
+}
+.hero-copy .hero-preheader {
+  color: var(--accent-orange-light);
+  border-color: rgba(251,146,60,.45);
+  background: rgba(234,88,12,.12);
+}
+.hero-copy .stat-item .stat-num { color: var(--accent-orange-light); }
+.hero-copy .hero-stats { border-top-color: rgba(251,146,60,.32); }
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
