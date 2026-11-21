@@ -2563,6 +2563,40 @@ header nav a,
 @media (max-width:968px){ .dw-ia-grid { grid-template-columns:1fr; gap:1.6rem; } }
 @media (prefers-reduced-motion:reduce){ .dw-ia-cta { transition:none!important; transform:none!important; } }
 </style>
+<style>
+/* === STICKERS NAVIDEÑOS FLOTANTES (seccion Captacion B2B con IA) === */
+.dw-ia-section { overflow-x: clip; }
+.dw-sticker {
+  position:absolute;
+  z-index:1;
+  pointer-events:none;
+  height:auto;
+  width:clamp(64px,8vw,104px);
+  opacity:.96;
+  filter:drop-shadow(0 8px 16px rgba(15,23,42,.14));
+  transform:translateY(0);
+  transition:transform 260ms cubic-bezier(0.23,1,0.32,1), opacity 260ms cubic-bezier(0.23,1,0.32,1);
+  will-change:transform;
+}
+.dw-sticker-arbol { top:-14px; right:-10px; }
+.dw-sticker-perros { bottom:-18px; right:30%; }
+.dw-sticker-ia { top:42%; right:-24px; }
+.dw-ia-grid { position:relative; }
+.dw-sticker.is-floating .dw-sticker-arbol,
+.dw-sticker.is-floating.dw-sticker-arbol { animation:dwFloat 3.6s ease-in-out infinite; }
+.dw-sticker.is-floating.dw-sticker-perros { animation:dwFloat 4.2s ease-in-out .08s infinite; }
+.dw-sticker.is-floating.dw-sticker-ia { animation:dwFloat 3.9s ease-in-out .16s infinite; }
+@keyframes dwFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+@media (max-width:968px){
+  .dw-sticker { width:clamp(52px,14vw,74px); }
+  .dw-sticker-arbol { top:-10px; right:-4px; }
+  .dw-sticker-perros { bottom:-12px; right:18%; }
+  .dw-sticker-ia { top:44%; right:-6px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .dw-sticker { animation:none!important; transform:none!important; transition:none!important; }
+}
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
@@ -2658,6 +2692,9 @@ header nav a,
       </div>
       <p class="dw-ia-caption">DOGWEB · SISTEMA APC</p>
     </div>
+    <img class="dw-sticker dw-sticker-arbol" src="assets/sticker-arbol.svg" alt="" aria-hidden="true" loading="lazy">
+    <img class="dw-sticker dw-sticker-perros" src="assets/sticker-perros.svg" alt="" aria-hidden="true" loading="lazy">
+    <img class="dw-sticker dw-sticker-ia" src="assets/sticker-edicion-ia.svg" alt="" aria-hidden="true" loading="lazy">
   </div>
 </section>
 
@@ -4001,6 +4038,29 @@ if ('serviceWorker' in navigator) {
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) v.pause();
     else { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  });
+})();
+</script>
+<script>
+/* === STICKERS: pausa float fuera de viewport === */
+(function () {
+  var stickers = document.querySelectorAll('.dw-sticker');
+  if (!stickers.length) return;
+  var root = document.getElementById('captacion-ia');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    return;
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      stickers.forEach(function (st) { st.classList.toggle('is-floating', e.isIntersecting); });
+    });
+  }, { threshold: 0.05 });
+  if (root) io.observe(root);
+  document.addEventListener('visibilitychange', function () {
+    stickers.forEach(function (st) {
+      if (document.hidden) st.classList.remove('is-floating');
+      else if (root && root.getBoundingClientRect().top < window.innerHeight) st.classList.add('is-floating');
+    });
   });
 })();
 </script>
