@@ -2307,7 +2307,7 @@ footer, .footer-info, .footer-links a, .footer-cob-list a { color: var(--light-m
 .dw-pack-cta { display:flex; justify-content:center; margin-top:12px; }
 .dw-pack-wa { display:inline-flex; align-items:center; gap:8px; background:#25D366; color:#0F172A; font-weight:700; border-radius:10px; padding:10px 16px; text-decoration:none; transition:transform 160ms cubic-bezier(0.23,1,0.32,1), background-color 160ms cubic-bezier(0.23,1,0.32,1); }
 .dw-pack-wa:active { transform:scale(0.97); }
-@media (hover:hover) and (pointer:fine){ .dw-pack-wa:hover { background:#1fb855; transform:translateY(-1px); } }
+@media (hover:hover) and (pointer:fine){ .dw-pack-wa:hover { background:#128C7E; transform:translateY(-1px); } }
 @media (prefers-reduced-motion:reduce){ .dw-pack-pre,.dw-pack-signature,.dw-pack-gifts,.dw-pack-wa{ transition:none!important; transform:none!important; } }
 </style>
 <style>
@@ -2542,7 +2542,7 @@ header nav a,
 .pricing-grid .card-button:active { transform:scale(.97); }
 .pricing-grid .card.featured .card-button { color:#0F172A; box-shadow:0 8px 22px rgba(37,211,102,.35); }
 @media (hover:hover) and (pointer:fine){
-  .pricing-grid .card-button:hover { background-color:#1fb855; }
+  .pricing-grid .card-button:hover { background-color:#128C7E; }
 }
 @media (prefers-reduced-motion:reduce){
   .pricing-grid .card-button { transition:none!important; transform:none!important; }
@@ -2556,7 +2556,7 @@ header nav a,
 .dw-ia-sub { color:var(--light-muted); font-size:.98rem; line-height:1.65; margin:0 0 .9rem; }
 .dw-ia-cta { display:inline-flex; align-items:center; gap:9px; background:#25d366; color:#0F172A; font-weight:700; border-radius:10px; padding:.85rem 1.3rem; text-decoration:none; transition:background-color 160ms cubic-bezier(0.23,1,0.32,1), transform 160ms cubic-bezier(0.23,1,0.32,1); }
 .dw-ia-cta:active { transform:scale(.97); }
-@media (hover:hover) and (pointer:fine){ .dw-ia-cta:hover { background:#1fb855; } }
+@media (hover:hover) and (pointer:fine){ .dw-ia-cta:hover { background:#128C7E; } }
 .dw-ia-video-frame { width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:16px; border:1px solid rgba(15,44,89,.14); background:#030711; box-shadow:0 18px 40px rgba(15,23,42,.14); }
 .dw-ia-video-frame video { display:block; width:100%; height:100%; object-fit:cover; }
 .dw-ia-caption { text-align:center; margin-top:.7rem; font:600 10px Consolas,'Courier New',monospace; letter-spacing:.18em; color:var(--light-muted); }
@@ -2626,7 +2626,7 @@ header nav a,
   .dw-ia-cta:hover,
   .social-float a.social-wa:hover,
   .wa-btn-dynamic:hover {
-    background-color:#1fb855;
+    background-color:#128C7E;
     box-shadow:
       0 10px 20px rgba(15,23,42,.18),
       0 4px 8px rgba(15,44,89,.12),
@@ -2638,6 +2638,38 @@ header nav a,
   .dw-pack-wa,.dw-ia-cta,.social-float a.social-wa,.wa-btn-dynamic {
     transition:none!important;
     transform:none!important;
+  }
+}
+</style>
+<style>
+/* === IDENTIDAD OFICIAL WHATSAPP EN CTA === */
+.dw-pack-wa,
+.dw-ia-cta,
+.btn-cta,
+.btn-primary,
+.card-button,
+.contact-form-btn,
+.wa-btn-dynamic,
+.social-float a.social-wa {
+  background-color:#25D366;
+  color:#FFFFFF;
+}
+.dw-pack-wa svg,
+.dw-ia-cta svg,
+.wa-btn-dynamic .wa-icon,
+.social-float a.social-wa svg {
+  fill:#FFFFFF;
+}
+@media (hover:hover) and (pointer:fine){
+  .dw-pack-wa:hover,
+  .dw-ia-cta:hover,
+  .btn-cta:hover,
+  .btn-primary:hover,
+  .card-button:hover,
+  .contact-form-btn:hover,
+  .wa-btn-dynamic:hover,
+  .social-float a.social-wa:hover {
+    background-color:#128C7E;
   }
 }
 </style>
@@ -3172,7 +3204,7 @@ header nav a,
         </div>
       </div>
 
-      <div class="wa-dynamic-container"><div class="wa-status-badge"><span class="wa-ping-dot"></span><span class="wa-status-text">SISTEMA IA // RESPUESTA EN &lt; 5 MINUTOS</span></div><div class="wa-button-wrapper"><div class="wa-radar-ring"></div><a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="wa-btn-dynamic"><svg class="wa-icon" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.505 5.264l-.999 3.648 3.984-1.042zm11.387-5.309c-.214-.12-1.264-.634-1.461-.708-.197-.073-.34-.11-.483.11-.143.22-.549.708-.672.854-.124.145-.247.163-.46.055-.214-.11-.903-.333-1.72-1.06-.636-.566-1.066-1.265-.19-1.265-.124 0-.266-.018-.408-.048-.142-.03-.386-.145-.587-.27-.201-.125-.359-.258-.493-.582-.134-.324-.027-.562.066-.744.094-.18.408-.705.561-1.17z"/></svg><span>Hablar por WhatsApp</span><span class="wa-arrow" aria-hidden="true">→</span></a></div></div>
+      <div class="wa-dynamic-container"><div class="wa-status-badge"><span class="wa-ping-dot"></span><span class="wa-status-text">SISTEMA IA // RESPUESTA EN &lt; 5 MINUTOS</span></div><div class="wa-button-wrapper"><div class="wa-radar-ring"></div><a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="wa-btn-dynamic"><svg class="wa-icon" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.75.453 3.469 1.328 5l-1.406 5.156 5.297-1.391c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969s-4.453-9.984-9.969-9.984zm5.813 14.125c-.25.703-1.438 1.344-1.984 1.422-.516.078-1.156.109-1.859-.109-.438-.141-1-.328-1.719-.641-3.016-1.313-4.984-4.344-5.141-4.547-.156-.203-1.234-1.641-1.234-3.125s.781-2.219 1.063-2.516c.281-.297.609-.375.813-.375.203 0 .406 0 .594.016.188 0 .453-.078.703.531.25.609.859 2.094.938 2.25.078.156.125.344.031.547-.094.203-.141.328-.281.5-.141.172-.297.391-.422.516-.141.141-.297.297-.125.594.172.297.766 1.266 1.641 2.047 1.125 1 2.078 1.313 2.375 1.453.297.141.469.125.641-.078.172-.203.734-.859.938-1.156.203-.297.406-.25.688-.141.281.109 1.781.844 2.094 1 .313.156.516.234.594.359.078.141.078.781-.172 1.484z"/></svg><span>Hablar por WhatsApp</span><span class="wa-arrow" aria-hidden="true">→</span></a></div></div>
       
     </div>
 
@@ -3244,7 +3276,7 @@ header nav a,
 <!-- SOCIAL FLOAT -->
 <div class="social-float" aria-label="Redes sociales">
   <a href="https://wa.me/573337450634?text=Hola%20DogWeb" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-wa">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.505 5.264l-.999 3.648 3.984-1.042zm11.387-5.309c-.214-.12-1.264-.634-1.461-.708-.197-.073-.34-.11-.483.11-.143.22-.549.708-.672.854-.124.145-.247.163-.46.055-.214-.11-.903-.333-1.72-1.06-.636-.566-1.066-1.265-.19-1.265-.124 0-.266-.018-.408-.048-.142-.03-.386-.145-.587-.27-.201-.125-.359-.258-.493-.582-.134-.324-.027-.562.066-.744.094-.18.408-.705.561-1.17z"/></svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.75.453 3.469 1.328 5l-1.406 5.156 5.297-1.391c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969s-4.453-9.984-9.969-9.984zm5.813 14.125c-.25.703-1.438 1.344-1.984 1.422-.516.078-1.156.109-1.859-.109-.438-.141-1-.328-1.719-.641-3.016-1.313-4.984-4.344-5.141-4.547-.156-.203-1.234-1.641-1.234-3.125s.781-2.219 1.063-2.516c.281-.297.609-.375.813-.375.203 0 .406 0 .594.016.188 0 .453-.078.703.531.25.609.859 2.094.938 2.25.078.156.125.344.031.547-.094.203-.141.328-.281.5-.141.172-.297.391-.422.516-.141.141-.297.297-.125.594.172.297.766 1.266 1.641 2.047 1.125 1 2.078 1.313 2.375 1.453.297.141.469.125.641-.078.172-.203.734-.859.938-1.156.203-.297.406-.25.688-.141.281.109 1.781.844 2.094 1 .313.156.516.234.594.359.078.141.078.781-.172 1.484z"/></svg>
   </a>
   <a href="https://www.facebook.com/alejandropiraquiveapc" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
