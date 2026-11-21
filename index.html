@@ -2582,6 +2582,65 @@ header nav a,
 @keyframes dwNumFloat { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-6px) scale(1.03)} }
 @media (prefers-reduced-motion:reduce){ .eco-number-sticker{ animation:none!important; transform:none!important; transition:none!important; } }
 </style>
+<style>
+/* === RELIEFE DE WHATSAPP EN TODOS LOS CTA VERDES === */
+.btn-cta,
+.btn-primary,
+.card-button,
+.contact-form-btn,
+.dw-pack-wa,
+.dw-ia-cta,
+.social-float a.social-wa,
+.wa-btn-dynamic {
+  color:#0F172A;
+  border:1px solid rgba(15,44,89,.12);
+  box-shadow:
+    0 6px 14px rgba(15,23,42,.14),
+    0 2px 4px rgba(15,44,89,.10),
+    inset 0 1px 0 rgba(255,255,255,.35);
+  transition:
+    transform 160ms cubic-bezier(0.23,1,0.32,1),
+    opacity 160ms cubic-bezier(0.23,1,0.32,1),
+    background-color 160ms cubic-bezier(0.23,1,0.32,1),
+    box-shadow 160ms cubic-bezier(0.23,1,0.32,1);
+}
+.btn-primary:active,
+.btn-cta:active,
+.card-button:active,
+.contact-form-btn:active,
+.dw-pack-wa:active,
+.dw-ia-cta:active,
+.social-float a.social-wa:active,
+.wa-btn-dynamic:active {
+  transform:scale(.97);
+  box-shadow:
+    0 2px 6px rgba(15,23,42,.16),
+    inset 0 1px 0 rgba(255,255,255,.30);
+}
+@media (hover:hover) and (pointer:fine){
+  .btn-cta:hover,
+  .btn-primary:hover,
+  .card-button:hover,
+  .contact-form-btn:hover,
+  .dw-pack-wa:hover,
+  .dw-ia-cta:hover,
+  .social-float a.social-wa:hover,
+  .wa-btn-dynamic:hover {
+    background-color:#1fb855;
+    box-shadow:
+      0 10px 20px rgba(15,23,42,.18),
+      0 4px 8px rgba(15,44,89,.12),
+      inset 0 1px 0 rgba(255,255,255,.40);
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .btn-cta,.btn-primary,.card-button,.contact-form-btn,
+  .dw-pack-wa,.dw-ia-cta,.social-float a.social-wa,.wa-btn-dynamic {
+    transition:none!important;
+    transform:none!important;
+  }
+}
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
