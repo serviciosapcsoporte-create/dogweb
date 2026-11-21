@@ -2565,7 +2565,7 @@ header nav a,
 </style>
 <style>
 /* === STICKERS NAVIDEÑOS FLOTANTES (seccion Captacion B2B con IA) === */
-.dw-ia-section { overflow-x: clip; }
+.dw-ia-section, .ecosystem-section { overflow-x: clip; }
 .dw-sticker {
   position:absolute;
   z-index:1;
@@ -2578,10 +2578,10 @@ header nav a,
   transition:transform 260ms cubic-bezier(0.23,1,0.32,1), opacity 260ms cubic-bezier(0.23,1,0.32,1);
   will-change:transform;
 }
-.dw-sticker-arbol { top:-14px; right:-10px; }
-.dw-sticker-perros { bottom:-18px; right:30%; }
-.dw-sticker-ia { top:42%; right:-24px; }
-.dw-ia-grid { position:relative; }
+.dw-sticker-arbol { top:-26px; right:8px; }
+.dw-sticker-perros { bottom:-30px; right:8px; }
+.dw-sticker-ia { top:-20px; left:8px; }
+.dw-ia-grid, .ecosystem-container { position:relative; }
 .dw-sticker.is-floating .dw-sticker-arbol,
 .dw-sticker.is-floating.dw-sticker-arbol { animation:dwFloat 3.6s ease-in-out infinite; }
 .dw-sticker.is-floating.dw-sticker-perros { animation:dwFloat 4.2s ease-in-out .08s infinite; }
@@ -2589,9 +2589,9 @@ header nav a,
 @keyframes dwFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
 @media (max-width:968px){
   .dw-sticker { width:clamp(52px,14vw,74px); }
-  .dw-sticker-arbol { top:-10px; right:-4px; }
-  .dw-sticker-perros { bottom:-12px; right:18%; }
-  .dw-sticker-ia { top:44%; right:-6px; }
+  .dw-sticker-arbol { top:-14px; left:2px; bottom:auto; }
+  .dw-sticker-perros { top:-12px; left:33%; bottom:auto; }
+  .dw-sticker-ia { top:-14px; right:2px; bottom:auto; }
 }
 @media (prefers-reduced-motion:reduce){
   .dw-sticker { animation:none!important; transform:none!important; transition:none!important; }
@@ -2692,9 +2692,6 @@ header nav a,
       </div>
       <p class="dw-ia-caption">DOGWEB · SISTEMA APC</p>
     </div>
-    <img class="dw-sticker dw-sticker-arbol" src="assets/sticker-arbol.svg" alt="" aria-hidden="true" loading="lazy">
-    <img class="dw-sticker dw-sticker-perros" src="assets/sticker-perros.svg" alt="" aria-hidden="true" loading="lazy">
-    <img class="dw-sticker dw-sticker-ia" src="assets/sticker-edicion-ia.svg" alt="" aria-hidden="true" loading="lazy">
   </div>
 </section>
 
@@ -2730,6 +2727,9 @@ header nav a,
     <div style="text-align:center;margin-top:2.5rem;">
       <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n%20sobre%20el%20ecosistema%20digital" class="btn-primary" target="_blank" rel="noopener noreferrer">Quiero mi ecosistema digital →</a>
     </div>
+    <img class="dw-sticker dw-sticker-arbol" src="assets/sticker-arbol.svg" alt="" aria-hidden="true" loading="lazy">
+    <img class="dw-sticker dw-sticker-perros" src="assets/sticker-perros.svg" alt="" aria-hidden="true" loading="lazy">
+    <img class="dw-sticker dw-sticker-ia" src="assets/sticker-edicion-ia.svg" alt="" aria-hidden="true" loading="lazy">
   </div>
 </section>
 
@@ -4046,7 +4046,7 @@ if ('serviceWorker' in navigator) {
 (function () {
   var stickers = document.querySelectorAll('.dw-sticker');
   if (!stickers.length) return;
-  var root = document.getElementById('captacion-ia');
+  var root = document.getElementById('ecosistema') || document.getElementById('captacion-ia');
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
     return;
   }
