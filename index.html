@@ -2564,38 +2564,23 @@ header nav a,
 @media (prefers-reduced-motion:reduce){ .dw-ia-cta { transition:none!important; transform:none!important; } }
 </style>
 <style>
-/* === STICKERS NAVIDEÑOS FLOTANTES (seccion Captacion B2B con IA) === */
-.dw-ia-section, .ecosystem-section { overflow-x: clip; }
-.dw-sticker {
-  position:absolute;
-  z-index:1;
-  pointer-events:none;
-  height:auto;
-  width:clamp(64px,8vw,104px);
-  opacity:.96;
-  filter:drop-shadow(0 8px 16px rgba(15,23,42,.14));
-  transform:translateY(0);
+<style>
+/* === STICKERS TROQUELADOS 1/2/3 (Sistema ACR) === */
+.eco-number-sticker {
+  display:block;
+  width:72px;
+  height:72px;
+  margin:0 auto;
+  border-radius:50%;
+  transform:translateY(0) scale(1);
+  opacity:1;
   transition:transform 260ms cubic-bezier(0.23,1,0.32,1), opacity 260ms cubic-bezier(0.23,1,0.32,1);
-  will-change:transform;
 }
-.dw-sticker-arbol { top:-26px; right:8px; }
-.dw-sticker-perros { bottom:-30px; right:8px; }
-.dw-sticker-ia { top:-20px; left:8px; }
-.dw-ia-grid, .ecosystem-container { position:relative; }
-.dw-sticker.is-floating .dw-sticker-arbol,
-.dw-sticker.is-floating.dw-sticker-arbol { animation:dwFloat 3.6s ease-in-out infinite; }
-.dw-sticker.is-floating.dw-sticker-perros { animation:dwFloat 4.2s ease-in-out .08s infinite; }
-.dw-sticker.is-floating.dw-sticker-ia { animation:dwFloat 3.9s ease-in-out .16s infinite; }
-@keyframes dwFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
-@media (max-width:968px){
-  .dw-sticker { width:clamp(52px,14vw,74px); }
-  .dw-sticker-arbol { top:-14px; left:2px; bottom:auto; }
-  .dw-sticker-perros { top:-12px; left:33%; bottom:auto; }
-  .dw-sticker-ia { top:-14px; right:2px; bottom:auto; }
-}
-@media (prefers-reduced-motion:reduce){
-  .dw-sticker { animation:none!important; transform:none!important; transition:none!important; }
-}
+.eco-number-sticker.is-pulsing { animation:dwNumFloat 3.2s ease-in-out infinite; }
+.eco-number-sticker[data-n="2"].is-pulsing { animation-delay:80ms; }
+.eco-number-sticker[data-n="3"].is-pulsing { animation-delay:160ms; }
+@keyframes dwNumFloat { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-6px) scale(1.03)} }
+@media (prefers-reduced-motion:reduce){ .eco-number-sticker{ animation:none!important; transform:none!important; transition:none!important; } }
 </style>
 </head>
 <body>
@@ -2704,21 +2689,21 @@ header nav a,
     </div>
     <div class="ecosystem-flow">
       <div class="eco-step">
-        <div class="eco-number">1</div>
+        <img class="eco-number-sticker" data-n="1" src="assets/sticker-num-1.svg" alt="Paso 1" width="72" height="72">
         <div class="eco-icon">🔍</div>
         <h3>Atrae</h3>
         <p>Posicionamiento SEO + Pauta Meta Ads + Producción IA = Visitantes cualificados encontrándote en Google y redes sociales.</p>
       </div>
       <div class="eco-arrow">→</div>
       <div class="eco-step">
-        <div class="eco-number">2</div>
+        <img class="eco-number-sticker" data-n="2" src="assets/sticker-num-2.svg" alt="Paso 2" width="72" height="72">
         <div class="eco-icon">💬</div>
         <h3>Convierte</h3>
         <p>Pistas de aterrizaje de alta velocidad + WhatsApp IA = Leads filtrados que responden y se califican solos 24/7.</p>
       </div>
       <div class="eco-arrow">→</div>
       <div class="eco-step">
-        <div class="eco-number">3</div>
+        <img class="eco-number-sticker" data-n="3" src="assets/sticker-num-3.svg" alt="Paso 3" width="72" height="72">
         <div class="eco-icon">📊</div>
         <h3>Retiene</h3>
         <p>Estrategia de contenidos unificada + Automatización = Clientes recurrentes y una operación comercial sin fricción.</p>
@@ -2727,9 +2712,6 @@ header nav a,
     <div style="text-align:center;margin-top:2.5rem;">
       <a href="https://wa.me/573337450634?text=Hola%20DogWeb,%20quiero%20informaci%C3%B3n%20sobre%20el%20ecosistema%20digital" class="btn-primary" target="_blank" rel="noopener noreferrer">Quiero mi ecosistema digital →</a>
     </div>
-    <img class="dw-sticker dw-sticker-arbol" src="assets/sticker-arbol.svg" alt="" aria-hidden="true" loading="lazy">
-    <img class="dw-sticker dw-sticker-perros" src="assets/sticker-perros.svg" alt="" aria-hidden="true" loading="lazy">
-    <img class="dw-sticker dw-sticker-ia" src="assets/sticker-edicion-ia.svg" alt="" aria-hidden="true" loading="lazy">
   </div>
 </section>
 
@@ -4042,24 +4024,25 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 <script>
-/* === STICKERS: pausa float fuera de viewport === */
+/* === STICKERS 1/2/3: pausa fuera de viewport === */
 (function () {
-  var stickers = document.querySelectorAll('.dw-sticker');
-  if (!stickers.length) return;
-  var root = document.getElementById('ecosistema') || document.getElementById('captacion-ia');
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+  var nums = document.querySelectorAll('.eco-number-sticker');
+  if (!nums.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) {
+    nums.forEach(function (n) { n.classList.add('is-pulsing'); });
     return;
   }
+  var root = document.getElementById('ecosistema');
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) {
-      stickers.forEach(function (st) { st.classList.toggle('is-floating', e.isIntersecting); });
+      nums.forEach(function (n) { n.classList.toggle('is-pulsing', e.isIntersecting); });
     });
   }, { threshold: 0.05 });
   if (root) io.observe(root);
   document.addEventListener('visibilitychange', function () {
-    stickers.forEach(function (st) {
-      if (document.hidden) st.classList.remove('is-floating');
-      else if (root && root.getBoundingClientRect().top < window.innerHeight) st.classList.add('is-floating');
+    nums.forEach(function (n) {
+      if (document.hidden) n.classList.remove('is-pulsing');
+      else if (root && root.getBoundingClientRect().top < window.innerHeight) n.classList.add('is-pulsing');
     });
   });
 })();
