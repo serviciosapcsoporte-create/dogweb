@@ -2548,6 +2548,21 @@ header nav a,
   .pricing-grid .card-button { transition:none!important; transform:none!important; }
 }
 </style>
+<style>
+/* === CAPTACION B2B CON IA: 2 columnas (copy / video) === */
+.dw-ia-section { position:relative; z-index:1; padding:3.5rem 1rem; }
+.dw-ia-grid { max-width:1240px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:2.5rem; align-items:center; }
+.dw-ia-copy h2 { font-family:'Plus Jakarta Sans','PJS Fallback',sans-serif; font-size:clamp(1.7rem,3vw,2.5rem); font-weight:800; color:var(--navy); line-height:1.15; margin:.6rem 0 1rem; }
+.dw-ia-sub { color:var(--light-muted); font-size:.98rem; line-height:1.65; margin:0 0 .9rem; }
+.dw-ia-cta { display:inline-flex; align-items:center; gap:9px; background:#25d366; color:#0F172A; font-weight:700; border-radius:10px; padding:.85rem 1.3rem; text-decoration:none; transition:background-color 160ms cubic-bezier(0.23,1,0.32,1), transform 160ms cubic-bezier(0.23,1,0.32,1); }
+.dw-ia-cta:active { transform:scale(.97); }
+@media (hover:hover) and (pointer:fine){ .dw-ia-cta:hover { background:#1fb855; } }
+.dw-ia-video-frame { width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:16px; border:1px solid rgba(15,44,89,.14); background:#030711; box-shadow:0 18px 40px rgba(15,23,42,.14); }
+.dw-ia-video-frame video { display:block; width:100%; height:100%; object-fit:cover; }
+.dw-ia-caption { text-align:center; margin-top:.7rem; font:600 10px Consolas,'Courier New',monospace; letter-spacing:.18em; color:var(--light-muted); }
+@media (max-width:968px){ .dw-ia-grid { grid-template-columns:1fr; gap:1.6rem; } }
+@media (prefers-reduced-motion:reduce){ .dw-ia-cta { transition:none!important; transform:none!important; } }
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
@@ -2618,7 +2633,30 @@ header nav a,
         <div class="stat-item"><div class="stat-num">24/7</div><p>IA atendiendo clientes</p></div>
         <div class="stat-item"><div class="stat-num">24h</div><p>Respuesta directa</p></div>
       </div>
-      <p class="dw-video-caption"><strong>DOGWEB · SISTEMA APC</strong><br>La manada llega, el sistema se enciende y Alejandro responde.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTACION B2B CON IA (2 columnas: copy + video) -->
+<section class="dw-ia-section" id="captacion-ia">
+  <div class="dw-ia-grid">
+    <div class="dw-ia-copy">
+      <span class="section-eyebrow">Producción con IA · Captación B2B</span>
+      <h2>Convierte más consultas en oportunidades comerciales</h2>
+      <p class="dw-ia-sub">Unimos producción y edición con IA, automatización y captación B2B en un solo flujo. Cada pieza llega a las personas correctas, cada mensaje se responde a tiempo y cada dato queda registrado para dar seguimiento.</p>
+      <p class="dw-ia-sub">Su negocio deja de perseguir leads: web, WhatsApp con IA y reportes trabajan juntos para generar oportunidades y avanzarlas sin trabajo manual.</p>
+      <a class="dw-ia-cta" href="https://wa.me/573337450634?text=Hola%20DogWeb%2C%20quiero%20acelerar%20mi%20captaci%C3%B3n%20B2B%20con%20IA" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.75.453 3.469 1.328 5l-1.406 5.156 5.297-1.391c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969s-4.453-9.984-9.969-9.984zm5.813 14.125c-.25.703-1.438 1.344-1.984 1.422-.516.078-1.156.109-1.859-.109-.438-.141-1-.328-1.719-.641-3.016-1.313-4.984-4.344-5.141-4.547-.156-.203-1.234-1.641-1.234-3.125s.781-2.219 1.063-2.516c.281-.297.609-.375.813-.375.203 0 .406 0 .594.016.188 0 .453-.078.703.531.25.609.859 2.094.938 2.25.078.156.125.344.031.547-.094.203-.141.328-.281.5-.141.172-.297.391-.422.516-.141.141-.297.297-.125.594.172.297.766 1.266 1.641 2.047 1.125 1 2.078 1.313 2.375 1.453.297.141.469.125.641-.078.172-.203.734-.859.938-1.156.203-.297.406-.25.688-.141.281.109 1.781.844 2.094 1 .313.156.516.234.594.359.078.141.078.781-.172 1.484z"/></svg>
+        <span>Quiero mi diagnóstico gratuito</span>
+      </a>
+    </div>
+    <div class="dw-ia-visual">
+      <div class="dw-ia-video-frame">
+        <video id="dwIaVideo" autoplay loop muted playsinline preload="metadata" poster="assets/presentacion-ia-poster.jpg" aria-label="Presentación en video de la captación B2B con IA de DogWeb">
+          <source src="assets/presentacion-ia.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="dw-ia-caption">DOGWEB · SISTEMA APC</p>
     </div>
   </div>
 </section>
@@ -3941,6 +3979,29 @@ if ('serviceWorker' in navigator) {
   document.addEventListener('visibilitychange', function(){ svg.classList.toggle('dw-wheel-paused', document.hidden); });
 
   select(6);
+})();
+</script>
+<script>
+/* === VIDEO DE CAPTACION B2B: pausa fuera de pantalla === */
+(function () {
+  var v = document.getElementById('dwIaVideo');
+  if (!v) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    v.removeAttribute('autoplay'); v.pause(); try { v.currentTime = 0; } catch (e) {}
+    return;
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.05 }).observe(v);
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) v.pause();
+    else { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  });
 })();
 </script>
 </body>
