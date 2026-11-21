@@ -165,7 +165,7 @@ Hoteles (reservas directas con IA).
 
 --- 2.13 CONTACTO ---
 Titular: "Su negocio merece aparecer, atraer y vender en digital." / "En menos
-de 24 horas le respondemos con una propuesta directa, clara y lista para
+de 24 horas le respondo con una propuesta directa, clara y lista para
 ejecutar. Sin compromiso."
 Columna izquierda: Ubicacion (Cra. 52c #39b-22, Bogota, con link a Google Maps)
 / Telefono +57-333-745-0634 / Email (protegido por Cloudflare) / iconos de
