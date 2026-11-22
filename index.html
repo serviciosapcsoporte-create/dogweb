@@ -2673,15 +2673,12 @@ header nav a,
 .dw-stack-track { display:flex; width:max-content; animation:dwMarquee 60s linear infinite; }
 .dw-stack-viewport:hover .dw-stack-track { animation-play-state:paused; }
 .dw-stack-track.is-paused { animation-play-state:paused; }
-.dw-stack-row { display:flex; align-items:center; gap:1.4rem; padding-right:1.4rem; }
-.dw-stack-item { display:flex; flex-direction:column; align-items:center; gap:.35rem; min-width:88px; }
+.dw-stack-row { display:flex; align-items:center; gap:3.5rem; padding-right:3.5rem; }
+.dw-stack-item { display:flex; align-items:center; }
 .dw-stack-item img { width:44px; height:44px; display:block; opacity:.9; transition:opacity 160ms cubic-bezier(0.23,1,0.32,1), transform 160ms cubic-bezier(0.23,1,0.32,1); }
-.dw-stack-item span { color:#94A3B8; }
 @media (hover:hover) and (pointer:fine){
   .dw-stack-item:hover img { opacity:1; transform:translateY(-1px); }
-  .dw-stack-item:hover span { color:#F8FAFC; }
 }
-.dw-stack-item span { font:600 10px Consolas,'Courier New',monospace; color:#94A3B8; white-space:nowrap; }
 @keyframes dwMarquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @media (prefers-reduced-motion:reduce){
   .dw-stack-track { animation:none!important; transform:none!important; }
@@ -2829,66 +2826,66 @@ header nav a,
   <div class="dw-stack-viewport" id="stackViewport">
     <div class="dw-stack-track" id="stackTrack">
       <div class="dw-stack-row">
-      <div class="dw-stack-item"><img src="assets/logo-gmb.svg" alt="Google Maps"><span>Google Maps</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-gsc.svg" alt="Search Console"><span>Search Console</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-ga4.svg" alt="Analytics"><span>Analytics</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-nextjs.svg" alt="Next.js"><span>Next.js</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-react.svg" alt="React"><span>React</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-html.svg" alt="HTML/CSS"><span>HTML/CSS</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-tailwind.svg" alt="Tailwind"><span>Tailwind</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-wordpress.svg" alt="WordPress"><span>WordPress</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-elementor.svg" alt="Elementor"><span>Elementor</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-capcut.svg" alt="CapCut"><span>CapCut</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-ffmpeg.svg" alt="FFmpeg"><span>FFmpeg</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-remotion.svg" alt="Remotion"><span>Remotion</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-canva.svg" alt="Canva"><span>Canva</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-figma.svg" alt="Figma"><span>Figma</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-gemini.svg" alt="Gemini"><span>Gemini</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-chatgpt.svg" alt="ChatGPT"><span>ChatGPT</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-claude.svg" alt="Claude"><span>Claude</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-groq.svg" alt="Groq"><span>Groq</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-whisper.svg" alt="Whisper"><span>Whisper</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-n8n.svg" alt="n8n"><span>n8n</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-make.svg" alt="Make.com"><span>Make.com</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-appsscript.svg" alt="Apps Script"><span>Apps Script</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-whatsapp.svg" alt="WhatsApp"><span>WhatsApp</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-sheets.svg" alt="Sheets"><span>Sheets</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-excel.svg" alt="Excel"><span>Excel</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-meta.svg" alt="Meta Suite"><span>Meta Suite</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-tiktok.svg" alt="TikTok"><span>TikTok</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-youtube.svg" alt="YouTube"><span>YouTube</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-crm.svg" alt="CRM"><span>CRM</span></div>
+      <div class="dw-stack-item"><img src="assets/logo-gmb.svg" alt="Google Maps"></div>
+      <div class="dw-stack-item"><img src="assets/logo-gsc.svg" alt="Search Console"></div>
+      <div class="dw-stack-item"><img src="assets/logo-ga4.svg" alt="Analytics"></div>
+      <div class="dw-stack-item"><img src="assets/logo-nextjs.svg" alt="Next.js"></div>
+      <div class="dw-stack-item"><img src="assets/logo-react.svg" alt="React"></div>
+      <div class="dw-stack-item"><img src="assets/logo-html.svg" alt="HTML/CSS"></div>
+      <div class="dw-stack-item"><img src="assets/logo-tailwind.svg" alt="Tailwind"></div>
+      <div class="dw-stack-item"><img src="assets/logo-wordpress.svg" alt="WordPress"></div>
+      <div class="dw-stack-item"><img src="assets/logo-elementor.svg" alt="Elementor"></div>
+      <div class="dw-stack-item"><img src="assets/logo-capcut.svg" alt="CapCut"></div>
+      <div class="dw-stack-item"><img src="assets/logo-ffmpeg.svg" alt="FFmpeg"></div>
+      <div class="dw-stack-item"><img src="assets/logo-remotion.svg" alt="Remotion"></div>
+      <div class="dw-stack-item"><img src="assets/logo-canva.svg" alt="Canva"></div>
+      <div class="dw-stack-item"><img src="assets/logo-figma.svg" alt="Figma"></div>
+      <div class="dw-stack-item"><img src="assets/logo-gemini.svg" alt="Gemini"></div>
+      <div class="dw-stack-item"><img src="assets/logo-chatgpt.svg" alt="ChatGPT"></div>
+      <div class="dw-stack-item"><img src="assets/logo-claude.svg" alt="Claude"></div>
+      <div class="dw-stack-item"><img src="assets/logo-groq.svg" alt="Groq"></div>
+      <div class="dw-stack-item"><img src="assets/logo-whisper.svg" alt="Whisper"></div>
+      <div class="dw-stack-item"><img src="assets/logo-n8n.svg" alt="n8n"></div>
+      <div class="dw-stack-item"><img src="assets/logo-make.svg" alt="Make.com"></div>
+      <div class="dw-stack-item"><img src="assets/logo-appsscript.svg" alt="Apps Script"></div>
+      <div class="dw-stack-item"><img src="assets/logo-whatsapp.svg" alt="WhatsApp"></div>
+      <div class="dw-stack-item"><img src="assets/logo-sheets.svg" alt="Sheets"></div>
+      <div class="dw-stack-item"><img src="assets/logo-excel.svg" alt="Excel"></div>
+      <div class="dw-stack-item"><img src="assets/logo-meta.svg" alt="Meta Suite"></div>
+      <div class="dw-stack-item"><img src="assets/logo-tiktok.svg" alt="TikTok"></div>
+      <div class="dw-stack-item"><img src="assets/logo-youtube.svg" alt="YouTube"></div>
+      <div class="dw-stack-item"><img src="assets/logo-crm.svg" alt="CRM"></div>
       </div>
       <div class="dw-stack-row" aria-hidden="true">
-      <div class="dw-stack-item"><img src="assets/logo-gmb.svg" alt="Google Maps"><span>Google Maps</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-gsc.svg" alt="Search Console"><span>Search Console</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-ga4.svg" alt="Analytics"><span>Analytics</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-nextjs.svg" alt="Next.js"><span>Next.js</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-react.svg" alt="React"><span>React</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-html.svg" alt="HTML/CSS"><span>HTML/CSS</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-tailwind.svg" alt="Tailwind"><span>Tailwind</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-wordpress.svg" alt="WordPress"><span>WordPress</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-elementor.svg" alt="Elementor"><span>Elementor</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-capcut.svg" alt="CapCut"><span>CapCut</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-ffmpeg.svg" alt="FFmpeg"><span>FFmpeg</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-remotion.svg" alt="Remotion"><span>Remotion</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-canva.svg" alt="Canva"><span>Canva</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-figma.svg" alt="Figma"><span>Figma</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-gemini.svg" alt="Gemini"><span>Gemini</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-chatgpt.svg" alt="ChatGPT"><span>ChatGPT</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-claude.svg" alt="Claude"><span>Claude</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-groq.svg" alt="Groq"><span>Groq</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-whisper.svg" alt="Whisper"><span>Whisper</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-n8n.svg" alt="n8n"><span>n8n</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-make.svg" alt="Make.com"><span>Make.com</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-appsscript.svg" alt="Apps Script"><span>Apps Script</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-whatsapp.svg" alt="WhatsApp"><span>WhatsApp</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-sheets.svg" alt="Sheets"><span>Sheets</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-excel.svg" alt="Excel"><span>Excel</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-meta.svg" alt="Meta Suite"><span>Meta Suite</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-tiktok.svg" alt="TikTok"><span>TikTok</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-youtube.svg" alt="YouTube"><span>YouTube</span></div>
-      <div class="dw-stack-item"><img src="assets/logo-crm.svg" alt="CRM"><span>CRM</span></div>
+      <div class="dw-stack-item"><img src="assets/logo-gmb.svg" alt="Google Maps"></div>
+      <div class="dw-stack-item"><img src="assets/logo-gsc.svg" alt="Search Console"></div>
+      <div class="dw-stack-item"><img src="assets/logo-ga4.svg" alt="Analytics"></div>
+      <div class="dw-stack-item"><img src="assets/logo-nextjs.svg" alt="Next.js"></div>
+      <div class="dw-stack-item"><img src="assets/logo-react.svg" alt="React"></div>
+      <div class="dw-stack-item"><img src="assets/logo-html.svg" alt="HTML/CSS"></div>
+      <div class="dw-stack-item"><img src="assets/logo-tailwind.svg" alt="Tailwind"></div>
+      <div class="dw-stack-item"><img src="assets/logo-wordpress.svg" alt="WordPress"></div>
+      <div class="dw-stack-item"><img src="assets/logo-elementor.svg" alt="Elementor"></div>
+      <div class="dw-stack-item"><img src="assets/logo-capcut.svg" alt="CapCut"></div>
+      <div class="dw-stack-item"><img src="assets/logo-ffmpeg.svg" alt="FFmpeg"></div>
+      <div class="dw-stack-item"><img src="assets/logo-remotion.svg" alt="Remotion"></div>
+      <div class="dw-stack-item"><img src="assets/logo-canva.svg" alt="Canva"></div>
+      <div class="dw-stack-item"><img src="assets/logo-figma.svg" alt="Figma"></div>
+      <div class="dw-stack-item"><img src="assets/logo-gemini.svg" alt="Gemini"></div>
+      <div class="dw-stack-item"><img src="assets/logo-chatgpt.svg" alt="ChatGPT"></div>
+      <div class="dw-stack-item"><img src="assets/logo-claude.svg" alt="Claude"></div>
+      <div class="dw-stack-item"><img src="assets/logo-groq.svg" alt="Groq"></div>
+      <div class="dw-stack-item"><img src="assets/logo-whisper.svg" alt="Whisper"></div>
+      <div class="dw-stack-item"><img src="assets/logo-n8n.svg" alt="n8n"></div>
+      <div class="dw-stack-item"><img src="assets/logo-make.svg" alt="Make.com"></div>
+      <div class="dw-stack-item"><img src="assets/logo-appsscript.svg" alt="Apps Script"></div>
+      <div class="dw-stack-item"><img src="assets/logo-whatsapp.svg" alt="WhatsApp"></div>
+      <div class="dw-stack-item"><img src="assets/logo-sheets.svg" alt="Sheets"></div>
+      <div class="dw-stack-item"><img src="assets/logo-excel.svg" alt="Excel"></div>
+      <div class="dw-stack-item"><img src="assets/logo-meta.svg" alt="Meta Suite"></div>
+      <div class="dw-stack-item"><img src="assets/logo-tiktok.svg" alt="TikTok"></div>
+      <div class="dw-stack-item"><img src="assets/logo-youtube.svg" alt="YouTube"></div>
+      <div class="dw-stack-item"><img src="assets/logo-crm.svg" alt="CRM"></div>
       </div>
     </div>
   </div>
