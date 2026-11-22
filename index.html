@@ -2777,6 +2777,28 @@ header nav a,
 }
 </style>
 <link rel="stylesheet" href="assets/tools.css">
+
+<!-- DW-WHY-MARQUEE -->
+<style>
+.why-section{overflow-x:clip;}
+.dw-why-viewport{width:100%;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+.dw-why-track{display:flex;width:max-content;animation:dwWhyMarquee 60s linear infinite;will-change:transform;}
+.dw-why-track.is-paused{animation-play-state:paused;}
+@keyframes dwWhyMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.why-row{display:flex;gap:1.25rem;padding-right:1.25rem;}
+.why-row .why-item{width:320px;flex:0 0 320px;}
+@media (hover:hover) and (pointer:fine){
+  .dw-why-viewport:hover .dw-why-track{animation-play-state:paused;}
+}
+.dw-why-viewport:focus-within .dw-why-track{animation-play-state:paused;}
+@media (max-width:600px){ .why-row .why-item{width:280px;flex-basis:280px;} }
+@media (prefers-reduced-motion:reduce){
+  .dw-why-track{animation:none!important;transform:none!important;}
+  .dw-why-viewport{overflow-x:auto;}
+}
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
@@ -3368,7 +3390,9 @@ header nav a,
       <h2>Por qué negocios como el suyo <span>eligen DogWeb</span></h2>
       <p>Seis razones por las que no necesitan otro sistema.</p>
     </div>
-    <div class="why-grid">
+    <div class="dw-why-viewport" role="region" tabindex="0" aria-label="Seis razones por las que elegir DogWeb. Cinta corrediza; enfóquela para pausar.">
+      <div class="dw-why-track">
+        <div class="why-row">
       <div class="why-item">
         <div class="why-icon">🤖</div>
         <h3>IA con identidad de marca</h3>
@@ -3390,7 +3414,7 @@ header nav a,
         <p>El presupuesto que le damos es el que paga. Sin costos ocultos, sin recargos, sin letra pequeña.</p>
       </div>
       <div class="why-item">
-        <div class="why-icon">🛡️</div>
+        <div class="why-icon">🎧</div>
         <h3>Soporte real, no bots</h3>
         <p>Le respondo en menos de 24 horas. Yo mismo, Alejandro. Que sabe su proyecto.</p>
       </div>
@@ -3398,6 +3422,40 @@ header nav a,
         <div class="why-icon">🚀</div>
         <h3>Crece sin reiniciar</h3>
         <p>Empiece con una landing. Escale a sistema completo. La misma base, sin perder lo que ya construyó.</p>
+      </div>
+    </div>
+        <div class="why-row" aria-hidden="true">
+      <div class="why-item">
+        <div class="why-icon">🤖</div>
+        <h3>IA con identidad de marca</h3>
+        <p>No es un chatbot genérico. Habla como su negocio, aprende de sus clientes y evoluciona con su operación.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <h3>72 horas para su web</h3>
+        <p>Su página lista para vender en 3 días. No 3 semanas. No 2 meses. Resultados, no promesas.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🎯</div>
+        <h3>Experto en su mercado</h3>
+        <p>Conocemos Colombia y LATAM. No le vendemos soluciones diseñadas para otro continente.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💰</div>
+        <h3>Precio fijo, sin sorpresas</h3>
+        <p>El presupuesto que le damos es el que paga. Sin costos ocultos, sin recargos, sin letra pequeña.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🎧</div>
+        <h3>Soporte real, no bots</h3>
+        <p>Le respondo en menos de 24 horas. Yo mismo, Alejandro. Que sabe su proyecto.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🚀</div>
+        <h3>Crece sin reiniciar</h3>
+        <p>Empiece con una landing. Escale a sistema completo. La misma base, sin perder lo que ya construyó.</p>
+      </div>
+    </div>
       </div>
     </div>
   </div>
@@ -4517,5 +4575,16 @@ if ('serviceWorker' in navigator) {
 })();
 </script>
 <script src="assets/tools.js" defer></script>
+
+<!-- DW-WHY-MARQUEE-PAUSE -->
+<script>
+(function(){
+  var track=document.querySelector('.dw-why-track');
+  if(!track||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){ track.classList.toggle('is-paused', !e.isIntersecting); });
+  },{threshold:0.05}).observe(track);
+})();
+</script>
 </body>
 </html>
