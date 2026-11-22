@@ -2711,6 +2711,32 @@ header nav a,
   .dw-skill-chip { transition:none!important; transform:none!important; }
 }
 </style>
+<style>
+/* === MIS HABILIDADES: rejilla ancha de chips sobre fondo oscuro === */
+.dw-hab-section { position:relative; z-index:1; padding:3.5rem 1rem 4rem; overflow-x:clip;
+  background:radial-gradient(circle at 50% -10%, #1a1f2b 0%, #0a0d14 45%, #05070c 100%); }
+.dw-hab-inner { max-width:1400px; margin:0 auto; }
+.dw-hab-title { text-align:center; font-family:'Plus Jakarta Sans','PJS Fallback',sans-serif;
+  font-size:clamp(1.8rem,3.6vw,2.8rem); font-weight:800; color:#F8FAFC; margin:0 0 .7rem; letter-spacing:-.02em; }
+.dw-hab-sub { max-width:900px; margin:0 auto 2rem; text-align:center; color:#94A3B8; font-size:.92rem; line-height:1.7; }
+.dw-hab-card { max-width:1260px; margin:0 auto; border:1px solid rgba(255,255,255,.09); border-radius:22px;
+  background:rgba(255,255,255,.025); padding:clamp(1.2rem,3vw,2.2rem); display:flex; flex-wrap:wrap;
+  align-items:center; justify-content:center; gap:.7rem; box-shadow:0 24px 60px rgba(0,0,0,.4); }
+.dw-hab-chip { display:inline-block; padding:.6rem 1.1rem; border-radius:999px; border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.04); color:#E2E8F0; font:600 .9rem 'Plus Jakarta Sans','PJS Fallback',sans-serif;
+  white-space:nowrap; opacity:0; transform:translate3d(var(--dw-dx,0px),10px,0);
+  animation:dwHabIn 420ms cubic-bezier(0.23,1,0.32,1) forwards; animation-delay:var(--dw-delay,0ms); }
+.dw-hab-card.is-paused .dw-hab-chip { animation-play-state:paused; }
+@keyframes dwHabIn { to{opacity:1; transform:translate3d(0,0,0);} }
+@media (hover:hover) and (pointer:fine){
+  .dw-hab-chip:hover { transform:scale(1.06)!important; background:#25D366; color:#0F172A;
+    border-color:#1fb855; box-shadow:0 10px 24px rgba(37,211,102,.25), inset 0 1px 0 rgba(255,255,255,.35); }
+}
+@media (max-width:768px){ .dw-hab-chip { font-size:.82rem; padding:.5rem .85rem; } }
+@media (prefers-reduced-motion:reduce){
+  .dw-hab-chip { animation:none!important; opacity:1!important; transform:none!important; transition:none!important; }
+}
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
@@ -2917,21 +2943,48 @@ header nav a,
   </div>
 </section>
 
-<!-- HABILIDADES FLOTANTES -->
-<section class="dw-skills-section" id="habilidades">
-  <div class="dw-skills-inner">
-    <div class="dw-skills-copy">
-      <span class="section-eyebrow">Lo que combino</span>
-      <h2>Visibilidad, orden y datos en un solo flujo</h2>
-      <p>Combino SEO local, páginas y catálogos de captación, automatización e inteligencia artificial, visión IA como dato operativo y producción de contenido para ayudar a negocios locales a ganar visibilidad, ordenar su atención y medir resultados reales. Trabajo de forma directa y práctica, enfocándome en resolver cuellos de botella operativos antes que en discursos complicados.</p>
-    </div>
-    <div class="dw-skills-stage" aria-label="Habilidades principales">
-        <div class="dw-skill-float" style="--dw-top:10%;--dw-left:6%;--dw-float-dur:13s;--dw-float-delay:-0s;--dw-float-x:7px;--dw-float-y:-8px"><span class="dw-skill-chip">SEO local</span></div>
-        <div class="dw-skill-float" style="--dw-top:8%;--dw-left:52%;--dw-float-dur:16s;--dw-float-delay:-3s;--dw-float-x:-9px;--dw-float-y:6px"><span class="dw-skill-chip">Páginas y catálogos de captación</span></div>
-        <div class="dw-skill-float" style="--dw-top:38%;--dw-left:2%;--dw-float-dur:14s;--dw-float-delay:-6s;--dw-float-x:8px;--dw-float-y:-5px"><span class="dw-skill-chip">Automatización e inteligencia artificial</span></div>
-        <div class="dw-skill-float" style="--dw-top:36%;--dw-left:55%;--dw-float-dur:17s;--dw-float-delay:-2s;--dw-float-x:-6px;--dw-float-y:-9px"><span class="dw-skill-chip">Visión IA · datos operativos</span></div>
-        <div class="dw-skill-float" style="--dw-top:68%;--dw-left:10%;--dw-float-dur:15s;--dw-float-delay:-8s;--dw-float-x:9px;--dw-float-y:7px"><span class="dw-skill-chip">Producción de contenido</span></div>
-        <div class="dw-skill-float" style="--dw-top:70%;--dw-left:48%;--dw-float-dur:18s;--dw-float-delay:-5s;--dw-float-x:-8px;--dw-float-y:-6px"><span class="dw-skill-chip">Resultados reales y control operativo</span></div>
+<!-- MIS HABILIDADES (rejilla ancha, estilo muestra) -->
+<section class="dw-hab-section" id="habilidades">
+  <div class="dw-hab-inner">
+    <h2 class="dw-hab-title">Mis Habilidades</h2>
+    <p class="dw-hab-sub">Combino SEO local, páginas y catálogos de captación, automatización e inteligencia artificial, visión IA como dato operativo y producción de contenido para ayudar a negocios locales a ganar visibilidad, ordenar su atención y medir resultados reales. Trabajo de forma directa y práctica, enfocándome en resolver cuellos de botella operativos antes que en discursos complicados.</p>
+    <div class="dw-hab-card" id="habCard">
+      <span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:-14px">SEO Local</span>
+      <span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:14px">Google Business Profile</span>
+      <span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:0px">Google Maps</span>
+      <span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:-14px">Landing Pages</span>
+      <span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:14px">Catálogos Digitales</span>
+      <span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:0px">WhatsApp Business</span>
+      <span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:-14px">Automatización</span>
+      <span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:14px">n8n</span>
+      <span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:0px">Make.com</span>
+      <span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:-14px">Google Apps Script</span>
+      <span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:14px">Inteligencia Artificial</span>
+      <span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:0px">LLMs</span>
+      <span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:-14px">YOLO AI</span>
+      <span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:14px">Visión por Computador</span>
+      <span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:0px">Visión IA · datos</span>
+      <span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:-14px">CCTV · visión IA</span>
+      <span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:14px">Hikvision</span>
+      <span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:0px">Dahua</span>
+      <span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:-14px">Redes</span>
+      <span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:14px">Infraestructura</span>
+      <span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:0px">Soporte Técnico</span>
+      <span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:-14px">Ciberseguridad</span>
+      <span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:14px">CapCut</span>
+      <span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:0px">FFmpeg</span>
+      <span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:-14px">Remotion</span>
+      <span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:14px">Edición de Video</span>
+      <span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:0px">Contenido para Redes</span>
+      <span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:-14px">TikTok</span>
+      <span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:14px">Instagram</span>
+      <span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:0px">Next.js</span>
+      <span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:-14px">React</span>
+      <span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:14px">HTML / CSS</span>
+      <span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:0px">Google Sheets</span>
+      <span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:-14px">KPIs</span>
+      <span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:14px">Validación de Mercado</span>
+      <span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:0px">Captación de Leads</span>
     </div>
   </div>
 </section>
@@ -4291,6 +4344,18 @@ if ('serviceWorker' in navigator) {
   document.addEventListener('visibilitychange', function () {
     stage.classList.toggle('is-paused', document.hidden);
   });
+})();
+</script>
+<script>
+/* === HABILIDADES: pausa animacion de entrada fuera de viewport === */
+(function () {
+  var card=document.getElementById('habCard');
+  if(!card || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ card.classList.toggle('is-paused', !e.isIntersecting); });
+    },{threshold:0.05}).observe(card);
+  }
 })();
 </script>
 </body>
