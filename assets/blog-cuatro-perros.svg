@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 190" width="480" height="190" role="img" aria-label="Cuatro perros de marca DogWeb rastreando oportunidades B2B">
+  <defs>
+    <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#25d366" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#25d366" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffd100" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- rastro de olfato / busqueda de oportunidades -->
+  <path d="M12 168 C 90 150, 130 178, 210 160 S 350 176, 468 152" fill="none" stroke="url(#trail)" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 12"/>
+  <circle cx="70" cy="162" r="4" fill="#ffd100" opacity="0.85"/>
+  <circle cx="238" cy="163" r="5" fill="#25d366" opacity="0.9"/>
+  <circle cx="408" cy="158" r="4" fill="#ffd100" opacity="0.8"/>
+
+  <!-- 1. Rottweiler: orejas caidas, marcas canela -->
+  <g transform="translate(8,10)">
+    <ellipse cx="34" cy="52" rx="11" ry="26" fill="#0F2C59" stroke="#fff" stroke-width="4"/>
+    <ellipse cx="86" cy="52" rx="11" ry="26" fill="#0F2C59" stroke="#fff" stroke-width="4"/>
+    <ellipse cx="60" cy="62" rx="31" ry="34" fill="#0F2C59" stroke="#fff" stroke-width="5"/>
+    <path d="M33 66 Q42 80 50 66 M70 66 Q78 80 87 66" fill="#b45309" opacity="0.95"/>
+    <path d="M50 74 Q60 88 70 74" fill="#25d366"/>
+    <circle cx="49" cy="57" r="3.2" fill="#fff"/><circle cx="71" cy="57" r="3.2" fill="#fff"/>
+    <ellipse cx="60" cy="70" rx="5" ry="4" fill="#fff"/>
+    <path d="M52 80 Q60 88 68 80" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="45" y="98" width="30" height="8" rx="4" fill="#ffd100"/>
+  </g>
+
+  <!-- 2. Pitbull negra con pecho blanco: orejas puntiagudas, pecho claro -->
+  <g transform="translate(120,8)">
+    <path d="M30 40 L24 8 L48 30 Z" fill="#0F2C59" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M90 40 L96 8 L72 30 Z" fill="#0F2C59" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="60" cy="60" rx="31" ry="33" fill="#0F2C59" stroke="#fff" stroke-width="5"/>
+    <path d="M46 80 Q60 104 74 80 L74 96 Q60 112 46 96 Z" fill="#fff" opacity="0.95"/>
+    <path d="M50 70 Q60 82 70 70" fill="#25d366"/>
+    <circle cx="49" cy="55" r="3.2" fill="#fff"/><circle cx="71" cy="55" r="3.2" fill="#fff"/>
+    <ellipse cx="60" cy="67" rx="5" ry="4" fill="#fff"/>
+    <path d="M52 78 Q60 86 68 78" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="45" y="96" width="30" height="8" rx="4" fill="#25d366"/>
+  </g>
+
+  <!-- 3. Pastor aleman mechudo: melena jagged, orejas erguidas -->
+  <g transform="translate(244,6)">
+    <path d="M28 36 L22 6 L46 28 Z" fill="#0F2C59" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M92 36 L98 6 L74 28 Z" fill="#0F2C59" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M26 52 l-9 10 9 4 -8 12 11 3 -5 13 13 -3 3 12 6 -9 5 10 5 -10 6 9 3 -12 13 3 -5 -13 11 -3 -8 -12 9 -4 -9 -10 z" fill="#0F2C59" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/>
+    <ellipse cx="60" cy="60" rx="28" ry="31" fill="#0F2C59" stroke="#fff" stroke-width="4.5"/>
+    <path d="M48 76 Q60 92 72 76" fill="#b45309" opacity="0.9"/>
+    <path d="M52 68 Q60 78 68 68" fill="#25d366"/>
+    <circle cx="49" cy="55" r="3" fill="#fff"/><circle cx="71" cy="55" r="3" fill="#fff"/>
+    <ellipse cx="60" cy="66" rx="4.5" ry="3.6" fill="#fff"/>
+    <rect x="45" y="100" width="30" height="8" rx="4" fill="#ffd100"/>
+  </g>
+
+  <!-- 4. Perra criolla negra con pecho blanco: orejas semicaidas -->
+  <g transform="translate(368,10)">
+    <path d="M28 44 Q18 26 30 18 Q40 24 42 42" fill="#0F2C59" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M92 44 Q102 26 90 18 Q80 24 78 42" fill="#0F2C59" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="60" cy="60" rx="30" ry="33" fill="#0F2C59" stroke="#fff" stroke-width="5"/>
+    <path d="M48 79 Q60 102 72 79 L72 96 Q60 110 48 96 Z" fill="#fff" opacity="0.95"/>
+    <path d="M50 69 Q60 81 70 69" fill="#25d366"/>
+    <circle cx="49" cy="54" r="3.2" fill="#fff"/><circle cx="71" cy="54" r="3.2" fill="#fff"/>
+    <ellipse cx="60" cy="66" rx="5" ry="4" fill="#fff"/>
+    <path d="M52 77 Q60 85 68 77" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="45" y="96" width="30" height="8" rx="4" fill="#ffd100"/>
+  </g>
+</svg>

@@ -2799,6 +2799,57 @@ header nav a,
   .dw-why-viewport{overflow-x:auto;}
 }
 </style>
+
+<!-- DOGWEB-BLOG-EDITORIAL -->
+<style>
+.blog-section{overflow-x:clip;isolation:isolate;}
+.blog-editorial{position:relative;overflow:hidden;border:1px solid rgba(255,209,0,.20);
+  background:linear-gradient(120deg,#0F172A 0%,#0F2C59 58%,#123a73 100%)!important;
+  border-radius:18px;box-shadow:0 16px 40px rgba(15,23,42,.18);}
+.blog-editorial::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 88% 18%,rgba(37,211,102,.14),transparent 42%),
+             radial-gradient(circle at 12% 92%,rgba(255,209,0,.10),transparent 40%);}
+.blog-editorial-copy{position:relative;z-index:1;}
+.blog-editorial h3{color:#fff;}
+.blog-editorial p{color:rgba(255,255,255,.78);}
+.blog-hero-cta{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
+  border-radius:10px;padding:.7rem 1.15rem;font-weight:800;font-size:.88rem;
+  transition:transform 160ms cubic-bezier(0.23,1,0.32,1),opacity 160ms cubic-bezier(0.23,1,0.32,1);}
+.blog-hero-cta:active{transform:scale(.97);}
+.blog-dogs{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;}
+.blog-dogs img{display:block;width:100%;max-width:480px;height:auto;
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,.35));
+  animation:dwBlogDogsDrift 9s ease-in-out infinite alternate;}
+.blog-dogs.is-paused img{animation-play-state:paused;}
+@keyframes dwBlogDogsDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-7px,0)}}
+.blog-dogs-caption{font:700 10px Consolas,'Courier New',monospace;letter-spacing:.14em;
+  color:#ffd100;text-transform:uppercase;margin:0;text-align:center;}
+.blog-grid{box-sizing:border-box;}
+.blog-card{border-radius:14px;transition:transform 200ms cubic-bezier(0.23,1,0.32,1),opacity 200ms cubic-bezier(0.23,1,0.32,1);}
+.blog-card:active{transform:scale(.97);transition-duration:160ms;}
+.blog-link:hover{transform:none;}
+@media (hover:hover) and (pointer:fine){
+  .blog-hero-cta:hover{opacity:.88;}
+  .blog-card:hover{transform:translateY(-3px);}
+  .blog-link:hover{transform:translateX(4px);}
+}
+@media (max-width:1200px) and (min-width:601px){
+  .blog-grid,.blog-editorial{padding-right:3.2rem;box-sizing:border-box;}
+}
+@media (max-width:900px){
+  .blog-editorial{grid-template-columns:1fr!important;padding:2rem!important;gap:1.5rem!important;}
+  .blog-dogs img{max-width:360px;}
+}
+@media (max-width:600px){
+  .blog-editorial{padding:1.5rem!important;}
+  .blog-grid{grid-template-columns:1fr;padding-right:0;}
+  .blog-dogs img{max-width:300px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .blog-dogs img{animation:none!important;transform:none!important;}
+  .blog-hero-cta,.blog-card,.blog-link{transition:none!important;transform:none!important;}
+}
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
@@ -3475,19 +3526,24 @@ header nav a,
 <!-- BLOG RECOMENDADO -->
 <section class="blog-section" id="blog">
   <div class="section-header">
-    <span class="section-eyebrow">Blog recomendado</span>
-    <h2>Aprenda lo que su negocio necesita para crecer</h2>
-    <p>Optimización web, IA en WhatsApp, posicionamiento local y ventas con datos.</p>
+    <span class="section-eyebrow">Blog · Inteligencia comercial</span>
+    <h2>Cuatro olfatos. Una sola misión: encontrar su próximo cliente.</h2>
+    <p>Rottweiler, pitbull negra, pastor alemán mechudo y criolla rastrean oportunidades y cuellos de botella operativos. Nosotros lo convertimos en artículos que su negocio aplica esta misma semana.</p>
   </div>
-  <div class="blog-featured">
-    <div>
-      <span class="blog-badge">Nuevo artículo</span>
-      <h3>SEO Local para aumentar las ventas: web rápida, WhatsApp con IA y visión YOLO como datos</h3>
-      <p>Cómo el SEO local, una web rápida, un WhatsApp con IA y la visión YOLO trabajan juntos para convertir datos en clientes, con un plan de 72 horas accionable.</p>
-      <a class="blog-link" href="blog/seo-local-aumentar-ventas-vision-yolo-whatsapp-ia.html">Leer el artículo →</a>
+
+  <div class="blog-featured blog-editorial">
+    <div class="blog-editorial-copy">
+      <span class="blog-badge">El olfato de la marca</span>
+      <h3>Rastreamos oportunidades. Usted decide dónde crecer.</h3>
+      <p>Cuatro perros, cuatro sentidos para detectar dónde se pierde una venta: una ficha incompleta, un WhatsApp que responde tarde, un precio que no se entiende. Publicamos lo que encontramos, en lenguaje de negocio y sin tecnicismos.</p>
+      <a class="btn-cta blog-hero-cta" href="blog/seo-local-aumentar-ventas-vision-yolo-whatsapp-ia.html">Leer el último diagnóstico →</a>
     </div>
-    <div class="blog-emoji">📘</div>
+    <div class="blog-dogs">
+      <img src="assets/blog-cuatro-perros.svg" alt="Los cuatro perros de marca de DogWeb rastreando oportunidades B2B" width="480" height="190" loading="lazy">
+      <p class="blog-dogs-caption">Rottweiler · Pitbull · Pastor alemán · Criolla</p>
+    </div>
   </div>
+
   <div class="blog-grid">
     <a href="blog/incrementar-ventas-7-acciones-bajo-costo.html" class="blog-card">
       <span class="blog-card-title">Incrementar ventas: 7 acciones de bajo costo</span>
@@ -3502,6 +3558,7 @@ header nav a,
       <span class="blog-card-meta">22 de septiembre · Ventas</span>
     </a>
   </div>
+
   <p style="text-align:center;margin-top:1.4rem;">
     <a class="blog-link" href="blog.html">Ver todos los artículos del blog →</a>
   </p>
@@ -4584,6 +4641,17 @@ if ('serviceWorker' in navigator) {
   new IntersectionObserver(function(es){
     es.forEach(function(e){ track.classList.toggle('is-paused', !e.isIntersecting); });
   },{threshold:0.05}).observe(track);
+})();
+</script>
+
+<!-- DOGWEB-BLOG-PAUSE -->
+<script>
+(function(){
+  var box=document.querySelector('.blog-dogs');
+  if(!box||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){ box.classList.toggle('is-paused', !e.isIntersecting); });
+  },{threshold:0.05}).observe(box);
 })();
 </script>
 </body>
