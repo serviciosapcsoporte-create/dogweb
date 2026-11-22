@@ -2726,7 +2726,11 @@ header nav a,
   background:rgba(255,255,255,.04); color:#E2E8F0; font:600 .9rem 'Plus Jakarta Sans','PJS Fallback',sans-serif;
   white-space:nowrap; opacity:0; transform:translate3d(var(--dw-dx,0px),10px,0);
   animation:dwHabIn 420ms cubic-bezier(0.23,1,0.32,1) forwards; animation-delay:var(--dw-delay,0ms); }
+/* wrapper-free drift via inner span would need DOM; use ::after? Instead apply drift on entrance-complete via 2nd animation on a parent-less element: we wrap with a span below. */
+.dw-hab-float { display:inline-block; animation:dwHabDrift var(--dw-drift-dur,12s) ease-in-out infinite alternate; animation-delay:var(--dw-drift-delay,0s); }
 .dw-hab-card.is-paused .dw-hab-chip { animation-play-state:paused; }
+.dw-hab-card.is-paused .dw-hab-float { animation-play-state:paused; }
+@keyframes dwHabDrift { from{transform:translate3d(0,0,0)} to{transform:translate3d(var(--dw-drift-x,8px),var(--dw-drift-y,-7px),0)} }
 @keyframes dwHabIn { to{opacity:1; transform:translate3d(0,0,0);} }
 @media (hover:hover) and (pointer:fine){
   .dw-hab-chip:hover { transform:scale(1.06)!important; background:#25D366; color:#0F172A;
@@ -2735,6 +2739,7 @@ header nav a,
 @media (max-width:768px){ .dw-hab-chip { font-size:.82rem; padding:.5rem .85rem; } }
 @media (prefers-reduced-motion:reduce){
   .dw-hab-chip { animation:none!important; opacity:1!important; transform:none!important; transition:none!important; }
+  .dw-hab-float { animation:none!important; transform:none!important; }
 }
 </style>
 </head>
@@ -2949,42 +2954,42 @@ header nav a,
     <h2 class="dw-hab-title">Mis Habilidades</h2>
     <p class="dw-hab-sub">Combino SEO local, páginas y catálogos de captación, automatización e inteligencia artificial, visión IA como dato operativo y producción de contenido para ayudar a negocios locales a ganar visibilidad, ordenar su atención y medir resultados reales. Trabajo de forma directa y práctica, enfocándome en resolver cuellos de botella operativos antes que en discursos complicados.</p>
     <div class="dw-hab-card" id="habCard">
-      <span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:-14px">SEO Local</span>
-      <span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:14px">Google Business Profile</span>
-      <span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:0px">Google Maps</span>
-      <span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:-14px">Landing Pages</span>
-      <span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:14px">Catálogos Digitales</span>
-      <span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:0px">WhatsApp Business</span>
-      <span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:-14px">Automatización</span>
-      <span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:14px">n8n</span>
-      <span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:0px">Make.com</span>
-      <span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:-14px">Google Apps Script</span>
-      <span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:14px">Inteligencia Artificial</span>
-      <span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:0px">LLMs</span>
-      <span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:-14px">YOLO AI</span>
-      <span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:14px">Visión por Computador</span>
-      <span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:0px">Visión IA · datos</span>
-      <span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:-14px">CCTV · visión IA</span>
-      <span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:14px">Hikvision</span>
-      <span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:0px">Dahua</span>
-      <span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:-14px">Redes</span>
-      <span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:14px">Infraestructura</span>
-      <span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:0px">Soporte Técnico</span>
-      <span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:-14px">Ciberseguridad</span>
-      <span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:14px">CapCut</span>
-      <span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:0px">FFmpeg</span>
-      <span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:-14px">Remotion</span>
-      <span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:14px">Edición de Video</span>
-      <span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:0px">Contenido para Redes</span>
-      <span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:-14px">TikTok</span>
-      <span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:14px">Instagram</span>
-      <span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:0px">Next.js</span>
-      <span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:-14px">React</span>
-      <span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:14px">HTML / CSS</span>
-      <span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:0px">Google Sheets</span>
-      <span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:-14px">KPIs</span>
-      <span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:14px">Validación de Mercado</span>
-      <span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:0px">Captación de Leads</span>
+      <span class="dw-hab-float" style="--dw-drift-dur:9.0s;--dw-drift-delay:0.0s;--dw-drift-x:-12px;--dw-drift-y:-9px;"><span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:-14px">SEO Local</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:10.3s;--dw-drift-delay:-0.9s;--dw-drift-x:13px;--dw-drift-y:8px;"><span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:14px">Google Business Profile</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:11.6s;--dw-drift-delay:-1.8s;--dw-drift-x:7px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:0px">Google Maps</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:12.9s;--dw-drift-delay:-2.7s;--dw-drift-x:-12px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:-14px">Landing Pages</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:14.2s;--dw-drift-delay:-3.6s;--dw-drift-x:13px;--dw-drift-y:-9px;"><span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:14px">Catálogos Digitales</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:15.5s;--dw-drift-delay:-4.5s;--dw-drift-x:7px;--dw-drift-y:8px;"><span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:0px">WhatsApp Business</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:16.8s;--dw-drift-delay:-5.4s;--dw-drift-x:-12px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:-14px">Automatización</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:9.0s;--dw-drift-delay:-6.3s;--dw-drift-x:13px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:14px">n8n</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:10.3s;--dw-drift-delay:-7.2s;--dw-drift-x:7px;--dw-drift-y:-9px;"><span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:0px">Make.com</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:11.6s;--dw-drift-delay:-8.1s;--dw-drift-x:-12px;--dw-drift-y:8px;"><span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:-14px">Google Apps Script</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:12.9s;--dw-drift-delay:-9.0s;--dw-drift-x:13px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:14px">Inteligencia Artificial</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:14.2s;--dw-drift-delay:0.0s;--dw-drift-x:7px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:0px">LLMs</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:15.5s;--dw-drift-delay:-0.9s;--dw-drift-x:-12px;--dw-drift-y:-9px;"><span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:-14px">YOLO AI</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:16.8s;--dw-drift-delay:-1.8s;--dw-drift-x:13px;--dw-drift-y:8px;"><span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:14px">Visión por Computador</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:9.0s;--dw-drift-delay:-2.7s;--dw-drift-x:7px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:0px">Visión IA · datos</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:10.3s;--dw-drift-delay:-3.6s;--dw-drift-x:-12px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:-14px">CCTV · visión IA</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:11.6s;--dw-drift-delay:-4.5s;--dw-drift-x:13px;--dw-drift-y:-9px;"><span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:14px">Hikvision</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:12.9s;--dw-drift-delay:-5.4s;--dw-drift-x:7px;--dw-drift-y:8px;"><span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:0px">Dahua</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:14.2s;--dw-drift-delay:-6.3s;--dw-drift-x:-12px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:-14px">Redes</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:15.5s;--dw-drift-delay:-7.2s;--dw-drift-x:13px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:14px">Infraestructura</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:16.8s;--dw-drift-delay:-8.1s;--dw-drift-x:7px;--dw-drift-y:-9px;"><span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:0px">Soporte Técnico</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:9.0s;--dw-drift-delay:-9.0s;--dw-drift-x:-12px;--dw-drift-y:8px;"><span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:-14px">Ciberseguridad</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:10.3s;--dw-drift-delay:0.0s;--dw-drift-x:13px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:14px">CapCut</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:11.6s;--dw-drift-delay:-0.9s;--dw-drift-x:7px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:0px">FFmpeg</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:12.9s;--dw-drift-delay:-1.8s;--dw-drift-x:-12px;--dw-drift-y:-9px;"><span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:-14px">Remotion</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:14.2s;--dw-drift-delay:-2.7s;--dw-drift-x:13px;--dw-drift-y:8px;"><span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:14px">Edición de Video</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:15.5s;--dw-drift-delay:-3.6s;--dw-drift-x:7px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:0px">Contenido para Redes</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:16.8s;--dw-drift-delay:-4.5s;--dw-drift-x:-12px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:-14px">TikTok</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:9.0s;--dw-drift-delay:-5.4s;--dw-drift-x:13px;--dw-drift-y:-9px;"><span class="dw-hab-chip" style="--dw-delay:220ms;--dw-dx:14px">Instagram</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:10.3s;--dw-drift-delay:-6.3s;--dw-drift-x:7px;--dw-drift-y:8px;"><span class="dw-hab-chip" style="--dw-delay:275ms;--dw-dx:0px">Next.js</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:11.6s;--dw-drift-delay:-7.2s;--dw-drift-x:-12px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:330ms;--dw-dx:-14px">React</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:12.9s;--dw-drift-delay:-8.1s;--dw-drift-x:13px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:385ms;--dw-dx:14px">HTML / CSS</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:14.2s;--dw-drift-delay:-9.0s;--dw-drift-x:7px;--dw-drift-y:-9px;"><span class="dw-hab-chip" style="--dw-delay:0ms;--dw-dx:0px">Google Sheets</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:15.5s;--dw-drift-delay:0.0s;--dw-drift-x:-12px;--dw-drift-y:8px;"><span class="dw-hab-chip" style="--dw-delay:55ms;--dw-dx:-14px">KPIs</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:16.8s;--dw-drift-delay:-0.9s;--dw-drift-x:13px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:110ms;--dw-dx:14px">Validación de Mercado</span></span>
+      <span class="dw-hab-float" style="--dw-drift-dur:9.0s;--dw-drift-delay:-1.8s;--dw-drift-x:7px;--dw-drift-y:-6px;"><span class="dw-hab-chip" style="--dw-delay:165ms;--dw-dx:0px">Captación de Leads</span></span>
     </div>
   </div>
 </section>
