@@ -2687,6 +2687,30 @@ header nav a,
   .dw-stack-viewport { overflow-x:auto; }
 }
 </style>
+<style>
+/* === HABILIDADES FLOTANTES / BURBUJAS === */
+.dw-skills-section { position:relative; z-index:1; padding:3.5rem 1rem; background:#FAFAF8; overflow-x:clip; }
+.dw-skills-inner { max-width:1240px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:2.5rem; align-items:center; }
+.dw-skills-copy h2 { font-family:'Plus Jakarta Sans','PJS Fallback',sans-serif; font-size:clamp(1.5rem,2.8vw,2.2rem); font-weight:800; color:#0F2C59; margin:.5rem 0 1rem; line-height:1.15; }
+.dw-skills-copy p { color:#5B6472; font-size:.96rem; line-height:1.7; margin:0; }
+.dw-skills-stage { position:relative; min-height:340px; width:100%; overflow:hidden; border-radius:18px; background:radial-gradient(circle at 50% 45%, rgba(15,44,89,.05) 0%, rgba(250,250,248,0) 70%); display:flex; flex-wrap:wrap; align-content:center; justify-content:center; gap:.9rem; padding:1.5rem; }
+.dw-skill-float { position:absolute; top:var(--dw-top,20%); left:var(--dw-left,20%); animation:dwSkillFloat var(--dw-float-dur,14s) var(--ease-out, cubic-bezier(0.23,1,0.32,1)) infinite alternate; animation-delay:var(--dw-float-delay,0s); }
+@keyframes dwSkillFloat { from{transform:translate3d(0,0,0)} to{transform:translate3d(var(--dw-float-x,6px),var(--dw-float-y,-7px),0)} }
+.dw-skills-stage.is-paused .dw-skill-float { animation-play-state:paused; }
+.dw-skill-chip { display:inline-block; padding:.55rem 1rem; border-radius:999px; background:#fff; border:1px solid rgba(15,44,89,.14); color:#0F2C59; font:600 .82rem 'Plus Jakarta Sans','PJS Fallback',sans-serif; box-shadow:0 2px 8px rgba(15,23,42,.06); opacity:.92; transform:scale(1); transition:transform 160ms cubic-bezier(0.23,1,0.32,1), opacity 160ms cubic-bezier(0.23,1,0.32,1), box-shadow 160ms cubic-bezier(0.23,1,0.32,1), border-color 160ms cubic-bezier(0.23,1,0.32,1), color 160ms cubic-bezier(0.23,1,0.32,1); cursor:default; }
+@media (hover:hover) and (pointer:fine){
+  .dw-skill-chip:hover { transform:scale(1.06); opacity:1; background:#25D366; color:#0F172A; border-color:#1fb855; box-shadow:0 10px 24px rgba(37,211,102,.28), inset 0 1px 0 rgba(255,255,255,.35); }
+}
+@media (max-width:968px){
+  .dw-skills-inner { grid-template-columns:1fr; gap:1.5rem; }
+  .dw-skills-stage { min-height:300px; display:flex; flex-wrap:wrap; align-content:center; justify-content:center; gap:.9rem; }
+  .dw-skill-float { position:static; }
+}
+@media (prefers-reduced-motion:reduce){
+  .dw-skill-float { animation:none!important; transform:none!important; }
+  .dw-skill-chip { transition:none!important; transform:none!important; }
+}
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
@@ -2889,6 +2913,25 @@ header nav a,
       <div class="dw-stack-item"><img src="assets/logo-youtube.svg?v=2" alt="YouTube"><span>YouTube</span></div>
       <div class="dw-stack-item"><img src="assets/logo-crm.svg?v=2" alt="CRM"><span>CRM</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES FLOTANTES -->
+<section class="dw-skills-section" id="habilidades">
+  <div class="dw-skills-inner">
+    <div class="dw-skills-copy">
+      <span class="section-eyebrow">Lo que combino</span>
+      <h2>Visibilidad, orden y datos en un solo flujo</h2>
+      <p>Combino SEO local, páginas y catálogos de captación, automatización e inteligencia artificial, visión IA como dato operativo y producción de contenido para ayudar a negocios locales a ganar visibilidad, ordenar su atención y medir resultados reales. Trabajo de forma directa y práctica, enfocándome en resolver cuellos de botella operativos antes que en discursos complicados.</p>
+    </div>
+    <div class="dw-skills-stage" aria-label="Habilidades principales">
+        <div class="dw-skill-float" style="--dw-top:10%;--dw-left:6%;--dw-float-dur:13s;--dw-float-delay:-0s;--dw-float-x:7px;--dw-float-y:-8px"><span class="dw-skill-chip">SEO local</span></div>
+        <div class="dw-skill-float" style="--dw-top:8%;--dw-left:52%;--dw-float-dur:16s;--dw-float-delay:-3s;--dw-float-x:-9px;--dw-float-y:6px"><span class="dw-skill-chip">Páginas y catálogos de captación</span></div>
+        <div class="dw-skill-float" style="--dw-top:38%;--dw-left:2%;--dw-float-dur:14s;--dw-float-delay:-6s;--dw-float-x:8px;--dw-float-y:-5px"><span class="dw-skill-chip">Automatización e inteligencia artificial</span></div>
+        <div class="dw-skill-float" style="--dw-top:36%;--dw-left:55%;--dw-float-dur:17s;--dw-float-delay:-2s;--dw-float-x:-6px;--dw-float-y:-9px"><span class="dw-skill-chip">Visión IA · datos operativos</span></div>
+        <div class="dw-skill-float" style="--dw-top:68%;--dw-left:10%;--dw-float-dur:15s;--dw-float-delay:-8s;--dw-float-x:9px;--dw-float-y:7px"><span class="dw-skill-chip">Producción de contenido</span></div>
+        <div class="dw-skill-float" style="--dw-top:70%;--dw-left:48%;--dw-float-dur:18s;--dw-float-delay:-5s;--dw-float-x:-8px;--dw-float-y:-6px"><span class="dw-skill-chip">Resultados reales y control operativo</span></div>
     </div>
   </div>
 </section>
@@ -4232,6 +4275,21 @@ if ('serviceWorker' in navigator) {
   }
   document.addEventListener('visibilitychange', function () {
     track.classList.toggle('is-paused', document.hidden);
+  });
+})();
+</script>
+<script>
+/* === HABILIDADES: pausa fuera de viewport === */
+(function () {
+  var stage = document.querySelector('.dw-skills-stage');
+  if (!stage || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { stage.classList.toggle('is-paused', !e.isIntersecting); });
+    }, { threshold: 0.05 }).observe(stage);
+  }
+  document.addEventListener('visibilitychange', function () {
+    stage.classList.toggle('is-paused', document.hidden);
   });
 })();
 </script>
