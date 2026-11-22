@@ -2742,6 +2742,40 @@ header nav a,
   .dw-hab-float { animation:none!important; transform:none!important; }
 }
 </style>
+<style>
+/* === FLIP CARDS DEL SISTEMA ACR (fondo claro) === */
+.ecosystem-section { overflow-x:clip; }
+.dw-flip-flow { perspective:1000px; }
+.dw-flip { position:relative; width:280px; max-width:100%; height:330px; perspective:1000px; outline:none; }
+.dw-flip-inner { position:relative; width:100%; height:100%; transform-style:preserve-3d;
+  transition:transform 520ms cubic-bezier(0.23,1,0.32,1), opacity 160ms cubic-bezier(0.23,1,0.32,1); }
+.dw-flip-face { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  border-radius:16px; border:1px solid var(--light-border); background:#fff; padding:1.5rem;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  box-shadow:0 8px 24px rgba(15,23,42,.06); overflow:hidden; }
+.dw-flip-face h3 { color:var(--navy); font-family:'Plus Jakarta Sans','PJS Fallback',sans-serif; font-size:1.1rem; margin:.5rem 0; }
+.dw-flip-face p { color:var(--light-muted); font-size:.82rem; line-height:1.5; margin:0; }
+.dw-flip-front .eco-number-sticker { margin:0 auto; }
+.dw-flip-hint { margin-top:auto; font:600 9px Consolas,'Courier New',monospace; color:var(--navy); opacity:.7; }
+.dw-flip-back { transform:rotateY(180deg); background:linear-gradient(160deg,#ffffff 0%,#f4f8f5 100%); }
+.dw-flip-back h3 { color:#0b7a3d; }
+.dw-flip-tag { font:700 10px Consolas,'Courier New',monospace; letter-spacing:.12em; color:#0b7a3d;
+  background:rgba(37,211,102,.12); border:1px solid rgba(37,211,102,.35); border-radius:8px; padding:.3rem .7rem; }
+.dw-flip-back ul { list-style:none; margin:1rem 0 0; padding:0; text-align:left; width:100%; }
+.dw-flip-back li { font-size:.8rem; color:var(--navy-2); padding:.35rem 0 .35rem 1.1rem; position:relative; }
+.dw-flip-back li::before { content:"✦"; position:absolute; left:0; color:var(--accent); }
+@media (hover:hover) and (pointer:fine){
+  .dw-flip:hover .dw-flip-inner { transform:rotateY(180deg); }
+}
+.dw-flip.is-flipped .dw-flip-inner { transform:rotateY(180deg); }
+.dw-flip:focus-visible .dw-flip-inner { transform:rotateY(180deg); }
+@media (max-width:968px){ .dw-flip { height:auto; min-height:330px; } }
+@media (prefers-reduced-motion:reduce){
+  .dw-flip-inner { transition:none!important; transform:none!important; }
+  .dw-flip-back { display:none; }
+  .dw-flip-hint { display:none; }
+}
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
@@ -3001,26 +3035,59 @@ header nav a,
       <h2>No vendemos servicios sueltos. <em>DogWeb instala el Sistema APC: una máquina de captación que funciona sola.</em></h2>
       <p>Contenido con IA + SEO Local + Meta Ads + WhatsApp. Cada pieza alimenta a la otra para generar clientes reales.</p>
     </div>
-    <div class="ecosystem-flow">
-      <div class="eco-step">
-        <img class="eco-number-sticker" data-n="1" src="assets/sticker-num-1.svg" alt="Paso 1" width="72" height="72">
-        <div class="eco-icon">🔍</div>
-        <h3>Atrae</h3>
-        <p>Posicionamiento SEO + Pauta Meta Ads + Producción IA = Visitantes cualificados encontrándote en Google y redes sociales.</p>
+    <div class="ecosystem-flow dw-flip-flow">
+      <div class="dw-flip" tabindex="0" role="button" aria-label="Atrae: ver detalles">
+        <div class="dw-flip-inner">
+          <div class="dw-flip-face dw-flip-front">
+            <img class="eco-number-sticker" data-n="1" src="assets/sticker-num-1.svg" alt="Paso 1" width="72" height="72">
+            <div class="eco-icon">🔍</div>
+            <h3>Atrae</h3>
+            <p>Posicionamiento SEO + Pauta Meta Ads + Producción IA = Visitantes cualificados encontrándote en Google y redes sociales.</p>
+            <span class="dw-flip-hint">Pasa el cursor para ver cómo conecta →</span>
+          </div>
+          <div class="dw-flip-face dw-flip-back">
+            <span class="dw-flip-tag">FASE 01 · ATRAER</span>
+            <h3>Visibilidad que se mide</h3>
+            <p>Google Business Profile, SEO local y pauta Meta Ads llevan tráfico cualificado a una web rápida. Cada clic queda registrado y entra al mismo flujo de captación.</p>
+            <ul><li>Ficha y reseñas activas</li><li>Piezas IA por sector</li><li>Datos de origen en un panel</li></ul>
+          </div>
+        </div>
       </div>
       <div class="eco-arrow">→</div>
-      <div class="eco-step">
-        <img class="eco-number-sticker" data-n="2" src="assets/sticker-num-2.svg" alt="Paso 2" width="72" height="72">
-        <div class="eco-icon">💬</div>
-        <h3>Convierte</h3>
-        <p>Pistas de aterrizaje de alta velocidad + WhatsApp IA = Leads filtrados que responden y se califican solos 24/7.</p>
+      <div class="dw-flip" tabindex="0" role="button" aria-label="Convierte: ver detalles">
+        <div class="dw-flip-inner">
+          <div class="dw-flip-face dw-flip-front">
+            <img class="eco-number-sticker" data-n="2" src="assets/sticker-num-2.svg" alt="Paso 2" width="72" height="72">
+            <div class="eco-icon">💬</div>
+            <h3>Convierte</h3>
+            <p>Pistas de aterrizaje de alta velocidad + WhatsApp IA = Leads filtrados que responden y se califican solos 24/7.</p>
+            <span class="dw-flip-hint">Pasa el cursor para ver cómo conecta →</span>
+          </div>
+          <div class="dw-flip-face dw-flip-back">
+            <span class="dw-flip-tag">FASE 02 · CONVERTIR</span>
+            <h3>Del clic a la conversación</h3>
+            <p>La landing responde en segundos y el bot de WhatsApp contesta con la identidad de tu negocio, filtra la consulta y la deja lista para agendar.</p>
+            <ul><li>Bot 24/7 con tu tono</li><li>Captura en Sheets/CRM</li><li>Seguimiento sin perder el hilo</li></ul>
+          </div>
+        </div>
       </div>
       <div class="eco-arrow">→</div>
-      <div class="eco-step">
-        <img class="eco-number-sticker" data-n="3" src="assets/sticker-num-3.svg" alt="Paso 3" width="72" height="72">
-        <div class="eco-icon">📊</div>
-        <h3>Retiene</h3>
-        <p>Estrategia de contenidos unificada + Automatización = Clientes recurrentes y una operación comercial sin fricción.</p>
+      <div class="dw-flip" tabindex="0" role="button" aria-label="Retiene: ver detalles">
+        <div class="dw-flip-inner">
+          <div class="dw-flip-face dw-flip-front">
+            <img class="eco-number-sticker" data-n="3" src="assets/sticker-num-3.svg" alt="Paso 3" width="72" height="72">
+            <div class="eco-icon">📊</div>
+            <h3>Retiene</h3>
+            <p>Estrategia de contenidos unificada + Automatización = Clientes recurrentes y una operación comercial sin fricción.</p>
+            <span class="dw-flip-hint">Pasa el cursor para ver cómo conecta →</span>
+          </div>
+          <div class="dw-flip-face dw-flip-back">
+            <span class="dw-flip-tag">FASE 03 · RETENER</span>
+            <h3>Operación con datos</h3>
+            <p>Contenido, automatizaciones y reportes alimentan un solo panel. La visión IA convierte video en datos operativos y el dueño decide con cifras, no con corazonadas.</p>
+            <ul><li>Reportes automáticos</li><li>Flujos n8n y Sheets</li><li>Visión IA como dato, novigilancia</li></ul>
+          </div>
+        </div>
       </div>
     </div>
     <div style="text-align:center;margin-top:2.5rem;">
@@ -4360,6 +4427,25 @@ if ('serviceWorker' in navigator) {
     new IntersectionObserver(function(es){
       es.forEach(function(e){ card.classList.toggle('is-paused', !e.isIntersecting); });
     },{threshold:0.05}).observe(card);
+  }
+})();
+</script>
+<script>
+/* === FLIP CARDS: clic/teclado en tactil + pausa fuera de viewport === */
+(function () {
+  var cards=[...document.querySelectorAll('.dw-flip')];
+  if(!cards.length) return;
+  cards.forEach(function(c){
+    c.addEventListener('click',function(){ c.classList.toggle('is-flipped'); });
+    c.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.classList.toggle('is-flipped'); }
+    });
+  });
+  var flow=document.querySelector('.dw-flip-flow');
+  if(flow && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ flow.classList.toggle('is-paused', !e.isIntersecting); });
+    },{threshold:0.05}).observe(flow);
   }
 })();
 </script>
