@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="CRM">
-  <circle cx="32" cy="32" r="30" fill="#CBD5E1"/>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="1.5"/>
-  <text x="32" y="33" text-anchor="middle" dominant-baseline="central" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">C</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" role="img" aria-label="crm"><path fill="#FFFFFF" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>

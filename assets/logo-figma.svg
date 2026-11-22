@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Figma">
-  <circle cx="32" cy="32" r="30" fill="#CBD5E1"/>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="1.5"/>
-  <text x="32" y="33" text-anchor="middle" dominant-baseline="central" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">F</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" role="img" aria-label="figma"><path fill="#FFFFFF" d="M9 2H6a3 3 0 0 0 0 6h3V2zm3 0h3a3 3 0 0 1 0 6h-3V2zM6 10a3 3 0 1 0 0 6h3v-6H6zm12 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6 18a3 3 0 1 0 2.1 5.1A3 3 0 0 0 6 18zm6-8H9v6h3v-6zm3 0h-3v6h3a3 3 0 0 0 0-6z"/></svg>

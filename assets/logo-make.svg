@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Make.com">
-  <circle cx="32" cy="32" r="30" fill="#CBD5E1"/>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="1.5"/>
-  <text x="32" y="33" text-anchor="middle" dominant-baseline="central" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">M</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" role="img" aria-label="make"><path fill="#FFFFFF" d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.3l7 3.5-7 3.5-7-3.5 7-3.5zM4 9.3l7 3.5v7.9l-7-3.5V9.3zm9 11.4v-7.9l7-3.5v7.9l-7 3.5z"/></svg>

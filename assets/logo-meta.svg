@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Meta Suite">
-  <circle cx="32" cy="32" r="30" fill="#CBD5E1"/>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="1.5"/>
-  <text x="32" y="33" text-anchor="middle" dominant-baseline="central" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">M</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" role="img" aria-label="meta"><path fill="#FFFFFF" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 3.5c3.6 0 6.5 2.9 6.5 6.5s-2.9 6.5-6.5 6.5S5.5 15.6 5.5 12s2.9-6.5 6.5-6.5zm0 2.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
