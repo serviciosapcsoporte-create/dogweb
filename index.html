@@ -2880,6 +2880,24 @@ html,body{background-color:#FAFAF8;}
   .faq-item,.faq-icon,.faq-item summary{transition:none!important;transform:none!important;}
 }
 </style>
+
+<!-- DOGWEB-BLOG-THUMBS -->
+<style>
+.blog-card{padding:.85rem!important;}
+.blog-card-thumb{display:block;overflow:hidden;border-radius:10px;background:#F2F1EC;
+  border:1px solid rgba(15,23,42,.08);}
+.blog-card-thumb img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;
+  animation:dwBlogThumbDrift 20s ease-in-out infinite alternate;
+  transition:opacity 200ms var(--ease-out);}
+.blog-card-thumb img.is-paused{animation-play-state:paused;}
+@keyframes dwBlogThumbDrift{from{transform:scale(1)}to{transform:scale(1.035)}}
+@media (hover:hover) and (pointer:fine){
+  .blog-card:hover .blog-card-thumb img{opacity:.9;}
+}
+@media (prefers-reduced-motion:reduce){
+  .blog-card-thumb img{animation:none!important;transform:none!important;transition:none!important;}
+}
+</style>
 </head>
 <body>
 <canvas id="dw-snow" aria-hidden="true"></canvas>
@@ -3575,14 +3593,17 @@ html,body{background-color:#FAFAF8;}
 
   <div class="blog-grid">
     <a href="blog/incrementar-ventas-7-acciones-bajo-costo.html" class="blog-card">
+      <span class="blog-card-thumb"><img src="./assets/img/blog-1.webp" alt="Muestra del artículo: acciones de bajo costo para vender más" width="640" height="360" loading="lazy"></span>
       <span class="blog-card-title">Incrementar ventas: 7 acciones de bajo costo</span>
       <span class="blog-card-meta">29 de septiembre · Ventas</span>
     </a>
     <a href="blog/google-business-profile-posicionamiento-local.html" class="blog-card">
+      <span class="blog-card-thumb"><img src="./assets/img/blog-4.webp" alt="Muestra del artículo: posicionamiento local en Google" width="640" height="360" loading="lazy"></span>
       <span class="blog-card-title">Posicionamiento en Google Business Profile</span>
       <span class="blog-card-meta">24 de septiembre · SEO local</span>
     </a>
     <a href="blog/plan-accion-incrementar-ventas-30-dias.html" class="blog-card">
+      <span class="blog-card-thumb"><img src="./assets/img/blog-3.webp" alt="Muestra del artículo: plan de ventas a 30 días" width="640" height="360" loading="lazy"></span>
       <span class="blog-card-title">Plan de acción para incrementar ventas en 30 días</span>
       <span class="blog-card-meta">22 de septiembre · Ventas</span>
     </a>
@@ -4676,11 +4697,12 @@ if ('serviceWorker' in navigator) {
 <!-- DOGWEB-BLOG-PAUSE -->
 <script>
 (function(){
-  var box=document.querySelector('.blog-editorial-photo');
-  if(!box||!('IntersectionObserver' in window))return;
-  new IntersectionObserver(function(es){
-    es.forEach(function(e){ box.classList.toggle('is-paused', !e.isIntersecting); });
-  },{threshold:0.05}).observe(box);
+  var boxes=document.querySelectorAll('.blog-editorial-photo, .blog-card-thumb');
+  if(!boxes.length||!('IntersectionObserver' in window))return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ e.target.classList.toggle('is-paused', !e.isIntersecting); });
+  },{threshold:0.05});
+  boxes.forEach(function(x){ io.observe(x); });
 })();
 </script>
 
