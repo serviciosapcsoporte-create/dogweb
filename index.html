@@ -2800,30 +2800,27 @@ header nav a,
 }
 </style>
 
-<!-- DOGWEB-BLOG-EDITORIAL -->
+<!-- DOGWEB-BLOG-EDITORIAL-PHOTO -->
 <style>
 .blog-section{overflow-x:clip;isolation:isolate;}
-.blog-editorial{position:relative;overflow:hidden;border:1px solid rgba(255,209,0,.20);
-  background:linear-gradient(120deg,#0F172A 0%,#0F2C59 58%,#123a73 100%)!important;
-  border-radius:18px;box-shadow:0 16px 40px rgba(15,23,42,.18);}
-.blog-editorial::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(circle at 88% 18%,rgba(37,211,102,.14),transparent 42%),
-             radial-gradient(circle at 12% 92%,rgba(255,209,0,.10),transparent 40%);}
-.blog-editorial-copy{position:relative;z-index:1;}
+.blog-editorial{position:relative;display:block;overflow:hidden;border:1px solid rgba(255,209,0,.20);
+  background:#0F172A;border-radius:18px;box-shadow:0 16px 40px rgba(15,23,42,.18);}
+.blog-editorial-photo{position:absolute;inset:0 0 0 auto;width:56%;overflow:hidden;z-index:0;}
+.blog-editorial-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;
+  animation:dwBlogPhotoDrift 18s ease-in-out infinite alternate;}
+.blog-editorial-photo.is-paused img{animation-play-state:paused;}
+@keyframes dwBlogPhotoDrift{from{transform:scale(1)}to{transform:scale(1.035)}}
+.blog-editorial-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,#0F172A 0%,rgba(15,44,89,.72) 30%,rgba(15,44,89,.18) 72%,rgba(15,44,89,.08) 100%);}
+.blog-editorial-copy{position:relative;z-index:2;max-width:56%;}
 .blog-editorial h3{color:#fff;}
-.blog-editorial p{color:rgba(255,255,255,.78);}
+.blog-editorial p{color:rgba(255,255,255,.82);}
+.blog-breed-line{font:700 10px Consolas,'Courier New',monospace;letter-spacing:.14em;
+  color:#ffd100;text-transform:uppercase;margin:.9rem 0 1.1rem;}
 .blog-hero-cta{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
   border-radius:10px;padding:.7rem 1.15rem;font-weight:800;font-size:.88rem;
   transition:transform 160ms cubic-bezier(0.23,1,0.32,1),opacity 160ms cubic-bezier(0.23,1,0.32,1);}
 .blog-hero-cta:active{transform:scale(.97);}
-.blog-dogs{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;}
-.blog-dogs img{display:block;width:100%;max-width:480px;height:auto;
-  filter:drop-shadow(0 10px 18px rgba(0,0,0,.35));
-  animation:dwBlogDogsDrift 9s ease-in-out infinite alternate;}
-.blog-dogs.is-paused img{animation-play-state:paused;}
-@keyframes dwBlogDogsDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-7px,0)}}
-.blog-dogs-caption{font:700 10px Consolas,'Courier New',monospace;letter-spacing:.14em;
-  color:#ffd100;text-transform:uppercase;margin:0;text-align:center;}
 .blog-grid{box-sizing:border-box;}
 .blog-card{border-radius:14px;transition:transform 200ms cubic-bezier(0.23,1,0.32,1),opacity 200ms cubic-bezier(0.23,1,0.32,1);}
 .blog-card:active{transform:scale(.97);transition-duration:160ms;}
@@ -2837,16 +2834,20 @@ header nav a,
   .blog-grid,.blog-editorial{padding-right:3.2rem;box-sizing:border-box;}
 }
 @media (max-width:900px){
-  .blog-editorial{grid-template-columns:1fr!important;padding:2rem!important;gap:1.5rem!important;}
-  .blog-dogs img{max-width:360px;}
+  .blog-editorial{padding:2rem!important;}
+  .blog-editorial-copy{max-width:66%;}
+  .blog-editorial-photo{width:48%;}
 }
 @media (max-width:600px){
-  .blog-editorial{padding:1.5rem!important;}
+  .blog-editorial{padding:1.5rem!important;min-height:520px;}
+  .blog-editorial-copy{max-width:100%;}
+  .blog-editorial-photo{width:100%;opacity:.55;}
+  .blog-editorial-photo img{object-position:center top;}
+  .blog-editorial-photo::after{background:linear-gradient(180deg,rgba(15,23,42,.72) 0%,rgba(15,44,89,.94) 100%);}
   .blog-grid{grid-template-columns:1fr;padding-right:0;}
-  .blog-dogs img{max-width:300px;}
 }
 @media (prefers-reduced-motion:reduce){
-  .blog-dogs img{animation:none!important;transform:none!important;}
+  .blog-editorial-photo img{animation:none!important;transform:none!important;}
   .blog-hero-cta,.blog-card,.blog-link{transition:none!important;transform:none!important;}
 }
 </style>
@@ -3533,14 +3534,14 @@ header nav a,
 
   <div class="blog-featured blog-editorial">
     <div class="blog-editorial-copy">
-      <span class="blog-badge">El olfato de la marca</span>
-      <h3>Rastreamos oportunidades. Usted decide dónde crecer.</h3>
-      <p>Cuatro perros, cuatro sentidos para detectar dónde se pierde una venta: una ficha incompleta, un WhatsApp que responde tarde, un precio que no se entiende. Publicamos lo que encontramos, en lenguaje de negocio y sin tecnicismos.</p>
-      <a class="btn-cta blog-hero-cta" href="blog/seo-local-aumentar-ventas-vision-yolo-whatsapp-ia.html">Leer el último diagnóstico →</a>
+      <span class="blog-badge">Olfateamos y buscamos clientes</span>
+      <h3>Rastreamos demanda. Usted decide dónde crecer.</h3>
+      <p>Los cuatro perros de marca rastrean oportunidades y cuellos de botella operativos: una ficha incompleta, un WhatsApp que responde tarde, un precio que no se entiende. Publicamos lo que encontramos, en lenguaje de negocio y sin tecnicismos.</p>
+      <p class="blog-breed-line">Rottweiler · Pitbull · Pastor alemán · Criolla</p>
+      <a class="btn-cta blog-hero-cta" href="blog/seo-local-aumentar-ventas-vision-yolo-whatsapp-ia.html">Leer el artículo →</a>
     </div>
-    <div class="blog-dogs">
-      <img src="assets/blog-cuatro-perros.svg" alt="Los cuatro perros de marca de DogWeb rastreando oportunidades B2B" width="480" height="190" loading="lazy">
-      <p class="blog-dogs-caption">Rottweiler · Pitbull · Pastor alemán · Criolla</p>
+    <div class="blog-editorial-photo" aria-hidden="true">
+      <img src="./assets/img/perros-rastreo-b2b.webp" alt="" width="1344" height="768" loading="lazy">
     </div>
   </div>
 
@@ -4647,7 +4648,7 @@ if ('serviceWorker' in navigator) {
 <!-- DOGWEB-BLOG-PAUSE -->
 <script>
 (function(){
-  var box=document.querySelector('.blog-dogs');
+  var box=document.querySelector('.blog-editorial-photo');
   if(!box||!('IntersectionObserver' in window))return;
   new IntersectionObserver(function(es){
     es.forEach(function(e){ box.classList.toggle('is-paused', !e.isIntersecting); });
